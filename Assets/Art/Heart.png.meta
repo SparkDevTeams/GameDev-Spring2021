@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 73a5ab574d641f941a60375cfbe22df8
+guid: 092946364f1bc1b408889c5cc068048e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8826841259304877890
-    second: Piggy Base-Sheet_0
+      213: 4606908045521496030
+    second: Heart_0
   - first:
-      213: 658280998397049849
-    second: Piggy Base-Sheet_1
+      213: -4195582761621981391
+    second: Heart_1
   - first:
-      213: 5858405778851277325
-    second: Piggy Base-Sheet_2
+      213: 516283494600122218
+    second: Heart_2
+  - first:
+      213: 7630354458230478893
+    second: Heart_3
+  - first:
+      213: 615023859997206797
+    second: Heart_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -32,7 +38,6 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -55,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -64,12 +69,9 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -136,64 +138,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Piggy Base-Sheet_0
+      name: Heart_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb00f5a24a2c08580800000000000000
-      internalID: -8826841259304877890
+      spriteID: ed7a23e75760fef30800000000000000
+      internalID: 4606908045521496030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Piggy Base-Sheet_1
+      name: Heart_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 11
         y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fb78df841fa22900800000000000000
-      internalID: 658280998397049849
+      spriteID: 137f4cb15bb46c5c0800000000000000
+      internalID: -4195582761621981391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Piggy Base-Sheet_2
+      name: Heart_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 22
         y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0aa686440d3d4150800000000000000
-      internalID: 5858405778851277325
+      spriteID: a6f990b5a153a2700800000000000000
+      internalID: 516283494600122218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart_3
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d285521d3f674e960800000000000000
+      internalID: 7630354458230478893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart_4
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 0
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d09e58f21f0098800800000000000000
+      internalID: 615023859997206797
       vertices: []
       indices: 
       edges: []
