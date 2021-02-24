@@ -24,6 +24,8 @@ public class Slot : MonoBehaviour
     {
         foreach(Transform child in transform)
         {
+            // Test comment
+            child.GetComponent<Spawn>().SpawnDroppedItem();
             GameObject.Destroy(child.gameObject);
         }
     }

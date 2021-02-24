@@ -25,6 +25,7 @@ public class Pickup : MonoBehaviour
                     Instantiate(itemButton, inventory.slots[i].transform, false);
                     Destroy(gameObject);
                     break;
+                    //test
                 }
             }
         }
