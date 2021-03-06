@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingDirection: 1
+  deadends: 0
   spawned: 0
 --- !u!61 &6906299173326589944
 BoxCollider2D:
@@ -2179,6 +2180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingDirection: 3
+  deadends: 0
   spawned: 0
 --- !u!61 &5249009286900746670
 BoxCollider2D:
@@ -2317,6 +2319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingDirection: 2
+  deadends: 0
   spawned: 0
 --- !u!61 &4567381255506200380
 BoxCollider2D:
@@ -2445,6 +2448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf31b7d156cdb74ba69f2a2392ae590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDeadend: 0
+  allowed: 1
+  limited: 1
 --- !u!1 &8671231681263093865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2491,6 +2497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingDirection: 4
+  deadends: 0
   spawned: 0
 --- !u!61 &736027476405478033
 BoxCollider2D:
