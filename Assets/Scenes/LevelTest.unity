@@ -490,6 +490,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32327fc9390af734b9921f680e6a7a0a, type: 3}
+--- !u!4 &567157561 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4877020150538188647, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+  m_PrefabInstance: {fileID: 663791394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &663791394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -497,6 +502,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4877020150538188647, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 5705186342619356750, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
       propertyPath: m_Name
       value: Entry Room
@@ -2887,6 +2896,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+--- !u!1 &874227289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1694806574401370405, guid: 29f6ad90db5c8004cab6118b903a6332, type: 3}
+  m_PrefabInstance: {fileID: 1694806576066996975}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &874227293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874227289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947280b86463fce4286cbb7273f2b1e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraPosition: {fileID: 567157561}
 --- !u!1001 &2118557090
 PrefabInstance:
   m_ObjectHideFlags: 0

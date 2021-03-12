@@ -120,10 +120,17 @@ public class RoomSpawner : MonoBehaviour
             switch (openingDirection)
             {
                 case 1:
-                    if (templates.getBossSpawned())
+                    if (templates.getBossSpawned() && templates.getItemSpawned())
                     {
                         Instantiate(templates.deadends[0], transform.position, templates.deadends[0].transform.rotation);
                         Debug.Log("Deadend spawned");
+                        break;
+                    }
+                    else if(templates.getBossSpawned() && !templates.getItemSpawned())
+                    {
+                        Instantiate(templates.itemRooms[0], transform.position, templates.itemRooms[0].transform.rotation);
+                        templates.setItemSpawned(true);
+                        Debug.Log("Item room spawned old");
                         break;
                     }
                     else
@@ -135,10 +142,17 @@ public class RoomSpawner : MonoBehaviour
                     }
                     
                 case 2:
-                    if (templates.getBossSpawned())
+                    if (templates.getBossSpawned() && templates.getItemSpawned())
                     {
                         Instantiate(templates.deadends[1], transform.position, templates.deadends[1].transform.rotation);
                         Debug.Log("Deadend spawned");
+                        break;
+                    }
+                    else if (templates.getBossSpawned() && !templates.getItemSpawned())
+                    {
+                        Instantiate(templates.itemRooms[1], transform.position, templates.itemRooms[1].transform.rotation);
+                        templates.setItemSpawned(true);
+                        Debug.Log("Item room spawned old");
                         break;
                     }
                     else
@@ -150,10 +164,17 @@ public class RoomSpawner : MonoBehaviour
                     }
 
                 case 3:
-                    if (templates.getBossSpawned())
+                    if (templates.getBossSpawned() && templates.getItemSpawned())
                     {
                         Instantiate(templates.deadends[2], transform.position, templates.deadends[2].transform.rotation);
                         Debug.Log("Deadend spawned");
+                        break;
+                    }
+                    else if (templates.getBossSpawned() && !templates.getItemSpawned())
+                    {
+                        Instantiate(templates.itemRooms[2], transform.position, templates.itemRooms[2].transform.rotation);
+                        templates.setItemSpawned(true);
+                        Debug.Log("Item room spawned old");
                         break;
                     }
                     else
@@ -165,10 +186,17 @@ public class RoomSpawner : MonoBehaviour
                     }
 
                 case 4:
-                    if (templates.getBossSpawned())
+                    if (templates.getBossSpawned() && templates.getItemSpawned())
                     {
                         Instantiate(templates.deadends[3], transform.position, templates.deadends[3].transform.rotation);
                         Debug.Log("Deadend spawned");
+                        break;
+                    }
+                    else if (templates.getBossSpawned() && !templates.getItemSpawned())
+                    {
+                        Instantiate(templates.itemRooms[3], transform.position, templates.itemRooms[3].transform.rotation);
+                        templates.setItemSpawned(true);
+                        Debug.Log("Item room spawned old");
                         break;
                     }
                     else
