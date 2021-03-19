@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroyer : MonoBehaviour
+public class RoomTrigger : MonoBehaviour
 {
+    RoomManager room;
     // Start is called before the first frame update
     void Start()
     {
-        
+        room = GetComponentInParent<RoomManager>();
     }
 
     // Update is called once per frame
@@ -18,12 +19,11 @@ public class Destroyer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag != "Player" || collision.tag != "Detector")
-        {
-            Destroy(collision.gameObject);
-        }
-        
-        
-        
+        room.setPlayerInside(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        room.setPlayerInside(false);
     }
 }
