@@ -20,6 +20,11 @@ public class CameraTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        camera.setCameraPosition(cameraPoint);
+        if(collision.tag == "Player")
+        {
+            Debug.Log("Camera change!");
+            camera.setCameraPosition(cameraPoint);
+        }
+        
     }
 }
