@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour
 {
     private Inventory inventory;
     public GameObject itemButton;
+    public ITEM itemType;
 
     public void Start()
     {
@@ -14,9 +15,27 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
+
         if (other.CompareTag("Player"))
         {
-            for (int i = 0; i < inventory.slots.Length; i++)
+            if (other.gameObject.GetComponent<Inventory>() != null) {
+                inventory = other.gameObject.GetComponent<Inventory>();
+                if (inventory.slots.Count < inventory.Capacity)
+                {
+                    //Add to last slot available
+                    inventory.slots.Add(itemType);
+                }
+                else {
+                    //Pop out the active slot
+                    inventory.slots[inventory.activeSlot] = itemType;
+                    
+                }
+
+                Destroy(gameObject);
+            }
+
+            /*for (int i = 0; i < inventory.slots.Count; i++)
             {
                 if (inventory.isFull[i] == false)
                 {
@@ -26,7 +45,7 @@ public class Pickup : MonoBehaviour
                     Destroy(gameObject);
                     break;
                 }
-            }
+            }*/
         }
     }
 }
