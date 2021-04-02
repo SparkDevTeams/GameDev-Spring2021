@@ -44,13 +44,21 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("UseItem")) {
+        if (Input.GetButtonDown("UseItem")  && slots.Count > 0) {
             Debug.Log("Execute Item Effect");
+            
             slots.RemoveAt(activeSlot);
 
-            if (slots.Count > 0) {
-                activeSlot = (activeSlot - 1) % slots.Count;//Shift Left to manage
+            if (activeSlot > 0)
+            {
+                activeSlot = (activeSlot - 1) % slots.Count;
             }
+            else
+            {
+                activeSlot = slots.Count - 1;
+            }
+
+            if (activeSlot < 0) { activeSlot = 0; }
         }
     }
 

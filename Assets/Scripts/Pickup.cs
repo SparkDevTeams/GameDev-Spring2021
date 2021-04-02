@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     private Inventory inventory;
-    public GameObject itemButton;
+    //public GameObject itemButton;
     public ITEM itemType;
 
     public void Start()
@@ -15,19 +15,21 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //Play Sound Effect
 
-
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag == "Player")
         {
             if (other.gameObject.GetComponent<Inventory>() != null) {
                 inventory = other.gameObject.GetComponent<Inventory>();
                 if (inventory.slots.Count < inventory.Capacity)
                 {
                     //Add to last slot available
+                    Debug.Log("Item Added");
                     inventory.slots.Add(itemType);
                 }
                 else {
                     //Pop out the active slot
+                    Debug.Log("Item Replaced");
                     inventory.slots[inventory.activeSlot] = itemType;
                     
                 }
