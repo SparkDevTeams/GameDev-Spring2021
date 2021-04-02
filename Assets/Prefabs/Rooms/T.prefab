@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf31b7d156cdb74ba69f2a2392ae590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDeadend: 1
+  allowed: 1
+  limited: 0
 --- !u!1 &2843270269720390570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,6 +2389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingDirection: 1
+  deadends: 0
   spawned: 0
 --- !u!61 &4330858468118011252
 BoxCollider2D:
