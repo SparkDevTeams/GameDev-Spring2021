@@ -35,4 +35,9 @@ public class EnemyManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void Damage(int p){
+
+        hp -= p;
+    }
 }
