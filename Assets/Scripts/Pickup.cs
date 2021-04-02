@@ -7,7 +7,7 @@ public class Pickup : MonoBehaviour
     private Inventory inventory;
     //public GameObject itemButton;
     public ITEM itemType;
-
+    private bool picked = false;
     public void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
@@ -19,8 +19,9 @@ public class Pickup : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-            if (other.gameObject.GetComponent<Inventory>() != null) {
+            if (other.gameObject.GetComponent<Inventory>() != null && !picked) {
                 inventory = other.gameObject.GetComponent<Inventory>();
+                picked = true;
                 if (inventory.slots.Count < inventory.Capacity)
                 {
                     //Add to last slot available
@@ -34,6 +35,7 @@ public class Pickup : MonoBehaviour
                     
                 }
 
+                
                 Destroy(gameObject);
             }
 
