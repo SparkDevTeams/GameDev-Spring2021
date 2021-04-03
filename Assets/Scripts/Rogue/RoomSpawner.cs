@@ -227,79 +227,93 @@ public class RoomSpawner : MonoBehaviour
 
     GameObject pickBottomRoom(GameObject selectedRoom)
     {
-        GameObject room = new GameObject();
+        //GameObject room = new GameObject();
         int num;
         switch (selectedRoom.GetComponent<AddRoom>().getName())
         {
             case "B":
                 num = Random.Range(0, templates.B.Length);
-                room = templates.B[num];
-                break;
+                //room = templates.B[num];
+                return templates.B[num];
+                
 
             case "BL":
                 num = Random.Range(0, templates.BL.Length);
-                room = templates.BL[num];
-                break;
+                //room = templates.BL[num];
+                return templates.BL[num];
+                
 
             case "BR":
                 num = Random.Range(0, templates.BR.Length);
-                room = templates.BR[num];
-                break;
+                //room = templates.BR[num];
+                return templates.BR[num];
+                
 
             case "TB":
                 num = Random.Range(0, templates.TB.Length);
-                room = templates.TB[num];
-                break;
+                //room = templates.TB[num];
+                return templates.TB[num];
+                
 
             case "LRB":
                 num = Random.Range(0, templates.LRB.Length);
-                room = templates.LRB[num];
-                break;
+                //room = templates.LRB[num];
+                return templates.LRB[num];
+                
 
             case "LTB":
                 num = Random.Range(0, templates.LTB.Length);
-                room = templates.LTB[num];
-                break;
+                //room = templates.LTB[num];
+                return templates.LTB[num];
+                
 
             case "RTB":
                 num = Random.Range(0, templates.RTB.Length);
-                room = templates.RTB[num];
-                break;
+                //room = templates.RTB[num];
+                return templates.RTB[num];
+                
 
             case "L":
                 num = Random.Range(0, templates.L.Length);
-                room = templates.L[num];
-                break;
+                //room = templates.L[num];
+                return templates.L[num];
+                
 
             case "LR":
                 num = Random.Range(0, templates.LR.Length);
-                room = templates.LR[num];
-                break;
+                //room = templates.LR[num];
+                return templates.LR[num];
+                
 
             case "LRT":
                 num = Random.Range(0, templates.LRT.Length);
-                room = templates.LRT[num];
-                break;
+                //room = templates.LRT[num];
+                return templates.LRT[num];
+                
 
             case "R":
                 num = Random.Range(0, templates.R.Length);
-                room = templates.R[num];
-                break;
+                //room = templates.R[num];
+                return templates.R[num];
+                
 
             case "T":
                 num = Random.Range(0, templates.T.Length);
-                room = templates.T[num];
-                break;
+                //room = templates.T[num];
+                return templates.T[num];
+                
 
             case "TL":
                 num = Random.Range(0, templates.TL.Length);
-                room = templates.TL[num];
-                break;
+                //room = templates.TL[num];
+                return templates.TL[num];
+                
 
             case "TR":
                 num = Random.Range(0, templates.TR.Length);
-                room = templates.TR[num];
-                break;
+                //room = templates.TR[num];
+                return templates.TR[num];
+                
 
             default:
                 break;
@@ -307,7 +321,7 @@ public class RoomSpawner : MonoBehaviour
 
         }
 
-        return room;
+        return gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
