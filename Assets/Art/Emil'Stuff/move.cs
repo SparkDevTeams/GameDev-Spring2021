@@ -13,6 +13,10 @@ public class move : MonoBehaviour
     private string mode = "Idle";
     private float setTime = 0.0f;
 
+    public string Direction {
+        get { return direction; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

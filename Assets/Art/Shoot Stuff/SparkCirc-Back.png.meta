@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 4f223e14daf3f5a41a8a86927ed3973c
+guid: 4a64cbdf3edb57646b42f3b7a3cf0f3f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4407313103715143784
-    second: FireShot-Sheet_0
+      213: -1946200636917157719
+    second: SparkCirc-Back_0
   - first:
-      213: -1151141867986108946
-    second: FireShot-Sheet_1
+      213: -3087509467721999520
+    second: SparkCirc-Back_1
   - first:
-      213: 2983061140192689694
-    second: FireShot-Sheet_2
+      213: -3112470214504071101
+    second: SparkCirc-Back_2
   - first:
-      213: -1943145749629464576
-    second: FireShot-Sheet_3
-  - first:
-      213: 7671183641020653601
-    second: FireShot-Sheet_4
-  - first:
-      213: -8536901033492783782
-    second: FireShot-Sheet_5
+      213: 8135794225845342711
+    second: SparkCirc-Back_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,127 +139,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireShot-Sheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 33
-        width: 16
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8609dd8baebe92d30800000000000000
-      internalID: 4407313103715143784
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireShot-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 33
-        width: 16
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eedbb90f1925600f0800000000000000
-      internalID: -1151141867986108946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireShot-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 33
-        width: 16
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1ef4745d46f56920800000000000000
-      internalID: 2983061140192689694
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireShot-Sheet_3
+      name: SparkCirc-Back_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00096866c3f8805e0800000000000000
-      internalID: -1943145749629464576
+      spriteID: 9a0f9e605d4bdf4e0800000000000000
+      internalID: -1946200636917157719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireShot-Sheet_4
+      name: SparkCirc-Back_1
       rect:
         serializedVersion: 2
-        x: 17
+        x: 65
         y: 0
-        width: 16
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 120e2d9b0e4857a60800000000000000
-      internalID: 7671183641020653601
+      spriteID: 06b56c75f76f625d0800000000000000
+      internalID: -3087509467721999520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireShot-Sheet_5
+      name: SparkCirc-Back_2
       rect:
         serializedVersion: 2
-        x: 34
+        x: 130
         y: 0
-        width: 16
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5d5fff8db5d68980800000000000000
-      internalID: -8536901033492783782
+      spriteID: 340408a94d84ec4d0800000000000000
+      internalID: -3112470214504071101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SparkCirc-Back_3
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f19f2d3eb528e070800000000000000
+      internalID: 8135794225845342711
       vertices: []
       indices: 
       edges: []
