@@ -11,7 +11,7 @@ public class RoomManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerInside = false;
     }
 
     // Update is called once per frame

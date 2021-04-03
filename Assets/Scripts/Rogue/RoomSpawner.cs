@@ -122,7 +122,8 @@ public class RoomSpawner : MonoBehaviour
                 case 1:
                     if (templates.getBossSpawned() && templates.getItemSpawned())
                     {
-                        Instantiate(templates.deadends[0], transform.position, templates.deadends[0].transform.rotation);
+                        rand = Random.Range(0, templates.B.Length);
+                        Instantiate(templates.B[rand], transform.position, templates.B[rand].transform.rotation);
                         Debug.Log("Deadend spawned");
                         break;
                     }

@@ -5,10 +5,13 @@ using UnityEngine;
 public class RoomTrigger : MonoBehaviour
 {
     RoomManager room;
+    DoorManager door;
     // Start is called before the first frame update
     void Start()
     {
         room = GetComponentInParent<RoomManager>();
+        door = GetComponentInParent<DoorManager>();
+        
     }
 
     // Update is called once per frame
@@ -19,11 +22,20 @@ public class RoomTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        room.setPlayerInside(true);
+        if(collision.tag == "Player")
+        {
+            room.setPlayerInside(true);
+            door.setClosed(true);
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        room.setPlayerInside(false);
+        if(collision.tag == "Player")
+        {
+            room.setPlayerInside(false);
+        }
+        
     }
 }
