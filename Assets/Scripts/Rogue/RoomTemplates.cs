@@ -14,6 +14,19 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] closers;
     public GameObject[] openers;
     public GameObject[] B;
+    public GameObject[] BL;
+    public GameObject[] BR;
+    public GameObject[] TB;
+    public GameObject[] LRB;
+    public GameObject[] LTB;
+    public GameObject[] RTB;
+    public GameObject[] L;
+    public GameObject[] LR;
+    public GameObject[] LRT;
+    public GameObject[] R;
+    public GameObject[] T;
+    public GameObject[] TL;
+    public GameObject[] TR;
     public GameObject closedWall;
     public List<GameObject> rooms;
 

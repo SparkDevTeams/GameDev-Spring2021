@@ -48,7 +48,9 @@ public class RoomSpawner : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                        //Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                        GameObject selectedRoom = templates.bottomRooms[rand];
+                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
                     }
 
 
@@ -70,7 +72,9 @@ public class RoomSpawner : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+                        //Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+                        GameObject selectedRoom = templates.topRooms[rand];
+                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
                     }
 
                     break;
@@ -89,7 +93,9 @@ public class RoomSpawner : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+                        //Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+                        GameObject selectedRoom = templates.leftRooms[rand];
+                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
                     }
                     break;
                 case 4:
@@ -107,7 +113,9 @@ public class RoomSpawner : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+                        //Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+                        GameObject selectedRoom = templates.rightRooms[rand];
+                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
                     }
                     break;
 
@@ -145,7 +153,8 @@ public class RoomSpawner : MonoBehaviour
                 case 2:
                     if (templates.getBossSpawned() && templates.getItemSpawned())
                     {
-                        Instantiate(templates.deadends[1], transform.position, templates.deadends[1].transform.rotation);
+                        rand = Random.Range(0, templates.T.Length);
+                        Instantiate(templates.T[rand], transform.position, templates.T[rand].transform.rotation);
                         Debug.Log("Deadend spawned");
                         break;
                     }
@@ -167,7 +176,8 @@ public class RoomSpawner : MonoBehaviour
                 case 3:
                     if (templates.getBossSpawned() && templates.getItemSpawned())
                     {
-                        Instantiate(templates.deadends[2], transform.position, templates.deadends[2].transform.rotation);
+                        rand = Random.Range(0, templates.L.Length);
+                        Instantiate(templates.L[rand], transform.position, templates.L[rand].transform.rotation);
                         Debug.Log("Deadend spawned");
                         break;
                     }
@@ -189,7 +199,8 @@ public class RoomSpawner : MonoBehaviour
                 case 4:
                     if (templates.getBossSpawned() && templates.getItemSpawned())
                     {
-                        Instantiate(templates.deadends[3], transform.position, templates.deadends[3].transform.rotation);
+                        rand = Random.Range(0, templates.R.Length);
+                        Instantiate(templates.R[rand], transform.position, templates.R[rand].transform.rotation);
                         Debug.Log("Deadend spawned");
                         break;
                     }
@@ -214,9 +225,89 @@ public class RoomSpawner : MonoBehaviour
         
     }
 
-    void checkAllow(GameObject room)
+    GameObject pickBottomRoom(GameObject selectedRoom)
     {
+        GameObject room = new GameObject();
+        int num;
+        switch (selectedRoom.GetComponent<AddRoom>().getName())
+        {
+            case "B":
+                num = Random.Range(0, templates.B.Length);
+                room = templates.B[num];
+                break;
 
+            case "BL":
+                num = Random.Range(0, templates.BL.Length);
+                room = templates.BL[num];
+                break;
+
+            case "BR":
+                num = Random.Range(0, templates.BR.Length);
+                room = templates.BR[num];
+                break;
+
+            case "TB":
+                num = Random.Range(0, templates.TB.Length);
+                room = templates.TB[num];
+                break;
+
+            case "LRB":
+                num = Random.Range(0, templates.LRB.Length);
+                room = templates.LRB[num];
+                break;
+
+            case "LTB":
+                num = Random.Range(0, templates.LTB.Length);
+                room = templates.LTB[num];
+                break;
+
+            case "RTB":
+                num = Random.Range(0, templates.RTB.Length);
+                room = templates.RTB[num];
+                break;
+
+            case "L":
+                num = Random.Range(0, templates.L.Length);
+                room = templates.L[num];
+                break;
+
+            case "LR":
+                num = Random.Range(0, templates.LR.Length);
+                room = templates.LR[num];
+                break;
+
+            case "LRT":
+                num = Random.Range(0, templates.LRT.Length);
+                room = templates.LRT[num];
+                break;
+
+            case "R":
+                num = Random.Range(0, templates.R.Length);
+                room = templates.R[num];
+                break;
+
+            case "T":
+                num = Random.Range(0, templates.T.Length);
+                room = templates.T[num];
+                break;
+
+            case "TL":
+                num = Random.Range(0, templates.TL.Length);
+                room = templates.TL[num];
+                break;
+
+            case "TR":
+                num = Random.Range(0, templates.TR.Length);
+                room = templates.TR[num];
+                break;
+
+            default:
+                break;
+
+
+        }
+
+        return room;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

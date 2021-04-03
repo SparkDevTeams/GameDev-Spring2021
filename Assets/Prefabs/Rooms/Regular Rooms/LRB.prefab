@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDeadend: 0
   allowed: 0
+  name: LRB
   limited: 1
 --- !u!114 &1652784263726859097
 MonoBehaviour:
