@@ -13,6 +13,7 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] bossRooms;
     public GameObject[] closers;
     public GameObject[] openers;
+    public GameObject[] B;
     public GameObject closedWall;
     public List<GameObject> rooms;
 

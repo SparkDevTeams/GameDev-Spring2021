@@ -4,48 +4,51 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float playerVelocity;
-    [SerializeField] private float speed;
+    [SerializeField]private float playerVelocityX;
+    [SerializeField]private float playerVelocityY;
+    private float speed;
 
-    private bool movingRight;
+    private Rigidbody2D rigid;
+    private Vector2 movement;
+    private Vector2 mousePos;
+    private Animator anim;
 
-    Rigidbody2D rigid;
-   
+    public Camera cam;
     // Start is called before the first frame update
     void Start()
     {
-        speed = 10f;
         rigid = GetComponent<Rigidbody2D>();
-        movingRight = true;
+        //anim = GetComponent<Animator>(); 
+        speed = 15f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerVelocity = Input.GetAxisRaw("Horizontal") * speed;
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        //Moves player lol
+        //Debug.Log("moving");
+
+        //mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        if(movement.x != 0 || movement.y != 0)
+        {
+            //anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            //anim.SetBool("isMoving", false);
+        }
+
     }
 
     private void FixedUpdate()
     {
-        
+        rigid.MovePosition(rigid.position + movement * speed * Time.fixedDeltaTime);
 
-        rigid.velocity = new Vector2(playerVelocity, rigid.velocity.y);
-
-        if(playerVelocity > 0 && !movingRight)
-        {
-            flip();
-        }
-        else if(playerVelocity < 0 && movingRight)
-        {
-            flip();
-        }
-
-        
-    }
-
-    private void flip()
-    {
-        movingRight = !movingRight;
-        transform.Rotate(0f, 180f, 0f);
+        //Vector2 lookDir = mousePos - rigid.position;
+        //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        //rigid.rotation = angle;
     }
 }
