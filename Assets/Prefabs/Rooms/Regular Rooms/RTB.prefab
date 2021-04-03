@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDeadend: 0
   allowed: 0
+  name: RTB
   limited: 1
 --- !u!114 &-8453972263905450050
 MonoBehaviour:

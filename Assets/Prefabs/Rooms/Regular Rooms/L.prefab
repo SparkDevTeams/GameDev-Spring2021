@@ -84,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDeadend: 1
   allowed: 1
+  name: L
   limited: 0
 --- !u!114 &5043558037088410157
 MonoBehaviour:

@@ -2442,6 +2442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDeadend: 1
   allowed: 1
+  name: R
   limited: 0
 --- !u!114 &-1479117254962951948
 MonoBehaviour:
