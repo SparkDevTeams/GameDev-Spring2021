@@ -134,8 +134,7 @@ GameObject:
   - component: {fileID: 19914818}
   - component: {fileID: 19914817}
   - component: {fileID: 19914819}
-  - component: {fileID: 19914820}
-  - component: {fileID: 19914821}
+
   m_Layer: 0
   m_Name: Piggy Base-Sheet_0
   m_TagString: Player
@@ -217,59 +216,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 19914816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7687db511392f394a98e46a4f35cba32, type: 3}
+
+  m_Script: {fileID: 11500000, guid: 0f8e42f5f8c30404aa5c33f14a6b97eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerVelocityX: 0
-  playerVelocityY: 0
-  cam: {fileID: 0}
---- !u!50 &19914820
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19914816}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!61 &19914821
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19914816}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0067056417, y: 0.35691473}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.72302985, y: 0.71382946}
-  m_EdgeRadius: 0
+  slots: 00000000010000000200000003000000
+  activeSlot: 0
+
 --- !u!1001 &536880628
 PrefabInstance:
   m_ObjectHideFlags: 0
