@@ -10,6 +10,8 @@ public class AddRoom : MonoBehaviour
 
     public bool allowed;
 
+    public string name;
+
     public bool limited;
     private int limitCount;
 
@@ -51,5 +53,10 @@ public class AddRoom : MonoBehaviour
     public void setAllowed(bool allow)
     {
         allowed = allow;
+    }
+
+    public string getName()
+    {
+        return name;
     }
 }
