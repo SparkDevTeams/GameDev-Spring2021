@@ -73,7 +73,7 @@ public class move : MonoBehaviour
             return;
         }
 
-        if (mode != "Idle" && mode != "Walking" && mode != "Hurt") {
+        if (mode != "Idle" && mode != "Walking") {
             if (Input.GetButtonDown("Fire1") && (setTime >= (0.267f * 0.6f)) && mode != "Hurt")
             {
                 mode = "Attack";
