@@ -37,6 +37,8 @@ public class RoomTemplates : MonoBehaviour
     public bool minReached;
     public bool itemRoomCreated;
     public bool bossRoomCreated;
+
+    public GameObject activeRoom;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +78,16 @@ public class RoomTemplates : MonoBehaviour
     public bool generationStopped()
     {
         return stopGenerating;
+    }
+
+    public void setActiveRoom(GameObject room)
+    {
+        activeRoom = room;
+    }
+
+    public GameObject getActiveRoom()
+    {
+        return activeRoom;
     }
 
     void setClosers(bool allow)
