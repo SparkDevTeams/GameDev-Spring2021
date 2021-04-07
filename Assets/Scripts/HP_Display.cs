@@ -54,8 +54,22 @@ public class HP_Display : MonoBehaviour
     public void UpdateHealth(int hp)
     {
         this.targetHp = hp;
-        StopCoroutine(update);
+        if(update != null)
+        {
+            StopCoroutine(update);
+        }
+        
         update = StartCoroutine(ChangeLife());
+    }
+
+    public int getTargetHealth()
+    {
+        return targetHp;
+    }
+
+    public int getMaxHealth()
+    {
+        return maxHP;
     }
 
     //Using Coroutine so the hearts only update when needed instead of every frame.

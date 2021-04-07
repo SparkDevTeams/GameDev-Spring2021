@@ -4,10 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-
-  - Enemy
+  - Detector
+  - SpawnPoint
+  - Rooms
+  - Powerup
   - Projectile
-
+  - Enemy
+  - Wall
+  - Hitbox
   layers:
   - Default
   - TransparentFX

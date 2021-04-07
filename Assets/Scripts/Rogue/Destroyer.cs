@@ -22,7 +22,9 @@ public class Destroyer : MonoBehaviour
         if (collision.tag != "Player")
         {
             Destroy(collision.gameObject);
+            Destroy(gameObject, 1f);
         }
+        
 
         //if (collision.CompareTag("SpawnPoint"))
         //{

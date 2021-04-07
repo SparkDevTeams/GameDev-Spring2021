@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
 
     public float speed;
+    public int damage;
     public Rigidbody2D rb;
 
     public Transform target;
@@ -24,8 +25,18 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D hitInfo)
     {
-        if(hitInfo.tag == "Player" || hitInfo.tag == "Wall") // test wall collider 
+        if(hitInfo.tag == "Player")
+        {
+            hitInfo.GetComponent<HealthManager>().damage(damage);
             Destroy(gameObject);
+        }
+        else if(hitInfo.name == "Walls")
+        {
+            Destroy(gameObject);
+        }
+            // test wall collider 
+            
+            
             // implement health manager interactions
     }
     
