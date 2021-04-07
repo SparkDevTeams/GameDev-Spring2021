@@ -194,6 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  hitstun: 0.5
+  hitstun: 0.33
   dmgFreq: 1
   radius: 2

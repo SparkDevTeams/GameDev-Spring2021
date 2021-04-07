@@ -142,9 +142,11 @@ public class Inventory : MonoBehaviour
                 break;
             case ITEM.SHADOW:
                 //Set Invis Frames Here
+                GetComponent<HealthManager>().setInvis(5);
                 break;
             case ITEM.POTION:
                 //Increase HP
+                GetComponent<HealthManager>().heal(12);
                 break;
         }
     }
