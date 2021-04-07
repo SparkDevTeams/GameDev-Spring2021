@@ -13,6 +13,8 @@ public enum ITEM {
 
 public class Inventory : MonoBehaviour
 {
+    const float magicTime = 0.25f;
+    const float animTime = 0.4f;
     //checks whether an item is in an inventiry slot
     //public bool isFull;
     public int Capacity {
@@ -52,9 +54,9 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("UseItem")  && slots.Count > 0) {
+        if (Input.GetButtonDown("UseItem")  && slots.Count > 0 && (gameObject.GetComponent<move>().Mode == "Idle" || gameObject.GetComponent<move>().Mode == "Walk")) {
             Debug.Log("Execute Item Effect");
-            UseItem(slots[activeSlot]);
+            StartCoroutine( UseItem(slots[activeSlot]));
             slots.RemoveAt(activeSlot);
 
             if (activeSlot > 0)
@@ -70,12 +72,17 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void UseItem(ITEM type) {
+    IEnumerator UseItem(ITEM type) {
         GameObject obj;
         switch (type) {
             case ITEM.FIRE:
+
+                gameObject.GetComponent<move>().SetAnimation("Magic", animTime);
+                yield return new WaitForSeconds(magicTime);
+
                 //create fire prefab
                 obj = Instantiate(fireShot);
+                
                 switch (gameObject.GetComponent<move>().Direction) {
                     case "Front":
                         obj.transform.localPosition = new Vector2(transform.localPosition.x - 1 , transform.localPosition.y  - 0.5f);
@@ -99,11 +106,15 @@ public class Inventory : MonoBehaviour
                 }
                 break;
             case ITEM.THUNDER:
+                gameObject.GetComponent<move>().SetAnimation("Magic", animTime);
+                yield return new WaitForSeconds(magicTime);
                 obj = Instantiate(sparkField);
                 obj.transform.SetParent(transform);
                 obj.transform.localPosition = new Vector3(0, 1, 0);
                 break;
             case ITEM.EARTH:
+                gameObject.GetComponent<move>().SetAnimation("Magic", animTime);
+                yield return new WaitForSeconds(magicTime);
                 obj = Instantiate(sandBall);
                 switch (gameObject.GetComponent<move>().Direction)
                 {
