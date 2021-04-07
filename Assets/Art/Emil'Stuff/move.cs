@@ -11,10 +11,17 @@ public class move : MonoBehaviour
     private SpriteRenderer sprite;
     private string direction = "Front";
     private string mode = "Idle";
-    private float setTime = 0.0f;
+    private float setTime = 0.0f; //Cooldown
+
+    public GameObject frontHitbox, sideHitbox, backHitbox;
+    private GameObject hitbox;
 
     public string Direction {
         get { return direction; }
+    }
+
+    public string Mode {
+        get { return mode; }
     }
 
     // Start is called before the first frame update
@@ -23,6 +30,16 @@ public class move : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void SetAnimation( string mode, float cooldown, bool stop = true) {
+        this.mode = mode;
+        setTime = cooldown;
+        animator.Play("Mlafi_" + this.mode + "_" + direction);
+        if (stop)
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
     // Update is called once per frame
@@ -56,16 +73,17 @@ public class move : MonoBehaviour
             return;
         }
 
-        if (mode != "Idle" && mode != "Walking") {
-            if (Input.GetButtonDown("Fire1") && (setTime >= (0.267f * 0.6f)))
+        if (mode != "Idle" && mode != "Walking" && mode != "Hurt") {
+            if (Input.GetButtonDown("Fire1") && (setTime >= (0.267f * 0.6f)) && mode != "Hurt")
             {
                 mode = "Attack";
                 setTime = 0.267f;
                 animator.Play("Mlafi_" + mode + "_" + direction, -1, 0.0f);
+                StartCoroutine(Attack());
                 return;
             }
 
-            if (Input.GetButtonDown("Fire2") && (setTime >= (0.333f * 0.6f)))
+            if (Input.GetButtonDown("Fire2") && (setTime >= (0.333f * 0.6f)) && mode != "Hurt")
             {
                 mode = "Magic";
                 setTime = 0.267f;
@@ -108,7 +126,7 @@ public class move : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && (mode == "Idle" || mode == "Walk")) {
             mode = "Attack";
             setTime = 0.267f;
-
+            StartCoroutine(Attack());
             x = 0; y = 0;
         }
 
@@ -138,21 +156,46 @@ public class move : MonoBehaviour
             return;
         }
 
+        if (mode == "Idle" || mode == "Walk") {
+            if (x != 0 && y != 0)
+            {
+                mode = "Walk";
+                rb.velocity = new Vector2(x * 0.707f * speed, y * 0.707f * speed);
+                animator.Play("Mlafi_" + mode + "_" + direction);
+                return;
+            }
 
-        if (x != 0 && y != 0)
+            if (x != 0 || y != 0)
+            {
+                mode = "Walk";
+            }
+        }
+
+
+        if (mode != "Hurt")
         {
-            mode = "Walk";
-            rb.velocity = new Vector2(x * 0.707f * speed, y * 0.707f * speed);
-            animator.Play("Mlafi_" + mode + "_" + direction);
-            return;
+            rb.velocity = new Vector2(x * speed, y * speed);
         }
-
-        if (x != 0 || y != 0) {
-            mode = "Walk";
-        }
-
-
-        rb.velocity = new Vector2(x * speed, y * speed);
         animator.Play("Mlafi_" + mode + "_" + direction);
+    }
+
+    protected IEnumerator Attack() {
+        if (hitbox != null) {
+            Destroy(hitbox);
+        }
+        switch (direction) {
+            case "Front":
+                hitbox = Instantiate(frontHitbox, transform);
+                break;
+            case "Side":
+                hitbox = Instantiate(sideHitbox, transform);
+                break;
+            case "Back":
+                hitbox = Instantiate(backHitbox, transform);
+                break;
+        }
+        yield return new WaitForSeconds(0.267f);
+        Destroy(hitbox);
+        hitbox = null;
     }
 }
