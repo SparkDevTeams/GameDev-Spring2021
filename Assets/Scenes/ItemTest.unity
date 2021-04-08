@@ -415,6 +415,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6365846930103622792, guid: 83149257abae3164cb35038d000e167e, type: 3}
+      propertyPath: hitstun
+      value: 0.33
+      objectReference: {fileID: 0}
     - target: {fileID: 6722397425181272754, guid: 83149257abae3164cb35038d000e167e, type: 3}
       propertyPath: m_Color.b
       value: 0.7216981
@@ -442,6 +446,10 @@ PrefabInstance:
     - target: {fileID: 8566160725954372640, guid: 83149257abae3164cb35038d000e167e, type: 3}
       propertyPath: m_TagString
       value: Hazard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566160725954372643, guid: 83149257abae3164cb35038d000e167e, type: 3}
+      propertyPath: stuntime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8566160725954372643, guid: 83149257abae3164cb35038d000e167e, type: 3}
       propertyPath: totalTime
