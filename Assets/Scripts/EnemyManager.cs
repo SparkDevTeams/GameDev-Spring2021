@@ -40,4 +40,11 @@ public class EnemyManager : MonoBehaviour
 
         hp -= p;
     }
+
+    public void Damage(int dmg, float stun) {
+        if (stun > stunTime) {
+            stunTime = stun;
+        }
+        Damage(dmg);
+    }
 }

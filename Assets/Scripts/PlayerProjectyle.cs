@@ -44,7 +44,7 @@ public class PlayerProjectyle : MonoBehaviour
         if (collision.gameObject.tag == "Enemy") {
             //Enemy HP Down
             //Enemy Stun slight
-            collision.GetComponent<EnemyManager>().Damage(damage);
+            collision.GetComponent<EnemyManager>().Damage(damage , stuntime);
             if (destroyOnHit)
             {
                 Destroy(gameObject);
