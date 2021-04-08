@@ -8,6 +8,8 @@ public class HealthManager : MonoBehaviour
     private int health;
     private int maxHealth;
     private HP_Display health_display;
+    private float invincibiltyTime;
+
     void Start()
     {
         health_display = FindObjectOfType<HP_Display>();
@@ -18,20 +20,43 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (invincibiltyTime > 0) {
+            GetComponent<SpriteRenderer>().color = new Color(0.7f, 0.7f, 0.7f, 0.7f);
+
+            invincibiltyTime -= Time.deltaTime;
+
+            if (invincibiltyTime <= 0) {
+                GetComponent<SpriteRenderer>().color = Color.white;
+            }
+        }
     }
 
     public void damage(int damage)
     {
+        if (invincibiltyTime > 0.0f) {
+            return;
+        }
+
         health -= damage;
         health_display.UpdateHealth(health);
+        invincibiltyTime = 0.5f + (damage * 0.25f);
 
+    }
+
+    public void damage(int dmg, float stunTime) {
+        if (invincibiltyTime > 0.0f)
+        {
+            return;
+        }
+
+        damage(dmg);
+        GetComponent<move>().SetAnimation("Hurt", stunTime);
     }
 
     public void heal(int heal)
     {
         health += heal;
-        //health_display.UpdateHealth(health);
+        health_display.UpdateHealth(health);
     }
 
     public int getHealth()
@@ -42,5 +67,9 @@ public class HealthManager : MonoBehaviour
     public int getMaxHealth()
     {
         return maxHealth;
+    }
+
+    public void setInvis(float invincibility) {
+        invincibiltyTime = invincibility;
     }
 }

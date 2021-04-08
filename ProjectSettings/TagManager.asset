@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Wall
   - Hitbox
+  - Hazard
   layers:
   - Default
   - TransparentFX
