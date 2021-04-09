@@ -2471,7 +2471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClosed: 0
-  enemyCount: 1
+  enemyCount: 0
 --- !u!1001 &306577504287760919
 PrefabInstance:
   m_ObjectHideFlags: 0

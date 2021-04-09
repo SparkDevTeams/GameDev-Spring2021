@@ -46,6 +46,11 @@ public class DoorManager : MonoBehaviour
     {
         return isClosed;
     }
+
+    public void killEnemy()
+    {
+        enemyCount--;
+    }
 }
 
 
