@@ -50,7 +50,7 @@ public class PlayerProjectyle : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if (collision.gameObject.tag == "Wall") {
+        if (collision.name == "Walls") {
             if (destroyOnHit) {
                 Destroy(gameObject);
             }
