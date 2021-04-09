@@ -169,7 +169,7 @@ MonoBehaviour:
   stunTime: 0
   stunned: 0
   hp: 0
-  startHp: 3
+  startHp: 16
   target: {fileID: 0}
 --- !u!114 &3325913109804699685
 MonoBehaviour:

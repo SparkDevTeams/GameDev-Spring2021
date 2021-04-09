@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalTime: 10
-  damage: 3
-  stuntime: 0.5
+  damage: 20
+  stuntime: 1
   travelSpeed: 8
   destroyOnHit: 1
 --- !u!50 &566825752524962291
