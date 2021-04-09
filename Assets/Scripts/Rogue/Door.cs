@@ -21,12 +21,12 @@ public class Door : MonoBehaviour
         if (door.getClosed())
         {
             setActive(true);
-            Debug.Log("Close");
+            //Debug.Log("Close");
         }
         else
         {
             setActive(false);
-            Debug.Log("Open");
+            //Debug.Log("Open");
         }
     }
 

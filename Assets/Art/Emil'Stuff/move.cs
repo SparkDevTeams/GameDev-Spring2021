@@ -52,6 +52,8 @@ public class move : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
+        
+
         if (mode == "Roll" && setTime > 0) {
             if (direction == "Side")
             {
@@ -89,6 +91,7 @@ public class move : MonoBehaviour
 
             if (Input.GetButtonDown("Fire2") && (setTime >= (0.333f * 0.6f)) && mode != "Hurt")
             {
+                Debug.Log("Can shoot: " + GetComponent<PlayerTest>().canShoot);
                 mode = "Magic";
                 setTime = 0.267f;
                 animator.Play("Mlafi_" + mode + "_" + direction, -1, 0.0f);
@@ -134,13 +137,14 @@ public class move : MonoBehaviour
             x = 0; y = 0;
         }
 
-        if (Input.GetButtonDown("Fire2") && (mode == "Idle" || mode == "Walk"))
-        {
-            mode = "Magic";
-            setTime = 0.333f;
+        //if (Input.GetButtonDown("Fire2") && (mode == "Idle" || mode == "Walk"))
+        //{
+        //    Debug.Log("Can shoot: " + GetComponent<PlayerTest>().canShoot);
+        //    mode = "Magic";
+        //    setTime = 0.333f;
 
-            x = 0; y = 0;
-        }
+        //    x = 0; y = 0;
+        //}
 
         if (Input.GetButtonDown("Fire3") && (mode == "Idle" || mode == "Walk"))
         {

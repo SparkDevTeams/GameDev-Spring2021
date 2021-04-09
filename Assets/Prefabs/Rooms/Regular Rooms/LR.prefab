@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClosed: 0
-  enemyCount: 0
+  enemyCount: 1
 --- !u!1 &5710103391650038740
 GameObject:
   m_ObjectHideFlags: 0

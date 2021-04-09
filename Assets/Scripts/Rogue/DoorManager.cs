@@ -39,7 +39,7 @@ public class DoorManager : MonoBehaviour
     public void setClosed(bool closed)
     {
         isClosed = closed;
-        Debug.Log("Close door");
+        //Debug.Log("Close door");
     }
 
     public bool getClosed()
