@@ -38,11 +38,15 @@ public class PlayerProjectile : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D hitInfo)
     {
-        if(hitInfo.tag == "Enemy" || hitInfo.tag == "Wall") // test wall collider 
+        if(hitInfo.tag == "Enemy" || hitInfo.name == "Walls") // test wall collider 
         {
             Destroy(gameObject);
 
-            hitInfo.GetComponent<EnemyManager>().Damage(power);
+            if(hitInfo.tag == "Enemy")
+            {
+                hitInfo.GetComponent<EnemyManager>().Damage(power);
+            }
+            
 
         }    
 
