@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -40,17 +41,27 @@ public class HealthManager : MonoBehaviour
         health -= damage;
         health_display.UpdateHealth(health);
         invincibiltyTime = 0.5f + (damage * 0.25f);
-
     }
 
     public void damage(int dmg, float stunTime) {
+        if (GetComponent<move>().Mode == "Dead") {
+            return;
+        }
+
         if (invincibiltyTime > 0.0f)
         {
             return;
         }
 
         damage(dmg);
-        GetComponent<move>().SetAnimation("Hurt", stunTime);
+
+        string state = "Hurt";
+        if (health <= 0) {
+            state = "Dead";
+            StartCoroutine(GameOver());
+        }
+
+        GetComponent<move>().SetAnimation(state, stunTime);
     }
 
     public void heal(int heal)
@@ -71,5 +82,10 @@ public class HealthManager : MonoBehaviour
 
     public void setInvis(float invincibility) {
         invincibiltyTime = invincibility;
+    }
+
+    public IEnumerator GameOver() {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("MainMenu1");
     }
 }

@@ -45,6 +45,10 @@ public class move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (mode == "Dead") {
+            return;
+        }
+
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 

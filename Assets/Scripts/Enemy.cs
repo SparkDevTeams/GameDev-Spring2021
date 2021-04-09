@@ -18,7 +18,7 @@ public class Enemy : Actor
         Collider2D[] colls = Physics2D.OverlapCircleAll(attackTransform.position, attackRadius);
         foreach(Collider2D coll in colls){
             if(coll.GetComponent<HealthManager>() != null)
-                coll.GetComponent<HealthManager>().damage(damagePower);        //Works best if the player has only one collider
+                coll.GetComponent<HealthManager>().damage(damagePower, 0.5f);        //Works best if the player has only one collider
         }
     }
 
