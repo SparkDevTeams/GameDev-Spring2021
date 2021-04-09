@@ -51,7 +51,16 @@ public class FollowEnemy : MonoBehaviour
         //rb.MovePosition((Vector2)transform.position + (dir * moveSpeed * Time.deltaTime));
 
         //Modified code below
-        if((Vector2.Distance(transform.position, player.position)) > stoppingDistance){      //Checks to stop moving when close to the player
+        if((Vector2.Distance(transform.position, player.position)) > stoppingDistance && !GetComponent<EnemyManager>().stunned){
+
+            //Checks to stop moving when close to the player
+            if (player.position.x < transform.position.x)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
             rb.velocity = dir.normalized * moveSpeed;   //Modified movement for constant speed but you can use your own. I just added it as an alternative
         } else rb.velocity = Vector2.zero;       
     }

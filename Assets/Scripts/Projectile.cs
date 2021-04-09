@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
     {
         if(hitInfo.tag == "Player")
         {
-            hitInfo.GetComponent<HealthManager>().damage(damage);
+            hitInfo.GetComponent<HealthManager>().damage(damage,0.25f);
             Destroy(gameObject);
         }
         else if(hitInfo.name == "Walls")
