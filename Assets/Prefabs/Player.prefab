@@ -136,7 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6.5
-  rollSpeed: 3.5
+  rollSpeed: 24
+  dodgeSpeed: 24
   frontHitbox: {fileID: 6611221337914753609, guid: 78227aaa18f5a0c4ca46bd9cc9e507c0, type: 3}
   sideHitbox: {fileID: 8020891790107607891, guid: 5a1f148483b0299428cd91be11bc5ccb, type: 3}
   backHitbox: {fileID: 6226327759341696037, guid: 13cca96aa05659e42ac0c698b1ca60f7, type: 3}
