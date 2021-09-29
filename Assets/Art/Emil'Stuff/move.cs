@@ -5,13 +5,16 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float speed = 5;
-    public float rollSpeed = 7.5f;
+    [SerializeField]
+    private float speed = 5;
+    [SerializeField]
+    private float rollSpeed = 7.5f;
     private Animator animator;
     private SpriteRenderer sprite;
     private string direction = "Front";
     private string mode = "Idle";
     private float setTime = 0.0f; //Cooldown
+    private bool rollStart = false;
 
     public GameObject frontHitbox, sideHitbox, backHitbox;
     private GameObject hitbox;
@@ -50,10 +53,40 @@ public class move : MonoBehaviour
         }
 
         float x = Input.GetAxisRaw("Horizontal");
+        if (Mathf.Abs(x) > 0.3f)
+        {
+            if (x < 0)
+            {
+                x = -1;
+            }
+            else if (x > 0)
+            {
+                x = 1;
+            }
+            //Correct X
+        }
+        else { x = 0; }
+
         float y = Input.GetAxisRaw("Vertical");
+        if (Mathf.Abs(y) > 0.3f)
+        {
+            if (y < 0)
+            {
+                y = -1;
+            }
+            else if (y > 0)
+            {
+                y = 1;
+            } //Correct Y
+        }
+        else { y = 0; }
 
+
+        if (mode != "Roll" && !Input.GetButton("Fire3")) {
+            rollStart = false;
+        }
         
-
+        //Roll Execute
         if (mode == "Roll" && setTime > 0) {
             if (direction == "Side")
             {
@@ -78,6 +111,7 @@ public class move : MonoBehaviour
             }
             return;
         }
+
 
         if (mode != "Idle" && mode != "Walking") {
             if (Input.GetButtonDown("Fire1") && (setTime >= (0.267f * 0.6f)) && mode != "Hurt")
@@ -107,6 +141,7 @@ public class move : MonoBehaviour
         }
 
        
+        //Set Direction
 
         if (x > 0) {
             x = 1;
@@ -114,14 +149,32 @@ public class move : MonoBehaviour
         }
 
 
-        if (y > 0) {
-            direction = "Back";
-            transform.localScale = new Vector3(1, 1, 1);
+        if (y != 0) {
+            if (direction == "Side" && x != 0)
+            {
+                direction = "Side";
+                if (x < 0)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+            }
+            else
+            {
+                if (y < 0)
+                {
+                    direction = "Front";
+                }
+                else {
+                    direction = "Back";
+                }
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            
         }
-        else if (y < 0) {
+        /*else if (y < 0) {
             direction = "Front";
             transform.localScale = new Vector3(1, 1, 1);
-        } else if (x != 0) {
+        }*/ else if (x != 0) {
             direction = "Side";
             if (x < 0)
             {
@@ -135,6 +188,7 @@ public class move : MonoBehaviour
             setTime = 0.267f;
             StartCoroutine(Attack());
             x = 0; y = 0;
+            //return;
         }
 
         //if (Input.GetButtonDown("Fire2") && (mode == "Idle" || mode == "Walk"))
@@ -146,10 +200,12 @@ public class move : MonoBehaviour
         //    x = 0; y = 0;
         //}
 
-        if (Input.GetButtonDown("Fire3") && (mode == "Idle" || mode == "Walk"))
+        //ROLL SET
+        if (Input.GetButton("Fire3")&& !rollStart && (mode == "Idle" || mode == "Walk"))
         {
             mode = "Roll";
             setTime = 0.333f;
+
             if (direction == "Side")
             {
                 x = x * rollSpeed;
@@ -159,11 +215,13 @@ public class move : MonoBehaviour
                 x = 0;
                 y = y * rollSpeed;
             }
+            rollStart = true;
             rb.velocity = new Vector2(x, y);
             animator.Play("Mlafi_" + mode + "_" + direction);
             return;
         }
 
+        //WALK
         if (mode == "Idle" || mode == "Walk") {
             if (x != 0 && y != 0)
             {
@@ -184,6 +242,7 @@ public class move : MonoBehaviour
         {
             rb.velocity = new Vector2(x * speed, y * speed);
         }
+
         animator.Play("Mlafi_" + mode + "_" + direction);
     }
 
