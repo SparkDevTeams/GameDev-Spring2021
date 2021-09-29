@@ -16,6 +16,8 @@ public class move : MonoBehaviour
     private float setTime = 0.0f; //Cooldown
     private bool rollStart = false;
 
+    private Vector2 rollVector =  new Vector2(0, 0);
+
     public GameObject frontHitbox, sideHitbox, backHitbox;
     private GameObject hitbox;
 
@@ -88,7 +90,7 @@ public class move : MonoBehaviour
         
         //Roll Execute
         if (mode == "Roll" && setTime > 0) {
-            if (direction == "Side")
+            /*if (direction == "Side")
             {
                 x = rollSpeed * (transform.localScale.x * -1);
                 y = 0;
@@ -103,11 +105,13 @@ public class move : MonoBehaviour
                 y = rollSpeed * -1;
             }
 
-            rb.velocity = new Vector2(x * speed, y * speed);
+            rb.velocity = new Vector2(x * speed, y * speed);*/
+            rb.velocity = rollVector;
             setTime -= Time.deltaTime;
             if (setTime <= 0)
             {
                 mode = "Idle";
+                rb.velocity = Vector2.zero;
             }
             return;
         }
@@ -206,17 +210,44 @@ public class move : MonoBehaviour
             mode = "Roll";
             setTime = 0.333f;
 
-            if (direction == "Side")
-            {
-                x = x * rollSpeed;
-                y = 0;
+            if (x == 0 || y == 0) {
+                if (direction == "Side")
+                {
+                    if (transform.localScale.x < 0)
+                    {
+                        x = 1;
+                    }
+                    else if (transform.localScale.x > 0) {
+                        x = -1;
+                    }
+                }
+                else
+                {
+                    if (direction == "Back")
+                    {
+                        y = 1;
+                    }
+                    else if (direction == "Front")
+                    {
+                        y = -1;
+                    }
+                    else {
+                        rollStart = true; // Just in case
+                        return;
+                    }
+                   
+                }
             }
-            else {
-                x = 0;
-                y = y * rollSpeed;
-            }
+
+            rollVector.x = rollSpeed * x;
+            rollVector.y = rollSpeed * y ;
+            if (x != 0 && y != 0) {
+                rollVector.x *= 0.707f;
+                rollVector.y *= 0.707f;
+            }//For Diagonal
+
             rollStart = true;
-            rb.velocity = new Vector2(x, y);
+            rb.velocity = rollVector;
             animator.Play("Mlafi_" + mode + "_" + direction);
             return;
         }
