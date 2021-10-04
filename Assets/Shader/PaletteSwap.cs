@@ -12,8 +12,14 @@ public class PaletteSwap : MonoBehaviour
     public Color base1 = Color.white;
     public List<Color> group1;
     public Color changeTo1 = Color.gray;
-    
-    
+
+    public Color base2 = Color.white;
+    public List<Color> group2;
+    public Color changeTo2 = Color.gray;
+
+    public Color base3 = Color.white;
+    public List<Color> group3;
+    public Color changeTo3 = Color.gray;
 
     public void InitColorSwapTex()
     {
@@ -99,6 +105,97 @@ public class PaletteSwap : MonoBehaviour
             SwapColor(c, Color.HSVToRGB(h_new, s_new, v_new));
         }
 
+        Color.RGBToHSV(base2, out h1, out s1, out v1);
+        Color.RGBToHSV(changeTo2, out h2, out s2, out v2);
+
+        hdif = h2 - h1;
+        sdif = s2 - s1;
+        vdif = v2 - v1;
+
+        foreach (Color c in group2)
+        {
+            //make new color
+            float h_here, s_here, v_here;
+            Color.RGBToHSV(c, out h_here, out s_here, out v_here);
+
+            float h_new = h_here + hdif;
+            if (h_new > 1.0f)
+            {
+                h_new = h_new % 1.0f;
+            }
+            else if (h_new < 0)
+            {
+                h_new += 1.0f;
+            }
+
+            float s_new = s_here + sdif;
+            if (s_new > 1.0f)
+            {
+                s_new = 1.0f;
+            }
+            else if (s_new < 0)
+            {
+                s_new = 0;
+            }
+
+            float v_new = v_here + vdif;
+            if (v_new > 1.0f)
+            {
+                v_new = 1.0f;
+            }
+            else if (v_new < 0)
+            {
+                v_new = 0;
+            }
+
+            SwapColor(c, Color.HSVToRGB(h_new, s_new, v_new));
+        }
+
+        Color.RGBToHSV(base3, out h1, out s1, out v1);
+        Color.RGBToHSV(changeTo3, out h2, out s2, out v2);
+
+        hdif = h2 - h1;
+        sdif = s2 - s1;
+        vdif = v2 - v1;
+
+        foreach (Color c in group3)
+        {
+            //make new color
+            float h_here, s_here, v_here;
+            Color.RGBToHSV(c, out h_here, out s_here, out v_here);
+
+            float h_new = h_here + hdif;
+            if (h_new > 1.0f)
+            {
+                h_new = h_new % 1.0f;
+            }
+            else if (h_new < 0)
+            {
+                h_new += 1.0f;
+            }
+
+            float s_new = s_here + sdif;
+            if (s_new > 1.0f)
+            {
+                s_new = 1.0f;
+            }
+            else if (s_new < 0)
+            {
+                s_new = 0;
+            }
+
+            float v_new = v_here + vdif;
+            if (v_new > 1.0f)
+            {
+                v_new = 1.0f;
+            }
+            else if (v_new < 0)
+            {
+                v_new = 0;
+            }
+
+            SwapColor(c, Color.HSVToRGB(h_new, s_new, v_new));
+        }
 
         /*Color set1 = fromColor(target1),
             set2 = fromColor(target2),
