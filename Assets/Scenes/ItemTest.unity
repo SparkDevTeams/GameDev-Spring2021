@@ -249,6 +249,39 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4248948148176905319, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
   m_PrefabInstance: {fileID: 498563175}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &451317493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451317492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6d212038ae8464c80f592125842d7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mColorSwapTex: {fileID: 0}
+  mSpriteColors: []
+  base1: {r: 0.89019614, g: 0.69803923, b: 0.75294125, a: 1}
+  group1:
+  - {r: 0.89019614, g: 0.69803923, b: 0.75294125, a: 1}
+  - {r: 0.9607844, g: 0.7960785, b: 0.7843138, a: 1}
+  - {r: 0.882353, g: 0.5686275, b: 0.54509807, a: 1}
+  - {r: 0.81568635, g: 0.49803925, b: 0.5254902, a: 1}
+  - {r: 0.7411765, g: 0.44705886, b: 0.42352945, a: 1}
+  changeTo1: {r: 0.89019614, g: 0.69803923, b: 0.75294125, a: 1}
+  base2: {r: 0.20000002, g: 0.5058824, b: 0.4156863, a: 1}
+  group2:
+  - {r: 0.20000002, g: 0.5058824, b: 0.4156863, a: 0}
+  - {r: 0.21568629, g: 0.5803922, b: 0.43137258, a: 0}
+  - {r: 0.0627451, g: 0.3137255, b: 0.21960786, a: 0}
+  changeTo2: {r: 0.20000002, g: 0.5058824, b: 0.4156863, a: 1}
+  base3: {r: 0.9803922, g: 0.7686275, b: 0.25882354, a: 1}
+  group3:
+  - {r: 0.9803922, g: 0.7686275, b: 0.25882354, a: 0}
+  - {r: 0.9058824, g: 0.67058825, b: 0.24705884, a: 0}
+  changeTo3: {r: 0.9803922, g: 0.7686275, b: 0.25882354, a: 1}
 --- !u!114 &451317500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +306,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 554075239, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1930627374204079261, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: fireShot
       value: 
@@ -333,13 +370,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4248948148176905317, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a880d751f172a82488c2213a4a108ef5, type: 2}
     - target: {fileID: 4248948148176905318, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: speed
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4248948148176905318, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: rollSpeed
-      value: 4
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4248948148176905319, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: m_Name
