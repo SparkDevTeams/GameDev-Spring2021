@@ -175,7 +175,7 @@ public class move : MonoBehaviour
         if (Input.GetButton("Fire3")&& !rollStart && (mode == "Idle" || mode == "Walk"))
         {
             mode = "Roll";
-            setTime = 0.333f;
+            setTime = 0.222f;
 
             if (x == 0 && y == 0) {
                 if (direction == "Side")
@@ -317,7 +317,7 @@ public class move : MonoBehaviour
             {
 
                 mode = "Roll";
-                setTime = 0.333f/2.0f;
+                setTime = 0.111f;
 
                 if (x == 0 && y == 0)
                 {
