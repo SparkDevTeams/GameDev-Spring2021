@@ -18,6 +18,7 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Spawns an enemy in a given spawnpoint once the player steps inside it's room
         if(room.getPlayerInside() && !spawned)
         {
             Instantiate(enemy, transform.position, transform.rotation);

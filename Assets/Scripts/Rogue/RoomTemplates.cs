@@ -30,8 +30,8 @@ public class RoomTemplates : MonoBehaviour
     public GameObject closedWall;
     public List<GameObject> rooms;
 
-    public const int MAX_ROOMS = 15;
-    public const int MIN_ROOMS = 15;
+    public const int MAX_ROOMS = 20;
+    public const int MIN_ROOMS = 20;
     public int tblr_limit;
     public bool stopGenerating;
     public bool minReached;

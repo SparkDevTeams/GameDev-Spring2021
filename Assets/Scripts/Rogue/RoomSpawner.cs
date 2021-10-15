@@ -23,14 +23,18 @@ public class RoomSpawner : MonoBehaviour
         Invoke("Spawn", 0.35f);
     }
 
-    // Update is called once per frame
+    // Spawn function used to spawn rooms if there are open doors available for the room to spawn in
     void Spawn()
     {
-
+        //Checks if the room hasn't been spawned on the spawnpoint already and if the level generation hasn't stopped yet
         if (!spawned && !templates.generationStopped())
         {
+            //Opening direction is an int that denotes the position in which the door is in relative to the room (1 = Top, 2 = Bottom, 3 = Right, 4 = Left) 
             switch (openingDirection)
             {
+                //Generates a random index used to select a random room from the bottom room pool. If a room is not allowed, the random number generator picks another index
+                //The bottomRooms array is an array of rooms that have doors on the bottom of the room. Bottom rooms are necessary here because they are spawning on top of the current room
+                //Get allowed is a function that determines whether a specific room is allowed to spawn or not
                 case 1:
                     do
                     {
@@ -39,22 +43,24 @@ public class RoomSpawner : MonoBehaviour
                     } while (!templates.bottomRooms[rand].GetComponent<AddRoom>().getAllowed());
 
                     
-
+                    //If statement that checks if an item room has spawned and if the room selected is considered a deadend (Room with only one door. In this case a room with only a bottom door)
                     if (!templates.getItemSpawned() && templates.bottomRooms[rand].GetComponent<AddRoom>().isDeadend)
                     {
+                        //Spawns an item room if the above conditions are met
                         Instantiate(templates.itemRooms[0], transform.position, templates.itemRooms[0].transform.rotation);
                         templates.setItemSpawned(true);
                         Debug.Log("Item room spawned new");
                     }
                     else
                     {
-                        //Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                        //Uses that index generated above to retrieve and spawn in the selected room in the current spawnpoint
                         GameObject selectedRoom = templates.bottomRooms[rand];
                         Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
                     }
 
 
                     break;
+                //Same concept as case one but this time with a bottom door. This means top rooms are being used
                 case 2:
                     do
                     {
@@ -122,11 +128,14 @@ public class RoomSpawner : MonoBehaviour
             }
             spawned = true;
         }
-
+        //Starts to plug up openings in the dungeon once generation has stopped
         if(!spawned && templates.generationStopped())
         {
             switch (openingDirection)
             {
+                //This determines where the boss room room is spawned and also spawns an item room if none has spawned yet
+                //Boss rooms are special deadends like item rooms and are set to spawn after level generation has stopped so they spawn away from the player
+                //Other cases do the same but for different directions
                 case 1:
                     if (templates.getBossSpawned() && templates.getItemSpawned())
                     {
@@ -227,7 +236,9 @@ public class RoomSpawner : MonoBehaviour
 
     GameObject pickBottomRoom(GameObject selectedRoom)
     {
-        //GameObject room = new GameObject();
+        //This function picks out a unique variant for each bottom room to add variety to the level generation
+        //Rooms like BL and LRB are templates named after the directions they have a door in
+        //Variants are different versions of those same templates that can be spawned in for the templates
         int num;
         switch (selectedRoom.GetComponent<AddRoom>().getName())
         {
@@ -324,6 +335,7 @@ public class RoomSpawner : MonoBehaviour
         return gameObject;
     }
 
+    //If two spawnpoints collide with each other and neither has spawned a room, a closed off room is spawned to close up the opening
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("SpawnPoint"))

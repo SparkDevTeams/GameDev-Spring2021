@@ -17,7 +17,8 @@ public class RoomManager : MonoBehaviour
         all = FindObjectOfType<RoomTemplates>();
     }
 
-    // Update is called once per frame
+    // If the player enters a room, that room is set as the active room
+    //This is used for camera control and spawning enemies
     void Update()
     {
         if (playerInside)
