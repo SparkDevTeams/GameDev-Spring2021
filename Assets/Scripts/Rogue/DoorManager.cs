@@ -17,7 +17,8 @@ public class DoorManager : MonoBehaviour
         isClosed = false;
     }
 
-    // Update is called once per frame
+    // Closes all doors in the room if player is currently fighting enemies
+    // Opens doors if all enemies are defeated
     void Update()
     {
         //if (isClosed)

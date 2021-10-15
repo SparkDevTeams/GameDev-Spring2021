@@ -18,7 +18,7 @@ public class AddRoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //For demonstration purposes only
+        //Adds room to the list of all spawned rooms
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         templates.rooms.Add(this.gameObject);
 
