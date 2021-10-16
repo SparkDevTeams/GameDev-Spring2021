@@ -8,6 +8,7 @@ public class footstepScript : MonoBehaviour
     AudioSource audioSource;
     public string mode = ""; 
     bool isMoving = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +21,12 @@ public class footstepScript : MonoBehaviour
     void Update()
     {
           mode = GetComponent<move>().Mode;
+
         moveCheck();
         FP();
     }
 
-
+ 
 
     void moveCheck(){
         if(rb.velocity.x != 0 || rb.velocity.y !=0){
