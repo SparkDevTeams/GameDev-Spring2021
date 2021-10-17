@@ -13,6 +13,8 @@ public class audioHealthEffect : MonoBehaviour
    private int currentHealth = 0;
     bool lowHealth = false;
     public HealthManager myPlayer;
+    public float transitionTime = 0.04f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,9 +41,9 @@ public class audioHealthEffect : MonoBehaviour
     }
      void lowPass(){
             if(lowHealth == false){
-                normalHealthEffect.TransitionTo(0.01f);
+                normalHealthEffect.TransitionTo(transitionTime);
             } else {
-                lowHealthEffect.TransitionTo(0.01f);
+                lowHealthEffect.TransitionTo(transitionTime);
             }
 
     }
