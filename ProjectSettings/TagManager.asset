@@ -13,6 +13,8 @@ TagManager:
   - Wall
   - Hitbox
   - Hazard
+  - Door
+  - MusicTag
   layers:
   - Default
   - TransparentFX

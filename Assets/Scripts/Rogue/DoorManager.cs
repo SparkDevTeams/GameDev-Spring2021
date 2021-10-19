@@ -52,6 +52,11 @@ public class DoorManager : MonoBehaviour
     {
         enemyCount--;
     }
+
+    public int getEnemyCount(){
+            return enemyCount;
+
+    }
 }
 
 

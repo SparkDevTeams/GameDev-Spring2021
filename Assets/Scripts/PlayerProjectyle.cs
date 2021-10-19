@@ -17,6 +17,8 @@ public class PlayerProjectyle : MonoBehaviour
     [SerializeField]
     protected bool destroyOnHit = false;
 
+    public static bool fieldActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,10 @@ public class PlayerProjectyle : MonoBehaviour
     void Update()
     {
         if (timeActive >= totalTime) {
+            fieldActive = false;
             Destroy(gameObject);
+        } else {
+            fieldActive = true; 
         }
 
         timeActive += Time.deltaTime;

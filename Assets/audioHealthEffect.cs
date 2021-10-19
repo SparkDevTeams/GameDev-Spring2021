@@ -9,6 +9,7 @@ public class audioHealthEffect : MonoBehaviour
     //max health is 20
     public AudioMixerSnapshot normalHealthEffect;
      public AudioMixerSnapshot lowHealthEffect;
+     
     
    private int currentHealth = 0;
     bool lowHealth = false;

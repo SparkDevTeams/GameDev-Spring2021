@@ -19,11 +19,13 @@ public class Destroyer : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.tag != "Player")
+        if (collision.tag != "Player" && collision.tag != "MusicTag")
         {
             Destroy(collision.gameObject);
             Destroy(gameObject, 1f);
         }
+
+       
         
 
         //if (collision.CompareTag("SpawnPoint"))
