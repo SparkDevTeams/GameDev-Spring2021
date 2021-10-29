@@ -20,6 +20,7 @@ public class move : MonoBehaviour
 
     private float x = 0, y = 0;
 
+
     private Vector2 rollVector =  new Vector2(0, 0);
 
     public GameObject frontHitbox, sideHitbox, backHitbox;
@@ -133,7 +134,7 @@ public class move : MonoBehaviour
 
             if (Input.GetButtonDown("Fire2") && (setTime >= (0.333f * 0.6f)) && mode != "Hurt")
             {
-                Debug.Log("Can shoot: " + GetComponent<PlayerTest>().canShoot);
+                Debug.Log("Can shoot:  " + GetComponent<PlayerTest>().canShoot);
                 mode = "Magic";
                 setTime = 0.267f;
                 animator.Play("Mlafi_" + mode + "_" + direction, -1, 0.0f);

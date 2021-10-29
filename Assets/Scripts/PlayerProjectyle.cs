@@ -19,9 +19,12 @@ public class PlayerProjectyle : MonoBehaviour
 
     public static bool fieldActive = false;
 
+    private musicPlayerMechanic hChecker;
+
     // Start is called before the first frame update
     void Start()
     {
+        hChecker = FindObjectOfType<musicPlayerMechanic>();
         rb = GetComponent<Rigidbody2D>();
         SetDirection();
     }
@@ -60,5 +63,15 @@ public class PlayerProjectyle : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        if(collision.gameObject.tag == "Jukebox"){
+            Debug.Log("You hit jukebox D: ");
+
+          
+           hChecker.firstHit();
+        }
+        
+
+
+
     }
 }
