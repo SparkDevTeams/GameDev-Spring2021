@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : EnemyProjectile
 {
-
     public float speed;
     public int damage;
     public Rigidbody2D rb;
@@ -18,10 +17,14 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").transform; 
 
-        rb.velocity = speed*Vector3.Normalize(target.transform.position-transform.position); 
+        rb.velocity = speed* (Vector2)(target.transform.position-transform.position).normalized; 
         
     }
 
+    public override void SetDirection(Vector2 direction)
+    {
+        //DO NOTHING
+    }
 
     void OnTriggerEnter2D (Collider2D hitInfo)
     {

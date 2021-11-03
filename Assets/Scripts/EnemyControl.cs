@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyControl : MonoBehaviour
 {
+    private Rigidbody2D rb;
+
     private Animator myAnim;
 
     public Transform target;
@@ -22,21 +24,20 @@ public class EnemyControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
 
-        test = GetComponent<EnemyManager>();
-        
-        target = test.target;
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        //test = GetComponent<EnemyManager>();
+        //target = test.target;
 
-        //homePos.position = transform.position;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
 
     }
 
     // If player is within range then the enemy will follow the player
-    void Update()
+    void FixedUpdate()
     {
-        if (Vector3.Distance(target.position, transform.position) <= maxRange && Vector3.Distance(target.position, transform.position) >= minRange && !test.stunned)
+        if (Vector2.Distance(target.position, transform.position) <= maxRange && Vector2.Distance(target.position, transform.position) >= minRange && !test.stunned)
         {
             FollowPlayer();
         }
@@ -48,7 +49,6 @@ public class EnemyControl : MonoBehaviour
         myAnim.SetBool("isMoving", true);
         myAnim.SetFloat("moveX", (target.position.x - transform.position.x));
         myAnim.SetFloat("moveY", (target.position.y - transform.position.y));
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        rb.velocity = ((Vector2)(target.position - transform.position)).normalized * speed;
     }
-
 }
