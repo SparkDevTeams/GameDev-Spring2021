@@ -129,7 +129,7 @@ public class RoomSpawner : MonoBehaviour
             spawned = true;
         }
         //Starts to plug up openings in the dungeon once generation has stopped
-        if(!spawned && templates.generationStopped())
+        if(!spawned && templates.getMin())
         {
             switch (openingDirection)
             {
@@ -230,6 +230,10 @@ public class RoomSpawner : MonoBehaviour
 
             }
             
+        }
+        else if(!spawned && templates.generationStopped())
+        {
+            Instantiate(templates.closedWall, transform.position, templates.closedWall.transform.rotation);
         }
         
     }
