@@ -54,8 +54,9 @@ public class RoomSpawner : MonoBehaviour
                     else
                     {
                         //Uses that index generated above to retrieve and spawn in the selected room in the current spawnpoint
-                        GameObject selectedRoom = templates.bottomRooms[rand];
-                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
+                        Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                        //GameObject selectedRoom = templates.bottomRooms[rand];
+                        //Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
                     }
 
 
@@ -78,9 +79,9 @@ public class RoomSpawner : MonoBehaviour
                     }
                     else
                     {
-                        //Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
-                        GameObject selectedRoom = templates.topRooms[rand];
-                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
+                        Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+                        //GameObject selectedRoom = templates.topRooms[rand];
+                        //Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
                     }
 
                     break;
@@ -99,9 +100,9 @@ public class RoomSpawner : MonoBehaviour
                     }
                     else
                     {
-                        //Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
-                        GameObject selectedRoom = templates.leftRooms[rand];
-                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
+                        Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+                        //GameObject selectedRoom = templates.leftRooms[rand];
+                        //Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
                     }
                     break;
                 case 4:
@@ -119,9 +120,9 @@ public class RoomSpawner : MonoBehaviour
                     }
                     else
                     {
-                        //Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
-                        GameObject selectedRoom = templates.rightRooms[rand];
-                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
+                        Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+                        //GameObject selectedRoom = templates.rightRooms[rand];
+                        //Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
                     }
                     break;
 
