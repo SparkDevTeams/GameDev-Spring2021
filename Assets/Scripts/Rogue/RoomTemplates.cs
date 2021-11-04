@@ -31,7 +31,7 @@ public class RoomTemplates : MonoBehaviour
     public List<GameObject> rooms;
 
     public const int MAX_ROOMS = 20;
-    public const int MIN_ROOMS = 20;
+    public const int MIN_ROOMS = 10;
     public int tblr_limit;
     public bool stopGenerating;
     public bool minReached;
@@ -71,6 +71,7 @@ public class RoomTemplates : MonoBehaviour
 
         if(rooms.Count >= MAX_ROOMS)
         {
+            minReached = false;
             stopGenerating = true;
         }
     }
@@ -111,6 +112,11 @@ public class RoomTemplates : MonoBehaviour
     public int getLimit()
     {
         return tblr_limit;
+    }
+
+    public bool getMin()
+    {
+        return minReached;
     }
 
     public void decrementLimit()

@@ -13,6 +13,8 @@ TagManager:
   - Wall
   - Hitbox
   - Hazard
+  - Door
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
@@ -52,4 +54,7 @@ TagManager:
     locked: 0
   - name: Fly
     uniqueID: 3252970305
+    locked: 0
+  - name: Door
+    uniqueID: 3656607869
     locked: 0
