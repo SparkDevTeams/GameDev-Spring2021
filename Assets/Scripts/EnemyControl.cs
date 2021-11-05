@@ -8,8 +8,6 @@ public class EnemyControl : MonoBehaviour
 
     private Animator myAnim;
 
-    public Transform target;
-
     public EnemyManager test;
 
     public Transform homePos; //in case you want enemy to return to initial position
@@ -27,17 +25,13 @@ public class EnemyControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
 
-        //test = GetComponent<EnemyManager>();
-        //target = test.target;
-
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-
+        test = GetComponent<EnemyManager>();
     }
 
     // If player is within range then the enemy will follow the player
     void FixedUpdate()
     {
-        if (Vector2.Distance(target.position, transform.position) <= maxRange && Vector2.Distance(target.position, transform.position) >= minRange && !test.stunned)
+        if (Vector2.Distance(test.target.position, transform.position) <= maxRange && Vector2.Distance(test.target.position, transform.position) >= minRange && !test.stunned)
         {
             FollowPlayer();
         }
@@ -47,8 +41,8 @@ public class EnemyControl : MonoBehaviour
     public void FollowPlayer()
     {
         myAnim.SetBool("isMoving", true);
-        myAnim.SetFloat("moveX", (target.position.x - transform.position.x));
-        myAnim.SetFloat("moveY", (target.position.y - transform.position.y));
-        rb.velocity = ((Vector2)(target.position - transform.position)).normalized * speed;
+        myAnim.SetFloat("moveX", (test.target.position.x - transform.position.x));
+        myAnim.SetFloat("moveY", (test.target.position.y - transform.position.y));
+        rb.velocity = ((Vector2)(test.target.position - transform.position)).normalized * speed;
     }
 }
