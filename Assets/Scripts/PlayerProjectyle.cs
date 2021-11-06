@@ -20,13 +20,17 @@ public class PlayerProjectyle : MonoBehaviour
     public static bool fieldActive = false;
 
     private musicPlayerMechanic hChecker;
-
+     
+    AudioSource audioSource;
+    public AudioClip swordSwipe;
     // Start is called before the first frame update
     void Start()
     {
         hChecker = FindObjectOfType<musicPlayerMechanic>();
         rb = GetComponent<Rigidbody2D>();
         SetDirection();
+        audioSource = GetComponent<AudioSource>();
+      audioSource.PlayOneShot(swordSwipe, 0.5f);
     }
 
     public virtual void SetDirection() {

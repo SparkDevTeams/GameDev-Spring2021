@@ -10,6 +10,10 @@ public class HealthManager : MonoBehaviour
     private int maxHealth;
     private HP_Display health_display;
     private float invincibiltyTime;
+    public AudioSource M_AudioSource;
+    public AudioClip hurtSFX;
+    public AudioClip deathSFX;
+
 
     void Start()
     {
@@ -52,13 +56,16 @@ public class HealthManager : MonoBehaviour
         {
             return;
         }
-
+       
         damage(dmg);
 
         string state = "Hurt";
         if (health <= 0) {
+            M_AudioSource.PlayOneShot(deathSFX, 0.75f);
             state = "Dead";
             StartCoroutine(GameOver());
+        } else {
+             M_AudioSource.PlayOneShot(hurtSFX, 0.5f);
         }
 
         GetComponent<move>().SetAnimation(state, stunTime);

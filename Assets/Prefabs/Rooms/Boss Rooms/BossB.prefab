@@ -2707,6 +2707,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 721153382720879065, guid: f1f3b84f485a5bf4190fe33c9bf45738, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 721153382720879065, guid: f1f3b84f485a5bf4190fe33c9bf45738, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cbf4270636a2f6b43bacf5d8b5d24905, type: 3}
     - target: {fileID: 4654104031387171041, guid: f1f3b84f485a5bf4190fe33c9bf45738, type: 3}
       propertyPath: m_Name
       value: JukeboxConcept2 Final Base
