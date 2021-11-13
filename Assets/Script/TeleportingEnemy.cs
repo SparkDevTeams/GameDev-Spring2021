@@ -14,6 +14,8 @@ public class TeleportingEnemy : MonoBehaviour
     private List<Transform> teleportPoints;
     private List<Transform> adjustedList;
     [SerializeField]
+    private List<float> projectileAngleVariations;
+    [SerializeField]
     private bool useCircleRange = false;
     [SerializeField]
     private float totalActiveTime = 3.0f;
@@ -47,7 +49,12 @@ public class TeleportingEnemy : MonoBehaviour
 
             if (startUpTimer <= 0.0f) 
             {
-                ShootAtPlayer();
+                Vector2 shotDir = GetShotDirToPlayer();
+
+                foreach (float angleDifference in projectileAngleVariations) 
+                {
+                    ShootAtPlayer(shotDir, angleDifference);
+                }
                 activeTimer = totalActiveTime;
                 reloadTimer = totalReloadTime;
             }
@@ -68,7 +75,12 @@ public class TeleportingEnemy : MonoBehaviour
 
                 if (reloadTimer <= 0.0f) 
                 {
-                    ShootAtPlayer();
+                    Vector2 shotDir = GetShotDirToPlayer();
+
+                    foreach (float angleDifference in projectileAngleVariations)
+                    {
+                        ShootAtPlayer(shotDir, angleDifference);
+                    }
                     reloadTimer = totalReloadTime;
                 }
             }
@@ -95,11 +107,11 @@ public class TeleportingEnemy : MonoBehaviour
         }
     }
 
-    private void ShootAtPlayer() 
+    private void ShootAtPlayer(Vector2 baseShotDir, float angleDifference) 
     {
-        Vector2 shotDir = (Vector2)(manager.target.position - transform.position).normalized;
+        float shotAngle = (Mathf.Atan2(baseShotDir.y, baseShotDir.x) * Mathf.Rad2Deg) + angleDifference;
         EnemyProjectile newProjectile = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<EnemyProjectile>();
-        newProjectile.SetDirection(shotDir);
+        newProjectile.SetDirection(new Vector2(Mathf.Cos(shotAngle * Mathf.Deg2Rad), Mathf.Sin(shotAngle * Mathf.Deg2Rad)));
     }
 
     private void RelocatePoint() 
@@ -117,5 +129,10 @@ public class TeleportingEnemy : MonoBehaviour
         int circleIndex = Random.Range(0, circleRanges.Count);
         transform.position = (Vector2)circleRanges[circleIndex].transform.position
             + Random.insideUnitCircle * circleRanges[circleIndex].radius;
+    }
+
+    private Vector2 GetShotDirToPlayer() 
+    {
+        return (Vector2)(manager.target.position - transform.position).normalized;
     }
 }
