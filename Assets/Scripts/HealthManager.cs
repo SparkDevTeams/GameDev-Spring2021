@@ -61,11 +61,13 @@ public class HealthManager : MonoBehaviour
 
         string state = "Hurt";
         if (health <= 0) {
-            M_AudioSource.PlayOneShot(deathSFX, 0.75f);
+            //if player is dead play, death FX 
+            M_AudioSource.PlayOneShot(deathSFX, 0.25f);
             state = "Dead";
             StartCoroutine(GameOver());
         } else {
-             M_AudioSource.PlayOneShot(hurtSFX, 0.5f);
+            //if player gets injured and isnt dead play hurt sound
+             M_AudioSource.PlayOneShot(hurtSFX, 0.05f);
         }
 
         GetComponent<move>().SetAnimation(state, stunTime);

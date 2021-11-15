@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum ITEM {
     NONE,
     FIRE,
@@ -13,6 +14,10 @@ public enum ITEM {
 
 public class Inventory : MonoBehaviour
 {
+    public AudioClip healSFX;
+    public AudioClip invisSFX;
+public AudioSource M_AudioSource;
+
     const float magicTime = 0.25f;
     const float animTime = 0.4f;
     //checks whether an item is in an inventiry slot
@@ -142,10 +147,12 @@ public class Inventory : MonoBehaviour
                 break;
             case ITEM.SHADOW:
                 //Set Invis Frames Here
+                M_AudioSource.PlayOneShot(invisSFX, 0.22f);
                 GetComponent<HealthManager>().setInvis(5);
                 break;
             case ITEM.POTION:
                 //Increase HP
+                M_AudioSource.PlayOneShot(healSFX, 0.16f);
                 GetComponent<HealthManager>().heal(12);
                 break;
         }
