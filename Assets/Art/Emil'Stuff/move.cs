@@ -376,4 +376,9 @@ public class move : MonoBehaviour
         Destroy(hitbox);
         hitbox = null;
     }
+
+    public void addSpeed(float speedUp)
+    {
+        speed += speedUp;
+    }
 }

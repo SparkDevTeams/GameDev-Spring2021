@@ -7,7 +7,7 @@ public class HealthManager : MonoBehaviour
 {
     // Start is called before the first frame update
     private int health;
-    private int maxHealth;
+    [SerializeField]private int maxHealth;
     private HP_Display health_display;
     private float invincibiltyTime;
 
@@ -78,6 +78,18 @@ public class HealthManager : MonoBehaviour
     public int getMaxHealth()
     {
         return maxHealth;
+    }
+
+    public void addMaxHealth(int healthIncrease)
+    {
+        maxHealth += healthIncrease;
+        health_display.UpdateMaxHealth(maxHealth);
+    }
+
+    public void addHealth(int healthIncrease)
+    {
+        health += healthIncrease;
+        health_display.UpdateHealth(health);
     }
 
     public void setInvis(float invincibility) {
