@@ -6,11 +6,12 @@ public class PlayerManager : MonoBehaviour
 {
     
     public int angle;
+    public int soulsCollected;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        soulsCollected = 0;
     }
 
     // Update is called once per frame        

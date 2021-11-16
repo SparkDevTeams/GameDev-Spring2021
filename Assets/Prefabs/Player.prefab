@@ -40,11 +40,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4248948148176905316}
   - component: {fileID: 4248948148176905317}
-  - component: {fileID: 4248948148176905318}
   - component: {fileID: 4248948148176905323}
   - component: {fileID: 4248948148176905322}
   - component: {fileID: 4248948148176905321}
   - component: {fileID: 4248948148176905320}
+  - component: {fileID: 4248948148176905318}
   - component: {fileID: 1930627374204079261}
   - component: {fileID: 2080022336}
   - component: {fileID: -942483267051202488}
@@ -124,24 +124,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4248948148176905318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4248948148176905319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55407a969e539dc4c950c641b51d3aba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6.5
-  rollSpeed: 24
-  dodgeSpeed: 24
-  frontHitbox: {fileID: 6611221337914753609, guid: 78227aaa18f5a0c4ca46bd9cc9e507c0, type: 3}
-  sideHitbox: {fileID: 8020891790107607891, guid: 5a1f148483b0299428cd91be11bc5ccb, type: 3}
-  backHitbox: {fileID: 6226327759341696037, guid: 13cca96aa05659e42ac0c698b1ca60f7, type: 3}
 --- !u!50 &4248948148176905323
 Rigidbody2D:
   serializedVersion: 4
@@ -214,6 +196,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4248948148176905318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4248948148176905319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55407a969e539dc4c950c641b51d3aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6.5
+  rollSpeed: 24
+  dodgeSpeed: 24
+  frontHitbox: {fileID: 6611221337914753609, guid: 78227aaa18f5a0c4ca46bd9cc9e507c0, type: 3}
+  sideHitbox: {fileID: 8020891790107607891, guid: 5a1f148483b0299428cd91be11bc5ccb, type: 3}
+  backHitbox: {fileID: 6226327759341696037, guid: 13cca96aa05659e42ac0c698b1ca60f7, type: 3}
 --- !u!114 &1930627374204079261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 270
+  soulsCollected: 0
 --- !u!114 &-8453640996433719955
 MonoBehaviour:
   m_ObjectHideFlags: 0

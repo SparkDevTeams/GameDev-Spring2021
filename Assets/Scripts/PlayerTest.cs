@@ -25,12 +25,12 @@ public class PlayerTest : MonoBehaviour
     void Update()
     {
 
-        if (GetComponent<move>().Mode == "Dead") { return; }
+        if (GetComponent<Move>().Mode == "Dead") { return; }
 
         if (Input.GetButtonDown("Fire2") && canShoot)
         {
             Shoot();
-            GetComponent<move>().SetAnimation("Magic", 0.25f, true);
+            GetComponent<Move>().SetAnimation("Magic", 0.25f, true);
         }
 
         if (!canShoot)

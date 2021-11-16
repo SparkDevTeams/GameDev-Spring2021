@@ -44,7 +44,7 @@ public class HealthManager : MonoBehaviour
     }
 
     public void damage(int dmg, float stunTime) {
-        if (GetComponent<move>().Mode == "Dead") {
+        if (GetComponent<Move>().Mode == "Dead") {
             return;
         }
 
@@ -61,7 +61,7 @@ public class HealthManager : MonoBehaviour
             StartCoroutine(GameOver());
         }
 
-        GetComponent<move>().SetAnimation(state, stunTime);
+        GetComponent<Move>().SetAnimation(state, stunTime);
     }
 
     public void heal(int heal)

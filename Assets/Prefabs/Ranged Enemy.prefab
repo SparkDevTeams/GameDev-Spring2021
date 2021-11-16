@@ -171,6 +171,7 @@ MonoBehaviour:
   hp: 0
   startHp: 16
   target: {fileID: 0}
+  soul: {fileID: 5348512792799082348, guid: 8caafb80a1ac36d459431f3e32ce1776, type: 3}
 --- !u!114 &3325913109804699685
 MonoBehaviour:
   m_ObjectHideFlags: 0

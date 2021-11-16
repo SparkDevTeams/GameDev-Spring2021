@@ -11,6 +11,7 @@ public class EnemyManager : MonoBehaviour
     public int hp, startHp = 3;
 
     public Transform target;
+    public Soul soul;
 
     private DoorManager doors;
     private RoomTemplates room;
@@ -49,8 +50,30 @@ public class EnemyManager : MonoBehaviour
         if(hp <= 0){
             //doors.killEnemy();
             room.getActiveRoom().GetComponent<DoorManager>().killEnemy();
+            SpawnSouls(2, 4);
             Destroy(gameObject);
         }
+    }
+
+    private void SpawnSouls(int minSpawn, int maxSpawn)
+    {
+        var spawnNum = Random.Range(minSpawn, maxSpawn);
+        for (var i = 0; i <= spawnNum; i++)
+        {
+            var randomPos = (Vector2)Random.insideUnitCircle * 5;
+            if (!IsSoulColliding(randomPos))
+            {
+                randomPos += (Vector2)transform.position;
+            }
+            Instantiate(soul, randomPos, transform.rotation);
+        }
+    }
+
+    // Needs a bit more testing, but I think this should work to not allow the souls to collide with walls.
+    private bool IsSoulColliding(Vector2 position)
+    {
+        var colliders = Physics2D.OverlapCircleAll(position, 0.0f);
+        return colliders.Length > 0;
     }
 
     public void Damage(int p)
