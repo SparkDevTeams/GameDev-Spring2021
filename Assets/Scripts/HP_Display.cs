@@ -62,6 +62,20 @@ public class HP_Display : MonoBehaviour
         update = StartCoroutine(ChangeLife());
     }
 
+    public void UpdateMaxHealth(int maxHp)
+    {
+        this.maxHP = maxHp;
+
+        if (update != null)
+        {
+            StopCoroutine(update);
+        }
+
+        update = StartCoroutine(ChangeLife());
+        //UpdateHearts();
+        DisplayHearts();
+    }
+
     public int getTargetHealth()
     {
         return targetHp;
