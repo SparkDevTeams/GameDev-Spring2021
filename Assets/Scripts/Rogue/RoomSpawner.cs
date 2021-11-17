@@ -44,20 +44,22 @@ public class RoomSpawner : MonoBehaviour
 
                     
                     //If statement that checks if an item room has spawned and if the room selected is considered a deadend (Room with only one door. In this case a room with only a bottom door)
-                    if (!templates.getItemSpawned() && templates.bottomRooms[rand].GetComponent<AddRoom>().isDeadend)
-                    {
-                        //Spawns an item room if the above conditions are met
-                        Instantiate(templates.itemRooms[0], transform.position, templates.itemRooms[0].transform.rotation);
-                        templates.setItemSpawned(true);
-                        Debug.Log("Item room spawned new");
-                    }
-                    else
-                    {
-                        //Uses that index generated above to retrieve and spawn in the selected room in the current spawnpoint
-                        GameObject selectedRoom = templates.bottomRooms[rand];
-                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
-                    }
+                    //if (!templates.getItemSpawned() && templates.bottomRooms[rand].GetComponent<AddRoom>().isDeadend)
+                    //{
+                    //    //Spawns an item room if the above conditions are met
+                    //    Instantiate(templates.itemRooms[0], transform.position, templates.itemRooms[0].transform.rotation);
+                    //    templates.setItemSpawned(true);
+                    //    Debug.Log("Item room spawned new");
+                    //}
+                    //else
+                    //{
+                    //    //Uses that index generated above to retrieve and spawn in the selected room in the current spawnpoint
+                    //    Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                    //    //GameObject selectedRoom = templates.bottomRooms[rand];
+                    //    //Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
+                    //}
 
+                    Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
 
                     break;
                 //Same concept as case one but this time with a bottom door. This means top rooms are being used
@@ -70,18 +72,20 @@ public class RoomSpawner : MonoBehaviour
 
                     
 
-                    if (!templates.getItemSpawned() && templates.topRooms[rand].GetComponent<AddRoom>().isDeadend)
-                    {
-                        Instantiate(templates.itemRooms[1], transform.position, templates.itemRooms[1].transform.rotation);
-                        templates.setItemSpawned(true);
-                        Debug.Log("Item room spawned new");
-                    }
-                    else
-                    {
-                        //Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
-                        GameObject selectedRoom = templates.topRooms[rand];
-                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
-                    }
+                    //if (!templates.getItemSpawned() && templates.topRooms[rand].GetComponent<AddRoom>().isDeadend)
+                    //{
+                    //    Instantiate(templates.itemRooms[1], transform.position, templates.itemRooms[1].transform.rotation);
+                    //    templates.setItemSpawned(true);
+                    //    Debug.Log("Item room spawned new");
+                    //}
+                    //else
+                    //{
+                    //    Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+                    //    //GameObject selectedRoom = templates.topRooms[rand];
+                    //    //Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
+                    //}
+
+                    Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
 
                     break;
                 case 3:
@@ -91,18 +95,21 @@ public class RoomSpawner : MonoBehaviour
                     } while (!templates.leftRooms[rand].GetComponent<AddRoom>().getAllowed());
 
                    
-                    if (!templates.getItemSpawned() && templates.leftRooms[rand].GetComponent<AddRoom>().isDeadend)
-                    {
-                        Instantiate(templates.itemRooms[2], transform.position, templates.itemRooms[2].transform.rotation);
-                        templates.setItemSpawned(true);
-                        Debug.Log("Item room spawned new");
-                    }
-                    else
-                    {
-                        //Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
-                        GameObject selectedRoom = templates.leftRooms[rand];
-                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
-                    }
+                    //if (!templates.getItemSpawned() && templates.leftRooms[rand].GetComponent<AddRoom>().isDeadend)
+                    //{
+                    //    Instantiate(templates.itemRooms[2], transform.position, templates.itemRooms[2].transform.rotation);
+                    //    templates.setItemSpawned(true);
+                    //    Debug.Log("Item room spawned new");
+                    //}
+                    //else
+                    //{
+                    //    Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+                    //    //GameObject selectedRoom = templates.leftRooms[rand];
+                    //    //Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
+                    //}
+
+                    Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+
                     break;
                 case 4:
                     do
@@ -111,25 +118,28 @@ public class RoomSpawner : MonoBehaviour
                     } while (!templates.rightRooms[rand].GetComponent<AddRoom>().getAllowed());
 
                     
-                    if (!templates.getItemSpawned() && templates.rightRooms[rand].GetComponent<AddRoom>().isDeadend)
-                    {
-                        Instantiate(templates.itemRooms[3], transform.position, templates.itemRooms[3].transform.rotation);
-                        templates.setItemSpawned(true);
-                        Debug.Log("Item room spawned new");
-                    }
-                    else
-                    {
-                        //Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
-                        GameObject selectedRoom = templates.rightRooms[rand];
-                        Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
-                    }
+                    //if (!templates.getItemSpawned() && templates.rightRooms[rand].GetComponent<AddRoom>().isDeadend)
+                    //{
+                    //    Instantiate(templates.itemRooms[3], transform.position, templates.itemRooms[3].transform.rotation);
+                    //    templates.setItemSpawned(true);
+                    //    Debug.Log("Item room spawned new");
+                    //}
+                    //else
+                    //{
+                    //    Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+                    //    //GameObject selectedRoom = templates.rightRooms[rand];
+                    //    //Instantiate(pickBottomRoom(selectedRoom), transform.position, pickBottomRoom(selectedRoom).transform.rotation);
+                    //}
+
+                    Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+
                     break;
 
             }
             spawned = true;
         }
         //Starts to plug up openings in the dungeon once generation has stopped
-        if(!spawned && templates.generationStopped())
+        if(!spawned && templates.getMin())
         {
             switch (openingDirection)
             {
@@ -137,99 +147,123 @@ public class RoomSpawner : MonoBehaviour
                 //Boss rooms are special deadends like item rooms and are set to spawn after level generation has stopped so they spawn away from the player
                 //Other cases do the same but for different directions
                 case 1:
-                    if (templates.getBossSpawned() && templates.getItemSpawned())
-                    {
-                        rand = Random.Range(0, templates.B.Length);
-                        Instantiate(templates.B[rand], transform.position, templates.B[rand].transform.rotation);
-                        Debug.Log("Deadend spawned");
-                        break;
-                    }
-                    else if(templates.getBossSpawned() && !templates.getItemSpawned())
-                    {
-                        Instantiate(templates.itemRooms[0], transform.position, templates.itemRooms[0].transform.rotation);
-                        templates.setItemSpawned(true);
-                        Debug.Log("Item room spawned old");
-                        break;
-                    }
-                    else
-                    {
-                        Instantiate(templates.bossRooms[0], transform.position, templates.bossRooms[0].transform.rotation);
-                        templates.setBossSpawned(true);
-                        Debug.Log("Boss room spawned");
-                        break;
-                    }
-                    
+                    //if (templates.getBossSpawned() && templates.getItemSpawned())
+                    //{
+                    //    rand = Random.Range(0, templates.B.Length);
+                    //    Instantiate(templates.B[rand], transform.position, templates.B[rand].transform.rotation);
+                    //    Debug.Log("Deadend spawned");
+                    //    break;
+                    //}
+                    //else if(templates.getBossSpawned() && !templates.getItemSpawned())
+                    //{
+                    //    Instantiate(templates.itemRooms[0], transform.position, templates.itemRooms[0].transform.rotation);
+                    //    templates.setItemSpawned(true);
+                    //    Debug.Log("Item room spawned old");
+                    //    break;
+                    //}
+                    //else
+                    //{
+                    //    Instantiate(templates.bossRooms[0], transform.position, templates.bossRooms[0].transform.rotation);
+                    //    templates.setBossSpawned(true);
+                    //    Debug.Log("Boss room spawned");
+                    //    break;
+                    //}
+
+                    rand = Random.Range(0, templates.B.Length);
+                    Instantiate(templates.B[rand], transform.position, templates.B[rand].transform.rotation);
+                    Debug.Log("Deadend spawned");
+                    break;
+
                 case 2:
-                    if (templates.getBossSpawned() && templates.getItemSpawned())
-                    {
-                        rand = Random.Range(0, templates.T.Length);
-                        Instantiate(templates.T[rand], transform.position, templates.T[rand].transform.rotation);
-                        Debug.Log("Deadend spawned");
-                        break;
-                    }
-                    else if (templates.getBossSpawned() && !templates.getItemSpawned())
-                    {
-                        Instantiate(templates.itemRooms[1], transform.position, templates.itemRooms[1].transform.rotation);
-                        templates.setItemSpawned(true);
-                        Debug.Log("Item room spawned old");
-                        break;
-                    }
-                    else
-                    {
-                        Instantiate(templates.bossRooms[1], transform.position, templates.bossRooms[1].transform.rotation);
-                        templates.setBossSpawned(true);
-                        Debug.Log("Boss room spawned");
-                        break;
-                    }
+                    //if (templates.getBossSpawned() && templates.getItemSpawned())
+                    //{
+                    //    rand = Random.Range(0, templates.T.Length);
+                    //    Instantiate(templates.T[rand], transform.position, templates.T[rand].transform.rotation);
+                    //    Debug.Log("Deadend spawned");
+                    //    break;
+                    //}
+                    //else if (templates.getBossSpawned() && !templates.getItemSpawned())
+                    //{
+                    //    Instantiate(templates.itemRooms[1], transform.position, templates.itemRooms[1].transform.rotation);
+                    //    templates.setItemSpawned(true);
+                    //    Debug.Log("Item room spawned old");
+                    //    break;
+                    //}
+                    //else
+                    //{
+                    //    Instantiate(templates.bossRooms[1], transform.position, templates.bossRooms[1].transform.rotation);
+                    //    templates.setBossSpawned(true);
+                    //    Debug.Log("Boss room spawned");
+                    //    break;
+                    //}
+
+                    rand = Random.Range(0, templates.T.Length);
+                    Instantiate(templates.T[rand], transform.position, templates.T[rand].transform.rotation);
+                    Debug.Log("Deadend spawned");
+                    break;
 
                 case 3:
-                    if (templates.getBossSpawned() && templates.getItemSpawned())
-                    {
-                        rand = Random.Range(0, templates.L.Length);
-                        Instantiate(templates.L[rand], transform.position, templates.L[rand].transform.rotation);
-                        Debug.Log("Deadend spawned");
-                        break;
-                    }
-                    else if (templates.getBossSpawned() && !templates.getItemSpawned())
-                    {
-                        Instantiate(templates.itemRooms[2], transform.position, templates.itemRooms[2].transform.rotation);
-                        templates.setItemSpawned(true);
-                        Debug.Log("Item room spawned old");
-                        break;
-                    }
-                    else
-                    {
-                        Instantiate(templates.bossRooms[2], transform.position, templates.bossRooms[2].transform.rotation);
-                        templates.setBossSpawned(true);
-                        Debug.Log("Boss room spawned");
-                        break;
-                    }
+                    //if (templates.getBossSpawned() && templates.getItemSpawned())
+                    //{
+                    //    rand = Random.Range(0, templates.L.Length);
+                    //    Instantiate(templates.L[rand], transform.position, templates.L[rand].transform.rotation);
+                    //    Debug.Log("Deadend spawned");
+                    //    break;
+                    //}
+                    //else if (templates.getBossSpawned() && !templates.getItemSpawned())
+                    //{
+                    //    Instantiate(templates.itemRooms[2], transform.position, templates.itemRooms[2].transform.rotation);
+                    //    templates.setItemSpawned(true);
+                    //    Debug.Log("Item room spawned old");
+                    //    break;
+                    //}
+                    //else
+                    //{
+                    //    Instantiate(templates.bossRooms[2], transform.position, templates.bossRooms[2].transform.rotation);
+                    //    templates.setBossSpawned(true);
+                    //    Debug.Log("Boss room spawned");
+                    //    break;
+                    //}
+
+                    rand = Random.Range(0, templates.L.Length);
+                    Instantiate(templates.L[rand], transform.position, templates.L[rand].transform.rotation);
+                    Debug.Log("Deadend spawned");
+                    break;
 
                 case 4:
-                    if (templates.getBossSpawned() && templates.getItemSpawned())
-                    {
-                        rand = Random.Range(0, templates.R.Length);
-                        Instantiate(templates.R[rand], transform.position, templates.R[rand].transform.rotation);
-                        Debug.Log("Deadend spawned");
-                        break;
-                    }
-                    else if (templates.getBossSpawned() && !templates.getItemSpawned())
-                    {
-                        Instantiate(templates.itemRooms[3], transform.position, templates.itemRooms[3].transform.rotation);
-                        templates.setItemSpawned(true);
-                        Debug.Log("Item room spawned old");
-                        break;
-                    }
-                    else
-                    {
-                        Instantiate(templates.bossRooms[3], transform.position, templates.bossRooms[3].transform.rotation);
-                        templates.setBossSpawned(true);
-                        Debug.Log("Boss room spawned");
-                        break;
-                    }
+                    //if (templates.getBossSpawned() && templates.getItemSpawned())
+                    //{
+                    //    rand = Random.Range(0, templates.R.Length);
+                    //    Instantiate(templates.R[rand], transform.position, templates.R[rand].transform.rotation);
+                    //    Debug.Log("Deadend spawned");
+                    //    break;
+                    //}
+                    //else if (templates.getBossSpawned() && !templates.getItemSpawned())
+                    //{
+                    //    Instantiate(templates.itemRooms[3], transform.position, templates.itemRooms[3].transform.rotation);
+                    //    templates.setItemSpawned(true);
+                    //    Debug.Log("Item room spawned old");
+                    //    break;
+                    //}
+                    //else
+                    //{
+                    //    Instantiate(templates.bossRooms[3], transform.position, templates.bossRooms[3].transform.rotation);
+                    //    templates.setBossSpawned(true);
+                    //    Debug.Log("Boss room spawned");
+                    //    break;
+                    //}
+
+                    rand = Random.Range(0, templates.R.Length);
+                    Instantiate(templates.R[rand], transform.position, templates.R[rand].transform.rotation);
+                    Debug.Log("Deadend spawned");
+                    break;
 
             }
             
+        }
+        else if(!spawned && templates.generationStopped())
+        {
+            Instantiate(templates.closedWall, transform.position, templates.closedWall.transform.rotation);
         }
         
     }

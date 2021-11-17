@@ -29,7 +29,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(target.position, transform.position) < minRange && fireRate < timer && !test.stunned)
+        if (Vector2.Distance(target.position, transform.position) < minRange && fireRate <= timer && !test.stunned)
         // for player Input.GetButtonDown();
         // if(Input.GetButtonDown())
         {

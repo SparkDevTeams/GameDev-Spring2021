@@ -17,18 +17,21 @@ TagManager:
   - MusicTag
   - Jukebox
   - Spike
+  - EnemyHitbox
+  - Door
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - EnemyHitbox
+  - PlayerHitbox
+  - Walls
+  - Items
   - 
   - 
   - 
@@ -56,4 +59,7 @@ TagManager:
     locked: 0
   - name: Fly
     uniqueID: 3252970305
+    locked: 0
+  - name: Door
+    uniqueID: 3656607869
     locked: 0

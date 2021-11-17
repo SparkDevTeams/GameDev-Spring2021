@@ -43,6 +43,11 @@ public class DoorManager : MonoBehaviour
         //Debug.Log("Close door");
     }
 
+    public void setEnemyCount(int enemyCount)
+    {
+        this.enemyCount = enemyCount;
+    }
+
     public bool getClosed()
     {
         return isClosed;

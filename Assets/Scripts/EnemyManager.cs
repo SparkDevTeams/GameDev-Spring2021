@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public float stunTime;
-    public bool stunned;
+    public bool stunned = false;
+    private bool isInvincible = false;
 
     public int hp, startHp = 3;
 
@@ -38,7 +39,7 @@ public class EnemyManager : MonoBehaviour
         //    Debug.Log("Should spawn");
         //}
 
-        if(stunTime > 0){
+        if(stunTime > 0.0f){
             stunned = true;
             stunTime -= Time.deltaTime;
         }
@@ -52,15 +53,39 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void Damage(int p){
-
-        hp -= p;
+    public void Damage(int p)
+    {
+        if (!isInvincible)
+        {
+            hp -= p;
+        }
     }
 
-    public void Damage(int dmg, float stun) {
-        if (stun > stunTime) {
-            stunTime = stun;
+    public void Damage(int dmg, float stun) 
+    {
+        if (!isInvincible)
+        {
+            if (stun > stunTime)
+            {
+                stunTime = stun;
+            }
+
+            Damage(dmg);
         }
-        Damage(dmg);
+    }
+
+    public bool IsInvincible() 
+    {
+        return isInvincible;
+    }
+
+    public void TriggerInvincibility()
+    {
+        isInvincible = true;
+    }
+
+    public void StopInvincibility() 
+    {
+        isInvincible = false;
     }
 }
