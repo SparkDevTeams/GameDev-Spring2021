@@ -12,7 +12,7 @@ public class FixedProjectile : EnemyProjectile
     private float stunTime = 0.25f;
     private Rigidbody2D rb;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -26,7 +26,7 @@ public class FixedProjectile : EnemyProjectile
     {
         if (collision.gameObject.tag == "Player") 
         {
-            GetComponent<HealthManager>().damage(damage, stunTime);
+            collision.gameObject.GetComponent<HealthManager>().damage(damage, stunTime);
         }
 
         Destroy(gameObject);

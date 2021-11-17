@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 28392296746180215}
   - component: {fileID: 5835134633621006304}
   - component: {fileID: -1456178287829587800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.41
 --- !u!114 &-1456178287829587800
 MonoBehaviour:
   m_ObjectHideFlags: 0

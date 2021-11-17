@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 983599470995280854}
   - component: {fileID: 983599470995280843}
   - component: {fileID: -3346308202217411138}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &983599470995280853
 Animator:
   serializedVersion: 3
@@ -168,8 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   moveSpeed: 2
-  attackDistance: 0.8
-  stoppingDistance: 0.65
+  attackDistance: 0.5
+  stoppingDistance: 0.3
 --- !u!114 &983599470995280843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +184,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   attackTransform: {fileID: 983599470995280852}
-  attackRadius: 0.8
+  attackRadius: 0.5
   damagePower: 8
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &-3346308202217411138
 MonoBehaviour:
   m_ObjectHideFlags: 0

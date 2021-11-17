@@ -34,7 +34,12 @@ public class TeleportingEnemy : MonoBehaviour
     void Start()
     {
         manager = GetComponent<EnemyManager>();
-        adjustedList.AddRange(teleportPoints);
+        
+        if (!useCircleRange)
+        {
+            adjustedList.AddRange(teleportPoints);
+        }
+
         activeTimer = 0.0f;
         escapeTimer = 0.0f;
         startUpTimer = totalStartUpTime;
@@ -46,6 +51,8 @@ public class TeleportingEnemy : MonoBehaviour
         if (startUpTimer > 0.0f) 
         {
             startUpTimer -= Time.deltaTime;
+
+            Debug.Log("Startup Time: " + startUpTimer);
 
             if (startUpTimer <= 0.0f) 
             {
