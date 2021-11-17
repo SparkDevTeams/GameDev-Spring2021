@@ -15,7 +15,7 @@ public enum ITEM {
 public class Inventory : MonoBehaviour
 {
     public AudioClip healSFX;
-    public AudioClip invisSFX;
+ 
 public AudioSource M_AudioSource;
 
     const float magicTime = 0.25f;
@@ -147,7 +147,7 @@ public AudioSource M_AudioSource;
                 break;
             case ITEM.SHADOW:
                 //Set Invis Frames Here
-                M_AudioSource.PlayOneShot(invisSFX, 0.22f);
+               
                 GetComponent<HealthManager>().setInvis(5);
                 break;
             case ITEM.POTION:
