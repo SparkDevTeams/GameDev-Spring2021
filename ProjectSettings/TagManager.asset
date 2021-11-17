@@ -13,6 +13,7 @@ TagManager:
   - Wall
   - Hitbox
   - Hazard
+  - EnemyHitbox
   - Door
   - EnemySpawner
   layers:

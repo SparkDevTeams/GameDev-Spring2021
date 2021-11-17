@@ -8,9 +8,9 @@ public class EnemyControl : MonoBehaviour
 
     private Animator myAnim;
 
-    public EnemyManager test;
+    public EnemyManager manager;
 
-    public Transform homePos; //in case you want enemy to return to initial position
+    private const float BUFFER = 0.001f;
 
     [SerializeField]
     private float speed = 0f;
@@ -25,24 +25,75 @@ public class EnemyControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
 
-        test = GetComponent<EnemyManager>();
+        manager = GetComponent<EnemyManager>();
     }
 
     // If player is within range then the enemy will follow the player
     void FixedUpdate()
     {
-        if (Vector2.Distance(test.target.position, transform.position) <= maxRange && Vector2.Distance(test.target.position, transform.position) >= minRange && !test.stunned)
+        if (!manager.stunned)
         {
-            FollowPlayer();
+            float distToPlayer = DistanceTo2D(manager.target.position);
+
+            if (distToPlayer > maxRange + BUFFER)
+            {
+                FollowPlayer();
+            }
+            else if (distToPlayer < minRange - BUFFER)
+            {
+                RunFromPlayer();
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+                StopMoveAnimation(DirectionTowards2D(manager.target.position));
+            }
         }
-    
+
     }
 
-    public void FollowPlayer()
+    private Vector2 DirectionTowards2D(Vector2 targetPos)
+    {
+        return (targetPos - (Vector2)transform.position).normalized;
+    }
+
+    private float DistanceTo2D(Vector2 targetPos)
+    {
+        return (targetPos - (Vector2)transform.position).magnitude;
+    }
+
+    private bool IsPlayerInSightRange()
+    {
+        return DistanceTo2D(manager.target.position) <= maxRange;
+    }
+
+    //Enemy follow movement
+    private void FollowPlayer()
+    {
+        Vector2 dirToPlayer = DirectionTowards2D(manager.target.position);
+        StartMoveAnimation(dirToPlayer);
+        rb.velocity = (Vector3)dirToPlayer * speed;
+    }
+
+    //Enemy run away movement
+    private void RunFromPlayer()
+    {
+        Vector2 dirToPlayer = DirectionTowards2D(manager.target.position);
+        StartMoveAnimation(dirToPlayer);
+        rb.velocity = (Vector3)dirToPlayer * -speed;
+    }
+
+    private void StopMoveAnimation(Vector2 direction)
+    {
+        myAnim.SetFloat("moveX", (direction.x));
+        myAnim.SetFloat("moveY", (direction.y));
+        myAnim.SetBool("isMoving", false);
+    }
+
+    private void StartMoveAnimation(Vector2 direction)
     {
         myAnim.SetBool("isMoving", true);
-        myAnim.SetFloat("moveX", (test.target.position.x - transform.position.x));
-        myAnim.SetFloat("moveY", (test.target.position.y - transform.position.y));
-        rb.velocity = ((Vector2)(test.target.position - transform.position)).normalized * speed;
+        myAnim.SetFloat("moveX", (direction.x));
+        myAnim.SetFloat("moveY", (direction.y));
     }
 }

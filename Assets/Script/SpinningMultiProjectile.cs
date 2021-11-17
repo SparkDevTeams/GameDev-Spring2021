@@ -28,7 +28,7 @@ public class SpinningMultiProjectile : EnemyProjectile
     private Rigidbody2D rb;
 
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         shotTimer = 0.0f;
@@ -85,7 +85,7 @@ public class SpinningMultiProjectile : EnemyProjectile
     {
         if (collision.gameObject.tag == "Player")
         {
-            GetComponent<HealthManager>().damage(damage, stunTime);
+            collision.gameObject.GetComponent<HealthManager>().damage(damage, stunTime);
 
             if (destroyOnPlayerContact) 
             {

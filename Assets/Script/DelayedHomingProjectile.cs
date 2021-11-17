@@ -19,7 +19,7 @@ public class DelayedHomingProjectile : EnemyProjectile
     private bool launching = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
