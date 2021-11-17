@@ -17,7 +17,8 @@ public class DoorManager : MonoBehaviour
         isClosed = false;
     }
 
-    // Update is called once per frame
+    // Closes all doors in the room if player is currently fighting enemies
+    // Opens doors if all enemies are defeated
     void Update()
     {
         //if (isClosed)
@@ -40,6 +41,11 @@ public class DoorManager : MonoBehaviour
     {
         isClosed = closed;
         //Debug.Log("Close door");
+    }
+
+    public void setEnemyCount(int enemyCount)
+    {
+        this.enemyCount = enemyCount;
     }
 
     public bool getClosed()

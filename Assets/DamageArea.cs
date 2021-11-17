@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DamageArea : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField][Range(0,90)]
     protected int damage = 2;
     [SerializeField]
     protected float hitstun = 0.1f;
-    [SerializeField]
+    [SerializeField][Tooltip("Delay until it attempts damage again")]
     protected float dmgFreq = 0.5f;
     protected float timeCheck = 0;
     [SerializeField]
@@ -44,5 +44,11 @@ public class DamageArea : MonoBehaviour
             timeCheck = 0;
             
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1f, 0f, 0f, 0.3f);
+        Gizmos.DrawSphere(transform.position, radius);
     }
 }

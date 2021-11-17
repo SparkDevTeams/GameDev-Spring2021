@@ -25,6 +25,8 @@ public class PlayerTest : MonoBehaviour
     void Update()
     {
 
+        if (GetComponent<move>().Mode == "Dead") { return; }
+
         if (Input.GetButtonDown("Fire2") && canShoot)
         {
             Shoot();

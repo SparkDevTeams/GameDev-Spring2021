@@ -29,14 +29,17 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] TR;
     public GameObject closedWall;
     public List<GameObject> rooms;
+    private List<GameObject> tempRooms;
 
-    public const int MAX_ROOMS = 15;
-    public const int MIN_ROOMS = 15;
+    public const int MAX_ROOMS = 20;
+    public const int MIN_ROOMS = 10;
     public int tblr_limit;
     public bool stopGenerating;
     public bool minReached;
     public bool itemRoomCreated;
     public bool bossRoomCreated;
+    public bool shopRoomCreated;
+    
 
     public GameObject activeRoom;
     // Start is called before the first frame update
@@ -47,6 +50,7 @@ public class RoomTemplates : MonoBehaviour
         minReached = false;
         itemRoomCreated = false;
         bossRoomCreated = false;
+
 
         setClosers(false);
         setOpeners(true);
@@ -69,11 +73,31 @@ public class RoomTemplates : MonoBehaviour
             setOpeners(false);
         }
 
-        if(rooms.Count >= MAX_ROOMS)
+        if (rooms.Count >= MAX_ROOMS)
         {
+            minReached = false;
             stopGenerating = true;
         }
+
+        //if (stopGenerating)
+        //{
+        //    Debug.Log("should be doing special room function");
+        //    setRoomTypes();
+        //    spawnRoomLayouts();
+
+        //}
+
+        //if (GameObject.FindGameObjectsWithTag("SpawnPoint").Length <= 0)
+        //{
+        //    // Do something
+        //    Debug.Log(GameObject.FindGameObjectsWithTag("SpawnPoint").Length);
+        //    setRoomTypes();
+        //    spawnRoomLayouts();
+        //}
     }
+
+    
+    
 
     public bool generationStopped()
     {
@@ -113,6 +137,11 @@ public class RoomTemplates : MonoBehaviour
         return tblr_limit;
     }
 
+    public bool getMin()
+    {
+        return minReached;
+    }
+
     public void decrementLimit()
     {
         tblr_limit--;
@@ -136,5 +165,15 @@ public class RoomTemplates : MonoBehaviour
     public void setBossSpawned(bool spawned)
     {
         bossRoomCreated = spawned;
+    }
+
+    public bool getShopSpawned()
+    {
+        return shopRoomCreated;
+    }
+
+    public void setShopSpawned(bool spawned)
+    {
+        shopRoomCreated = spawned;
     }
 }

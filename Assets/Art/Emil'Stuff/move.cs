@@ -5,13 +5,22 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float speed = 5;
-    public float rollSpeed = 7.5f;
+    [SerializeField]
+    private float speed = 6.5f;
+    [SerializeField]
+    private float rollSpeed = 24.0f;
+    [SerializeField]
+    private float dodgeSpeed = 24.0f;
     private Animator animator;
     private SpriteRenderer sprite;
     private string direction = "Front";
     private string mode = "Idle";
     private float setTime = 0.0f; //Cooldown
+    private bool rollStart = false;
+
+    private float x = 0, y = 0;
+
+    private Vector2 rollVector =  new Vector2(0, 0);
 
     public GameObject frontHitbox, sideHitbox, backHitbox;
     private GameObject hitbox;
@@ -49,13 +58,43 @@ public class move : MonoBehaviour
             return;
         }
 
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        x = Input.GetAxisRaw("Horizontal");
+        if (Mathf.Abs(x) > 0.3f)
+        {
+            if (x < 0)
+            {
+                x = -1;
+            }
+            else if (x > 0)
+            {
+                x = 1;
+            }
+            //Correct X
+        }
+        else { x = 0; }
 
+        y = Input.GetAxisRaw("Vertical");
+        if (Mathf.Abs(y) > 0.3f)
+        {
+            if (y < 0)
+            {
+                y = -1;
+            }
+            else if (y > 0)
+            {
+                y = 1;
+            } //Correct Y
+        }
+        else { y = 0; }
+
+
+        if (mode != "Roll" && !Input.GetButton("Fire3")) {
+            rollStart = false;
+        }
         
-
+        //Roll Execute
         if (mode == "Roll" && setTime > 0) {
-            if (direction == "Side")
+            /*if (direction == "Side")
             {
                 x = rollSpeed * (transform.localScale.x * -1);
                 y = 0;
@@ -70,24 +109,27 @@ public class move : MonoBehaviour
                 y = rollSpeed * -1;
             }
 
-            rb.velocity = new Vector2(x * speed, y * speed);
+            rb.velocity = new Vector2(x * speed, y * speed);*/
+            rb.velocity = rollVector;
             setTime -= Time.deltaTime;
             if (setTime <= 0)
             {
                 mode = "Idle";
+                rb.velocity = Vector2.zero;
             }
             return;
         }
 
+
         if (mode != "Idle" && mode != "Walking") {
-            if (Input.GetButtonDown("Fire1") && (setTime >= (0.267f * 0.6f)) && mode != "Hurt")
+            if (Input.GetButtonDown("Fire1") && (setTime <= (0.267f / 8.0f * 4.0f)) && mode != "Hurt")
             {
                 mode = "Attack";
                 setTime = 0.267f;
                 animator.Play("Mlafi_" + mode + "_" + direction, -1, 0.0f);
                 StartCoroutine(Attack());
                 return;
-            }
+            }//Cancel into attack
 
             if (Input.GetButtonDown("Fire2") && (setTime >= (0.333f * 0.6f)) && mode != "Hurt")
             {
@@ -96,7 +138,7 @@ public class move : MonoBehaviour
                 setTime = 0.267f;
                 animator.Play("Mlafi_" + mode + "_" + direction, -1, 0.0f);
                 return;
-            }
+            }//Cancel into magic
 
             setTime -= Time.deltaTime;
             if (setTime <= 0)
@@ -106,28 +148,10 @@ public class move : MonoBehaviour
             return;
         }
 
-       
 
-        if (x > 0) {
-            x = 1;
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-
-
-        if (y > 0) {
-            direction = "Back";
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (y < 0) {
-            direction = "Front";
-            transform.localScale = new Vector3(1, 1, 1);
-        } else if (x != 0) {
-            direction = "Side";
-            if (x < 0)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
-        }
+        //Set Direction
+        changeDirection();
+        
 
 
         if (Input.GetButtonDown("Fire1") && (mode == "Idle" || mode == "Walk")) {
@@ -135,6 +159,7 @@ public class move : MonoBehaviour
             setTime = 0.267f;
             StartCoroutine(Attack());
             x = 0; y = 0;
+            //return;
         }
 
         //if (Input.GetButtonDown("Fire2") && (mode == "Idle" || mode == "Walk"))
@@ -146,24 +171,55 @@ public class move : MonoBehaviour
         //    x = 0; y = 0;
         //}
 
-        if (Input.GetButtonDown("Fire3") && (mode == "Idle" || mode == "Walk"))
+        //ROLL SET
+        if (Input.GetButton("Fire3")&& !rollStart && (mode == "Idle" || mode == "Walk"))
         {
             mode = "Roll";
-            setTime = 0.333f;
-            if (direction == "Side")
-            {
-                x = x * rollSpeed;
-                y = 0;
+            setTime = 0.222f;
+
+            if (x == 0 && y == 0) {
+                if (direction == "Side")
+                {
+                    if (transform.localScale.x < 0)
+                    {
+                        x = 1;
+                    }
+                    else if (transform.localScale.x > 0) {
+                        x = -1;
+                    }
+                }
+                else
+                {
+                    if (direction == "Back")
+                    {
+                        y = 1;
+                    }
+                    else if (direction == "Front")
+                    {
+                        y = -1;
+                    }
+                    else {
+                        rollStart = true; // Just in case
+                        return;
+                    }
+                   
+                }
             }
-            else {
-                x = 0;
-                y = y * rollSpeed;
-            }
-            rb.velocity = new Vector2(x, y);
+
+            rollVector.x = rollSpeed * x;
+            rollVector.y = rollSpeed * y ;
+            if (x != 0 && y != 0) {
+                rollVector.x *= 0.707f;
+                rollVector.y *= 0.707f;
+            }//For Diagonal
+
+            rollStart = true;
+            rb.velocity = rollVector;
             animator.Play("Mlafi_" + mode + "_" + direction);
             return;
         }
 
+        //WALK
         if (mode == "Idle" || mode == "Walk") {
             if (x != 0 && y != 0)
             {
@@ -184,10 +240,58 @@ public class move : MonoBehaviour
         {
             rb.velocity = new Vector2(x * speed, y * speed);
         }
+
         animator.Play("Mlafi_" + mode + "_" + direction);
     }
 
+    private void changeDirection() {
+        if (x > 0)
+        {
+            x = 1;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+
+        if (y != 0)
+        {
+            if (direction == "Side" && x != 0)
+            {
+                direction = "Side";
+                if (x < 0)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+            }
+            else
+            {
+                if (y < 0)
+                {
+                    direction = "Front";
+                }
+                else
+                {
+                    direction = "Back";
+                }
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+
+        }
+        /*else if (y < 0) {
+            direction = "Front";
+            transform.localScale = new Vector3(1, 1, 1);
+        }*/
+        else if (x != 0)
+        {
+            direction = "Side";
+            if (x < 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+    }
+
     protected IEnumerator Attack() {
+        rb.velocity = Vector2.zero;
         if (hitbox != null) {
             Destroy(hitbox);
         }
@@ -202,8 +306,79 @@ public class move : MonoBehaviour
                 hitbox = Instantiate(backHitbox, transform);
                 break;
         }
-        yield return new WaitForSeconds(0.267f);
+
+        while (setTime > 0) {
+            //Cancel into attack
+            //Already in update
+
+
+            //Cancel into dodge roll
+            if (Input.GetButton("Fire3") && !rollStart && setTime < (0.067f))
+            {
+
+                mode = "Roll";
+                setTime = 0.111f;
+
+                if (x == 0 && y == 0)
+                {
+                    if (direction == "Side")
+                    {
+                        if (transform.localScale.x < 0)
+                        {
+                            x = 1;
+                        }
+                        else if (transform.localScale.x > 0)
+                        {
+                            x = -1;
+                        }
+                    }
+                    else
+                    {
+                        if (direction == "Back")
+                        {
+                            y = 1;
+                        }
+                        else if (direction == "Front")
+                        {
+                            y = -1;
+                        }
+                        else
+                        {
+                            rollStart = true; // Just in case
+                            Destroy(hitbox);
+                            hitbox = null;
+                            yield break;
+                        }
+
+                    }
+                }
+
+                rollVector.x = dodgeSpeed * x;
+                rollVector.y = dodgeSpeed * y;
+                if (x != 0 && y != 0)
+                {
+                    rollVector.x *= 0.707f;
+                    rollVector.y *= 0.707f;
+                }//For Diagonal
+
+                rollStart = true;
+                Destroy(hitbox);
+                hitbox = null;
+                changeDirection();
+                rb.velocity = rollVector;
+                animator.Play("Mlafi_" + mode + "_" + direction);
+                yield break;
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+        //yield return new WaitForSeconds(0.267f);
         Destroy(hitbox);
         hitbox = null;
+    }
+
+    public void addSpeed(float speedUp)
+    {
+        speed += speedUp;
     }
 }
