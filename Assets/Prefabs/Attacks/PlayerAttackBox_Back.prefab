@@ -76,6 +76,7 @@ MonoBehaviour:
   stuntime: 0.25
   travelSpeed: 0
   destroyOnHit: 0
+  isPlayerAttack: 0
 --- !u!50 &7987510213977412604
 Rigidbody2D:
   serializedVersion: 4
@@ -248,6 +249,7 @@ MonoBehaviour:
   stuntime: 0.25
   travelSpeed: 0
   destroyOnHit: 0
+  isPlayerAttack: 1
 --- !u!95 &3600374058563953306
 Animator:
   serializedVersion: 3

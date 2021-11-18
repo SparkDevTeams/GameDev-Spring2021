@@ -206,3 +206,4 @@ MonoBehaviour:
   hp: 0
   startHp: 12
   target: {fileID: 0}
+  soul: {fileID: 172013033003219771, guid: 9807de3a848880e449188539f415ee62, type: 3}

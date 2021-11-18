@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
 
     private DoorManager doors;
     private RoomTemplates room;
+    [SerializeField] private GameObject soul;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +49,8 @@ public class EnemyManager : MonoBehaviour
 
         if(hp <= 0){
             //doors.killEnemy();
-            room?.getActiveRoom()?.GetComponent<DoorManager>()?.killEnemy();
+            room.getActiveRoom().GetComponent<DoorManager>().killEnemy();
+            Instantiate(soul, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
