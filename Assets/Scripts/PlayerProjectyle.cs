@@ -16,11 +16,22 @@ public class PlayerProjectyle : MonoBehaviour
     protected int travelSpeed = 6;
     [SerializeField]
     protected bool destroyOnHit = false;
+    [SerializeField]
+    private bool isPlayerAttack;
+
+    private PlayerStats stats;
 
     // Start is called before the first frame update
     void Start()
     {
+        stats = FindObjectOfType<PlayerStats>();
         rb = GetComponent<Rigidbody2D>();
+
+        if (isPlayerAttack)
+        {
+            damage = stats.getDamage();
+        }
+
         SetDirection();
     }
 
@@ -38,6 +49,8 @@ public class PlayerProjectyle : MonoBehaviour
 
         timeActive += Time.deltaTime;
     }
+
+    
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {

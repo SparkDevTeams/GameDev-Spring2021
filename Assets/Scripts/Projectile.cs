@@ -33,7 +33,7 @@ public class Projectile : EnemyProjectile
             hitInfo.GetComponent<HealthManager>().damage(damage,0.25f);
             Destroy(gameObject);
         }
-        else if(hitInfo.name == "Walls")
+        else if(hitInfo.name == "Walls" || hitInfo.name == "Layout Walls")
         {
             Destroy(gameObject);
         }

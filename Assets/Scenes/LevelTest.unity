@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: soulCount
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
+      propertyPath: attackDamage
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4248948148176905316, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4685,7 +4689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3067405613798184625, guid: a38a194fb7df01f499f167e53738b8b4, type: 3}
       propertyPath: m_Volume
-      value: 0.214
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3067405613798184626, guid: a38a194fb7df01f499f167e53738b8b4, type: 3}
       propertyPath: m_RootOrder
