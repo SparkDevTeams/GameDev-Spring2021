@@ -48,7 +48,7 @@ public class EnemyManager : MonoBehaviour
 
         if(hp <= 0){
             //doors.killEnemy();
-            room.getActiveRoom().GetComponent<DoorManager>().killEnemy();
+            room?.getActiveRoom()?.GetComponent<DoorManager>()?.killEnemy();
             Destroy(gameObject);
         }
     }

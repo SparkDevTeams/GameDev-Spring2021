@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  speed: 6
+  speed: 9
   stunTime: 0.25
 --- !u!1 &8782935959260635213
 GameObject:
