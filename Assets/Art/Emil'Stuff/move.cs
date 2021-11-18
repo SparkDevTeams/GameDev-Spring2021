@@ -24,6 +24,7 @@ public class move : MonoBehaviour
 
     public GameObject frontHitbox, sideHitbox, backHitbox;
     private GameObject hitbox;
+    private PlayerStats stats;
 
     public string Direction {
         get { return direction; }

@@ -10,6 +10,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private float speed;
     [SerializeField] private int health;
+    [SerializeField] private int damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class ItemManager : MonoBehaviour
         collision.gameObject.GetComponent<HealthManager>().addMaxHealth(maxHealth);
         collision.gameObject.GetComponent<move>().addSpeed(speed);
         collision.gameObject.GetComponent<HealthManager>().addHealth(health);
+        collision.gameObject.GetComponent<PlayerStats>().addDamage(damage);
 
         collision.gameObject.GetComponent<PlayerStats>().spendSouls(cost);
         Destroy(gameObject);

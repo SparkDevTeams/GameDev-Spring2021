@@ -147,112 +147,24 @@ public class RoomSpawner : MonoBehaviour
                 //Boss rooms are special deadends like item rooms and are set to spawn after level generation has stopped so they spawn away from the player
                 //Other cases do the same but for different directions
                 case 1:
-                    //if (templates.getBossSpawned() && templates.getItemSpawned())
-                    //{
-                    //    rand = Random.Range(0, templates.B.Length);
-                    //    Instantiate(templates.B[rand], transform.position, templates.B[rand].transform.rotation);
-                    //    Debug.Log("Deadend spawned");
-                    //    break;
-                    //}
-                    //else if(templates.getBossSpawned() && !templates.getItemSpawned())
-                    //{
-                    //    Instantiate(templates.itemRooms[0], transform.position, templates.itemRooms[0].transform.rotation);
-                    //    templates.setItemSpawned(true);
-                    //    Debug.Log("Item room spawned old");
-                    //    break;
-                    //}
-                    //else
-                    //{
-                    //    Instantiate(templates.bossRooms[0], transform.position, templates.bossRooms[0].transform.rotation);
-                    //    templates.setBossSpawned(true);
-                    //    Debug.Log("Boss room spawned");
-                    //    break;
-                    //}
-
                     rand = Random.Range(0, templates.B.Length);
                     Instantiate(templates.B[rand], transform.position, templates.B[rand].transform.rotation);
                     Debug.Log("Deadend spawned");
                     break;
 
                 case 2:
-                    //if (templates.getBossSpawned() && templates.getItemSpawned())
-                    //{
-                    //    rand = Random.Range(0, templates.T.Length);
-                    //    Instantiate(templates.T[rand], transform.position, templates.T[rand].transform.rotation);
-                    //    Debug.Log("Deadend spawned");
-                    //    break;
-                    //}
-                    //else if (templates.getBossSpawned() && !templates.getItemSpawned())
-                    //{
-                    //    Instantiate(templates.itemRooms[1], transform.position, templates.itemRooms[1].transform.rotation);
-                    //    templates.setItemSpawned(true);
-                    //    Debug.Log("Item room spawned old");
-                    //    break;
-                    //}
-                    //else
-                    //{
-                    //    Instantiate(templates.bossRooms[1], transform.position, templates.bossRooms[1].transform.rotation);
-                    //    templates.setBossSpawned(true);
-                    //    Debug.Log("Boss room spawned");
-                    //    break;
-                    //}
-
                     rand = Random.Range(0, templates.T.Length);
                     Instantiate(templates.T[rand], transform.position, templates.T[rand].transform.rotation);
                     Debug.Log("Deadend spawned");
                     break;
 
                 case 3:
-                    //if (templates.getBossSpawned() && templates.getItemSpawned())
-                    //{
-                    //    rand = Random.Range(0, templates.L.Length);
-                    //    Instantiate(templates.L[rand], transform.position, templates.L[rand].transform.rotation);
-                    //    Debug.Log("Deadend spawned");
-                    //    break;
-                    //}
-                    //else if (templates.getBossSpawned() && !templates.getItemSpawned())
-                    //{
-                    //    Instantiate(templates.itemRooms[2], transform.position, templates.itemRooms[2].transform.rotation);
-                    //    templates.setItemSpawned(true);
-                    //    Debug.Log("Item room spawned old");
-                    //    break;
-                    //}
-                    //else
-                    //{
-                    //    Instantiate(templates.bossRooms[2], transform.position, templates.bossRooms[2].transform.rotation);
-                    //    templates.setBossSpawned(true);
-                    //    Debug.Log("Boss room spawned");
-                    //    break;
-                    //}
-
                     rand = Random.Range(0, templates.L.Length);
                     Instantiate(templates.L[rand], transform.position, templates.L[rand].transform.rotation);
                     Debug.Log("Deadend spawned");
                     break;
 
                 case 4:
-                    //if (templates.getBossSpawned() && templates.getItemSpawned())
-                    //{
-                    //    rand = Random.Range(0, templates.R.Length);
-                    //    Instantiate(templates.R[rand], transform.position, templates.R[rand].transform.rotation);
-                    //    Debug.Log("Deadend spawned");
-                    //    break;
-                    //}
-                    //else if (templates.getBossSpawned() && !templates.getItemSpawned())
-                    //{
-                    //    Instantiate(templates.itemRooms[3], transform.position, templates.itemRooms[3].transform.rotation);
-                    //    templates.setItemSpawned(true);
-                    //    Debug.Log("Item room spawned old");
-                    //    break;
-                    //}
-                    //else
-                    //{
-                    //    Instantiate(templates.bossRooms[3], transform.position, templates.bossRooms[3].transform.rotation);
-                    //    templates.setBossSpawned(true);
-                    //    Debug.Log("Boss room spawned");
-                    //    break;
-                    //}
-
                     rand = Random.Range(0, templates.R.Length);
                     Instantiate(templates.R[rand], transform.position, templates.R[rand].transform.rotation);
                     Debug.Log("Deadend spawned");

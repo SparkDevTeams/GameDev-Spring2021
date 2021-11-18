@@ -38,7 +38,7 @@ public class PlayerProjectile : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D hitInfo)
     {
-        if(hitInfo.tag == "Enemy" || hitInfo.name == "Walls" || hitInfo.tag == "Door") // test wall collider 
+        if(hitInfo.tag == "Enemy" || hitInfo.name == "Walls" || hitInfo.tag == "Door" || hitInfo.name == "Layout Walls") // test wall collider 
         {
             Destroy(gameObject);
 
