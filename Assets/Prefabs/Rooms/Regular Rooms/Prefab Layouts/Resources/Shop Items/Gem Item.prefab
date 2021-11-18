@@ -198,7 +198,7 @@ MonoBehaviour:
   maxHealth: 8
   speed: 2
   health: 8
-  damage: 100
+  damage: 1
 --- !u!58 &7810164373807034434
 CircleCollider2D:
   m_ObjectHideFlags: 0
