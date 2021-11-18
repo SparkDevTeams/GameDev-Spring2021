@@ -27,6 +27,11 @@ public class PlayerStats : MonoBehaviour
         return soulCount;
     }
 
+    public void addSouls(int souls)
+    {
+        soulCount += souls;
+    }
+
     public void spendSouls(int cost)
     {
         soulCount -= cost;

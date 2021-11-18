@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b479190e097ef94da7ef364a9056590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   test: {fileID: 0}
   homePos: {fileID: 0}
   speed: 2
@@ -171,6 +170,7 @@ MonoBehaviour:
   hp: 0
   startHp: 16
   target: {fileID: 0}
+  soul: {fileID: 172013033003219771, guid: 9807de3a848880e449188539f415ee62, type: 3}
 --- !u!114 &3325913109804699685
 MonoBehaviour:
   m_ObjectHideFlags: 0

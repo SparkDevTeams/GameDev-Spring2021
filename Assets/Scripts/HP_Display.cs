@@ -71,8 +71,8 @@ public class HP_Display : MonoBehaviour
             StopCoroutine(update);
         }
 
-        update = StartCoroutine(ChangeLife());
-        //UpdateHearts();
+        //update = StartCoroutine(ChangeLife());
+        UpdateHearts();
         DisplayHearts();
     }
 
