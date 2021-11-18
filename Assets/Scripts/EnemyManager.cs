@@ -40,7 +40,7 @@ public class EnemyManager : MonoBehaviour
         //    Debug.Log("Should spawn");
         //}
 
-        if(stunTime > 0){
+        if(stunTime > 0.0f){
             stunned = true;
             stunTime -= Time.deltaTime;
         }
@@ -63,11 +63,17 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void Damage(int dmg, float stun) {
-        if (stun > stunTime) {
-            stunTime = stun;
+    public void Damage(int dmg, float stun) 
+    {
+        if (!isInvincible)
+        {
+            if (stun > stunTime)
+            {
+                stunTime = stun;
+            }
+
+            Damage(dmg);
         }
-        Damage(dmg);
     }
 
     public bool IsInvincible() 
