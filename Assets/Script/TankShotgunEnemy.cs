@@ -5,6 +5,7 @@ using UnityEngine;
 public class TankShotgunEnemy : MonoBehaviour
 {
     private EnemyManager manager = null;
+    private SpriteRenderer sprite = null;
     private Vector2 currentShotDir;
     [SerializeField]
     private int totalShots = 12;
@@ -19,6 +20,10 @@ public class TankShotgunEnemy : MonoBehaviour
     private float maxAngleDifference = 15.0f;
     [SerializeField]
     private GameObject fixedProjectile;
+    [SerializeField]
+    Color testArmoredColor;
+    [SerializeField]
+    Color testActiveColor;
     private float shotTimer = 0.0f;
     private float armorTimer = 0.0f;
     private float vulnerableTimer = 0.0f;
@@ -28,6 +33,7 @@ public class TankShotgunEnemy : MonoBehaviour
     void Start()
     {
         manager = GetComponent<EnemyManager>();
+        sprite = GetComponent<SpriteRenderer>();
         manager.TriggerInvincibility();
         shotsLeft = 0;
         shooting = false;
@@ -35,6 +41,7 @@ public class TankShotgunEnemy : MonoBehaviour
         shotTimer = 0.0f;
         armorTimer = totalArmorTime;
         vulnerableTimer = 0.0f;
+        sprite.color = testArmoredColor;
     }
 
     void Update()
@@ -89,6 +96,7 @@ public class TankShotgunEnemy : MonoBehaviour
 
     private void ActiveMode() 
     {
+        sprite.color = testActiveColor;
         armored = false;
         shooting = true;
         manager.StopInvincibility();
@@ -99,6 +107,7 @@ public class TankShotgunEnemy : MonoBehaviour
 
     private void DefensiveMode() 
     {
+        sprite.color = testArmoredColor;
         armored = true;
         manager.TriggerInvincibility();
         armorTimer = totalArmorTime;

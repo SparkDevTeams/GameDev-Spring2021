@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 97503018}
   - component: {fileID: -8453640996433719955}
   - component: {fileID: 3591526707943114682}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -324,6 +324,7 @@ MonoBehaviour:
   moveSpeed: 0
   rollSpeed: 0
   stunTime: 0
+  soulCount: 0
 --- !u!1 &8355432138896989762
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2356996376945109953}
   - component: {fileID: 6393987703642091755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
