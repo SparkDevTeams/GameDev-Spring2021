@@ -5,8 +5,11 @@ using UnityEngine;
 public class BatBossFlyAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private EnemyManager manager;
     [SerializeField]
     private List<BatBossFlyPoint> flightPoints;
+    [SerializeField]
+    private BatBossDivePoint divePoint;
     [SerializeField]
     private List<int> flightPatterns;
     [SerializeField]
@@ -35,14 +38,17 @@ public class BatBossFlyAttack : MonoBehaviour
     private bool startingUp = false;
     private bool changingPhases = false;
     private bool patternsActive = false;
+    private bool diving = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        manager = GetComponent<EnemyManager>();
         flying = false;
         startingUp = false;
         changingPhases = false;
         patternsActive = false;
+        diving = false;
     }
 
     void Update()
@@ -68,10 +74,13 @@ public class BatBossFlyAttack : MonoBehaviour
                 if(sweepTimer <= 0.0f) 
                 {
                     currPointIndex++;
+                    int nextPatternIndex = currPatternIndex + 1;
+                    bool lastIndex = nextPatternIndex == flightPatterns.Count;            
+                                 
 
-                    if(currPointIndex >= flightPoints.Count || currPointIndex >= flightPatterns[currPatternIndex + 1]) 
+                    if(currPointIndex >= flightPoints.Count || (!lastIndex && currPointIndex >= flightPatterns[ currPatternIndex + 1])) 
                     {
-                        StopFlying();
+                        Dive();
                     }
                     else 
                     {
@@ -81,6 +90,15 @@ public class BatBossFlyAttack : MonoBehaviour
                         changingPhases = true;
                     }
                 }
+            }
+        }
+
+        if (diving)
+        {
+            if (divePoint.IsPositionLocked())
+            {
+                transform.position = divePoint.GetCurrentPosition();
+                diving = false;
             }
         }
     }
@@ -139,6 +157,13 @@ public class BatBossFlyAttack : MonoBehaviour
         GetComponent<BatBossAnimator>().AnimationChange(BatState.FLY, GetComponent<BatBossAnimator>().BatDirection);
     }
 
+    private void Dive() 
+    {
+        StopFlying();
+        diving = true;
+        divePoint.StartTargeting(manager.target, 1.0f);
+    }
+
     public void StopFlying() 
     {
         flying = false;
@@ -165,7 +190,7 @@ public class BatBossFlyAttack : MonoBehaviour
 
     public bool IsFlying() 
     {
-        return flying;
+        return flying || diving;
     }
 
     public int FlightPatternListSize() 

@@ -72,6 +72,7 @@ public class BatBossDivePoint : MonoBehaviour
 
     public void StartTargeting(Transform newTarget, float targettingTime) 
     {
+        transform.position = originalPos;
         target = newTarget;
         targettingTimer = targettingTime;
         lockedPosition = false;
