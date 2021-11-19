@@ -148,7 +148,7 @@ public class BatBossManager : MonoBehaviour
             case 1:
                 //Fly
                 flyTimer = 0;
-                flyAttack.StartFlying(0);
+                flyAttack.StartFlying(Random.Range(0, flyAttack.FlightPatternListSize()));
                 break;
             case 2:
                 //Roar
