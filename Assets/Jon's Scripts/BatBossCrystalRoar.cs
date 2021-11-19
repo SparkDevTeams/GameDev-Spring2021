@@ -64,6 +64,7 @@ public class BatBossCrystalRoar : MonoBehaviour
                 if (cooldownTimer <= 0.0f)
                 {
                     roaring = false;
+                    GetComponent<BatBossManager>().attacking = false;
                 }
             }
         }
@@ -76,6 +77,7 @@ public class BatBossCrystalRoar : MonoBehaviour
         startingUp = true;
         animator.Roar(totalStartUpTime, totalRoarTime, totalCooldownTime);
         EventSystem.eventController.CrystalTrigger(11);
+        GetComponent<BatBossManager>().attacking = true;
     }
 
     public bool IsRoaring() 

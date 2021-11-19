@@ -8,6 +8,7 @@ public class BatBossManager : MonoBehaviour
     private BatBossBreathAttack breathAttack;
     private BatBossFlyAttack flyAttack;
     private BatBossCrystalRoar roar;
+    private BatBossWaveAttack waveAttack;
     private EnemyManager manager;
     [SerializeField]
     private BatBossDivePoint centerPoint;
@@ -36,6 +37,7 @@ public class BatBossManager : MonoBehaviour
         roar = GetComponent<BatBossCrystalRoar>();
         manager = GetComponent<EnemyManager>();
         animator = GetComponent<BatBossAnimator>();
+        waveAttack = GetComponent<BatBossWaveAttack>();
         active = false;
     }
 
@@ -141,11 +143,12 @@ public class BatBossManager : MonoBehaviour
         switch (choose) {
             case 0:
                 //BreathAttack
-                
+                waveAttack.Attack();
                 break;
             case 1:
                 //Fly
                 flyTimer = 0;
+                flyAttack.StartFlying(0);
                 break;
             case 2:
                 //Roar
