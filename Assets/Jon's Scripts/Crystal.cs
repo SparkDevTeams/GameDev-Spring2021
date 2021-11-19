@@ -14,7 +14,9 @@ public class Crystal : MonoBehaviour
     [SerializeField]
     private LayerMask playerLayer;
     [SerializeField]
-    private CircleCollider2D attackRadius;
+    private Vector2 localPositionOffset;
+    [SerializeField]
+    private float attackRadius = 1.8f;
     [SerializeField]
     private int startHp = 1;
     private int hp;
@@ -82,7 +84,7 @@ public class Crystal : MonoBehaviour
 
     private void PlayerDamageScan() 
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(attackRadius.transform.position, attackRadius.radius, playerLayer);
+        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position + (Vector3)localPositionOffset, attackRadius, playerLayer);
 
         if (playerCollider != null)
         {
@@ -117,5 +119,11 @@ public class Crystal : MonoBehaviour
                 DestroyCrystal();
             }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + (Vector3)localPositionOffset, attackRadius);
     }
 }

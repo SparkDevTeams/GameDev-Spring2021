@@ -88,22 +88,25 @@ public class BatBossFlyAttack : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (startingUp && changingPhases) 
+        if (flying)
         {
-            rb.velocity = Vector2.zero;
-            transform.position = flightPoints[currPointndex + flightPatterns[currPatternIndex]].transform.position;
-            changingPhases = false;
-        }
-        
-        if (!startingUp) 
-        {
-            if (changingPhases)
+            if (startingUp && changingPhases)
             {
-                rb.velocity = flightPoints[currPointndex + flightPatterns[currPatternIndex]].GetFlyDirection() * speed;
+                rb.velocity = Vector2.zero;
+                transform.position = flightPoints[currPointndex + flightPatterns[currPatternIndex]].transform.position;
                 changingPhases = false;
             }
 
-            Attack();
+            if (!startingUp)
+            {
+                if (changingPhases)
+                {
+                    rb.velocity = flightPoints[currPointndex + flightPatterns[currPatternIndex]].GetFlyDirection() * speed;
+                    changingPhases = false;
+                }
+
+                Attack();
+            }
         }
     }
 
