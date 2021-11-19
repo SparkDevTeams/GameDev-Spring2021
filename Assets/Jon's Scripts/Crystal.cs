@@ -8,13 +8,20 @@ public class Crystal : MonoBehaviour
 
     private EnemyManager manager;
     [SerializeField]
+    private SpriteRenderer hitBoxSprite;
+    [SerializeField]
+    private Color activeColor;
+    [SerializeField]
     private LayerMask playerLayer;
     [SerializeField]
     private CircleCollider2D attackRadius;
     [SerializeField]
-    private int damage = 2;
+    private int startHp = 1;
+    private int hp;
     [SerializeField]
-    private float stunTime = 0.25f;
+    private int damage = 5;
+    [SerializeField]
+    private float stunTime = 0.3f;
     [SerializeField]
     private float totalActiveTime = 3.0f;
     private float activeTimer = 0.0f;
@@ -26,6 +33,7 @@ public class Crystal : MonoBehaviour
     void Start()
     {
         manager = GetComponent<EnemyManager>();
+        hp = startHp;
         activeTimer = 0.0f;
         isActive = false;
 
@@ -34,6 +42,7 @@ public class Crystal : MonoBehaviour
             manager.TriggerInvincibility();
         }
 
+        TriggerInactiveSprite();
         EventSystem.eventController.onCrystalTrigger += TriggerCystalEvent;
     }
 
@@ -45,6 +54,7 @@ public class Crystal : MonoBehaviour
 
             if (activeTimer <= 0.0f)
             {
+                TriggerInactiveSprite();
                 isActive = false;
                 activeTimer = 0.0f;
             }
@@ -59,6 +69,7 @@ public class Crystal : MonoBehaviour
     {
         if (id == EVENT_ID)
         {
+            TriggerActiveSprite();
             activeTimer = totalActiveTime;
             isActive = true;
         }
@@ -76,6 +87,35 @@ public class Crystal : MonoBehaviour
         if (playerCollider != null)
         {
             playerCollider.gameObject.GetComponent<HealthManager>().damage(damage, stunTime);
+        }
+    }
+
+    private void TriggerActiveSprite() 
+    {
+        if (hitBoxSprite != null)
+        {
+            hitBoxSprite.color = activeColor;
+        }
+    }
+
+    private void TriggerInactiveSprite() 
+    {
+        if (hitBoxSprite != null)
+        {
+            hitBoxSprite.color = Color.clear;
+        }
+    }
+
+    public void Hit() 
+    {
+        if (!isInvincible)
+        {
+            hp--;
+
+            if (hp <= 0)
+            {
+                DestroyCrystal();
+            }
         }
     }
 }
