@@ -7,13 +7,15 @@ public class EnemyManager : MonoBehaviour
     public float stunTime;
     public bool stunned = false;
     private bool isInvincible = false;
+    [SerializeField]
+    private bool roomIndependent = false;
 
     public int hp, startHp = 3;
 
     public Transform target;
 
-    private DoorManager doors;
-    private RoomTemplates room;
+    private DoorManager doors = null;
+    private RoomTemplates room = null;
     [SerializeField] private GameObject soul;
 
     // Start is called before the first frame update
@@ -22,8 +24,12 @@ public class EnemyManager : MonoBehaviour
         stunned = false;
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        doors = GetComponentInParent<DoorManager>();
-        room = FindObjectOfType<RoomTemplates>();
+
+        if (!roomIndependent)
+        {
+            doors = GetComponentInParent<DoorManager>();
+            room = FindObjectOfType<RoomTemplates>();
+        }
         //this.gameObject.SetActive(false);
         //this.enabled = false;
 
@@ -46,13 +52,6 @@ public class EnemyManager : MonoBehaviour
         }
         else   
             stunned = false;
-
-        if(hp <= 0){
-            //doors.killEnemy();
-            room.getActiveRoom().GetComponent<DoorManager>().killEnemy();
-            Instantiate(soul, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
     }
 
     public void Damage(int p)
@@ -60,6 +59,17 @@ public class EnemyManager : MonoBehaviour
         if (!isInvincible)
         {
             hp -= p;
+
+            if (hp <= 0)
+            {
+                if (!roomIndependent)
+                {
+                    room.getActiveRoom().GetComponent<DoorManager>().killEnemy();
+                }
+
+                Instantiate(soul, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
         }
     }
 

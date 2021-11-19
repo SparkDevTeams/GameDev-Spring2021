@@ -16,6 +16,7 @@ TagManager:
   - EnemyHitbox
   - Door
   - EnemySpawner
+  - Crystal
   layers:
   - Default
   - TransparentFX
@@ -28,8 +29,8 @@ TagManager:
   - PlayerHitbox
   - Walls
   - Items
-  - 
-  - 
+  - Destructable
+  - SolidEnemy
   - 
   - 
   - 
