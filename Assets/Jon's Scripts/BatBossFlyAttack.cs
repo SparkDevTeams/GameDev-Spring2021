@@ -6,6 +6,7 @@ public class BatBossFlyAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
     private EnemyManager manager;
+    private BatBossAnimator animator;
     [SerializeField]
     private List<BatBossFlyPoint> flightPoints;
     [SerializeField]
@@ -44,6 +45,7 @@ public class BatBossFlyAttack : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         manager = GetComponent<EnemyManager>();
+        animator = GetComponent<BatBossAnimator>();
         flying = false;
         startingUp = false;
         changingPhases = false;
@@ -75,7 +77,7 @@ public class BatBossFlyAttack : MonoBehaviour
                 {
                     currPointIndex++;
                     int nextPatternIndex = currPatternIndex + 1;
-                    bool lastIndex = nextPatternIndex == flightPatterns.Count;            
+                    bool lastIndex = nextPatternIndex >= flightPatterns.Count;            
                                  
 
                     if(currPointIndex >= flightPoints.Count || (!lastIndex && currPointIndex >= flightPatterns[ currPatternIndex + 1])) 
@@ -112,6 +114,7 @@ public class BatBossFlyAttack : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 transform.position = flightPoints[currPointIndex].transform.position;
+                UpdateAnimation();
                 changingPhases = false;
             }
 
@@ -153,8 +156,6 @@ public class BatBossFlyAttack : MonoBehaviour
         startingUp = true;
         changingPhases = true;
         flying = true;
-        
-        GetComponent<BatBossAnimator>().AnimationChange(BatState.FLY, GetComponent<BatBossAnimator>().BatDirection);
     }
 
     private void Dive() 
@@ -210,6 +211,35 @@ public class BatBossFlyAttack : MonoBehaviour
         }
 
         patternsActive = true;
+    }
+
+    private void UpdateAnimation() 
+    {
+        const float FULL_CIRCLE = 360.0f;
+
+        float angle = Mathf.Atan2(flightPoints[currPointIndex].GetFlyDirection().y, flightPoints[currPointIndex].GetFlyDirection().x) * Mathf.Rad2Deg;
+
+        if (angle < 0.0f)
+        {
+            angle += FULL_CIRCLE;
+        }
+
+        if (angle <= 45.0f || angle > 315.0f)
+        {
+            animator.AnimationChange(BatState.FLY, BatDirection.RIGHT);
+        }
+        else if (angle > 45.0f && angle <= 135.0f)
+        {
+            animator.AnimationChange(BatState.FLY, BatDirection.BACK);
+        }
+        else if (angle > 135.0f && angle <= 225.0f)
+        {
+            animator.AnimationChange(BatState.FLY, BatDirection.LEFT);
+        }
+        else 
+        {
+            animator.AnimationChange(BatState.FLY, BatDirection.FRONT);
+        }
     }
 
     private void OnDrawGizmosSelected()
