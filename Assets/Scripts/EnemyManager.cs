@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class EnemyManager : MonoBehaviour
     private DoorManager doors = null;
     private RoomTemplates room = null;
     [SerializeField] private GameObject soul;
+    [SerializeField] private bool endGame = false;
 
     // Start is called before the first frame update
     void Start()
@@ -67,8 +69,16 @@ public class EnemyManager : MonoBehaviour
                     room.getActiveRoom().GetComponent<DoorManager>().killEnemy();
                 }
 
-                Instantiate(soul, transform.position, transform.rotation);
-                Destroy(gameObject);
+               
+                if (endGame)
+                {
+                    GameOver();
+                }
+                else {
+                    Instantiate(soul, transform.position, transform.rotation);
+                    Destroy(gameObject);
+                }
+                
             }
         }
     }
@@ -99,5 +109,11 @@ public class EnemyManager : MonoBehaviour
     public void StopInvincibility() 
     {
         isInvincible = false;
+    }
+
+    public IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("MainMenu1");
     }
 }
