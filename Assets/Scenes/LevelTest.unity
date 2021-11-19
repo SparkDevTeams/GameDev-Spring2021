@@ -4278,13 +4278,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd520b85a592c28409d053161664ed94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyHitbox: {fileID: 0}
+  localPositionOffset: {x: 0, y: 2.37}
+  attackRadius: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
   damage: 7
   stunTime: 0.25
-  speed: 80
+  speed: 30
   totalStartUpTime: 1.4
   totalShortStartUpTime: 0.6
   totalSweepTime: 1.8
@@ -18111,6 +18112,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776108027857020347, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196721147831833583, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4196721147831833583, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}

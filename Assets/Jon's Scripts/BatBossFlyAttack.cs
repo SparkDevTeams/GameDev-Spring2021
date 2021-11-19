@@ -8,7 +8,9 @@ public class BatBossFlyAttack : MonoBehaviour
     [SerializeField]
     private List<List<BatBossFlyPoint>> flightPatterns;
     [SerializeField]
-    private CircleCollider2D flyHitbox;
+    private Vector2 localPositionOffset;
+    [SerializeField]
+    private float attackRadius = 25.0f;
     [SerializeField]
     private LayerMask playerLayer;
     [SerializeField]
@@ -144,7 +146,7 @@ public class BatBossFlyAttack : MonoBehaviour
 
     private void Attack() 
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(flyHitbox.transform.position, flyHitbox.radius, playerLayer);
+        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position + (Vector3)localPositionOffset, attackRadius, playerLayer);
 
         if (playerCollider != null) 
         {
@@ -176,5 +178,11 @@ public class BatBossFlyAttack : MonoBehaviour
         }
 
         patternsActive = true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + (Vector3)localPositionOffset, attackRadius);
     }
 }
