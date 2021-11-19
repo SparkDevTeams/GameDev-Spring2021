@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -942483267051202488, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
+      propertyPath: arrowCooldown
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: soulCount
       value: 0
@@ -4608,7 +4612,7 @@ MonoBehaviour:
   projectile: {fileID: 2022944857666790538, guid: 33ce3de4da6bc8f4eb10072735e976e9, type: 3}
   angleDifference: 20
   rotationSpeed: 60
-  timeBetweenShots: 0.125
+  timeBetweenShots: 0.3
 --- !u!114 &1194234144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4839,6 +4843,10 @@ PrefabInstance:
     - target: {fileID: 1716916561216402654, guid: 0b451705063b3d84a86fb4b9537ed9d1, type: 3}
       propertyPath: flyDir.y
       value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716916561216402654, guid: 0b451705063b3d84a86fb4b9537ed9d1, type: 3}
+      propertyPath: followSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1716916561216402655, guid: 0b451705063b3d84a86fb4b9537ed9d1, type: 3}
       propertyPath: m_RootOrder
