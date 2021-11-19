@@ -4213,7 +4213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunTime: 0
   stunned: 0
-  roomIndependent: 0
+  roomIndependent: 1
   hp: 0
   startHp: 500
   target: {fileID: 0}
@@ -4278,6 +4278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd520b85a592c28409d053161664ed94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flightPoints: []
+  flightPatterns: 
   localPositionOffset: {x: 0, y: 2.37}
   attackRadius: 3
   playerLayer:
