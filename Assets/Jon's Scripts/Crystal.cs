@@ -18,9 +18,6 @@ public class Crystal : MonoBehaviour
     [SerializeField]
     private float attackRadius = 1.8f;
     [SerializeField]
-    private int startHp = 1;
-    private int hp;
-    [SerializeField]
     private int damage = 5;
     [SerializeField]
     private float stunTime = 0.3f;
@@ -35,7 +32,6 @@ public class Crystal : MonoBehaviour
     void Start()
     {
         manager = GetComponent<EnemyManager>();
-        hp = startHp;
         activeTimer = 0.0f;
         isActive = false;
 
@@ -104,20 +100,8 @@ public class Crystal : MonoBehaviour
     {
         if (hitBoxSprite != null)
         {
+            Debug.Log("Clear");
             hitBoxSprite.color = Color.clear;
-        }
-    }
-
-    public void Hit() 
-    {
-        if (!isInvincible)
-        {
-            hp--;
-
-            if (hp <= 0)
-            {
-                DestroyCrystal();
-            }
         }
     }
 

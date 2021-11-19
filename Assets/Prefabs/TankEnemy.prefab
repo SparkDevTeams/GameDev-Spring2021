@@ -149,9 +149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunTime: 0
   stunned: 0
+  roomIndependent: 0
   hp: 0
-  startHp: 40
+  startHp: 45
   target: {fileID: 0}
+  soul: {fileID: 172013033003219771, guid: 9807de3a848880e449188539f415ee62, type: 3}
 --- !u!114 &1873184640541669068
 MonoBehaviour:
   m_ObjectHideFlags: 0
