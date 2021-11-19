@@ -103,7 +103,7 @@ public class BatBossFlyAttack : MonoBehaviour
         }
     }
 
-    private void StartFlying(int patternIndex) 
+    public void StartFlying(int patternIndex) 
     {
         ActivatePatterns();
 
@@ -129,7 +129,7 @@ public class BatBossFlyAttack : MonoBehaviour
         flying = true;
     }
 
-    private void StopFlying() 
+    public void StopFlying() 
     {
         flying = false;
         startingUp = false;
