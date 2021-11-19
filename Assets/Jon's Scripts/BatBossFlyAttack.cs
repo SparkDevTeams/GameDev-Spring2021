@@ -135,6 +135,8 @@ public class BatBossFlyAttack : MonoBehaviour
         startingUp = true;
         changingPhases = true;
         flying = true;
+        
+        GetComponent<BatBossAnimator>().AnimationChange(BatState.FLY, GetComponent<BatBossAnimator>().BatDirection);
     }
 
     public void StopFlying() 

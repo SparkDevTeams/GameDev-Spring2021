@@ -303,7 +303,7 @@ public class BatBossAnimator : MonoBehaviour
         batDirection = BatDirection.FRONT;
         //Wind Up
         for (float i = 0; i < upTime;) {
-            headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnimator.gameObject.transform.localPosition.y + i/upTime);
+            headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnchor.y + (i));
             yield return new WaitForSeconds(1/60.0f);
             i += 1 / 60.0f;
         }
@@ -318,9 +318,9 @@ public class BatBossAnimator : MonoBehaviour
         }
 
         //Wind Down
-        for (float i = 0; i < downTime;)
+        for (float i = 0; i < upTime;)
         {
-            headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnimator.gameObject.transform.localPosition.y - i/ downTime);
+            headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnchor.y - (i));
             yield return new WaitForSeconds(1 / 60.0f);
             i += 1 / 60.0f;
         }
