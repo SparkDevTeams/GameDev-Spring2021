@@ -139,7 +139,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   v: {x: 0, y: 0}
   angle: 0
-  power: 5
+  power: 6
   cosineTest: 0
   sineTest: 0
 --- !u!61 &3641859027427865685

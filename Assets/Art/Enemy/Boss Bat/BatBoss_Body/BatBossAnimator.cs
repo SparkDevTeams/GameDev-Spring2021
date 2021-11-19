@@ -43,6 +43,8 @@ public class BatBossAnimator : MonoBehaviour
     const string name= "BatBoss";
     private string bodyState = "Idle";
     private string bodyDirection = "Front";
+    private BatDirection batDirection = BatDirection.FRONT;
+    BatDirection BatDirection { get { return batDirection; } }
     //State Head
     private string headState = "Idle";
     private string headDirection = "Front";
@@ -80,9 +82,10 @@ public class BatBossAnimator : MonoBehaviour
 
     public void AnimationChange( BatState state, BatDirection direction) {
         if (!animatable) { return; }
-
+        batDirection = direction;
         string bodyAnimation = name + "_";
         string headAnimation = "";
+        
         moveHead = true;
         switch (state) {
             case BatState.LUNGE:
@@ -103,6 +106,7 @@ public class BatBossAnimator : MonoBehaviour
                        headAnimation = headAnimation + "_Front";
                        headAnchor = lungeFront;
                        bodyAnimation = bodyAnimation + "_Front";
+                       
                        break;
                     case BatDirection.BACK:
                         headAnimation = headAnimation + "_Back";
@@ -290,7 +294,7 @@ public class BatBossAnimator : MonoBehaviour
         animatable = false;
         moveHead = false;
         headAnimator.gameObject.transform.localPosition = Vector3.zero;
-
+        batDirection = BatDirection.FRONT;
         //Wind Up
         for (float i = 0; i < upTime;) {
             headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnimator.gameObject.transform.localPosition.y + 60/i/upTime);
