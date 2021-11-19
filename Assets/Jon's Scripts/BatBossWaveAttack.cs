@@ -84,7 +84,7 @@ public class BatBossWaveAttack : MonoBehaviour
     public void Attack() 
     {
         attacking = true;
-
+        GetComponent<BatBossManager>().attacking = true;
         if (increasing)
         {
             currDeltaAngle = 0.0f;
@@ -99,6 +99,7 @@ public class BatBossWaveAttack : MonoBehaviour
     {
         attacking = false;
         shotTimer = 0.0f;
+        GetComponent<BatBossManager>().attacking = false;
     }
 
     private void Shoot(float shotAngle) 

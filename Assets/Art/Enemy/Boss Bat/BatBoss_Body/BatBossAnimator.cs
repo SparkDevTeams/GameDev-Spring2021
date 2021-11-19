@@ -289,7 +289,13 @@ public class BatBossAnimator : MonoBehaviour
         headAnimator.Play(headAnimation, 0);
     }
 
-    public IEnumerator Roar(float upTime, float roarTime, float downTime) {
+    public void Roar(float upTime, float roarTime, float downTime) {
+        if (animatable) {
+            StartCoroutine(MyRoar(upTime,roarTime,downTime));
+        }
+    }
+
+    public IEnumerator MyRoar(float upTime, float roarTime, float downTime) {
         AnimationChange(BatState.IDLE, BatDirection.FRONT);
         animatable = false;
         moveHead = false;
@@ -297,7 +303,7 @@ public class BatBossAnimator : MonoBehaviour
         batDirection = BatDirection.FRONT;
         //Wind Up
         for (float i = 0; i < upTime;) {
-            headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnimator.gameObject.transform.localPosition.y + 60/i/upTime);
+            headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnimator.gameObject.transform.localPosition.y + i/upTime);
             yield return new WaitForSeconds(1/60.0f);
             i += 1 / 60.0f;
         }
@@ -312,9 +318,9 @@ public class BatBossAnimator : MonoBehaviour
         }
 
         //Wind Down
-        for (float i = 0; i < upTime;)
+        for (float i = 0; i < downTime;)
         {
-            headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnimator.gameObject.transform.localPosition.y - 60 / i / downTime);
+            headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnimator.gameObject.transform.localPosition.y - i/ downTime);
             yield return new WaitForSeconds(1 / 60.0f);
             i += 1 / 60.0f;
         }
