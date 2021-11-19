@@ -30,7 +30,9 @@ public class BatBossManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!active) {
+            return;
+        }
         //Walk
         if (Vector2.Distance(playerTarget.position, this.transform.position) > 8) {
             /*if (Vector2.Distance(playerTarget.position, this.transform.position) > 12)
