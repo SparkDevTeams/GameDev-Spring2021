@@ -8,7 +8,7 @@ public enum BatState
     LUNGE,
     SHOOT,
     FLY,
-    WALK
+    WALK,
 }
 
 public enum BatDirection
@@ -54,6 +54,8 @@ public class BatBossAnimator : MonoBehaviour
     public float Ysize = 1;
     public float Xsize = 1;
 
+    private bool animatable = true;
+    public bool moveHead = true;
     void Start()
     {
         
@@ -63,10 +65,13 @@ public class BatBossAnimator : MonoBehaviour
     void Update()
     {
         timecheck += Time.deltaTime;
-        float yoff = Mathf.Sin(timecheck * motionspeedY) * Ysize;
-        float xoff = Mathf.Cos(timecheck * motionspeedX) * Xsize;
+        if (moveHead)
+        {
+            float yoff = Mathf.Sin(timecheck * motionspeedY) * Ysize;
+            float xoff = Mathf.Cos(timecheck * motionspeedX) * Xsize;
 
-        headAnimator.gameObject.transform.localPosition = new Vector2(headAnchor.x + xoff, headAnchor.y + yoff);
+            headAnimator.gameObject.transform.localPosition = new Vector2(headAnchor.x + xoff, headAnchor.y + yoff);
+        }
 
         /*if (Input.GetButtonDown("Fire1")) {
             AnimationChange((BatState)Random.Range(0,5), (BatDirection)Random.Range(0, 4));
@@ -74,9 +79,11 @@ public class BatBossAnimator : MonoBehaviour
     }
 
     public void AnimationChange( BatState state, BatDirection direction) {
+        if (!animatable) { return; }
+
         string bodyAnimation = name + "_";
         string headAnimation = "";
-
+        moveHead = true;
         switch (state) {
             case BatState.LUNGE:
                bodyAnimation = bodyAnimation + "Lunge";
@@ -271,10 +278,46 @@ public class BatBossAnimator : MonoBehaviour
                         bodyAnimation = bodyAnimation + "_Side";
                         break;
                 }
-                break;
+                break;             
         }
         
         bodyAnimator.Play(bodyAnimation);
         headAnimator.Play(headAnimation, 0);
+    }
+
+    public IEnumerator Roar(float upTime, float roarTime, float downTime) {
+        AnimationChange(BatState.IDLE, BatDirection.FRONT);
+        animatable = false;
+        moveHead = false;
+        headAnimator.gameObject.transform.localPosition = Vector3.zero;
+
+        //Wind Up
+        for (float i = 0; i < upTime;) {
+            headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnimator.gameObject.transform.localPosition.y + 60/i/upTime);
+            yield return new WaitForSeconds(1/60.0f);
+            i += 1 / 60.0f;
+        }
+
+        //Roar
+        headAnimator.Play("Attack_Front",0);
+        for (float i = 0; i < roarTime;)
+        {
+            //headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnimator.gameObject.transform.localPosition.y + 60 / i / upTime);
+            yield return new WaitForSeconds(1 / 60.0f);
+            i += 1 / 60.0f;
+        }
+
+        //Wind Down
+        for (float i = 0; i < upTime;)
+        {
+            headAnimator.gameObject.transform.localPosition = new Vector2(0, headAnimator.gameObject.transform.localPosition.y - 60 / i / downTime);
+            yield return new WaitForSeconds(1 / 60.0f);
+            i += 1 / 60.0f;
+        }
+
+        headAnimator.Play("Idle_Front", 0);
+        animatable = true;
+        AnimationChange(BatState.IDLE, BatDirection.FRONT);
+        yield break;
     }
 }
