@@ -6,7 +6,9 @@ public class BatBossFlyAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField]
-    private List<List<BatBossFlyPoint>> flightPatterns;
+    private List<BatBossFlyPoint> flightPoints;
+    [SerializeField]
+    private List<int> flightPatterns;
     [SerializeField]
     private Vector2 localPositionOffset;
     [SerializeField]
@@ -67,7 +69,7 @@ public class BatBossFlyAttack : MonoBehaviour
                 {
                     currPointndex++;
 
-                    if(currPointndex >= flightPatterns[currPatternIndex].Count) 
+                    if(currPointndex >= flightPoints.Count || currPointndex >= flightPatterns[currPatternIndex + 1]) 
                     {
                         StopFlying();
                     }
@@ -89,7 +91,7 @@ public class BatBossFlyAttack : MonoBehaviour
         if (startingUp && changingPhases) 
         {
             rb.velocity = Vector2.zero;
-            transform.position = flightPatterns[currPatternIndex][currPointndex].transform.position;
+            transform.position = flightPoints[currPointndex + flightPatterns[currPatternIndex]].transform.position;
             changingPhases = false;
         }
         
@@ -97,7 +99,7 @@ public class BatBossFlyAttack : MonoBehaviour
         {
             if (changingPhases)
             {
-                rb.velocity = flightPatterns[currPatternIndex][currPointndex].GetFlyDirection() * speed;
+                rb.velocity = flightPoints[currPointndex + flightPatterns[currPatternIndex]].GetFlyDirection() * speed;
                 changingPhases = false;
             }
 
@@ -167,14 +169,12 @@ public class BatBossFlyAttack : MonoBehaviour
     public void ActivatePatterns() 
     {
         if (!patternsActive) 
-        {
-            foreach (List<BatBossFlyPoint> pattern in flightPatterns) 
+        {   
+            foreach (BatBossFlyPoint point in flightPoints) 
             {
-                foreach (BatBossFlyPoint point in pattern) 
-                {
-                    point.Activate();
-                }
+                point.Activate();
             }
+            
         }
 
         patternsActive = true;
