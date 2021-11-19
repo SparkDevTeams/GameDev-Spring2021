@@ -12,12 +12,17 @@ public class BatBossManager : MonoBehaviour
     [SerializeField]
     private BatBossDivePoint centerPoint;
     private bool invincible = false;
+    [SerializeField]
     private bool active = false;
     private float flyTimer = 0;
+    private Rigidbody2D rigidbody;
     private BatBossAnimator animator;
+    [SerializeField]
+    private float walkSpeed = 6.5f;
     // Start is called before the first frame update
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody2D>();
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
         breathAttack = GetComponent<BatBossBreathAttack>();
         flyAttack = GetComponent<BatBossFlyAttack>();
@@ -48,24 +53,28 @@ public class BatBossManager : MonoBehaviour
                     {
                         //Go right
                         animator.AnimationChange(BatState.WALK, BatDirection.RIGHT);
+                        rigidbody.velocity = new Vector2(walkSpeed,0); 
                         
                     }
                     else {
                         //Go Life
                         animator.AnimationChange(BatState.WALK, BatDirection.LEFT);
+                        rigidbody.velocity = new Vector2(-walkSpeed, 0);
                     }
                 }
                 else {
                     //Walk Up/Down
                     //Walk Side
-                    if (playerTarget.position.y > transform.position.x)
+                    if (playerTarget.position.y > transform.position.y)
                     {
                         //Go up
                         animator.AnimationChange(BatState.WALK, BatDirection.BACK);
+                        rigidbody.velocity = new Vector2(0, walkSpeed);
                     }
                     else
                     {
                         animator.AnimationChange(BatState.WALK, BatDirection.FRONT);
+                        rigidbody.velocity = new Vector2(0, -walkSpeed);
                         //Go down
                     }
 
