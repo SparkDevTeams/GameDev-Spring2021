@@ -134,6 +134,8 @@ public class BatBossFlyAttack : MonoBehaviour
         startingUp = true;
         changingPhases = true;
         flying = true;
+
+        Debug.Log("First Fly Index: " + flightPoints[currPointndex + flightPatterns[currPatternIndex]]);
     }
 
     public void StopFlying() 
