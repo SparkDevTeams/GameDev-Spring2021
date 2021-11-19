@@ -150,12 +150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b479190e097ef94da7ef364a9056590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
   manager: {fileID: 0}
-
-  speed: 2
-  maxRange: 7
-  minRange: 3.8
+  speed: 3.5
+  maxRange: 6
+  minRange: 2.5
 --- !u!114 &3325913109804699684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunTime: 0
   stunned: 0
+  roomIndependent: 0
   hp: 0
   startHp: 16
   target: {fileID: 0}

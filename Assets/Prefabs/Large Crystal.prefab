@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 831937785690982452}
   - component: {fileID: 4530569974361416254}
   - component: {fileID: 1930342597}
+  - component: {fileID: 2685847196035396588}
   m_Layer: 11
   m_Name: Large Crystal
   m_TagString: Crystal
@@ -75,7 +76,6 @@ MonoBehaviour:
     m_Bits: 8
   localPositionOffset: {x: 0, y: 0}
   attackRadius: 3.05
-  startHp: 1
   damage: 5
   stunTime: 0.3
   totalActiveTime: 3
@@ -157,6 +157,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 1.8}
   m_EdgeRadius: 0
+--- !u!114 &2685847196035396588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302384449822663556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778ae93f3a03f4148a0d290178836d0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 0
+  stunned: 0
+  roomIndependent: 1
+  hp: 0
+  startHp: 1
+  target: {fileID: 0}
+  soul: {fileID: 0}
+  endGame: 0
 --- !u!1 &5966333389905793387
 GameObject:
   m_ObjectHideFlags: 0
