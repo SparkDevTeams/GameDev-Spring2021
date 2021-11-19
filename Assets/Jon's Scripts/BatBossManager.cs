@@ -11,7 +11,6 @@ public class BatBossManager : MonoBehaviour
     private EnemyManager manager;
     [SerializeField]
     private BatBossDivePoint centerPoint;
-    private bool invincible = false;
     private bool active = false;
 
     // Start is called before the first frame update
@@ -28,6 +27,10 @@ public class BatBossManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (active) 
+        {
+        
+        }
     }
 
     public void Activate() 
