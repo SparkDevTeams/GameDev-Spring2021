@@ -72,7 +72,7 @@ public class EnemyManager : MonoBehaviour
                
                 if (endGame)
                 {
-                    GameOver();
+                    StartCoroutine(GameOver());
                 }
                 else {
                     Instantiate(soul, transform.position, transform.rotation);

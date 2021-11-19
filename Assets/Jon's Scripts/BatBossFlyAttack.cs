@@ -112,6 +112,7 @@ public class BatBossFlyAttack : MonoBehaviour
 
     public void StartFlying(int patternIndex) 
     {
+        GetComponent<BatBossManager>().attacking = true;
         ActivatePatterns();
 
         if (patternIndex < 0)
@@ -147,6 +148,7 @@ public class BatBossFlyAttack : MonoBehaviour
         currPointndex = 0;
         rb.velocity = Vector2.zero;
         rb.isKinematic = false;
+        GetComponent<BatBossManager>().attacking = false;
     }
 
     private void Attack() 

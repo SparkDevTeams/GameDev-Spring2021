@@ -7,6 +7,8 @@ public class TeleportManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private bool isTeleported;
     [SerializeField] private Transform bossRoom;
+    [SerializeField] private BatBossManager bm;
+
     void Start()
     {
         isTeleported = false;
@@ -21,6 +23,7 @@ public class TeleportManager : MonoBehaviour
     public void teleported(bool isTeleport)
     {
         isTeleported = isTeleport;
+        bm.Activate();
     }
 
     public bool getTeleported()
