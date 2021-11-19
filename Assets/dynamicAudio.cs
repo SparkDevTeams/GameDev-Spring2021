@@ -29,6 +29,7 @@ public class dynamicAudio : MonoBehaviour
             Debug.Log("working health music");
             nearDeath.TransitionTo(0.5f);
         } else {
+             Debug.Log("normal health music");
             normal.TransitionTo(0.5f);
         }
 
