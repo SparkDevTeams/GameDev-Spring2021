@@ -144,11 +144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4248948148176905316, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7.94
       objectReference: {fileID: 0}
     - target: {fileID: 4248948148176905316, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.29
       objectReference: {fileID: 0}
     - target: {fileID: 4248948148176905316, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4213,7 +4213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunTime: 0
   stunned: 0
-  roomIndependent: 0
+  roomIndependent: 1
   hp: 0
   startHp: 500
   target: {fileID: 0}
@@ -4232,6 +4232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerPoint: {fileID: 0}
   active: 0
+  attacking: 0
   walkSpeed: 6.5
 --- !u!114 &1194234143
 MonoBehaviour:
@@ -4280,6 +4281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd520b85a592c28409d053161664ed94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flightPoints: []
+  flightPatterns: 
   localPositionOffset: {x: 0, y: 2.37}
   attackRadius: 3
   playerLayer:
@@ -18118,11 +18121,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4196721147831833583, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3
+      value: -3.23
       objectReference: {fileID: 0}
     - target: {fileID: 4196721147831833583, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 316.8
+      value: 316.58
       objectReference: {fileID: 0}
     - target: {fileID: 4283172788186149780, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: m_Size.x

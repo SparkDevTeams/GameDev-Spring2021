@@ -14,7 +14,14 @@ public class BatBossManager : MonoBehaviour
     private bool invincible = false;
     [SerializeField]
     private bool active = false;
+    
+    public bool attacking = false;
+    
     private float flyTimer = 0;
+    private float attackTimer = 0;
+    private float attackTime = 2.0f;
+    private float waitTime = 1.0f;
+    private float waitTimer = 0.0f;
     private Rigidbody2D rigidbody;
     private BatBossAnimator animator;
     [SerializeField]
@@ -39,12 +46,15 @@ public class BatBossManager : MonoBehaviour
             return;
         }
         //Walk
-        if (Vector2.Distance(playerTarget.position, this.transform.position) > 8) {
+        if (Vector2.Distance(playerTarget.position, this.transform.position) > 6 && waitTimer <= 0)
+        {
             /*if (Vector2.Distance(playerTarget.position, this.transform.position) > 12)
             {
                 //Lunge
             }
-            else*/ {
+            else*/
+            if (attacking) { return; }
+            {
                 //Start Walking
                 if (Mathf.Abs(playerTarget.position.x - this.transform.position.x) > Mathf.Abs(playerTarget.position.y - this.transform.position.y))
                 {
@@ -53,16 +63,18 @@ public class BatBossManager : MonoBehaviour
                     {
                         //Go right
                         animator.AnimationChange(BatState.WALK, BatDirection.RIGHT);
-                        rigidbody.velocity = new Vector2(walkSpeed,0); 
-                        
+                        rigidbody.velocity = new Vector2(walkSpeed, 0);
+
                     }
-                    else {
+                    else
+                    {
                         //Go Life
                         animator.AnimationChange(BatState.WALK, BatDirection.LEFT);
                         rigidbody.velocity = new Vector2(-walkSpeed, 0);
                     }
                 }
-                else {
+                else
+                {
                     //Walk Up/Down
                     //Walk Side
                     if (playerTarget.position.y > transform.position.y)
@@ -80,6 +92,32 @@ public class BatBossManager : MonoBehaviour
 
                 }
             }
+        }
+        else {
+            if (attacking) { return; }
+            //Attack/Idle
+            rigidbody.velocity = Vector2.zero;
+            attackTimer += Time.deltaTime;
+            if (attackTimer >= attackTime)
+            {
+                attackTimer = 0;
+                waitTime = 0;
+                chooseAttack();
+            }
+            else {
+                animator.AnimationChange(BatState.IDLE, animator.BatDirection);
+                
+                Debug.Log("Bat Boss is Waiting to attack");
+
+            }
+            if (waitTimer >= waitTime)
+            {
+                waitTimer = 0;
+            }
+            else {
+                waitTimer += Time.deltaTime;
+            }
+
         }
     }
 

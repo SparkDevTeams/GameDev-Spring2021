@@ -44,7 +44,7 @@ public class BatBossAnimator : MonoBehaviour
     private string bodyState = "Idle";
     private string bodyDirection = "Front";
     private BatDirection batDirection = BatDirection.FRONT;
-    BatDirection BatDirection { get { return batDirection; } }
+    public BatDirection BatDirection { get { return batDirection; } }
     //State Head
     private string headState = "Idle";
     private string headDirection = "Front";
