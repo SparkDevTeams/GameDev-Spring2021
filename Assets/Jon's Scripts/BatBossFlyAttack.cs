@@ -30,7 +30,7 @@ public class BatBossFlyAttack : MonoBehaviour
     private float startUpTimer = 0.0f;
     private float sweepTimer = 0.0f;
     private int currPatternIndex = 0;
-    private int currPointndex = 0;
+    private int currPointIndex = 0;
     private bool flying = false;
     private bool startingUp = false;
     private bool changingPhases = false;
@@ -67,9 +67,9 @@ public class BatBossFlyAttack : MonoBehaviour
 
                 if(sweepTimer <= 0.0f) 
                 {
-                    currPointndex++;
+                    currPointIndex++;
 
-                    if(currPointndex >= flightPoints.Count || currPointndex >= flightPatterns[currPatternIndex + 1]) 
+                    if(currPointIndex >= flightPoints.Count || currPointIndex >= flightPatterns[currPatternIndex + 1]) 
                     {
                         StopFlying();
                     }
@@ -93,7 +93,7 @@ public class BatBossFlyAttack : MonoBehaviour
             if (startingUp && changingPhases)
             {
                 rb.velocity = Vector2.zero;
-                transform.position = flightPoints[currPointndex + flightPatterns[currPatternIndex]].transform.position;
+                transform.position = flightPoints[currPointIndex].transform.position;
                 changingPhases = false;
             }
 
@@ -101,7 +101,7 @@ public class BatBossFlyAttack : MonoBehaviour
             {
                 if (changingPhases)
                 {
-                    rb.velocity = flightPoints[currPointndex + flightPatterns[currPatternIndex]].GetFlyDirection() * speed;
+                    rb.velocity = flightPoints[currPointIndex].GetFlyDirection() * speed;
                     changingPhases = false;
                 }
 
@@ -128,15 +128,13 @@ public class BatBossFlyAttack : MonoBehaviour
             currPatternIndex = patternIndex;
         }
 
-        currPointndex = 0;
+        currPointIndex = flightPatterns[currPatternIndex];
         rb.velocity = Vector2.zero;
         rb.isKinematic = true;
         startUpTimer = totalShortStartUpTime;
         startingUp = true;
         changingPhases = true;
         flying = true;
-
-        Debug.Log("First Fly Index: " + flightPoints[currPointndex + flightPatterns[currPatternIndex]]);
     }
 
     public void StopFlying() 
@@ -147,7 +145,7 @@ public class BatBossFlyAttack : MonoBehaviour
         startUpTimer = 0.0f;
         sweepTimer = 0.0f;
         currPatternIndex = 0;
-        currPointndex = 0;
+        currPointIndex = 0;
         rb.velocity = Vector2.zero;
         rb.isKinematic = false;
         GetComponent<BatBossManager>().attacking = false;
