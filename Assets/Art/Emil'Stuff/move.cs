@@ -26,6 +26,9 @@ public class move : MonoBehaviour
     private GameObject hitbox;
     private PlayerStats stats;
 
+    public GameObject bagUI;
+    private bool bagIsOpen = false;
+
     public string Direction {
         get { return direction; }
     }
@@ -149,6 +152,10 @@ public class move : MonoBehaviour
             return;
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ToggleBag();
+        }
 
         //Set Direction
         changeDirection();
@@ -243,6 +250,20 @@ public class move : MonoBehaviour
         }
 
         animator.Play("Mlafi_" + mode + "_" + direction);
+    }
+
+    private void ToggleBag()
+    {
+        if (bagIsOpen == true)
+        {
+            bagUI.SetActive(false);
+            bagIsOpen = false;
+        }
+        else
+        {
+            bagUI.SetActive(true);
+            bagIsOpen = true;
+        }
     }
 
     private void changeDirection() {
