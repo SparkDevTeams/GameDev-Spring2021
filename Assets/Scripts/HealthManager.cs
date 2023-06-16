@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
     // Start is called before the first frame update
     private int health;
     [SerializeField]private int maxHealth;
+    public static int staticMaxHealth;
     private HP_Display health_display;
     private float invincibiltyTime;
 
@@ -21,6 +22,13 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        staticMaxHealth = maxHealth;
+
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
         if (invincibiltyTime > 0) {
             GetComponent<SpriteRenderer>().color = new Color(0.7f, 0.7f, 0.7f, 0.7f);
 

@@ -143,6 +143,8 @@ MonoBehaviour:
   frontHitbox: {fileID: 6611221337914753609, guid: 78227aaa18f5a0c4ca46bd9cc9e507c0, type: 3}
   sideHitbox: {fileID: 8020891790107607891, guid: 5a1f148483b0299428cd91be11bc5ccb, type: 3}
   backHitbox: {fileID: 6226327759341696037, guid: 13cca96aa05659e42ac0c698b1ca60f7, type: 3}
+  bagUI: {fileID: 0}
+  pausedUI: {fileID: 0}
 --- !u!50 &4248948148176905323
 Rigidbody2D:
   serializedVersion: 4
@@ -325,6 +327,10 @@ MonoBehaviour:
   rollSpeed: 0
   stunTime: 0
   soulCount: 0
+  currentLevel: 1
+  maxLevel: 10
+  currentExperiencePoints: 0
+  levelUpThresholds: 
 --- !u!1 &8355432138896989762
 GameObject:
   m_ObjectHideFlags: 0

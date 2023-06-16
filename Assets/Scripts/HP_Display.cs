@@ -147,9 +147,15 @@ public class HP_Display : MonoBehaviour
                 continue;
             }
                 hearts[i - 1].sprite = HeartSprites[0];
-            
-
-
         }
     }
+
+    private void Update()
+    {
+        if (targetHp > maxHP)
+        {
+            targetHp = maxHP;
+        }
+    }
+
 }

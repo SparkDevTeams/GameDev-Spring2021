@@ -20,12 +20,16 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject soul;
     [SerializeField] private bool endGame = false;
 
+    public int experienceToGive;
+    PlayerStats playerStats;
+
     // Start is called before the first frame update
     void Start()
     {
         stunned = false;
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        playerStats = GameObject.FindObjectOfType<PlayerStats>();
 
         if (!roomIndependent)
         {
@@ -77,6 +81,7 @@ public class EnemyManager : MonoBehaviour
                 else {
                     Instantiate(soul, transform.position, transform.rotation);
                     Destroy(gameObject);
+                    playerStats.GainExperience(experienceToGive);
                 }
                 
             }
