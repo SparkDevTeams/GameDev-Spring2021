@@ -22,6 +22,7 @@ public class EnemyManager : MonoBehaviour
 
     public int experienceToGive;
     PlayerStats playerStats;
+    SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class EnemyManager : MonoBehaviour
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         playerStats = GameObject.FindObjectOfType<PlayerStats>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (!roomIndependent)
         {
@@ -65,7 +67,7 @@ public class EnemyManager : MonoBehaviour
         if (!isInvincible)
         {
             hp -= p;
-
+            StartCoroutine(FlashRed());
             if (hp <= 0)
             {
                 if (!roomIndependent)
@@ -120,5 +122,11 @@ public class EnemyManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("MainMenu1");
+    }
+    public IEnumerator FlashRed()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
     }
 }
