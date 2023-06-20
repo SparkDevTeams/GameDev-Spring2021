@@ -155,7 +155,7 @@ public class move : MonoBehaviour
             return;
         }
 
-        if (gameIsPaused == false && Input.GetKeyDown(KeyCode.E))
+        if (gameIsPaused == false && Input.GetKeyDown(KeyCode.Tab))
         {
             ToggleBag();
         }
