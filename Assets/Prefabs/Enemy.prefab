@@ -209,4 +209,4 @@ MonoBehaviour:
   target: {fileID: 0}
   soul: {fileID: 172013033003219771, guid: 9807de3a848880e449188539f415ee62, type: 3}
   endGame: 0
-  experienceToGive: 50
+  experienceToGive: 3

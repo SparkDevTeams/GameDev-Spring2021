@@ -135,6 +135,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
+      propertyPath: atkDamage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
+      propertyPath: dexDamage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: soulCount
       value: 0
       objectReference: {fileID: 0}
@@ -5049,6 +5057,7 @@ MonoBehaviour:
   target: {fileID: 0}
   soul: {fileID: 172013033003219771, guid: 9807de3a848880e449188539f415ee62, type: 3}
   endGame: 1
+  experienceToGive: 0
 --- !u!114 &1194234142
 MonoBehaviour:
   m_ObjectHideFlags: 0

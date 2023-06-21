@@ -28,7 +28,7 @@ public class ItemManager : MonoBehaviour
         collision.gameObject.GetComponent<HealthManager>().addMaxHealth(maxHealth);
         collision.gameObject.GetComponent<move>().addSpeed(speed);
         collision.gameObject.GetComponent<HealthManager>().addHealth(health);
-        collision.gameObject.GetComponent<PlayerStats>().addDamage(damage);
+        collision.gameObject.GetComponent<PlayerStats>().addMeleeDamage(damage);
 
         collision.gameObject.GetComponent<PlayerStats>().spendSouls(cost);
         Destroy(gameObject);
