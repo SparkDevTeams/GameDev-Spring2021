@@ -10,6 +10,10 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int rollSpeed;
     [SerializeField] private int stunTime;
     [SerializeField] private int soulCount;
+    public int currentLevel;
+    public int maxLevel;
+    public int currentExperiencePoints;
+    public int[] levelUpThresholds;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,4 +55,16 @@ public class PlayerStats : MonoBehaviour
     {
         attackDamage += damage;
     }
+
+    public void GainExperience(int experience)
+    {
+        currentExperiencePoints += experience;
+        if (currentLevel < maxLevel && currentExperiencePoints >= levelUpThresholds[currentLevel - 1])
+        {
+            currentLevel++;
+            GetComponent<HealthManager>().heal(HealthManager.staticMaxHealth);
+            // Add more scripts here -> Level up stats permanently, etc
+        }
+    }
+
 }

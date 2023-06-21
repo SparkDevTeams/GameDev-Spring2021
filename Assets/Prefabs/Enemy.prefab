@@ -82,7 +82,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -146,7 +146,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 2.56, y: 2.56}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -203,7 +203,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunTime: 0
   stunned: 0
+  roomIndependent: 0
   hp: 0
   startHp: 12
   target: {fileID: 0}
   soul: {fileID: 172013033003219771, guid: 9807de3a848880e449188539f415ee62, type: 3}
+  endGame: 0
+  experienceToGive: 50

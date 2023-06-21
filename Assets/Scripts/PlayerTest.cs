@@ -27,7 +27,7 @@ public class PlayerTest : MonoBehaviour
 
         if (GetComponent<move>().Mode == "Dead") { return; }
 
-        if (Input.GetButtonDown("Fire2") && canShoot)
+        if (move.gameIsPaused == false && Input.GetButtonDown("Fire2") && canShoot)
         {
             Shoot();
             GetComponent<move>().SetAnimation("Magic", 0.25f, true);
