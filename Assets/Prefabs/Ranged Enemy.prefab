@@ -174,8 +174,7 @@ MonoBehaviour:
   target: {fileID: 0}
   soul: {fileID: 172013033003219771, guid: 9807de3a848880e449188539f415ee62, type: 3}
   endGame: 0
-  playerStats: {fileID: 0}
-  experienceToGive: 50
+  experienceToGive: 5
 --- !u!114 &3325913109804699685
 MonoBehaviour:
   m_ObjectHideFlags: 0

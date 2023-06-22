@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProjectyle : MonoBehaviour
+public class PlayerProjectyle : MonoBehaviour //Player melee projectile
 {
     protected float timeActive = 0;
     [SerializeField]
@@ -29,7 +29,7 @@ public class PlayerProjectyle : MonoBehaviour
 
         if (isPlayerAttack)
         {
-            damage = stats.getDamage();
+            damage = stats.getMeleeDamage();
         }
 
         SetDirection();
@@ -48,9 +48,7 @@ public class PlayerProjectyle : MonoBehaviour
         }
 
         timeActive += Time.deltaTime;
-    }
-
-    
+    }    
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
