@@ -61,6 +61,13 @@ public class PlayerProjectyle : MonoBehaviour //Player melee projectile
                 Destroy(gameObject);
             }
         }
+        if (collision.gameObject.tag == "Chest") {
+            collision.GetComponent<ChestManager>().Damage();
+            if (destroyOnHit)
+            {
+                Destroy(gameObject);
+            }
+        }
         if (collision.name == "Walls") {
             if (destroyOnHit) {
                 Destroy(gameObject);

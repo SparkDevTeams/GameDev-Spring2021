@@ -17,6 +17,7 @@ TagManager:
   - Door
   - EnemySpawner
   - Crystal
+  - Chest
   layers:
   - Default
   - TransparentFX
