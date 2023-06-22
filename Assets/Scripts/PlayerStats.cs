@@ -1,25 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private int health;
     [SerializeField] private int atkDamage; //melee
     [SerializeField] private int dexDamage; //ranged
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private int rollSpeed;
-    [SerializeField] private int stunTime;
     [SerializeField] private int soulCount;
     public int currentLevel;
     public int currentExperiencePoints;
+    public int levelUpCost;
     // Level Up Stats
-    public int bonusATK = 0, bonusDEX = 0, bonusDEF = 0; //ATK for more melee dmg, DEX for more ranged dmg, DEF for reduced dmg taken
+    public int bonusATK = 0, bonusDEX = 0, bonusVIT = 0; //ATK for more melee dmg, DEX for more ranged dmg, VIT for more health
+    public int unusedStatPoints = 0;
+
+    private HealthManager healthManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        healthManager = GetComponent<HealthManager>();
+        levelUpCost = 10 * currentLevel + 10;
     }
 
     // Update is called once per frame
@@ -53,11 +55,6 @@ public class PlayerStats : MonoBehaviour
         return dexDamage;
     }
 
-    public float getMoveSpeed()
-    {
-        return moveSpeed;
-    }
-
     public void addMeleeDamage(int damage)
     {
         atkDamage += damage;
@@ -65,24 +62,28 @@ public class PlayerStats : MonoBehaviour
 
     public void addRangedDamage(int damage)
     {
-        atkDamage += damage;
+        dexDamage += damage;
     }
 
     public void GainExperience(int experience)
     {
         currentExperiencePoints += experience;
-        if (currentExperiencePoints >= 2 * currentLevel + 2) //Exp needed to lvl up increases by 25 each level, starts at 50
+        if (currentExperiencePoints >= levelUpCost)
         {
-            currentLevel++; //Increases level
-            GetComponent<HealthManager>().heal(1); //Heal by 1
-            //Level Up Stats
-            IncreaseStats(0);
-            IncreaseStats(1);
+            currentLevel++;
+            currentExperiencePoints -= levelUpCost;
+            healthManager.heal(1);
+            unusedStatPoints++;
+
+            levelUpCost = 10 * currentLevel + 10;
         }
     }
 
     public void IncreaseStats(int statType)
     {
+        if (unusedStatPoints <= 0)
+            return;
+
         switch (statType)
         {
             case 0:
@@ -96,15 +97,16 @@ public class PlayerStats : MonoBehaviour
                 Debug.Log("IncreaseStats : bonusDEX = " + bonusDEX);
                 break;
             case 2:
-                ++bonusDEF;
-                
-                Debug.Log("IncreaseStats : bonusDEF = " + bonusDEF);
+                ++bonusVIT;
+                healthManager.addMaxHealth(1);
+                Debug.Log("IncreaseStats : bonusDEF = " + bonusVIT);
                 break;
             default:
                 Debug.Log("IncreaseStats Error : INVALID STAT TYPE");
                 break;
-
         }
+
+        unusedStatPoints--;
     }
 
     public int GetBonusStats(int statType)
@@ -118,8 +120,8 @@ public class PlayerStats : MonoBehaviour
                 Debug.Log("GetBonusStats : bonusDEX = " + bonusDEX);
                 return bonusDEX;
             case 2:
-                Debug.Log("GetBonusStats : bonusDEF = " + bonusDEF);
-                return bonusDEF;
+                Debug.Log("GetBonusStats : bonusDEF = " + bonusVIT);
+                return bonusVIT;
             default:
                 Debug.Log("GetBonusStats : INVALID STAT TYPE");
                 return 0;
