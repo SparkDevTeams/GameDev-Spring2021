@@ -414,14 +414,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
-    - target: {fileID: 983599470995280849, guid: 234bb7007e6e6a14fa191736740301be, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 983599470995280849, guid: 234bb7007e6e6a14fa191736740301be, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 983599470995280852, guid: 234bb7007e6e6a14fa191736740301be, type: 3}
       propertyPath: m_RootOrder
       value: 1
