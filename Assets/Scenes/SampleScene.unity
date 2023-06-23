@@ -286,7 +286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theRB: {fileID: 250416866}
   moveSpeed: 4
-  myAnim: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +589,9 @@ MonoBehaviour:
   attackTransform: {fileID: 1238010286}
   attackRadius: 0.8
   damagePower: 10
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &1238010290
 BoxCollider2D:
   m_ObjectHideFlags: 0

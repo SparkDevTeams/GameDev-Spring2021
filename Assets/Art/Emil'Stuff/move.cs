@@ -26,6 +26,11 @@ public class move : MonoBehaviour
     private GameObject hitbox;
     private PlayerStats stats;
 
+    public GameObject bagUI;
+    private bool bagIsOpen = false;
+    public GameObject pausedUI;
+    public static bool gameIsPaused = false;
+
     public string Direction {
         get { return direction; }
     }
@@ -89,12 +94,12 @@ public class move : MonoBehaviour
         else { y = 0; }
 
 
-        if (mode != "Roll" && !Input.GetButton("Fire3")) {
+        if (gameIsPaused == false && mode != "Roll" && !Input.GetButton("Fire3")) {
             rollStart = false;
         }
         
         //Roll Execute
-        if (mode == "Roll" && setTime > 0) {
+        if (gameIsPaused == false && mode == "Roll" && setTime > 0) {
             /*if (direction == "Side")
             {
                 x = rollSpeed * (transform.localScale.x * -1);
@@ -122,7 +127,8 @@ public class move : MonoBehaviour
         }
 
 
-        if (mode != "Idle" && mode != "Walking") {
+        if (gameIsPaused == false && mode != "Idle" && mode != "Walking") 
+        {
             if (Input.GetButtonDown("Fire1") && (setTime <= (0.267f / 8.0f * 4.0f)) && mode != "Hurt")
             {
                 mode = "Attack";
@@ -149,13 +155,20 @@ public class move : MonoBehaviour
             return;
         }
 
+        if (gameIsPaused == false && Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleBag();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
 
         //Set Direction
         changeDirection();
-        
 
-
-        if (Input.GetButtonDown("Fire1") && (mode == "Idle" || mode == "Walk")) {
+        if (gameIsPaused == false && Input.GetButtonDown("Fire1") && (mode == "Idle" || mode == "Walk")) {
             mode = "Attack";
             setTime = 0.267f;
             StartCoroutine(Attack());
@@ -173,7 +186,7 @@ public class move : MonoBehaviour
         //}
 
         //ROLL SET
-        if (Input.GetButton("Fire3")&& !rollStart && (mode == "Idle" || mode == "Walk"))
+        if (gameIsPaused == false && Input.GetButton("Fire3")&& !rollStart && (mode == "Idle" || mode == "Walk"))
         {
             mode = "Roll";
             setTime = 0.222f;
@@ -221,7 +234,8 @@ public class move : MonoBehaviour
         }
 
         //WALK
-        if (mode == "Idle" || mode == "Walk") {
+        if (gameIsPaused == false && mode == "Idle" || mode == "Walk")
+        {
             if (x != 0 && y != 0)
             {
                 mode = "Walk";
@@ -237,7 +251,7 @@ public class move : MonoBehaviour
         }
 
 
-        if (mode != "Hurt")
+        if (gameIsPaused == false && mode != "Hurt")
         {
             rb.velocity = new Vector2(x * speed, y * speed);
         }
@@ -245,15 +259,45 @@ public class move : MonoBehaviour
         animator.Play("Mlafi_" + mode + "_" + direction);
     }
 
+    public void ToggleBag()
+    {
+        if (bagIsOpen == true)
+        {
+            bagUI.SetActive(false);
+            bagIsOpen = false;
+        }
+        else
+        {
+            bagUI.SetActive(true);
+            bagIsOpen = true;
+        }
+    }
+
+    public void TogglePause()
+    {
+        if (gameIsPaused == true)
+        {
+            pausedUI.SetActive(false);
+            gameIsPaused = false;
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            pausedUI.SetActive(true);
+            gameIsPaused = true;
+            Time.timeScale = 0f;
+        }
+    }
+
     private void changeDirection() {
-        if (x > 0)
+        if (gameIsPaused == false && x > 0)
         {
             x = 1;
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
 
-        if (y != 0)
+        if (gameIsPaused == false && y != 0)
         {
             if (direction == "Side" && x != 0)
             {
@@ -281,7 +325,7 @@ public class move : MonoBehaviour
             direction = "Front";
             transform.localScale = new Vector3(1, 1, 1);
         }*/
-        else if (x != 0)
+        else if (gameIsPaused == false && x != 0)
         {
             direction = "Side";
             if (x < 0)
@@ -314,7 +358,7 @@ public class move : MonoBehaviour
 
 
             //Cancel into dodge roll
-            if (Input.GetButton("Fire3") && !rollStart && setTime < (0.067f))
+            if (gameIsPaused == false && Input.GetButton("Fire3") && !rollStart && setTime < (0.067f))
             {
 
                 mode = "Roll";

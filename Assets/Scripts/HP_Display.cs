@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class HP_Display : MonoBehaviour
 {
-    const int MaxHeartsInRow = 10;
     private Coroutine update;
     [SerializeField]
     private Sprite[] HeartSprites;
@@ -15,10 +14,11 @@ public class HP_Display : MonoBehaviour
     private List<Image> hearts;
 
     [SerializeField]
-    private int maxHP = 12; //start with 3 hearts
+    private int maxHP = 5; //start with 5 hearts
     private int hp = 0; // displayed HP
     [SerializeField]
-    private int targetHp = 12;//for winding down hp
+    private int targetHp = 5;//for winding down hp
+
 
     // Start is called before the first frame update
     void Awake()
@@ -28,27 +28,6 @@ public class HP_Display : MonoBehaviour
         hp = 0;
         DisplayHearts();
         update = StartCoroutine(ChangeLife());
-    }
-
-    public void UpdateHealth(int maxHP, int hp)
-    {
-        //Corrections
-        if (maxHP <= 3)
-        {
-            maxHP = 4;
-        }
-
-        if (maxHP % 4 != 0)
-        {
-            maxHP += (4 - (maxHP % 4));
-        }
-
-        //Assignments
-        this.maxHP = maxHP;
-
-        DisplayHearts();
-
-        UpdateHealth(hp);
     }
 
     public void UpdateHealth(int hp)
@@ -108,12 +87,12 @@ public class HP_Display : MonoBehaviour
 
     //Creates Hearts
     private void DisplayHearts() {
-        for (int i = 1; i < maxHP/4; i++) {
+        for (int i = 1; i < maxHP; i++) {
             if (hearts.Count <= i) { //Stop Duplicates
                 //Instantiate Heart
                 GameObject g = Instantiate<GameObject>(HeartPrefab.gameObject);
                 g.GetComponent<RectTransform>().SetParent(this.GetComponent<RectTransform>());
-                g.GetComponent<RectTransform>().localPosition = new Vector2(11 * (i % MaxHeartsInRow) , -11 * (i/MaxHeartsInRow));
+                g.GetComponent<RectTransform>().localPosition = new Vector2(11 * i , 0);
                 g.GetComponent<RectTransform>().localScale = Vector2.one;
                 hearts.Add(g.GetComponent<Image>());
             }
@@ -123,33 +102,34 @@ public class HP_Display : MonoBehaviour
     //Updates Displayed Hearts
     void UpdateHearts() {
 
-        for (int i = 1; i <= hearts.Count; i++) {
+        for (int i = 0; i < hearts.Count; i++) {
             //Color Correct Hearts
-            if (i > maxHP / 4)
+            if (i >= maxHP)
             {
-                hearts[i - 1].color = Color.clear;
+                hearts[i].color = Color.clear;
             }
             else
             {
-                hearts[i - 1].color = Color.white;
+                hearts[i].color = Color.white;
             }
 
             //Full Heart
-            if (hp >= i*4) {
-                hearts[i - 1].sprite = HeartSprites[4];
-                continue;
+            if (hp > i) {
+                hearts[i].sprite = HeartSprites[0];
             }
-
-            //Partial Heart aka Last Heart
-            if (hp < i*4 && hp > (i-1)*4)
+            else
             {
-                hearts[i - 1].sprite = HeartSprites[hp % 4];
-                continue;
+                hearts[i].sprite = HeartSprites[4];
             }
-                hearts[i - 1].sprite = HeartSprites[0];
-            
-
-
         }
     }
+
+    private void Update()
+    {
+        if (targetHp > maxHP)
+        {
+            targetHp = maxHP;
+        }
+    }
+
 }

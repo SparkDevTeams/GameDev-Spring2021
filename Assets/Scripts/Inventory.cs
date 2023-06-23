@@ -38,12 +38,12 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("ShiftRight"))
+        if (move.gameIsPaused == false && Input.GetButtonDown("ShiftRight"))
         {
             Debug.Log("Shift Items Right");
             activeSlot = (activeSlot + 1) % slots.Count;
         }
-        else if (Input.GetButtonDown("ShiftLeft")) {
+        else if (move.gameIsPaused == false && Input.GetButtonDown("ShiftLeft")) {
             Debug.Log("Shift Items Left");
             if (activeSlot > 0)
             {
@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("UseItem")  && slots.Count > 0 && (gameObject.GetComponent<move>().Mode == "Idle" || gameObject.GetComponent<move>().Mode == "Walk")) {
+        if (move.gameIsPaused == false && Input.GetButtonDown("UseItem")  && slots.Count > 0 && (gameObject.GetComponent<move>().Mode == "Idle" || gameObject.GetComponent<move>().Mode == "Walk")) {
             Debug.Log("Execute Item Effect");
             StartCoroutine( UseItem(slots[activeSlot]));
             slots.RemoveAt(activeSlot);
