@@ -250,6 +250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4248948148176905322, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
 --- !u!4 &43005738 stripped
@@ -2433,9 +2437,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2160847643158374103, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750470360849124966, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378857749863955041, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4877020150538188647, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
       propertyPath: m_LocalPosition.z
       value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626274312048977893, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626274312048977893, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 983599470995280849, guid: 46bd5f7747f889e4290db99b862bd282, type: 3}
+    - target: {fileID: 5626274312048977893, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3325913109804699686, guid: bfcc2597aa4aeea43b60ac9c5d35548f, type: 3}
+    - target: {fileID: 5626274312048977893, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: enemySpawnPoints.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626274312048977893, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: enemySpawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626274312048977893, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: enemySpawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626274312048977893, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: enemySpawnPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626274312048977893, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: enemySpawnPoints.Array.data[3]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5705186342619356750, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
       propertyPath: m_Name
@@ -5276,6 +5324,10 @@ PrefabInstance:
     - target: {fileID: 7457422095009165835, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
       propertyPath: m_Tiles.Array.data[239].second.m_TileObjectToInstantiateIndex
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567608095213491582, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 582423b81b5bebb45b06c7cd9da71074, type: 3}
