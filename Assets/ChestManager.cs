@@ -8,7 +8,7 @@ public class ChestManager : MonoBehaviour
     public int hp, startHp = 3;
     private bool isInvincible = false;
     private float invincibleTimer;
-    [SerializeField] private GameObject soul; //change this to weap upgrades
+    [SerializeField] private GameObject[] possibleUpgrades;
     SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
@@ -36,8 +36,12 @@ public class ChestManager : MonoBehaviour
             hp--;
             if (hp <= 0)
             {
+                //Choose stuff to drop
+                int dropIndex = Random.Range(0, possibleUpgrades.Length);
+                GameObject upgradeToDrop = possibleUpgrades[dropIndex];
+
                 //Drop stuff
-                Instantiate(soul, transform.position, transform.rotation);
+                Instantiate(upgradeToDrop, transform.position, transform.rotation);
 
                 //Destroy itself
                 Destroy(gameObject);
