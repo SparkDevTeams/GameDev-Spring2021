@@ -27,21 +27,13 @@ public class LayoutManager : MonoBehaviour
         templates = FindObjectOfType<RoomTemplates>();
 
         if (GetComponentInParent<AddRoom>().getIsDeadend())
-        {
-            
+        {            
             if (!templates.getBossSpawned())
             {
                 layoutList = generateBossLayoutList();
                 templates.setBossSpawned(true);
                 specialSpawned = true;
                 Debug.Log("Boss room should spawn");
-            }
-            else if (!templates.getShopSpawned())
-            {
-                layoutList = generateShopLayoutList();
-                templates.setShopSpawned(true);
-                specialSpawned = true;
-                Debug.Log("Shop room should spawn");
             }
             else if (!templates.getItemSpawned())
             {
@@ -50,6 +42,13 @@ public class LayoutManager : MonoBehaviour
                 specialSpawned = true;
                 Debug.Log("Item room should spawn");
             }
+            // else if (!templates.getShopSpawned())
+            // {
+            //     layoutList = generateShopLayoutList();
+            //     templates.setShopSpawned(true);
+            //     specialSpawned = true;
+            //     Debug.Log("Shop room should spawn");
+            // }
             else
             {
                 layoutList = generateLayoutList();

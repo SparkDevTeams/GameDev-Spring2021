@@ -10,6 +10,7 @@ public class PlayerTest : MonoBehaviour
     public bool canShoot;
 
     [SerializeField]private float arrowCooldown;
+    public float arrowCooldownMultiplier;
     private float currentTimer;
 
     private PlayerManager player;
@@ -19,6 +20,7 @@ public class PlayerTest : MonoBehaviour
         player = GetComponent<PlayerManager>();
         canShoot = true;
         currentTimer = 0;
+        arrowCooldownMultiplier = 1;
    }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class PlayerTest : MonoBehaviour
         {
             currentTimer += Time.deltaTime;
 
-            if(currentTimer >= arrowCooldown)
+            if(currentTimer >= arrowCooldown * arrowCooldownMultiplier)
             {
                 canShoot = true;
                 currentTimer = 0;

@@ -75,6 +75,9 @@ public class HealthManager : MonoBehaviour
     public void heal(int heal)
     {
         health += heal;
+        if (health > maxHealth)
+            health = maxHealth;
+        
         health_display.UpdateHealth(health);
     }
 
