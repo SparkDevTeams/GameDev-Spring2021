@@ -17,11 +17,16 @@ public class PlayerStats : MonoBehaviour
 
     private HealthManager healthManager;
 
+    //Upgrades
+
+    public List<(string, string)> upgradeDescriptions; // Item1 is the name of upgrade, Item2 is the effect of upgrade
+
     // Start is called before the first frame update
     void Start()
     {
         healthManager = GetComponent<HealthManager>();
         levelUpCost = 10 * currentLevel + 10;
+        upgradeDescriptions = new List<(string, string)>();
     }
 
     // Update is called once per frame

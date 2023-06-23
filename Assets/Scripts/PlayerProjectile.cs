@@ -43,7 +43,7 @@ public class PlayerProjectile : MonoBehaviour //Player ranged projectile
 
     void OnTriggerEnter2D (Collider2D hitInfo)
     {
-        if(hitInfo.tag == "Enemy" || hitInfo.name == "Walls" || hitInfo.tag == "Door" || hitInfo.name == "Layout Walls") // test wall collider 
+        if(hitInfo.tag == "Enemy" || hitInfo.name == "Walls" || hitInfo.tag == "Door" || hitInfo.name == "Layout Walls" || hitInfo.name == "Chest") // test wall collider 
         {
             Destroy(gameObject);
 
@@ -51,12 +51,13 @@ public class PlayerProjectile : MonoBehaviour //Player ranged projectile
             {
                 hitInfo.GetComponent<EnemyManager>().Damage(power);
             }
-            
 
-        }    
+            if (hitInfo.tag == "Chest") {
+                hitInfo.GetComponent<ChestManager>().Damage();
+            }
+        }
 
-
-            // implement health manager interactions
+        // implement health manager interactions
     }
     
 }

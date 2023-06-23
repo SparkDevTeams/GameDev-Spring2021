@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -942483267051202488, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: arrowCooldown
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: maxLevel
