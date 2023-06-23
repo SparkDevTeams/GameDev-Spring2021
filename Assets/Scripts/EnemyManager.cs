@@ -17,7 +17,7 @@ public class EnemyManager : MonoBehaviour
 
     private DoorManager doors = null;
     private RoomTemplates room = null;
-    [SerializeField] private GameObject soul;
+    [SerializeField] private GameObject lootItem;
     [SerializeField] private bool endGame = false;
 
     public int experienceToGive;
@@ -81,7 +81,7 @@ public class EnemyManager : MonoBehaviour
                     StartCoroutine(GameOver());
                 }
                 else {
-                    Instantiate(soul, transform.position, transform.rotation);
+                    Instantiate(lootItem, transform.position, transform.rotation);
                     Destroy(gameObject);
                     playerStats.GainExperience(experienceToGive);
                 }
