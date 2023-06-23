@@ -206,4 +206,6 @@ MonoBehaviour:
   hp: 0
   startHp: 12
   target: {fileID: 0}
-  soul: {fileID: 172013033003219771, guid: 9807de3a848880e449188539f415ee62, type: 3}
+  lootItem: {fileID: 172013033003219771, guid: b3cd7a400a38a4b3fba87dab3e9564ee, type: 3}
+  endGame: 0
+  experienceToGive: 3
