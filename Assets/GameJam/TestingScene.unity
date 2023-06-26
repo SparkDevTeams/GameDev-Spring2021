@@ -7837,11 +7837,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1842219440555386677, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: maxHP
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1842219440555386677, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: targetHp
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1842219440819303147, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_Pivot.x
