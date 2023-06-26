@@ -130,70 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -942483267051202488, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: arrowCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: maxLevel
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: soulCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: attackDamage
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: currentExperiencePoints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.data[0]
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.data[1]
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.data[2]
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.data[3]
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.data[4]
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.data[5]
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.data[6]
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.data[7]
-      value: 800
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.data[8]
-      value: 900
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: levelUpThresholds.Array.data[9]
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 4248948148176905316, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -257,10 +193,6 @@ PrefabInstance:
     - target: {fileID: 4248948148176905319, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248948148176905322, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
@@ -5650,6 +5582,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4248948148176905319, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
   m_PrefabInstance: {fileID: 33216049}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1231618916 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3591526707943114682, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
+  m_PrefabInstance: {fileID: 33216049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231618915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66c2696ce2d54141999eaeea0b1aaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1231618926 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4248948148176905318, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
@@ -7616,6 +7559,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -16.666666
       objectReference: {fileID: 0}
+    - target: {fileID: 656837696, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 1231618916}
     - target: {fileID: 806375816, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
