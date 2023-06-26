@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 172013033003219765}
   - component: {fileID: 172013033003219767}
   m_Layer: 0
-  m_Name: LootItem
+  m_Name: Shroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 172013033003219771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.201, y: -2.791, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.015}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.0015}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f6e7f16894fb343e880574e849e7dbf2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f2b66607bb734e9fb10b53ee873b339, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
