@@ -7029,7 +7029,7 @@ MonoBehaviour:
   hp: 0
   startHp: 500
   target: {fileID: 0}
-  soul: {fileID: 172013033003219771, guid: 9807de3a848880e449188539f415ee62, type: 3}
+  lootItem: {fileID: 0}
   endGame: 1
   experienceToGive: 0
 --- !u!114 &1194234142
@@ -10377,6 +10377,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 55357364, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5401593280798183604}
+    - target: {fileID: 55357364, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042458158, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131268861, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602939877, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5401593280798183604}
+    - target: {fileID: 1602939877, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701836772, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1231618926}
+    - target: {fileID: 1701836772, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835524461, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1231618926}
+    - target: {fileID: 1835524461, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TogglePause
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042783063, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1842219440555386677, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: maxHP
       value: 20
@@ -10476,6 +10520,10 @@ PrefabInstance:
     - target: {fileID: 1842219440819303151, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3305583459512899617, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4749545141507947226, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_Color.b

@@ -185,7 +185,7 @@ MonoBehaviour:
   maxHealth: 100
   attackTransform: {fileID: 983599470995280852}
   attackRadius: 0.5
-  damagePower: 8
+  damagePower: 1
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
