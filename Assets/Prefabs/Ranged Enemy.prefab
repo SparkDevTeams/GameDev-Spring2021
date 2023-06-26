@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 0.25
-  contactDamage: 4
+  contactDamage: 1
 --- !u!1 &3325913110209924800
 GameObject:
   m_ObjectHideFlags: 0
