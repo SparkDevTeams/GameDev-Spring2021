@@ -37,6 +37,11 @@ public class move : MonoBehaviour
     public GameObject pausedUI;
     public static bool gameIsPaused = false;
 
+    public Text boarTrotterText;
+    int boarTrotterCount;
+    public Text shroomText;
+    int shroomCount;
+
     public string Direction {
         get { return direction; }
     }
@@ -51,6 +56,8 @@ public class move : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        boarTrotterCount = 0;
+        shroomCount = 0;
     }
 
     public void SetAnimation( string mode, float cooldown, bool stop = true) {
@@ -449,5 +456,21 @@ public class move : MonoBehaviour
     public void addSpeed(float speedUp)
     {
         speed += speedUp;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "BoarTrotter(Clone)")
+        {
+            boarTrotterCount += 1;
+            boarTrotterText.text = "Boar Trotter: " + boarTrotterCount;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.name == "Shroom(Clone)")
+        {
+            shroomCount += 1;
+            shroomText.text = "Shroom: " + shroomCount;
+            Destroy(collision.gameObject);
+        }
     }
 }
