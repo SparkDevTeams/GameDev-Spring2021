@@ -38,9 +38,9 @@ public class move : MonoBehaviour
     public static bool gameIsPaused = false;
 
     public Text boarTrotterText;
-    int boarTrotterCount;
+    public int boarTrotterCount;
     public Text shroomText;
-    int shroomCount;
+    public int shroomCount;
 
     public string Direction {
         get { return direction; }

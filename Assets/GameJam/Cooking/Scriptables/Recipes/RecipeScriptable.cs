@@ -6,5 +6,6 @@ using UnityEngine;
 public class RecipeScriptable : ScriptableObject
 {
     public List<IngredientScriptable> ingredientsList;
-    //output
+    public string outputDishName;
+    public Sprite outputDishSprite;
 }
