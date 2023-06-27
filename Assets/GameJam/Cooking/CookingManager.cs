@@ -50,6 +50,10 @@ public class CookingManager : MonoBehaviour
 
             progressArrow.fillAmount = cookTime / totalCookTimer;
         }
+        else
+        {
+            progressArrow.fillAmount = 0;
+        }        
     }
 
     public void TryAddIngredient(IngredientScriptable ingredient)
