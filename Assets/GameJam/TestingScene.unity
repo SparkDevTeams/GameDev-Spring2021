@@ -7613,7 +7613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 957860266, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 24.125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 957860266, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7805,7 +7805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2100463533, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 24.125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2100463533, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7829,7 +7829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2123757762, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 24.125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2123757762, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7938,6 +7938,26 @@ PrefabInstance:
     - target: {fileID: 3305583459512899617, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439573206302646235, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_Text
+      value: 'Bak Kut Teh: 0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439573206417922725, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_Text
+      value: 'Dragon Heads: 0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439573206432705413, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_Text
+      value: 'Dragon Dish (Name TBC): 0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439573206464666293, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_Text
+      value: 'Dragon Tails: 0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439573206536286180, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_Text
+      value: 'Dragon Scales: 0'
       objectReference: {fileID: 0}
     - target: {fileID: 3509032699537969944, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchorMax.y

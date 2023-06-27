@@ -31,6 +31,8 @@ public class move : MonoBehaviour
     private bool bagIsOpen = false;
     public GameObject pausedUI;
     public static bool gameIsPaused = false;
+    public GameObject cookingUI;
+    private bool cookingInProgress = false;
 
     public Text boarTrotterText;
     int boarTrotterCount;
@@ -448,6 +450,20 @@ public class move : MonoBehaviour
             shroomCount += 1;
             shroomText.text = "Shroom: " + shroomCount;
             Destroy(collision.gameObject);
+        }
+    }
+
+    public void ToggleCooking()
+    {
+        if (cookingInProgress == true)
+        {
+            cookingUI.SetActive(false);
+            cookingInProgress = false;
+        }
+        else
+        {
+            cookingUI.SetActive(true);
+            cookingInProgress = true;
         }
     }
 }
