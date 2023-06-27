@@ -19,6 +19,7 @@ public class Bag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Stats counters
         ATKCounter.text = "ATK : " + playerStats.bonusATK;
         DEXCounter.text = "DEX : " + playerStats.bonusDEX;
         VITCounter.text = "VIT : " + playerStats.bonusVIT;

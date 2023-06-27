@@ -29,15 +29,20 @@ public class move : MonoBehaviour
 
     public GameObject bagUI;
     private bool bagIsOpen = false;
+    [SerializeField]
+    private GameObject statsPage, cookingPage;
+    [SerializeField]
+    Text statsToggleButtonText;
+    private bool statsOpen = true; //if false then cooking open
     public GameObject pausedUI;
     public static bool gameIsPaused = false;
     public GameObject cookingUI;
     private bool cookingInProgress = false;
 
     public Text boarTrotterText;
-    int boarTrotterCount;
+    public int boarTrotterCount;
     public Text shroomText;
-    int shroomCount;
+    public int shroomCount;
 
     public string Direction {
         get { return direction; }
@@ -280,6 +285,24 @@ public class move : MonoBehaviour
         {
             bagUI.SetActive(true);
             bagIsOpen = true;
+        }
+    }
+
+    public void ToggleStats()
+    {
+        if (statsOpen == true)
+        {
+            statsPage.SetActive(false);
+            cookingPage.SetActive(true);
+            statsOpen = false;
+            statsToggleButtonText.text = "C";
+        }
+        else
+        {
+            cookingPage.SetActive(false);
+            statsPage.SetActive(true);
+            statsOpen = true;
+            statsToggleButtonText.text = "S";
         }
     }
 
