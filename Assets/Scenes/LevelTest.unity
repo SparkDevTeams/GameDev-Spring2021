@@ -8115,6 +8115,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -83.33334
       objectReference: {fileID: 0}
+    - target: {fileID: 377490974, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1231618916}
+    - target: {fileID: 377490974, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseStats
+      objectReference: {fileID: 0}
     - target: {fileID: 507199156, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -8331,6 +8339,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -16.666668
       objectReference: {fileID: 0}
+    - target: {fileID: 1661764930, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1231618916}
+    - target: {fileID: 1661764930, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseStats
+      objectReference: {fileID: 0}
     - target: {fileID: 1701836772, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -8354,6 +8370,14 @@ PrefabInstance:
     - target: {fileID: 1828742576, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828742577, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1231618916}
+    - target: {fileID: 1828742577, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseStats
       objectReference: {fileID: 0}
     - target: {fileID: 1835524461, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
