@@ -11,6 +11,7 @@ public class HealthManager : MonoBehaviour
     public static int staticMaxHealth;
     private HP_Display health_display;
     private float invincibiltyTime;
+    public GameObject loseScreen;
 
     void Start()
     {
@@ -109,6 +110,7 @@ public class HealthManager : MonoBehaviour
 
     public IEnumerator GameOver() {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("MainMenu1");
+        loseScreen.SetActive(true);
+        //SceneManager.LoadScene("MainMenu1");
     }
 }
