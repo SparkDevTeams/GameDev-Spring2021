@@ -9,8 +9,7 @@ public enum ITEM {
     EARTH,
     SHADOW,
     POTION,
-    bakKutTeh,
-    dragonDish
+    bakKutTeh
 }
 
 public class Inventory : MonoBehaviour
