@@ -49,7 +49,7 @@ public class DragonBossManager : MonoBehaviour
         }
 
         //check phase
-        if (manager.hp / manager.startHp < 0.5f && phaseNum < 2) //50% hp left
+        if ((float)manager.hp / (float)manager.startHp < 0.5f && phaseNum < 2) //50% hp left
         {
             phaseNum = 2;
             newPhase = true;
@@ -154,23 +154,25 @@ public class DragonBossManager : MonoBehaviour
         {
             choose = 3;
             newPhase = false;
-        }
+        }        
+
+        attacking = true;
 
         switch (choose) {
             case 0:
             case 1:
                 //Breath attack
+                attacking = false;
                 break;
             case 2:
                 //Fireball attack
+                attacking = false;
                 break;
             case 3:
                 //Fly attack
                 flyAttack.StartFlying(Random.Range(0, flyAttack.FlightPatternListSize()));
                 break;
         }
-
-        attacking = true;
 
     }
 }

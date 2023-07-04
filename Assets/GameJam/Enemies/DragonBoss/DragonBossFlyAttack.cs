@@ -175,7 +175,7 @@ public class DragonBossFlyAttack : MonoBehaviour
         currPointIndex = 0;
         rb.velocity = Vector2.zero;
         rb.isKinematic = false;
-        GetComponent<BatBossManager>().attacking = false;
+        GetComponent<DragonBossManager>().attacking = false;
     }
 
     private void Attack() 

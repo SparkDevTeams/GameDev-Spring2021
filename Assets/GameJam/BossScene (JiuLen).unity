@@ -6390,7 +6390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTeleported: 0
   bossRoom: {fileID: 1243568566}
-  bm: {fileID: 0}
+  bm: {fileID: 1194234143}
 --- !u!4 &1064249763
 Transform:
   m_ObjectHideFlags: 0
@@ -10251,6 +10251,14 @@ PrefabInstance:
     - target: {fileID: 724903924914115064, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: IngredientScriptable, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842219440555386677, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842219440555386677, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: targetHp
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1842219440819303147, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_Pivot.x
