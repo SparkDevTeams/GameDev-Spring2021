@@ -209,7 +209,7 @@ PrefabInstance:
     - target: {fileID: 4248948148176905318, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: pausedUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1390414739}
     - target: {fileID: 4248948148176905318, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: statsPage
       value: 
@@ -6987,6 +6987,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 1466867816, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501216156, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1508180764, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -8007,6 +8015,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1018531914, guid: 854c868ef70b307459e74f3b96119994, type: 3}
   m_PrefabInstance: {fileID: 1390414732}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1390414739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3066351210071131250, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+  m_PrefabInstance: {fileID: 1390414732}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1411031345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8534,6 +8547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 6
   cookingManager: {fileID: 1887423901}
+  startingScreen: {fileID: 0}
 --- !u!4 &1709329378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1716916561216402655, guid: 0b451705063b3d84a86fb4b9537ed9d1, type: 3}

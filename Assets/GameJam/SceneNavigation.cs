@@ -8,6 +8,7 @@ public class SceneNavigation : MonoBehaviour
     private Inventory inventory;
     public ITEM itemType;
     public CookingManager cookingManager;
+    public GameObject startingScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,6 @@ public class SceneNavigation : MonoBehaviour
     {
 
     }
-
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -185,7 +185,7 @@ PrefabInstance:
     - target: {fileID: 4248948148176905318, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: pausedUI
       value: 
-      objectReference: {fileID: 2042783060}
+      objectReference: {fileID: 1096442932}
     - target: {fileID: 4248948148176905318, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: shroomText
       value: 
@@ -4986,6 +4986,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc876de0b7208ad4e8db1154ff57f8e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1096442932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3066351210071131250, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+  m_PrefabInstance: {fileID: 2118557090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1194234134 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2124210134674773864, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
@@ -6604,11 +6609,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 67523724400939956, guid: 35ad6157a954d0041a4e6a21b7d85e6c, type: 3}
   m_PrefabInstance: {fileID: 2001627792}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2042783060 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2042783060, guid: 854c868ef70b307459e74f3b96119994, type: 3}
-  m_PrefabInstance: {fileID: 2118557090}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2103306871 stripped
 GameObject:
