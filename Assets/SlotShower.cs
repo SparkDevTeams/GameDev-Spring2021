@@ -10,6 +10,8 @@ public class SlotShower : MonoBehaviour
     public Sprite earthImg;
     public Sprite shadowImg;
     public Sprite potionImg;
+    public Sprite bakKutTehImg;
+    public Sprite dragonDishImg;
 
     private Inventory inventory;
 
@@ -123,6 +125,10 @@ public class SlotShower : MonoBehaviour
                 break;
             case ITEM.POTION:
                 img.sprite = potionImg;
+                img.color = Color.white;
+                break;
+            case ITEM.bakKutTeh:
+                img.sprite = bakKutTehImg;
                 img.color = Color.white;
                 break;
             default:

@@ -280,7 +280,7 @@ PrefabInstance:
     - target: {fileID: 4248948148176905318, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: pausedUI
       value: 
-      objectReference: {fileID: 1590311354}
+      objectReference: {fileID: 2034200292}
     - target: {fileID: 4248948148176905318, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: statsPage
       value: 
@@ -6731,6 +6731,7 @@ MonoBehaviour:
   lootItem: {fileID: 0}
   endGame: 1
   experienceToGive: 0
+  winScreen: {fileID: 0}
 --- !u!114 &1194234142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7995,11 +7996,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576390043}
   m_CullTransparentMesh: 1
---- !u!1 &1590311354 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2042783060, guid: 854c868ef70b307459e74f3b96119994, type: 3}
-  m_PrefabInstance: {fileID: 2034200289}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1643624448
 GameObject:
   m_ObjectHideFlags: 0
@@ -8928,6 +8924,8 @@ MonoBehaviour:
   playerMove: {fileID: 33216050}
   totalCookTimer: 5
   progressArrow: {fileID: 1576390045}
+  bakKutTehText: {fileID: 0}
+  bakKutTehCount: 0
 --- !u!4 &1951084508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1716916561216402655, guid: 0b451705063b3d84a86fb4b9537ed9d1, type: 3}
@@ -9497,6 +9495,14 @@ PrefabInstance:
     - target: {fileID: 1423711392, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -52.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466867816, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501216156, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1508180764, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10372,6 +10378,11 @@ RectTransform:
 --- !u!224 &2034200291 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1399458481, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+  m_PrefabInstance: {fileID: 2034200289}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2034200292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3066351210071131250, guid: 854c868ef70b307459e74f3b96119994, type: 3}
   m_PrefabInstance: {fileID: 2034200289}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2055986139

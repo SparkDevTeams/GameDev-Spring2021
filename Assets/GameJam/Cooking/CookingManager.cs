@@ -30,9 +30,13 @@ public class CookingManager : MonoBehaviour
 
     public Image progressArrow;
 
+    public Text bakKutTehText;
+    public int bakKutTehCount;
+
     void Start()
     {
         cookTime = totalCookTimer;
+        bakKutTehCount = 0;
     }
 
     void Update()
@@ -216,6 +220,8 @@ public class CookingManager : MonoBehaviour
         {
             case "BakKutTeh":
                 //Add BakKutTeh here
+                bakKutTehCount += 1;
+                bakKutTehText.text = "Bak Kut Teh: " + bakKutTehCount;
                 Debug.Log("Added BKT");
                 break;
         }
