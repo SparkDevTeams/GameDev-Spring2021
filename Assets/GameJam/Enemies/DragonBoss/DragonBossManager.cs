@@ -141,18 +141,20 @@ public class DragonBossManager : MonoBehaviour
     }
 
     public void chooseAttack() {
-        //phase 1, 100% breath attack
-        //phase 2, 50% breath attack, 50% fireballs
         //fly attack when enter new phase
-        int choose = Random.Range(0, 2);
+        int choose;
         if (phaseNum > 1)
         {
-            ++choose;
+            choose = Random.Range(0, 3);
+        }
+        else
+        {
+            choose = Random.Range(0, 2);
         }
 
         if (newPhase)
         {
-            choose = 3;
+            choose = 4;
             newPhase = false;
         }        
 
@@ -160,15 +162,18 @@ public class DragonBossManager : MonoBehaviour
 
         switch (choose) {
             case 0:
-            case 1:
                 //Breath attack
+                attacking = false;
+                break;
+            case 1:
+                //Tail attack
                 attacking = false;
                 break;
             case 2:
                 //Fireball attack
                 attacking = false;
                 break;
-            case 3:
+            case 4:
                 //Fly attack
                 flyAttack.StartFlying(Random.Range(0, flyAttack.FlightPatternListSize()));
                 break;
