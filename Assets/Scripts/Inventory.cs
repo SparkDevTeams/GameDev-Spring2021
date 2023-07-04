@@ -149,6 +149,9 @@ public class Inventory : MonoBehaviour
                 //Increase HP
                 GetComponent<HealthManager>().heal(12);
                 break;
+            case ITEM.bakKutTeh:
+                //Put Food Buff Here
+                break;
         }
     }
 
