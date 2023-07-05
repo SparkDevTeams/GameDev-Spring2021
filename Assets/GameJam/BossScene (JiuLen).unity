@@ -5881,6 +5881,23 @@ MonoBehaviour:
   firePoint: {fileID: 3921454215924318562}
   homingProjPrefab: {fileID: 2650592146098922914, guid: 2453e1d964dc0a44687e36df924d1550, type: 3}
   shootTime: 0.25
+--- !u!114 &1194234136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194234134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2169dd52874a19e4490642e8ae047823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTime: 1.5
+  delayTime: 5
+  fireballTime: 1
+  fireballOrigin: {fileID: 0}
+  fireballPrefab: {fileID: 2650592146098922914, guid: c82b37d6ae8c50349af625f28d273feb, type: 3}
 --- !u!114 &1194234143 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1194234143, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}

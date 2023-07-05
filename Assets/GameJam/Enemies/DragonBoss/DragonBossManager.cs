@@ -10,16 +10,14 @@ public class DragonBossManager : MonoBehaviour
     private DragonBossFlyAttack flyAttack;
     private DragonBossTailAttack tailAttack;
     private EnemyManager manager;
-    private bool invincible = false;
     [SerializeField]
     private bool active = false;
     
     public bool attacking = false;
     
-    private float flyTimer = 0;
     private float attackTimer = 0;
-    private float attackTime = 2.0f;
-    private float waitTime = 1.0f;
+    [SerializeField] private float attackTime = 2.0f;
+    [SerializeField] private float waitTime = 1.0f;
     private float waitTimer = 0.0f;
     private Rigidbody2D rb;
     private BatBossAnimator animator;
@@ -27,6 +25,7 @@ public class DragonBossManager : MonoBehaviour
     private float walkSpeed = 6.5f;
     private int phaseNum = 1;
     private bool newPhase = true;
+    private bool fireballed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +50,17 @@ public class DragonBossManager : MonoBehaviour
         }
 
         //check phase
-        if ((float)manager.hp / (float)manager.startHp < 0.5f && phaseNum < 2) //50% hp left
+        if ((float)manager.hp / (float)manager.startHp <= 0.5f && phaseNum < 2) //10% hp left
+        {
+            phaseNum = 4;
+            newPhase = true;
+        }
+        else if ((float)manager.hp / (float)manager.startHp <= 0.25f && phaseNum < 2) //25% hp left
+        {
+            phaseNum = 3;
+            newPhase = true;
+        }
+        else if ((float)manager.hp / (float)manager.startHp <= 0.5f && phaseNum < 2) //50% hp left
         {
             phaseNum = 2;
             newPhase = true;
@@ -144,28 +153,40 @@ public class DragonBossManager : MonoBehaviour
 
     public void chooseAttack() {
         //fly attack when enter new phase
-        int choose = Random.Range(0, 2);
+        int choose = Random.Range(0, 3);
 
         if (newPhase)
         {
             choose = 4;
             newPhase = false;
-        }        
+        }
+        else if (!fireballed && phaseNum >= 2)
+        {
+            choose = 3;
+        }   
 
         attacking = true;
 
+        //Priority : Fly->Fireball->Tail/Laser
+        //Laser twice as common as Tail
+        //Fly happens at start of each phase
+        //Fireball happens at start of phase 2
+
         switch (choose) {
             case 0:
+            case 1:
                 //Laser attack
                 attacking = false;
                 break;
-            case 1:
-                //Tail attack
-                tailAttack.StartAttack(10);
-                break;
             case 2:
+                //Tail attack
+                tailAttack.StartAttack(4 * phaseNum);
+                break;
+            case 3:
                 //Fireball attack
-                attacking = false;
+                fireballed = true;
+
+                fireballAttack.StartAttack();
                 break;
             case 4:
                 //Fly attack
