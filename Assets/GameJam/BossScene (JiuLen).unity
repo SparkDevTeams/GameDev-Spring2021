@@ -870,6 +870,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &451634392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2103306871, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+  m_PrefabInstance: {fileID: 2034200289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &536880628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9535,6 +9540,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1194234141, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: winScreen
+      value: 
+      objectReference: {fileID: 451634392}
     - target: {fileID: 1194234142, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: playerRb
       value: 
