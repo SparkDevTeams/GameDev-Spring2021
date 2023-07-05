@@ -45,7 +45,7 @@ public class DragonBossFireballAttack : MonoBehaviour
                 Vector3 targetPos = playerTarget.position;
 
                 //Shoot fireball
-                Shoot(true, targetPos, 5);
+                Shoot(true, targetPos, 2.5f);
 
                 fireballTimer = 0;
             }
@@ -85,6 +85,7 @@ public class DragonBossFireballAttack : MonoBehaviour
             behaviour.falling = true;
             behaviour.targetPosY = TargetPos.y;
             behaviour.speed = Mathf.Abs(-250 - TargetPos.y) / time;
+            behaviour.time = time;
             behaviour.haveShadow = true;
         }
         else
@@ -94,7 +95,7 @@ public class DragonBossFireballAttack : MonoBehaviour
             
             behaviour.falling = false;
             behaviour.targetPosY = -250; //hardcoded based on position of arena and camera
-            behaviour.speed = 50;
+            behaviour.speed = 25;
             behaviour.haveShadow = false;
         }
     }

@@ -7,17 +7,37 @@ public class FireballBehaviour : MonoBehaviour
     public bool falling;
     public float targetPosY;
     public float speed;
+    public float time;
     public GameObject fireCircle;
-    public GameObject shadow;
+    public GameObject shadowObj;
+    private DragonBossShadow shadow;
     public bool haveShadow;
+    private bool started = false;
+
+    private void Start()
+    {
+        shadow = shadowObj.GetComponent<DragonBossShadow>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (!haveShadow && shadow.activeSelf)
+        if (!started)
         {
-            shadow.SetActive(false);
-        }
+            started = true;
+
+            if (haveShadow)
+            {
+                shadow.transform.position = new Vector3(transform.position.x, targetPosY, transform.position.z);
+                shadow.shadowSizeMultiplier = 0.1f;
+                shadow.shadowSizeTarget = 1;
+                shadow.shadowSizeChangeDuration = time * 0.75f;
+            }
+            else
+            {
+                shadowObj.SetActive(false);
+            }
+        }        
 
         //Animation
 
@@ -34,6 +54,11 @@ public class FireballBehaviour : MonoBehaviour
 
                 //Destroy fireball
                 Destroy(this.gameObject);                
+            }
+
+            if (haveShadow)
+            {
+                shadow.transform.position = new Vector3(transform.position.x, targetPosY, transform.position.z);
             }
         }
         else
