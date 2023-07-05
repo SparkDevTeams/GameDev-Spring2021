@@ -33,6 +33,8 @@ public class DragonBossFireballAttack : MonoBehaviour
             {
                 attacking = 2;
                 fireballTimer = 0;
+
+                StopAttack();
             }
         }
         else if (attacking == 2)
