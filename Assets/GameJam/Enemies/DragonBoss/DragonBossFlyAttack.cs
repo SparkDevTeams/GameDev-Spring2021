@@ -10,8 +10,6 @@ public class DragonBossFlyAttack : MonoBehaviour
     [SerializeField]
     private List<BatBossFlyPoint> flightPoints;
     [SerializeField]
-    private BatBossDivePoint divePoint;
-    [SerializeField]
     private List<int> flightPatterns;
     [SerializeField]
     private Vector2 localPositionOffset;
@@ -39,7 +37,20 @@ public class DragonBossFlyAttack : MonoBehaviour
     private bool startingUp = false;
     private bool changingPhases = false;
     private bool patternsActive = false;
+
     private bool diving = false;
+    public float diveTime = 0.5f;
+    private float diveTimer = 0;
+    public DragonBossShadow shadow;
+    private Vector3 divePoint;
+    //Player position and rigidbody
+    public Transform playerTransform;
+    public Rigidbody2D playerRb;
+
+    private bool landing = false;
+    public float landTime = 0.25f;
+    private float landTimer = 0;
+    public DragonBossLandingAttack landingAttack;
 
     void Start()
     {
@@ -94,13 +105,39 @@ public class DragonBossFlyAttack : MonoBehaviour
                 }
             }
         }
-
-        if (diving)
+        else if (diving)
         {
-            if (divePoint.IsPositionLocked())
+            diveTimer += Time.deltaTime;
+            //Adjust shadow
+
+
+            if (diveTimer >= diveTime)
             {
-                transform.position = divePoint.GetCurrentPosition();
+                //Finish dive                
                 diving = false;
+                diveTimer = 0;
+                shadow.fixedShadow = false;
+                transform.position = divePoint;
+
+                //Play landing animation
+                //
+
+                landTimer = 0;
+                landing = true;
+            }
+        }
+        else if (landing)
+        {
+            landTimer += Time.deltaTime;
+
+            if (landTimer >= landTime)
+            {
+                //finish landing, show effect and deal damage
+                landingAttack.StartAttack();
+                
+                GetComponent<DragonBossManager>().attacking = false;
+
+                landing = false;
             }
         }
     }
@@ -133,6 +170,10 @@ public class DragonBossFlyAttack : MonoBehaviour
 
     public void StartFlying(int patternIndex) 
     {
+        //Shadow stuff
+        shadow.shadowSizeTarget = 0.1f;
+        shadow.shadowSizeChangeDuration = totalShortStartUpTime;
+
         ActivatePatterns();
 
         if (patternIndex < 0)
@@ -161,7 +202,19 @@ public class DragonBossFlyAttack : MonoBehaviour
     {
         StopFlying();
         diving = true;
-        divePoint.StartTargeting(manager.target, 1.0f);
+        diveTimer = 0;
+
+        //Find player's position to dive
+        Vector3 playerVelocity = playerRb.velocity;
+        divePoint = playerTransform.position;
+
+        //Shadow stuff
+        shadow.fixedShadow = true;
+        shadow.transform.position = divePoint + shadow.shadowOffset;
+        shadow.shadowSizeTarget = 1;
+        shadow.shadowSizeChangeDuration = diveTime / 2;
+
+        landTimer = 0;
     }
 
     public void StopFlying() 
@@ -175,7 +228,6 @@ public class DragonBossFlyAttack : MonoBehaviour
         currPointIndex = 0;
         rb.velocity = Vector2.zero;
         rb.isKinematic = false;
-        GetComponent<DragonBossManager>().attacking = false;
     }
 
     private void Attack() 
@@ -212,7 +264,7 @@ public class DragonBossFlyAttack : MonoBehaviour
         patternsActive = true;
     }
 
-    private void UpdateAnimation() 
+    private void UpdateAnimation()
     {
         const float FULL_CIRCLE = 360.0f;
 

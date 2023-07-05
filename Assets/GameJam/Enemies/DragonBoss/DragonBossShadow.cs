@@ -6,11 +6,13 @@ public class DragonBossShadow : MonoBehaviour
 {
     [SerializeField]
     Transform body;
-    [SerializeField]
-    Vector3 shadowOffset;
+    public Vector3 shadowOffset;
     [SerializeField]
     Vector3 shadowMaxSize;
-    public float shadowSizeMultiplier = 1.0f;
+    public float shadowSizeMultiplier = 1;
+    public float shadowSizeTarget = 1;
+    public float shadowSizeChangeDuration = 1;
+    public bool fixedShadow = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +24,14 @@ public class DragonBossShadow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = body.position + shadowOffset;
-    }
+        if (!fixedShadow) 
+            transform.position = body.position + shadowOffset;
 
-    void FixedUpdate()
-    {
+        if (shadowSizeMultiplier != shadowSizeTarget)
+        {
+            shadowSizeMultiplier = Mathf.MoveTowards(shadowSizeMultiplier, shadowSizeTarget, (1 / shadowSizeChangeDuration) * Time.deltaTime);
+        }
+
         transform.localScale = shadowMaxSize * shadowSizeMultiplier;
     }
 }

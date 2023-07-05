@@ -8,7 +8,6 @@ public class DragonBossManager : MonoBehaviour
     private DragonBossLaserAttack laserAttack;
     private DragonBossFireballAttack fireballAttack;
     private DragonBossFlyAttack flyAttack;
-    private DragonBossLandingAttack landingAttack;
     private DragonBossTailAttack tailAttack;
     private EnemyManager manager;
     private bool invincible = false;
@@ -37,7 +36,6 @@ public class DragonBossManager : MonoBehaviour
         laserAttack = GetComponent<DragonBossLaserAttack>();
         fireballAttack = GetComponent<DragonBossFireballAttack>();
         flyAttack = GetComponent<DragonBossFlyAttack>();
-        landingAttack = GetComponent<DragonBossLandingAttack>();
         tailAttack = GetComponent<DragonBossTailAttack>();
 
         manager = GetComponent<EnemyManager>();
