@@ -58,7 +58,7 @@ public class DragonBossManager : MonoBehaviour
         }
 
         //Walk
-        if (Vector2.Distance(playerTarget.position, this.transform.position) > 6 && waitTimer <= 0)
+        if (Vector2.Distance(playerTarget.position, this.transform.position) > 25 && waitTimer <= 0)
         {
             if (attacking) 
             { 
@@ -144,15 +144,7 @@ public class DragonBossManager : MonoBehaviour
 
     public void chooseAttack() {
         //fly attack when enter new phase
-        int choose;
-        if (phaseNum > 1)
-        {
-            choose = Random.Range(0, 3);
-        }
-        else
-        {
-            choose = Random.Range(0, 2);
-        }
+        int choose = Random.Range(0, 2);
 
         if (newPhase)
         {
@@ -164,12 +156,12 @@ public class DragonBossManager : MonoBehaviour
 
         switch (choose) {
             case 0:
-                //Breath attack
+                //Laser attack
                 attacking = false;
                 break;
             case 1:
                 //Tail attack
-                attacking = false;
+                tailAttack.StartAttack(10);
                 break;
             case 2:
                 //Fireball attack
