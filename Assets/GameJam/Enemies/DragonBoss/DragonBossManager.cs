@@ -5,10 +5,11 @@ using UnityEngine;
 public class DragonBossManager : MonoBehaviour
 {
     private Transform playerTarget;
-    private DragonBossBreathAttack breathAttack;
+    private DragonBossLaserAttack laserAttack;
     private DragonBossFireballAttack fireballAttack;
     private DragonBossFlyAttack flyAttack;
     private DragonBossLandingAttack landingAttack;
+    private DragonBossTailAttack tailAttack;
     private EnemyManager manager;
     private bool invincible = false;
     [SerializeField]
@@ -32,10 +33,13 @@ public class DragonBossManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
-        breathAttack = GetComponent<DragonBossBreathAttack>();
+
+        laserAttack = GetComponent<DragonBossLaserAttack>();
         fireballAttack = GetComponent<DragonBossFireballAttack>();
         flyAttack = GetComponent<DragonBossFlyAttack>();
         landingAttack = GetComponent<DragonBossLandingAttack>();
+        tailAttack = GetComponent<DragonBossTailAttack>();
+
         manager = GetComponent<EnemyManager>();
         animator = GetComponent<BatBossAnimator>();
         active = false;

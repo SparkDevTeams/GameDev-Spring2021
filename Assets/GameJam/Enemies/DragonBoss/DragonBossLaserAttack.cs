@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragonBossBreathAttack : MonoBehaviour
+public class DragonBossLaserAttack : MonoBehaviour
 {
     [SerializeField]
     private GameObject fireBreathObj;
