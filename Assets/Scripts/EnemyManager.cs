@@ -23,6 +23,7 @@ public class EnemyManager : MonoBehaviour
     public int experienceToGive;
     PlayerStats playerStats;
     SpriteRenderer spriteRenderer;
+    public GameObject winScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -121,7 +122,8 @@ public class EnemyManager : MonoBehaviour
     public IEnumerator GameOver()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("MainMenu1");
+        winScreen.SetActive(true);
+        //SceneManager.LoadScene("MainMenu1");
     }
     public IEnumerator FlashRed()
     {

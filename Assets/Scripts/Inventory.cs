@@ -8,7 +8,8 @@ public enum ITEM {
     THUNDER,
     EARTH,
     SHADOW,
-    POTION
+    POTION,
+    bakKutTeh
 }
 
 public class Inventory : MonoBehaviour
@@ -147,6 +148,9 @@ public class Inventory : MonoBehaviour
             case ITEM.POTION:
                 //Increase HP
                 GetComponent<HealthManager>().heal(12);
+                break;
+            case ITEM.bakKutTeh:
+                //Put Food Buff Here
                 break;
         }
     }
