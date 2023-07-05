@@ -5861,49 +5861,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163087238}
   m_CullTransparentMesh: 1
---- !u!1 &1194234134 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2124210134674773864, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-  m_PrefabInstance: {fileID: 3921454215924318561}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1194234135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194234134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcaba85827d4c894c98bf2161241c3da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 3921454215924318562}
-  homingProjPrefab: {fileID: 2650592146098922914, guid: 2453e1d964dc0a44687e36df924d1550, type: 3}
-  shootTime: 0.25
---- !u!114 &1194234136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194234134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2169dd52874a19e4490642e8ae047823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackTime: 1.5
-  delayTime: 5
-  fireballTime: 1
-  fireballOrigin: {fileID: 0}
-  fireballPrefab: {fileID: 2650592146098922914, guid: c82b37d6ae8c50349af625f28d273feb, type: 3}
 --- !u!114 &1194234143 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1194234143, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
   m_PrefabInstance: {fileID: 3921454215924318561}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194234134}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7e664d6bdf227047b7a0110b9c512ba, type: 3}
@@ -9572,14 +9535,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 564290271, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 564290271, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.7
-      objectReference: {fileID: 0}
     - target: {fileID: 1194234142, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: playerRb
       value: 
@@ -9588,10 +9543,6 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1231618927}
-    - target: {fileID: 1745991630, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2602829533707111683, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: m_Name
       value: Boss Fight
@@ -9640,25 +9591,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7062071139918088554, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_Name
-      value: Tail Fire Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 7939737325512497724, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7939737325512497724, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
---- !u!4 &3921454215924318562 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7939737325512497724, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-  m_PrefabInstance: {fileID: 3921454215924318561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5308389440580032670
 PrefabInstance:
   m_ObjectHideFlags: 0
