@@ -17,6 +17,8 @@ public class PlayerStats : MonoBehaviour
 
     private HealthManager healthManager;
 
+    // For buffs
+    public int atkBuff = 10;
     //Upgrades
 
     public List<(string, string)> upgradeDescriptions; // Item1 is the name of upgrade, Item2 is the effect of upgrade
@@ -131,6 +133,44 @@ public class PlayerStats : MonoBehaviour
                 Debug.Log("GetBonusStats : INVALID STAT TYPE");
                 return 0;
 
+        }
+    }
+
+    public void AddBuffs(int buffType)
+    {
+        switch (buffType)
+        {
+            case 0:
+                Debug.Log("Increase attack buff");
+                addMeleeDamage(atkBuff);
+                addRangedDamage(atkBuff);
+                break;
+            case 1:
+                Debug.Log("Speed up buff");
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void RemoveBuffs(int buffType)
+    {
+        switch (buffType)
+        {
+            case 0:
+                Debug.Log("Remove attack buff");
+                addMeleeDamage(atkBuff * -1);
+                addRangedDamage(atkBuff * -1);
+                break;
+            case 1:
+                Debug.Log("Speed up buff");
+                break;
+            case 2:
+                break;
+            default:
+                break;
         }
     }
 }
