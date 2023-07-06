@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DragonBossManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class DragonBossManager : MonoBehaviour
     private int phaseNum = 1;
     private bool newPhase = true;
     private bool fireballed = false;
+    [SerializeField] Slider healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,13 +51,15 @@ public class DragonBossManager : MonoBehaviour
             return;
         }
 
+        healthBar.value = manager.hp;
+
         //check phase
-        if ((float)manager.hp / (float)manager.startHp <= 0.5f && phaseNum < 2) //10% hp left
+        if ((float)manager.hp / (float)manager.startHp <= 0.1f && phaseNum < 4) //10% hp left
         {
             phaseNum = 4;
             newPhase = true;
         }
-        else if ((float)manager.hp / (float)manager.startHp <= 0.25f && phaseNum < 2) //25% hp left
+        else if ((float)manager.hp / (float)manager.startHp <= 0.25f && phaseNum < 3) //25% hp left
         {
             phaseNum = 3;
             newPhase = true;
@@ -146,7 +150,12 @@ public class DragonBossManager : MonoBehaviour
 
     public void Activate() 
     {
-        active = true;
+        active = true;        
+
+        healthBar.gameObject.SetActive(true);
+        healthBar.maxValue = manager.startHp;
+        healthBar.value = healthBar.maxValue;
+
         flyAttack.ActivatePatterns();
         chooseAttack();
     }

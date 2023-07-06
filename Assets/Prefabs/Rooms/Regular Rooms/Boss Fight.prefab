@@ -940,7 +940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTime: 1.5
-  delayTime: 5
+  delayTime: 4
   fireballTime: 1
   fireballOrigin: {fileID: 1964713476}
   fireballPrefab: {fileID: 2650592146098922914, guid: c82b37d6ae8c50349af625f28d273feb, type: 3}
