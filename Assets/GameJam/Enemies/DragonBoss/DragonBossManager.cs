@@ -28,6 +28,8 @@ public class DragonBossManager : MonoBehaviour
     private bool newPhase = true;
     private bool fireballed = false;
     [SerializeField] Slider healthBar;
+    private bool lockedTarget = false;
+    private Vector2 targetPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,52 +71,36 @@ public class DragonBossManager : MonoBehaviour
             phaseNum = 2;
             newPhase = true;
         }
+        
+        waitTimer += Time.deltaTime;
 
         //Walk
-        if (Vector2.Distance(playerTarget.position, this.transform.position) > 5 && waitTimer <= 0)
+        if (Vector2.Distance(playerTarget.position, this.transform.position) > 5 && waitTimer < waitTime || attacking)
         {
-            if (attacking) 
+            if (attacking && !lockedTarget) //lockedTarget for mid laser attack 
             { 
-                return; 
+                return;
             }
 
-            //Start Walking
-            if (Mathf.Abs(playerTarget.position.x - this.transform.position.x) > Mathf.Abs(playerTarget.position.y - this.transform.position.y))
+            if (!lockedTarget)
             {
-                //Walk Side
-                if (playerTarget.position.x > transform.position.x)
-                {
-                    //Go right
-                    animator.AnimationChange(BatState.WALK, BatDirection.RIGHT);
-                    rb.velocity = new Vector2(walkSpeed, 0);
+                targetPos = playerTarget.position;
+            }
 
-                }
-                else
-                {
-                    //Go Left
-                    animator.AnimationChange(BatState.WALK, BatDirection.LEFT);
-                    rb.velocity = new Vector2(-walkSpeed, 0);
-                }
+            Vector2 walkDirection = (Vector2)transform.position - targetPos;
+            rb.velocity = walkSpeed * walkDirection;
+
+            //Walk Side
+            if (playerTarget.position.x > transform.position.x)
+            {
+                //Go right
+                animator.AnimationChange(BatState.WALK, BatDirection.RIGHT);
             }
             else
             {
-                //Walk Up/Down
-                //Walk Side
-                if (playerTarget.position.y > transform.position.y)
-                {
-                    //Go up
-                    animator.AnimationChange(BatState.WALK, BatDirection.BACK);
-                    rb.velocity = new Vector2(0, walkSpeed);
-                }
-                else
-                {
-                    animator.AnimationChange(BatState.WALK, BatDirection.FRONT);
-                    rb.velocity = new Vector2(0, -walkSpeed);
-                    //Go down
-                }
-
-            }
-            
+                //Go Left
+                animator.AnimationChange(BatState.WALK, BatDirection.LEFT);
+            }            
         }
         else {
             if (attacking) 
@@ -134,17 +120,8 @@ public class DragonBossManager : MonoBehaviour
             else {
                 animator.AnimationChange(BatState.IDLE, animator.BatDirection);
                 
-                Debug.Log("Boss is Waiting to attack");
-
+                Debug.Log("Boss is idling");
             }
-            if (waitTimer >= waitTime)
-            {
-                waitTimer = 0;
-            }
-            else {
-                waitTimer += Time.deltaTime;
-            }
-
         }
     }
 

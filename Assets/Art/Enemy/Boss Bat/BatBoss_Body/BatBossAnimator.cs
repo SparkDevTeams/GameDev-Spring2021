@@ -9,6 +9,7 @@ public enum BatState
     SHOOT,
     FLY,
     WALK,
+    LASER
 }
 
 public enum BatDirection
