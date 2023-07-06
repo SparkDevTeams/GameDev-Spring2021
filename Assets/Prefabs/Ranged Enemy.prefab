@@ -175,6 +175,7 @@ MonoBehaviour:
   lootItem: {fileID: 172013033003219771, guid: 64a0f88e9529a45288a2d9f53cc824c1, type: 3}
   endGame: 0
   experienceToGive: 5
+  winScreen: {fileID: 0}
 --- !u!114 &3325913109804699685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +194,10 @@ MonoBehaviour:
   target: {fileID: 0}
   minRange: 10
   fireRate: 2
+  numInstances: 8
+  angularSpacing: 45
+  radius: 5
+  centralPoint: {fileID: 4494406469134695133}
 --- !u!95 &3325913109804699694
 Animator:
   serializedVersion: 3

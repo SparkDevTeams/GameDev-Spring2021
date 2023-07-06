@@ -10,6 +10,7 @@ public class RoomTrigger : MonoBehaviour
     bool enteredBefore;
     public GameObject[] enemyPrefabs;
     public Transform[] enemySpawnPoints;
+    PlayerStats playerStats;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +31,13 @@ public class RoomTrigger : MonoBehaviour
         {
             if (enteredBefore == false)
             {
+                playerStats = collision.gameObject.GetComponent<PlayerStats>();
                 SpawnEnemyPrefabs();
                 enteredBefore = true;
+                if (playerStats.currentLevel > 0)
+                {
+                    SpawnAdditionalEnemies();
+                }
             }
             room.setPlayerInside(true);
             door.setClosed(true);
@@ -51,6 +57,16 @@ public class RoomTrigger : MonoBehaviour
     void SpawnEnemyPrefabs()
     {
         for (int i = 0; i < enemySpawnPoints.Length; i++)
+        {
+            int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
+            Instantiate(enemyPrefabs[randomEnemyIndex], enemySpawnPoints[i].position, enemySpawnPoints[i].rotation);
+        }
+    }
+
+    void SpawnAdditionalEnemies()
+    {
+        int additionalEnemies = playerStats.currentLevel;
+        for (int i = 0; i <= additionalEnemies; i++)
         {
             int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
             Instantiate(enemyPrefabs[randomEnemyIndex], enemySpawnPoints[i].position, enemySpawnPoints[i].rotation);
