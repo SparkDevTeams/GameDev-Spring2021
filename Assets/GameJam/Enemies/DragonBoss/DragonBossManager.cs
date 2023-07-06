@@ -71,7 +71,7 @@ public class DragonBossManager : MonoBehaviour
         }
 
         //Walk
-        if (Vector2.Distance(playerTarget.position, this.transform.position) > 25 && waitTimer <= 0)
+        if (Vector2.Distance(playerTarget.position, this.transform.position) > 5 && waitTimer <= 0)
         {
             if (attacking) 
             { 
@@ -185,7 +185,7 @@ public class DragonBossManager : MonoBehaviour
             case 0:
             case 1:
                 //Laser attack
-                attacking = false;
+                laserAttack.StartAttack();
                 break;
             case 2:
                 //Tail attack

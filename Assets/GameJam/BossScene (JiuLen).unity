@@ -9813,9 +9813,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1194234135, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: shootTime
-      value: 1
+    - target: {fileID: 564290271, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 564290271, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 1194234141, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: winScreen
@@ -9833,6 +9837,18 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 432080809}
+    - target: {fileID: 1772558425, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: totalAttackTime
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772558425, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: totalChargeTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1964713476, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2602829533707111683, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: m_Name
       value: Boss Fight
@@ -9881,9 +9897,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7193072344258902497, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: fireballTime
-      value: 2
+    - target: {fileID: 4042823034048217790, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7939737325512497724, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}

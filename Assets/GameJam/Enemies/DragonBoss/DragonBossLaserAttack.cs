@@ -5,12 +5,19 @@ using UnityEngine;
 public class DragonBossLaserAttack : MonoBehaviour
 {
     [SerializeField]
-    private GameObject fireBreathObj;
+    private Transform laserTransform;    
     [SerializeField]
-    private float rotationSpeed;
+    private GameObject laserSpriteObj;
+    [SerializeField]
+    private GameObject laserHitboxObj;
+    [SerializeField]
+    private float totalChargeTime;
+    private float maxScaleY = 2;
     [SerializeField]
     private float totalAttackTime;
+    private float chargeTimer = 0;
     private float attackTimer = 0;
+    private bool isCharging = false;
     private bool isAttacking = false;
     
     // Start is called before the first frame update
@@ -22,11 +29,36 @@ public class DragonBossLaserAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAttacking)
-        {
-            if (attackTimer > 0)
-            {
+        laserHitboxObj.transform.localPosition = new Vector3(laserHitboxObj.transform.localPosition.x, 0, laserHitboxObj.transform.localPosition.z);
 
+        if (isCharging)
+        {
+            if (chargeTimer < totalChargeTime)
+            {
+                chargeTimer += Time.deltaTime;
+                //Scale up based on charge time
+                float scaleY = maxScaleY * (chargeTimer / totalChargeTime);
+                if (scaleY <= 0.1f)
+                {
+                    scaleY = 0.1f;
+                }
+                laserTransform.localScale = new Vector3(laserTransform.localScale.x, scaleY, laserTransform.localScale.z);
+            }
+            else
+            {
+                laserTransform.localScale = new Vector3(laserTransform.localScale.x, maxScaleY, laserTransform.localScale.z);
+                //start attack
+                isAttacking = true;
+                isCharging = false;
+
+                laserHitboxObj.SetActive(true);
+            }
+        }
+        else if (isAttacking)
+        {
+            if (attackTimer < totalAttackTime)
+            {
+                attackTimer += Time.deltaTime;
             }
             else
             {
@@ -36,16 +68,23 @@ public class DragonBossLaserAttack : MonoBehaviour
         }        
     }
 
-    public void StartAttack()
+    public void StartAttack() //charge
     {
-        attackTimer = totalAttackTime;
-        isAttacking = true;
+        attackTimer = 0;
+        chargeTimer = 0;
+        isCharging = true;
+
+        laserSpriteObj.SetActive(true);
+        laserTransform.localScale = new Vector3(laserTransform.localScale.x, 0.1f, laserTransform.localScale.z);
     }
 
     public void StopAttack()
     {
-        attackTimer = 0;
+        isCharging = false;
         isAttacking = false;
         GetComponent<DragonBossManager>().attacking = false;
+        
+        laserSpriteObj.SetActive(false);
+        laserHitboxObj.SetActive(false);
     }
 }
