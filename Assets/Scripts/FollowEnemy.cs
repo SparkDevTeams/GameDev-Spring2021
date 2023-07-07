@@ -7,6 +7,8 @@ public class FollowEnemy : MonoBehaviour
 
     public Transform player;
     public float moveSpeed = 5f;
+    public float fasterSpeed = 5f;
+    public float normalSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 movement;
 
@@ -39,6 +41,14 @@ public class FollowEnemy : MonoBehaviour
         anim.SetBool("Attacking", attacking);               //Sets "Attacking" parameter based on distance between player and enemy. Remember to loop animation
 #endregion
 
+
+        if (attacking)
+        {
+            moveSpeed = fasterSpeed;
+        } else
+        {
+            moveSpeed = normalSpeed;
+        }
     }
 
     private void FixedUpdate()

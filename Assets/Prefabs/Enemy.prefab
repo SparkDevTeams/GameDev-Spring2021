@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3389474816713229985}
   - component: {fileID: 6124158660303531523}
+  - component: {fileID: 8744554003060677270}
   m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
@@ -47,6 +48,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &8744554003060677270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328359489640457556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a46461638bc023746a7eea7361774a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 0.25
+  contactDamage: 1
 --- !u!1 &983599470995280849
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,8 +230,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   moveSpeed: 2
-  attackDistance: 0.5
-  stoppingDistance: 0.3
+  fasterSpeed: 5
+  normalSpeed: 2
+  attackDistance: 5
+  stoppingDistance: 0
 --- !u!114 &-3346308202217411138
 MonoBehaviour:
   m_ObjectHideFlags: 0
