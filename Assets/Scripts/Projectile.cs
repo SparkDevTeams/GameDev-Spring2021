@@ -16,8 +16,7 @@ public class Projectile : EnemyProjectile
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").transform; 
-
-        rb.velocity = speed* (Vector2)(target.transform.position-transform.position).normalized; 
+        rb.velocity = speed * transform.up;
     }
 
     public override void SetDirection(Vector2 direction)

@@ -25,6 +25,7 @@ public class Inventory : MonoBehaviour
     public List<ITEM> slots = new List<ITEM>();
 
     public int activeSlot = 0;
+    public int slotUsed;
 
     [SerializeField]
     private GameObject fireShot;
@@ -39,37 +40,79 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        if (move.gameIsPaused == false && Input.GetButtonDown("ShiftRight"))
+        //if (move.gameIsPaused == false && Input.GetButtonDown("ShiftRight"))
+        //{
+        //    Debug.Log("Shift Items Right");
+        //    activeSlot = (activeSlot + 1) % slots.Count;
+        //}
+        //else if (move.gameIsPaused == false && Input.GetButtonDown("ShiftLeft"))
+        //{
+        //    Debug.Log("Shift Items Left");
+        //    if (activeSlot > 0)
+        //    {
+        //        activeSlot = (activeSlot - 1) % slots.Count;
+        //    }
+        //    else
+        //    {
+        //        activeSlot = slots.Count - 1;
+        //    }
+        //}
+
+        //if (move.gameIsPaused == false && Input.GetButtonDown("UseItem")  && slots.Count > 0 && (gameObject.GetComponent<move>().Mode == "Idle" || gameObject.GetComponent<move>().Mode == "Walk")) {
+        //    Debug.Log("Execute Item Effect");
+        //    StartCoroutine( UseItem(slots[activeSlot]));
+        //    slots.RemoveAt(activeSlot);
+
+        //    if (activeSlot > 0)
+        //    {
+        //        activeSlot = (activeSlot - 1) % slots.Count;
+        //    }
+        //    else
+        //    {
+        //        activeSlot = slots.Count - 1;
+        //    }
+
+        //    if (activeSlot < 0) { activeSlot = 0; }
+        //}
+
+
+        if (move.gameIsPaused == false && slots.Count > 0 && (gameObject.GetComponent<move>().Mode == "Idle" || gameObject.GetComponent<move>().Mode == "Walk"))
         {
-            Debug.Log("Shift Items Right");
-            activeSlot = (activeSlot + 1) % slots.Count;
-        }
-        else if (move.gameIsPaused == false && Input.GetButtonDown("ShiftLeft")) {
-            Debug.Log("Shift Items Left");
-            if (activeSlot > 0)
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4))
             {
-                activeSlot = (activeSlot - 1) % slots.Count;
-            }
-            else {
-                activeSlot = slots.Count - 1;
-            }
-        }
+                Debug.Log("Execute Item Effect");
 
-        if (move.gameIsPaused == false && Input.GetButtonDown("UseItem")  && slots.Count > 0 && (gameObject.GetComponent<move>().Mode == "Idle" || gameObject.GetComponent<move>().Mode == "Walk")) {
-            Debug.Log("Execute Item Effect");
-            StartCoroutine( UseItem(slots[activeSlot]));
-            slots.RemoveAt(activeSlot);
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    slotUsed = 0;
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    slotUsed = 1;
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    slotUsed = 2;
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha4))
+                {
+                    slotUsed = 3;
+                }
 
-            if (activeSlot > 0)
-            {
-                activeSlot = (activeSlot - 1) % slots.Count;
-            }
-            else
-            {
-                activeSlot = slots.Count - 1;
-            }
+                StartCoroutine(UseItem(slots[activeSlot]));
+                slots.RemoveAt(activeSlot);
 
-            if (activeSlot < 0) { activeSlot = 0; }
+                //if (activeSlot > 0)
+                //{
+                //    activeSlot = (activeSlot - 1) % slots.Count;
+                //}
+                //else
+                //{
+                //    activeSlot = slots.Count - 1;
+                //}
+
+                //if (activeSlot < 0) { activeSlot = 0; }
+            }
         }
     }
 
@@ -151,6 +194,23 @@ public class Inventory : MonoBehaviour
                 break;
             case ITEM.bakKutTeh:
                 //Put Food Buff Here
+                GetComponent<PlayerStats>().AddBuffs(0);
+                //Increase attack
+                int meleeAtk = GetComponent<PlayerStats>().getMeleeDamage();
+                int rangedAtk = GetComponent<PlayerStats>().getMeleeDamage();
+                Debug.Log("add buff, melee atk" + meleeAtk);
+                Debug.Log("add buff, ranged atk" + rangedAtk);
+
+                yield return new WaitForSeconds(10f);
+
+                GetComponent<PlayerStats>().RemoveBuffs(0);
+
+                meleeAtk = GetComponent<PlayerStats>().getMeleeDamage();
+                rangedAtk = GetComponent<PlayerStats>().getMeleeDamage();
+                Debug.Log("Remove buff");
+                Debug.Log("after remove, melee atk" + meleeAtk);
+                Debug.Log("after remove, ranged atk" + rangedAtk);
+
                 break;
         }
     }
