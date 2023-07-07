@@ -138,14 +138,39 @@ public class move : MonoBehaviour
             }
             return;
         }
-
+      
+        //Set Direction
+        changeDirection();
 
         if (gameIsPaused == false && mode != "Idle" && mode != "Walking") 
         {
-            if (Input.GetButtonDown("Fire1") && (setTime <= (0.267f / 8.0f * 4.0f)) && mode != "Hurt")
+            if (Input.GetMouseButtonDown(0) && (setTime <= (0.267f / 8.0f * 4.0f)) && mode != "Hurt")
             {
                 mode = "Attack";
                 setTime = 0.267f;
+
+                // Determine the direction based on mouse position
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 directionVector = mousePos - transform.position;
+                float angle = Mathf.Atan2(directionVector.y, directionVector.x) * Mathf.Rad2Deg;
+
+                if (angle > -45 && angle <= 45)
+                {
+                    direction = "Side";
+                }
+                else if (angle > 45 && angle <= 135)
+                {
+                    direction = "Back";
+                }
+                else if (angle > 135 || angle <= -135)
+                {
+                    direction = "Side";
+                }
+                else
+                {
+                    direction = "Front";
+                }
+
                 animator.Play("Mlafi_" + mode + "_" + direction, -1, 0.0f);
                 StartCoroutine(Attack());
                 return;
@@ -178,16 +203,37 @@ public class move : MonoBehaviour
             TogglePause();
         }
 
-        //Set Direction
-        changeDirection();
-
-        if (gameIsPaused == false && Input.GetButtonDown("Fire1") && (mode == "Idle" || mode == "Walk")) {
+        if (Input.GetMouseButtonDown(0) && (setTime <= (0.267f / 8.0f * 4.0f)) && mode != "Hurt")
+        {
             mode = "Attack";
             setTime = 0.267f;
+
+            // Determine the direction based on mouse position
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 directionVector = mousePos - (Vector2)transform.position;
+            float angle = Mathf.Atan2(directionVector.y, directionVector.x) * Mathf.Rad2Deg;
+
+            if (angle > -45 && angle <= 45)
+            {
+                direction = "Side";
+            }
+            else if (angle > 45 && angle <= 135)
+            {
+                direction = "Back";
+            }
+            else if (angle > 135 || angle <= -135)
+            {
+                direction = "Side";
+            }
+            else
+            {
+                direction = "Front";
+            }
+
+            animator.Play("Mlafi_" + mode + "_" + direction, -1, 0.0f);
             StartCoroutine(Attack());
-            x = 0; y = 0;
-            //return;
-        }
+            return;
+        }//Cancel into attack
 
         //if (Input.GetButtonDown("Fire2") && (mode == "Idle" || mode == "Walk"))
         //{
@@ -321,10 +367,25 @@ public class move : MonoBehaviour
     }
 
     private void changeDirection() {
+        // Determine the direction based on mouse position
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 directionVector = mousePos - (Vector2)transform.position;
+        float angle = Mathf.Atan2(directionVector.y, directionVector.x) * Mathf.Rad2Deg;
+
+        if (angle > -45 && angle <= 45)
+        {
+            direction = "Side";
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (angle > 135 || angle <= -135)
+        {
+            direction = "Side";
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+
         if (gameIsPaused == false && x > 0)
         {
             x = 1;
-            transform.localScale = new Vector3(-1, 1, 1);
         }
 
 
@@ -333,10 +394,6 @@ public class move : MonoBehaviour
             if (direction == "Side" && x != 0)
             {
                 direction = "Side";
-                if (x < 0)
-                {
-                    transform.localScale = new Vector3(1, 1, 1);
-                }
             }
             else
             {
@@ -359,19 +416,17 @@ public class move : MonoBehaviour
         else if (gameIsPaused == false && x != 0)
         {
             direction = "Side";
-            if (x < 0)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
         }
     }
 
     protected IEnumerator Attack() {
         rb.velocity = Vector2.zero;
-        if (hitbox != null) {
+        if (hitbox != null)
+        {
             Destroy(hitbox);
         }
-        switch (direction) {
+        switch (direction)
+        {
             case "Front":
                 hitbox = Instantiate(frontHitbox, transform);
                 break;
