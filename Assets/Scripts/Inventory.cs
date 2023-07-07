@@ -23,8 +23,6 @@ public class Inventory : MonoBehaviour
     }
 
     public List<ITEM> slots = new List<ITEM>();
-
-    public int activeSlot = 0;
     public int slotUsed;
 
     [SerializeField]
@@ -33,48 +31,34 @@ public class Inventory : MonoBehaviour
     private GameObject sparkField;
     [SerializeField]
     private GameObject sandBall;
+    [SerializeField]
+    private GameObject meleeAtkBuff;
+    [SerializeField]
+    private GameObject rangedAtkBuff;
+    [SerializeField]
+    private GameObject healBuff;
+    [SerializeField]
+    private GameObject speedBuff;
+    [SerializeField]
+    private float buffDuration = 10f;
+
+    public Buffs playerBuff;
+    private List<GameObject> buffList;
+
+
+    void Start()
+    {
+        playerBuff = GetComponent<Buffs>();
+        buffList = new List<GameObject> { meleeAtkBuff, rangedAtkBuff, healBuff, speedBuff };
+        playerBuff.InitializeBuffIcons(buffList);
+    }
 
     void Update()
     {
-        if (slots.Count < 1) {
+        if (slots.Count < 1)
+        {
             return;
         }
-
-        //if (move.gameIsPaused == false && Input.GetButtonDown("ShiftRight"))
-        //{
-        //    Debug.Log("Shift Items Right");
-        //    activeSlot = (activeSlot + 1) % slots.Count;
-        //}
-        //else if (move.gameIsPaused == false && Input.GetButtonDown("ShiftLeft"))
-        //{
-        //    Debug.Log("Shift Items Left");
-        //    if (activeSlot > 0)
-        //    {
-        //        activeSlot = (activeSlot - 1) % slots.Count;
-        //    }
-        //    else
-        //    {
-        //        activeSlot = slots.Count - 1;
-        //    }
-        //}
-
-        //if (move.gameIsPaused == false && Input.GetButtonDown("UseItem")  && slots.Count > 0 && (gameObject.GetComponent<move>().Mode == "Idle" || gameObject.GetComponent<move>().Mode == "Walk")) {
-        //    Debug.Log("Execute Item Effect");
-        //    StartCoroutine( UseItem(slots[activeSlot]));
-        //    slots.RemoveAt(activeSlot);
-
-        //    if (activeSlot > 0)
-        //    {
-        //        activeSlot = (activeSlot - 1) % slots.Count;
-        //    }
-        //    else
-        //    {
-        //        activeSlot = slots.Count - 1;
-        //    }
-
-        //    if (activeSlot < 0) { activeSlot = 0; }
-        //}
-
 
         if (move.gameIsPaused == false && slots.Count > 0 && (gameObject.GetComponent<move>().Mode == "Idle" || gameObject.GetComponent<move>().Mode == "Walk"))
         {
@@ -99,26 +83,17 @@ public class Inventory : MonoBehaviour
                     slotUsed = 3;
                 }
 
-                StartCoroutine(UseItem(slots[activeSlot]));
-                slots.RemoveAt(activeSlot);
-
-                //if (activeSlot > 0)
-                //{
-                //    activeSlot = (activeSlot - 1) % slots.Count;
-                //}
-                //else
-                //{
-                //    activeSlot = slots.Count - 1;
-                //}
-
-                //if (activeSlot < 0) { activeSlot = 0; }
+                StartCoroutine(UseItem(slots[slotUsed]));
+                slots.RemoveAt(slotUsed);
             }
         }
     }
 
-    IEnumerator UseItem(ITEM type) {
+    IEnumerator UseItem(ITEM type)
+    {
         GameObject obj;
-        switch (type) {
+        switch (type)
+        {
             case ITEM.FIRE:
 
                 gameObject.GetComponent<move>().SetAnimation("Magic", animTime);
@@ -126,11 +101,12 @@ public class Inventory : MonoBehaviour
 
                 //create fire prefab
                 obj = Instantiate(fireShot);
-                
-                switch (gameObject.GetComponent<move>().Direction) {
+
+                switch (gameObject.GetComponent<move>().Direction)
+                {
                     case "Front":
-                        obj.transform.localPosition = new Vector2(transform.localPosition.x - 1 , transform.localPosition.y  - 0.5f);
-                        obj.transform.localEulerAngles = new Vector3(0,0,270);
+                        obj.transform.localPosition = new Vector2(transform.localPosition.x - 1, transform.localPosition.y - 0.5f);
+                        obj.transform.localEulerAngles = new Vector3(0, 0, 270);
                         break;
                     case "Back":
                         obj.transform.localPosition = new Vector2(transform.localPosition.x + 1, transform.localPosition.y + 1.5f);
@@ -142,7 +118,8 @@ public class Inventory : MonoBehaviour
                             obj.transform.localPosition = new Vector2(transform.localPosition.x + 1, transform.localPosition.y);
                             obj.transform.localEulerAngles = new Vector3(0, 0, 0);
                         }
-                        else {
+                        else
+                        {
                             obj.transform.localPosition = new Vector2(transform.localPosition.x - 1, transform.localPosition.y + 2);
                             obj.transform.localEulerAngles = new Vector3(0, 0, 180);
                         }
@@ -201,9 +178,16 @@ public class Inventory : MonoBehaviour
                 Debug.Log("add buff, melee atk" + meleeAtk);
                 Debug.Log("add buff, ranged atk" + rangedAtk);
 
-                yield return new WaitForSeconds(10f);
+                // Add the buff icon to the container list
+                playerBuff.AddBuffIcon(meleeAtkBuff, buffDuration);
+                // Add the buff icon to the container list
+                playerBuff.AddBuffIcon(rangedAtkBuff, buffDuration);
+
+                yield return new WaitForSeconds(buffDuration);
 
                 GetComponent<PlayerStats>().RemoveBuffs(0);
+                //playerBuff.RemoveBuffIcon(meleeAtkBuff);
+                //playerBuff.RemoveBuffIcon(rangedAtkBuff);
 
                 meleeAtk = GetComponent<PlayerStats>().getMeleeDamage();
                 rangedAtk = GetComponent<PlayerStats>().getMeleeDamage();
@@ -214,5 +198,5 @@ public class Inventory : MonoBehaviour
                 break;
         }
     }
-
+    
 }

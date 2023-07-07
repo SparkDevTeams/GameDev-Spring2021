@@ -35,7 +35,7 @@ public class DishButton : MonoBehaviour
                         cookingManager.bakKutTehCount -= 1;
                         cookingManager.bakKutTehText.text = "Bak Kut Teh: " + cookingManager.bakKutTehCount;
                         Debug.Log("Item Replaced");
-                        inventory.slots[inventory.activeSlot] = itemType;
+                        inventory.slots[inventory.slotUsed] = itemType;
                     }
                 }
             break;
