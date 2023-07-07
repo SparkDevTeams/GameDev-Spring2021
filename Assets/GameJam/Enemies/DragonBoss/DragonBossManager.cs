@@ -24,12 +24,14 @@ public class DragonBossManager : MonoBehaviour
     private BatBossAnimator animator;
     [SerializeField]
     private float walkSpeed = 6.5f;
+    public float walkSpeedMultiplier = 1;
     private int phaseNum = 1;
     private bool newPhase = true;
     private bool fireballed = false;
     [SerializeField] Slider healthBar;
-    private bool lockedTarget = false;
-    private Vector2 targetPos;
+    private Vector2 laserMoveStartPos;
+    public bool lockedTarget = false;
+    public Vector2 targetPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,9 +77,9 @@ public class DragonBossManager : MonoBehaviour
         waitTimer += Time.deltaTime;
 
         //Walk
-        if (Vector2.Distance(playerTarget.position, this.transform.position) > 5 && waitTimer < waitTime || attacking)
+        if ((Vector2.Distance(playerTarget.position, transform.position) < 10 && waitTimer < waitTime) || attacking)
         {
-            if (attacking && !lockedTarget) //lockedTarget for mid laser attack 
+            if (attacking && !lockedTarget) //lockedTarget for laser attack 
             { 
                 return;
             }
@@ -87,20 +89,20 @@ public class DragonBossManager : MonoBehaviour
                 targetPos = playerTarget.position;
             }
 
-            Vector2 walkDirection = (Vector2)transform.position - targetPos;
-            rb.velocity = walkSpeed * walkDirection;
+            if (!(lockedTarget && AlmostEqual(targetPos, transform.position, 1e-3f))) //check if reached targetPos for laser atk
+            {
+                Vector2 walkDirection = (Vector2)transform.position - targetPos;
+                if (lockedTarget) walkDirection *= -1;
+                rb.velocity = walkSpeed * walkSpeedMultiplier * walkDirection;      
 
-            //Walk Side
-            if (playerTarget.position.x > transform.position.x)
-            {
-                //Go right
-                animator.AnimationChange(BatState.WALK, BatDirection.RIGHT);
+                //Check if exceed target position
+                if (Vector2.Distance(transform.position, laserMoveStartPos) > Vector2.Distance(targetPos, laserMoveStartPos) && lockedTarget)      
+                {
+                    rb.isKinematic = true;
+                    transform.position = targetPos;
+                    rb.isKinematic = false;
+                }
             }
-            else
-            {
-                //Go Left
-                animator.AnimationChange(BatState.WALK, BatDirection.LEFT);
-            }            
         }
         else {
             if (attacking) 
@@ -162,12 +164,14 @@ public class DragonBossManager : MonoBehaviour
             case 0:
             case 1:
                 //Laser attack
-                laserAttack.StartAttack();
+                targetPos = laserAttack.StartAttack();
+                lockedTarget = true;
+                walkSpeedMultiplier = 1 + 0.25f * phaseNum;
+                laserMoveStartPos = transform.position;
                 break;
             case 2:
                 //Tail attack
                 tailAttack.StartAttack(4 * phaseNum);
-                Debug.Log("SUS");
                 break;
             case 3:
                 //Fireball attack
@@ -180,5 +184,10 @@ public class DragonBossManager : MonoBehaviour
                 break;
         }
 
+    }
+
+    public static bool AlmostEqual(Vector2 v1, Vector2 v2, float tolerance)
+    {
+        return Mathf.Abs(Vector2.Distance(v1, v2)) <= tolerance;
     }
 }

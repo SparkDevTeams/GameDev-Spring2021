@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DragonBossLaserAttack : MonoBehaviour
 {
+    DragonBossManager bossManager;
+    private BatBossAnimator animator;
+    private Rigidbody2D rb;
     [SerializeField]
     private Transform laserTransform;    
     [SerializeField]
@@ -19,11 +22,18 @@ public class DragonBossLaserAttack : MonoBehaviour
     private float attackTimer = 0;
     private bool isCharging = false;
     private bool isAttacking = false;
+    bool atkLeft = false;
+    public Transform centerLine;
+    public Transform playerTransform;
+    public Vector3 leftOffset;
     
     // Start is called before the first frame update
     void Start()
     {
         isAttacking = false;
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<BatBossAnimator>();
+        bossManager = GetComponent<DragonBossManager>();
     }
 
     // Update is called once per frame
@@ -33,26 +43,46 @@ public class DragonBossLaserAttack : MonoBehaviour
 
         if (isCharging)
         {
-            if (chargeTimer < totalChargeTime)
+            if (DragonBossManager.AlmostEqual(bossManager.targetPos, transform.position, 1e-3f))
             {
-                chargeTimer += Time.deltaTime;
-                //Scale up based on charge time
-                float scaleY = maxScaleY * (chargeTimer / totalChargeTime);
-                if (scaleY <= 0.1f)
-                {
-                    scaleY = 0.1f;
-                }
-                laserTransform.localScale = new Vector3(laserTransform.localScale.x, scaleY, laserTransform.localScale.z);
-            }
-            else
-            {
-                laserTransform.localScale = new Vector3(laserTransform.localScale.x, maxScaleY, laserTransform.localScale.z);
-                //start attack
-                isAttacking = true;
-                isCharging = false;
+                if (chargeTimer == 0)
+                {                    
+                    bossManager.lockedTarget = false;
+                    if (atkLeft)
+                    {
+                        animator.AnimationChange(BatState.LASER, BatDirection.RIGHT);
+                    }
+                    else
+                    {
+                        animator.AnimationChange(BatState.LASER, BatDirection.LEFT);
+                    }
+                    rb.velocity = Vector2.zero;
 
-                laserHitboxObj.SetActive(true);
-            }
+                    laserSpriteObj.SetActive(true);
+                    laserTransform.localScale = new Vector3(laserTransform.localScale.x, 0.1f, laserTransform.localScale.z);
+                }
+
+                if (chargeTimer < totalChargeTime)
+                {
+                    chargeTimer += Time.deltaTime;
+                    //Scale up based on charge time
+                    float scaleY = maxScaleY * (chargeTimer / totalChargeTime);
+                    if (scaleY <= 0.1f)
+                    {
+                        scaleY = 0.1f;
+                    }
+                    laserTransform.localScale = new Vector3(laserTransform.localScale.x, scaleY, laserTransform.localScale.z);
+                }
+                else
+                {
+                    laserTransform.localScale = new Vector3(laserTransform.localScale.x, maxScaleY, laserTransform.localScale.z);
+                    //start attack
+                    isAttacking = true;
+                    isCharging = false;
+
+                    laserHitboxObj.SetActive(true);
+                }
+            }        
         }
         else if (isAttacking)
         {
@@ -68,14 +98,29 @@ public class DragonBossLaserAttack : MonoBehaviour
         }        
     }
 
-    public void StartAttack() //charge
+    public Vector3 StartAttack() //charge
     {
         attackTimer = 0;
         chargeTimer = 0;
         isCharging = true;
 
-        laserSpriteObj.SetActive(true);
-        laserTransform.localScale = new Vector3(laserTransform.localScale.x, 0.1f, laserTransform.localScale.z);
+        //Check player closer to left or right side
+        if (playerTransform.position.x < centerLine.position.x)
+        {
+            //Closer to left
+            //Go right
+            atkLeft = false;
+                    animator.AnimationChange(BatState.WALK, BatDirection.LEFT);
+            return playerTransform.position - leftOffset - new Vector3(0, laserTransform.localPosition.y, 0) + new Vector3(0, playerTransform.localScale.y, 0);
+        }
+        else
+        {            
+            //Closer to right
+            //Go left
+            atkLeft = true;
+            animator.AnimationChange(BatState.WALK, BatDirection.RIGHT);
+            return playerTransform.position + leftOffset - new Vector3(0, laserTransform.localPosition.y, 0) + new Vector3(0, playerTransform.localScale.y, 0);
+        }
     }
 
     public void StopAttack()
@@ -86,5 +131,7 @@ public class DragonBossLaserAttack : MonoBehaviour
         
         laserSpriteObj.SetActive(false);
         laserHitboxObj.SetActive(false);
+
+        bossManager.walkSpeedMultiplier = 1;
     }
 }
