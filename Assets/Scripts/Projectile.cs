@@ -8,16 +8,15 @@ public class Projectile : EnemyProjectile
     public int damage;
     public Rigidbody2D rb;
 
-    public Transform target;
+    //public Transform target;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Player").transform; 
-
-        rb.velocity = speed* (Vector2)(target.transform.position-transform.position).normalized; 
+        //target = GameObject.FindGameObjectWithTag("Player").transform;
+        rb.velocity = speed * transform.up;
         
     }
 

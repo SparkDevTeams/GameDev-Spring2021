@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     // Start is called before the first frame update
-   public Transform firePoint;
+   public Transform[] spawnLocations;
    public GameObject projectile;
 
    public EnemyManager test;
@@ -17,6 +17,8 @@ public class Weapon : MonoBehaviour
    public float fireRate;
 
    private float timer = 0;
+
+   float bulletSpeed = 10f;
 
    void Start()
    {
@@ -42,6 +44,10 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(projectile, firePoint.position, firePoint.rotation);
+        foreach (Transform location in spawnLocations)
+        {
+            Instantiate(projectile, location.position, location.rotation);
+        }
     }
 }
+
