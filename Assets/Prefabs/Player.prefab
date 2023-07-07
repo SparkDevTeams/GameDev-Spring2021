@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 97503018}
   - component: {fileID: -8453640996433719955}
   - component: {fileID: 3591526707943114682}
+  - component: {fileID: 1231618917}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -144,7 +145,14 @@ MonoBehaviour:
   sideHitbox: {fileID: 8020891790107607891, guid: 5a1f148483b0299428cd91be11bc5ccb, type: 3}
   backHitbox: {fileID: 6226327759341696037, guid: 13cca96aa05659e42ac0c698b1ca60f7, type: 3}
   bagUI: {fileID: 0}
+  statsPage: {fileID: 0}
+  cookingPage: {fileID: 0}
+  statsToggleButtonText: {fileID: 0}
   pausedUI: {fileID: 0}
+  boarTrotterText: {fileID: 0}
+  boarTrotterCount: 0
+  shroomText: {fileID: 0}
+  shroomCount: 0
 --- !u!50 &4248948148176905323
 Rigidbody2D:
   serializedVersion: 4
@@ -163,7 +171,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!58 &4248948148176905322
@@ -230,10 +238,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots: 
-  activeSlot: 0
+  slotUsed: 0
   fireShot: {fileID: 566825752524962294, guid: 2d7fe3cdb2a6fd448b2323b226b6b1dd, type: 3}
   sparkField: {fileID: 8172162938023691911, guid: 03ec0185b3a716d4ea240b3ca3764e41, type: 3}
   sandBall: {fileID: 6420454179449576900, guid: 5eac39ce8ba28194fa8bd7fea4eb66db, type: 3}
+  meleeAtkBuff: {fileID: 0}
+  rangedAtkBuff: {fileID: 0}
+  healBuff: {fileID: 0}
+  speedBuff: {fileID: 0}
+  buffDuration: 10
+  playerBuff: {fileID: 1231618917}
 --- !u!114 &2080022336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
+  loseScreen: {fileID: 0}
 --- !u!114 &-942483267051202488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +277,8 @@ MonoBehaviour:
   firePoint: {fileID: 554075239}
   projectile: {fileID: 1457549573367568210, guid: 3af590a6e30a72c40af9ee35e1b765f9, type: 3}
   canShoot: 0
-  arrowCooldown: 0
+  arrowCooldown: 2
+  arrowCooldownMultiplier: 0
 --- !u!114 &97503018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,16 +337,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66c2696ce2d54141999eaeea0b1aaaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  attackDamage: 0
-  moveSpeed: 0
-  rollSpeed: 0
-  stunTime: 0
+  atkDamage: 3
+  dexDamage: 3
   soulCount: 0
-  currentLevel: 1
-  maxLevel: 10
+  currentLevel: 0
   currentExperiencePoints: 0
-  levelUpThresholds: 
+  levelUpCost: 0
+  bonusATK: 0
+  bonusDEX: 0
+  bonusVIT: 0
+  unusedStatPoints: 0
+  atkBuff: 10
+--- !u!114 &1231618917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4248948148176905319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55145fd38dbc74231af0118ceb7534ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffIcons: []
 --- !u!1 &8355432138896989762
 GameObject:
   m_ObjectHideFlags: 0
