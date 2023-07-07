@@ -42,32 +42,6 @@ public class SlotShower : MonoBehaviour
 
     private void Update()
     {
-        //Rotate
-        int rot = 0;
-        switch (inventory.activeSlot) {
-            case 0:
-                rot = 0;
-                break;
-            case 1:
-                rot = 90;
-                break;
-            case 2:
-                rot = 180;
-                break;
-            case 3:
-                rot = 270;
-                break;
-
-        }
-
-
-        gameObject.GetComponent<RectTransform>().eulerAngles = new Vector3( 0, 0, -(rot));
-        slot1.rectTransform.eulerAngles = new Vector3(0, 0, 0);
-        slot2.rectTransform.eulerAngles = new Vector3(0, 0, 0);
-        slot3.rectTransform.eulerAngles = new Vector3(0, 0, 0);
-        slot4.rectTransform.eulerAngles = new Vector3(0, 0, 0);
-
-
         //Image Set
         if (inventory.slots.Count >= 1) {
             setItemImage(item1, inventory.slots[0]);

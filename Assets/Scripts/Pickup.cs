@@ -31,7 +31,7 @@ public class Pickup : MonoBehaviour
                 else {
                     //Pop out the active slot
                     Debug.Log("Item Replaced");
-                    inventory.slots[inventory.activeSlot] = itemType;
+                    inventory.slots[inventory.slotUsed] = itemType;
                 }
 
                 
