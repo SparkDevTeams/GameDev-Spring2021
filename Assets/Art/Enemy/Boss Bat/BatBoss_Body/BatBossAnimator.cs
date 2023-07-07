@@ -9,6 +9,7 @@ public enum BatState
     SHOOT,
     FLY,
     WALK,
+    LASER
 }
 
 public enum BatDirection
@@ -282,7 +283,25 @@ public class BatBossAnimator : MonoBehaviour
                         bodyAnimation = bodyAnimation + "_Side";
                         break;
                 }
-                break;             
+                break;    
+            case BatState.LASER:
+                bodyAnimation = bodyAnimation + "Walk";
+                headAnimation = "Idle";
+                if (direction == BatDirection.LEFT)
+                {
+                    headAnimation = headAnimation + "_Side";
+                    headAnchor = idleSide;
+                    bodyAnimation = bodyAnimation + "_Side";
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }
+                else
+                {
+                    headAnimation = headAnimation + "_Side";
+                    headAnchor = idleSide;
+                    bodyAnimation = bodyAnimation + "_Side";
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+                break;       
         }
         
         bodyAnimator.Play(bodyAnimation);
