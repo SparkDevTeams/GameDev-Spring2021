@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 983599470995280853}
   - component: {fileID: 983599470995280840}
   - component: {fileID: 983599470995280854}
-  - component: {fileID: 983599470995280843}
   - component: {fileID: -3346308202217411138}
   m_Layer: 6
   m_Name: Enemy
@@ -138,7 +137,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -170,25 +169,6 @@ MonoBehaviour:
   moveSpeed: 2
   attackDistance: 0.5
   stoppingDistance: 0.3
---- !u!114 &983599470995280843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983599470995280849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9290c6f615f83d047b49725212b03382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  attackTransform: {fileID: 983599470995280852}
-  attackRadius: 0.5
-  damagePower: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &-3346308202217411138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +187,7 @@ MonoBehaviour:
   hp: 0
   startHp: 12
   target: {fileID: 0}
-  lootItem: {fileID: 172013033003219771, guid: b3cd7a400a38a4b3fba87dab3e9564ee, type: 3}
+  lootItem: {fileID: 172013033003219771, guid: 64a0f88e9529a45288a2d9f53cc824c1, type: 3}
   endGame: 0
   experienceToGive: 3
+  winScreen: {fileID: 0}
