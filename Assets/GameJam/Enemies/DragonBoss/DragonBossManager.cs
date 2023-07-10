@@ -91,7 +91,6 @@ public class DragonBossManager : MonoBehaviour
 
             if (!(lockedTarget && AlmostEqual(targetPos, transform.position, 1e-3f))) //check if reached targetPos for laser atk
             {
-                Debug.Log("SUS");
                 Vector2 walkDirection = (Vector2)transform.position - targetPos;
                 walkDirection.Normalize();
                 if (lockedTarget) walkDirection *= -1;
@@ -123,6 +122,16 @@ public class DragonBossManager : MonoBehaviour
             if (attacking) 
             { 
                 return;
+            }
+
+            Vector2 playerDirection = (Vector2)playerTarget.position - (Vector2)transform.position;
+            if (playerDirection.x < 0)
+            {
+                animator.AnimationChange(DragonState.MOVE, DragonDirection.LEFT);
+            }
+            else
+            {
+                animator.AnimationChange(DragonState.MOVE, DragonDirection.RIGHT);
             }
             
             rb.velocity = Vector2.zero;

@@ -5218,6 +5218,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1906405591}
+    - target: {fileID: 1842219440555386677, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842219440555386677, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+      propertyPath: targetHp
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1842219440819303147, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5703,6 +5711,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 564290271, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 564290271, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 564290271, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 564290271, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 1194234141, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: winScreen
       value: 
@@ -5719,10 +5743,38 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1598418648}
+    - target: {fileID: 1268919304, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772558425, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: maxScaleY
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772558425, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: laserAppearTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1772558425, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 33216052}
+    - target: {fileID: 1772558425, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: totalAttackTime
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772558425, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: totalChargeTime
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772558425, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: totalMaxLaserTime
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772558425, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: totalMaxSizeLaserTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2602829533707111683, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: m_Name
       value: Boss Fight
@@ -5769,6 +5821,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776108027857020347, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042823034048217790, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
