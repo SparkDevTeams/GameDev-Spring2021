@@ -91,6 +91,7 @@ public class DragonBossManager : MonoBehaviour
 
             if (!(lockedTarget && AlmostEqual(targetPos, transform.position, 1e-3f))) //check if reached targetPos for laser atk
             {
+                Debug.Log("SUS");
                 Vector2 walkDirection = (Vector2)transform.position - targetPos;
                 walkDirection.Normalize();
                 if (lockedTarget) walkDirection *= -1;
