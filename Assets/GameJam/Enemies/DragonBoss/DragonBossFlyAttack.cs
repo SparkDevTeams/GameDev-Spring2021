@@ -120,7 +120,7 @@ public class DragonBossFlyAttack : MonoBehaviour
                 transform.position = divePoint;
 
                 //Play landing animation
-                animator.AnimationChange(DragonState.STOMP, animator.dragonDirection);
+                animator.AnimationChange(DragonState.STOMP, DragonDirection.LEFT);
 
                 landTimer = 0;
                 landing = true;
