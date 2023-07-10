@@ -6,7 +6,7 @@ public class DragonBossFlyAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
     private EnemyManager manager;
-    private BatBossAnimator animator;
+    private DragonBossAnimator animator;
     [SerializeField]
     private List<BatBossFlyPoint> flightPoints;
     [SerializeField]
@@ -56,7 +56,7 @@ public class DragonBossFlyAttack : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         manager = GetComponent<EnemyManager>();
-        animator = GetComponent<BatBossAnimator>();
+        animator = GetComponent<DragonBossAnimator>();
         flying = false;
         startingUp = false;
         changingPhases = false;
@@ -120,7 +120,7 @@ public class DragonBossFlyAttack : MonoBehaviour
                 transform.position = divePoint;
 
                 //Play landing animation
-                //
+                animator.AnimationChange(DragonState.STOMP, animator.dragonDirection);
 
                 landTimer = 0;
                 landing = true;
@@ -277,19 +277,19 @@ public class DragonBossFlyAttack : MonoBehaviour
 
         if (angle <= 45.0f || angle > 315.0f)
         {
-            animator.AnimationChange(BatState.FLY, BatDirection.RIGHT);
+            animator.AnimationChange(DragonState.FLY, DragonDirection.RIGHT);
         }
         else if (angle > 45.0f && angle <= 135.0f)
         {
-            animator.AnimationChange(BatState.FLY, BatDirection.BACK);
+            animator.AnimationChange(DragonState.FLY, DragonDirection.UP);
         }
         else if (angle > 135.0f && angle <= 225.0f)
         {
-            animator.AnimationChange(BatState.FLY, BatDirection.LEFT);
+            animator.AnimationChange(DragonState.FLY, DragonDirection.LEFT);
         }
         else 
         {
-            animator.AnimationChange(BatState.FLY, BatDirection.FRONT);
+            animator.AnimationChange(DragonState.FLY, DragonDirection.DOWN);
         }
     }
 

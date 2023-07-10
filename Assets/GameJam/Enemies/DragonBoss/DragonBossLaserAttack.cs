@@ -5,7 +5,7 @@ using UnityEngine;
 public class DragonBossLaserAttack : MonoBehaviour
 {
     DragonBossManager bossManager;
-    private BatBossAnimator animator;
+    private DragonBossAnimator animator;
     private Rigidbody2D rb;
     [SerializeField]
     private Transform laserTransform;    
@@ -32,7 +32,7 @@ public class DragonBossLaserAttack : MonoBehaviour
     {
         isAttacking = false;
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<BatBossAnimator>();
+        animator = GetComponent<DragonBossAnimator>();
         bossManager = GetComponent<DragonBossManager>();
     }
 
@@ -50,11 +50,11 @@ public class DragonBossLaserAttack : MonoBehaviour
                     bossManager.lockedTarget = false;
                     if (atkLeft)
                     {
-                        animator.AnimationChange(BatState.LASER, BatDirection.RIGHT);
+                        animator.AnimationChange(DragonState.LASER, DragonDirection.RIGHT);
                     }
                     else
                     {
-                        animator.AnimationChange(BatState.LASER, BatDirection.LEFT);
+                        animator.AnimationChange(DragonState.LASER, DragonDirection.LEFT);
                     }
                     rb.velocity = Vector2.zero;
 
@@ -110,7 +110,7 @@ public class DragonBossLaserAttack : MonoBehaviour
             //Closer to left
             //Go right
             atkLeft = false;
-                    animator.AnimationChange(BatState.WALK, BatDirection.LEFT);
+            animator.AnimationChange(DragonState.MOVE, DragonDirection.LEFT);
             return playerTransform.position - leftOffset - new Vector3(0, laserTransform.localPosition.y, 0) + new Vector3(0, playerTransform.localScale.y, 0);
         }
         else
@@ -118,7 +118,7 @@ public class DragonBossLaserAttack : MonoBehaviour
             //Closer to right
             //Go left
             atkLeft = true;
-            animator.AnimationChange(BatState.WALK, BatDirection.RIGHT);
+            animator.AnimationChange(DragonState.MOVE, DragonDirection.RIGHT);
             return playerTransform.position + leftOffset - new Vector3(0, laserTransform.localPosition.y, 0) + new Vector3(0, playerTransform.localScale.y, 0);
         }
     }

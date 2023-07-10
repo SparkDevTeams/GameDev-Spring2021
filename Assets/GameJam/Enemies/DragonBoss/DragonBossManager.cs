@@ -21,7 +21,7 @@ public class DragonBossManager : MonoBehaviour
     [SerializeField] private float waitTime = 1.0f;
     private float waitTimer = 0.0f;
     private Rigidbody2D rb;
-    private BatBossAnimator animator;
+    private DragonBossAnimator animator;
     [SerializeField]
     private float walkSpeed = 6.5f;
     public float walkSpeedMultiplier = 1;
@@ -44,7 +44,7 @@ public class DragonBossManager : MonoBehaviour
         tailAttack = GetComponent<DragonBossTailAttack>();
 
         manager = GetComponent<EnemyManager>();
-        animator = GetComponent<BatBossAnimator>();
+        animator = GetComponent<DragonBossAnimator>();
         active = false;
     }
 
@@ -92,8 +92,22 @@ public class DragonBossManager : MonoBehaviour
             if (!(lockedTarget && AlmostEqual(targetPos, transform.position, 1e-3f))) //check if reached targetPos for laser atk
             {
                 Vector2 walkDirection = (Vector2)transform.position - targetPos;
+                walkDirection.Normalize();
                 if (lockedTarget) walkDirection *= -1;
-                rb.velocity = walkSpeed * walkSpeedMultiplier * walkDirection;      
+                rb.velocity = walkSpeed * walkSpeedMultiplier * walkDirection;
+
+                //animation
+                if (!lockedTarget)
+                {
+                    if (rb.velocity.x < 0)
+                    {
+                        animator.AnimationChange(DragonState.MOVE, DragonDirection.LEFT);
+                    }
+                    else
+                    {
+                        animator.AnimationChange(DragonState.MOVE, DragonDirection.RIGHT);
+                    }
+                }
 
                 //Check if exceed target position
                 if (Vector2.Distance(transform.position, laserMoveStartPos) > Vector2.Distance(targetPos, laserMoveStartPos) && lockedTarget)      
@@ -109,8 +123,7 @@ public class DragonBossManager : MonoBehaviour
             { 
                 return;
             }
-
-            //Attack/Idle
+            
             rb.velocity = Vector2.zero;
             attackTimer += Time.deltaTime;
             if (attackTimer >= attackTime)
@@ -119,9 +132,7 @@ public class DragonBossManager : MonoBehaviour
                 waitTime = 0;
                 chooseAttack();
             }
-            else {
-                animator.AnimationChange(BatState.IDLE, animator.BatDirection);
-                
+            else {                
                 Debug.Log("Boss is idling");
             }
         }

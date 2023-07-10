@@ -16,11 +16,13 @@ public class DragonBossFireballAttack : MonoBehaviour
     private Transform playerTarget;
 
     public GameObject fireballPrefab;
+    private DragonBossAnimator animator;
 
     // Start is called before the first frame update
     void Start()
     {        
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<DragonBossAnimator>();
     }
 
     // Update is called once per frame
@@ -56,6 +58,8 @@ public class DragonBossFireballAttack : MonoBehaviour
 
     public void StartAttack()
     {
+        animator.AnimationChange(DragonState.FIREBALL, animator.dragonDirection);
+
         //Start attack animation (for now just shoot fireball)
         Shoot(false, Vector3.zero);
 

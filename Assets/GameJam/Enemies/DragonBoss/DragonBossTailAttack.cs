@@ -10,6 +10,12 @@ public class DragonBossTailAttack : MonoBehaviour
     public float shootTime;
     private float shootTimer = 0;
     private int projNum = 0;
+    private DragonBossAnimator animator;
+
+    void Start()
+    {
+        animator = GetComponent<DragonBossAnimator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -18,6 +24,11 @@ public class DragonBossTailAttack : MonoBehaviour
         {
             if (projNum > 0)
             {
+                if (shootTimer == 0)
+                {
+                    animator.AnimationChange(DragonState.TAIL, animator.dragonDirection);
+                }
+                
                 shootTimer += Time.deltaTime;
 
                 if (shootTimer >= shootTime)
