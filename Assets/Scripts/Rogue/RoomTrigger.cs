@@ -66,6 +66,10 @@ public class RoomTrigger : MonoBehaviour
     void SpawnAdditionalEnemies()
     {
         int additionalEnemies = playerStats.currentLevel;
+        if (additionalEnemies > 4)
+        {
+            additionalEnemies = 4;
+        }
         for (int i = 0; i <= additionalEnemies; i++)
         {
             int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);

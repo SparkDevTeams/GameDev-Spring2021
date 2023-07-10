@@ -5,27 +5,21 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     // Start is called before the first frame update
-   public Transform[] spawnLocations;
-   public GameObject projectile;
-
-   public EnemyManager test;
-
-   public Transform target;
-
-   public int minRange;
-
-   public float fireRate;
-
-   private float timer = 0;
-
-   float bulletSpeed = 10f;
-
+    public Transform[] spawnLocations;
+    public GameObject projectile;
+    public EnemyManager test;
+    public Transform target;
+    public int minRange;
+    public float fireRate;
+    private float timer = 0;
+    float bulletSpeed = 10f;
+    Animator enemyAnim;
    void Start()
    {
-       
-       test = GetComponent<EnemyManager>();
-       target = test.target;
-       target = GameObject.FindGameObjectWithTag("Player").transform;
+        enemyAnim = GetComponent<Animator>();
+        test = GetComponent<EnemyManager>();
+        target = test.target;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
    }
 
     // Update is called once per frame
@@ -44,10 +38,16 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
+        enemyAnim.Play("EnemyAttack");
+        StartCoroutine(DelayShooting());
         foreach (Transform location in spawnLocations)
         {
             Instantiate(projectile, location.position, location.rotation);
         }
+    }
+    IEnumerator DelayShooting()
+    {
+        yield return new WaitForSeconds(2.5f);
     }
 }
 
