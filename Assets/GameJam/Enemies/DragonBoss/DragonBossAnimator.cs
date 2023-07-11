@@ -18,6 +18,7 @@ public enum DragonDirection
     DOWN,
     LEFT,
     RIGHT,
+    ANY,
     NONE
 }
 
@@ -42,7 +43,7 @@ public class DragonBossAnimator : MonoBehaviour
     {
     }
 
-    public void AnimationChange( DragonState state, DragonDirection direction, float playbackSpeed = 1) {
+    public void AnimationChange( DragonState state, DragonDirection direction, float playbackSpeed = 1, float angle = 0) {
         animator.speed = playbackSpeed;
 
         dragonDirection = direction;
@@ -56,6 +57,10 @@ public class DragonBossAnimator : MonoBehaviour
             
             case DragonState.FLY:
                 animationString += "Flying";
+
+                if (direction == DragonDirection.ANY)
+                    transform.localRotation = Quaternion.Euler(0, 0, angle);
+
                 break;
             
             case DragonState.LASER:
@@ -92,7 +97,7 @@ public class DragonBossAnimator : MonoBehaviour
         {
             transform.localRotation = Quaternion.Euler(0, 0, 90);
         }
-        else
+        else if (direction != DragonDirection.ANY)
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }

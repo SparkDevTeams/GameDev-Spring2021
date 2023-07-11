@@ -168,6 +168,9 @@ public class DragonBossManager : MonoBehaviour
         {
             choose = 4;
             newPhase = false;
+
+            if (phaseNum > 1)
+                attackTimer = attackTime; //immediately use attack after fly in between phases
         }
         else if (!fireballed && phaseNum >= 2)
         {
@@ -187,7 +190,7 @@ public class DragonBossManager : MonoBehaviour
                 //Laser attack
                 targetPos = laserAttack.StartAttack();
                 lockedTarget = true;
-                walkSpeedMultiplier = 1 + 0.25f * phaseNum;
+                walkSpeedMultiplier = 1 + 0.5f * phaseNum;
                 laserMoveStartPos = transform.position;
                 break;
             case 2:

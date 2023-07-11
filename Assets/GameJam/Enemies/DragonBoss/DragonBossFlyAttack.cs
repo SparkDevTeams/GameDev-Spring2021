@@ -266,31 +266,9 @@ public class DragonBossFlyAttack : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        const float FULL_CIRCLE = 360.0f;
-
         float angle = Mathf.Atan2(flightPoints[currPointIndex].GetFlyDirection().y, flightPoints[currPointIndex].GetFlyDirection().x) * Mathf.Rad2Deg;
-
-        if (angle < 0.0f)
-        {
-            angle += FULL_CIRCLE;
-        }
-
-        if (angle <= 45.0f || angle > 315.0f)
-        {
-            animator.AnimationChange(DragonState.FLY, DragonDirection.RIGHT);
-        }
-        else if (angle > 45.0f && angle <= 135.0f)
-        {
-            animator.AnimationChange(DragonState.FLY, DragonDirection.UP);
-        }
-        else if (angle > 135.0f && angle <= 225.0f)
-        {
-            animator.AnimationChange(DragonState.FLY, DragonDirection.LEFT);
-        }
-        else 
-        {
-            animator.AnimationChange(DragonState.FLY, DragonDirection.DOWN);
-        }
+        angle += 180; //since sprite is facing left, turn 180 to make face right
+        animator.AnimationChange(DragonState.FLY, DragonDirection.ANY, 1, angle);
     }
 
     private void OnDrawGizmosSelected()

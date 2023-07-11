@@ -63,8 +63,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564290270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 2.7, z: 0}
-  m_LocalScale: {x: -100, y: 0.1, z: 1}
+  m_LocalPosition: {x: -3.6, y: 0.7, z: 0}
+  m_LocalScale: {x: 100, y: 0.01, z: 1}
   m_Children:
   - {fileID: 7779149840688468714}
   - {fileID: 1268919305}
@@ -765,12 +765,12 @@ MonoBehaviour:
   laserTransform: {fileID: 564290271}
   laserSpriteObj: {fileID: 4042823034048217790}
   laserHitboxObj: {fileID: 1268919304}
-  laserAppearTime: 0
-  totalChargeTime: 0.25
-  totalMaxSizeLaserTime: 0
-  totalMaxLaserTime: 0
-  totalAttackTime: 1.75
-  maxScaleY: 2
+  laserAppearTime: 0.5
+  totalChargeTime: 0.75
+  totalMaxSizeLaserTime: 0.5
+  totalMaxLaserTime: 0.75
+  totalAttackTime: 1.25
+  maxScaleY: 0.4
   centerLine: {fileID: 2100393970}
   playerTransform: {fileID: 0}
   leftOffset: {x: -10, y: 0, z: 0}
