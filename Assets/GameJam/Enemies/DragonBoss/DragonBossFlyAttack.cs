@@ -114,8 +114,6 @@ public class DragonBossFlyAttack : MonoBehaviour
             //Play landing animation
             animator.AnimationChange(DragonState.STOMP, DragonDirection.LEFT);
 
-            //Adjust shadow
-
             if (diveTimer >= diveTime)
             {
                 //Finish dive                
@@ -134,7 +132,6 @@ public class DragonBossFlyAttack : MonoBehaviour
         {
             landTimer += Time.deltaTime;
 
-            shadow.ShowShadow(true);
             //Play landing animation
             animator.AnimationChange(DragonState.STOMP, DragonDirection.LEFT);
 
@@ -224,6 +221,7 @@ public class DragonBossFlyAttack : MonoBehaviour
         shadow.transform.position = divePoint + shadow.shadowOffset;
         shadow.shadowSizeTarget = 1;
         shadow.shadowSizeChangeDuration = diveTime / 2;
+        shadow.ShowShadow(true);
 
         landTimer = 0;
     }
