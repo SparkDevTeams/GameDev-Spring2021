@@ -52,7 +52,7 @@ public class DragonBossTailAttack : MonoBehaviour
         attacking = true;
         projNum = bulletNum;
         shootSpeedMultiplier = speed;
-        shootTimer = shootTimer / shootSpeedMultiplier;;
+        shootTimer = shootTime / shootSpeedMultiplier;
         
         animator.AnimationChange(DragonState.TAIL, animator.dragonDirection, shootSpeedMultiplier, 0, 0);
     }
