@@ -5,10 +5,11 @@ using UnityEngine;
 public class DragonBossFireballAttack : MonoBehaviour
 {
     public float attackTime; //Time before dragon can do other attacks
-    private float attackTimer = 0;
     private int attacking = 0; //0 for not started, 1 for animation stuff, 2 for raining, 3 for done
     public float delayTime; //Time before fireballs start raining down
     private float delayTimer = 0;
+    public float upFireballTime;
+    bool upFireballed = false;
     public float fireballTime;
     private float fireballTimer = 0;
     public Transform fireballOrigin;
@@ -17,6 +18,7 @@ public class DragonBossFireballAttack : MonoBehaviour
 
     public GameObject fireballPrefab;
     private DragonBossAnimator animator;
+    bool stopped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +33,23 @@ public class DragonBossFireballAttack : MonoBehaviour
         if (attacking == 1)
         {
             delayTimer += Time.deltaTime;
+
+            if (delayTimer >= upFireballTime && !upFireballed)
+            {
+                upFireballed = true;
+                
+                Shoot(false, Vector3.zero);
+            }
+
+            if (delayTimer >= attackTime && !stopped)
+            {
+                StopAttack();
+            }
+
             if (delayTimer >= delayTime)
             {
                 attacking = 2;
                 fireballTimer = 0;
-
-                StopAttack();
             }
         }
         else if (attacking == 2)
@@ -58,17 +71,16 @@ public class DragonBossFireballAttack : MonoBehaviour
 
     public void StartAttack()
     {
-        animator.AnimationChange(DragonState.FIREBALL, animator.dragonDirection);
-
-        //Start attack animation (for now just shoot fireball)
-        Shoot(false, Vector3.zero);
+        animator.AnimationChange(DragonState.FIREBALL, DragonDirection.LEFT, 1, 0, 0);
 
         attacking = 1;
         delayTimer = 0;
+        stopped = false;
     }
 
     public void StopAttack()
-    {        
+    {   
+        stopped = true;
         GetComponent<DragonBossManager>().attacking = false;
     }
 
