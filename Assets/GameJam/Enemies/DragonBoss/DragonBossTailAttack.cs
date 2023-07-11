@@ -12,6 +12,7 @@ public class DragonBossTailAttack : MonoBehaviour
     private float shootTimer = 0;
     public float shootSpeedMultiplier = 1;
     private int projNum = 0;
+    bool started = false;
     private DragonBossAnimator animator;
 
     void Start()
@@ -24,6 +25,12 @@ public class DragonBossTailAttack : MonoBehaviour
     {
         if (attacking)
         {
+            if (!started)
+            {
+                started = true;
+                animator.AnimationChange(DragonState.TAIL, animator.dragonDirection, shootSpeedMultiplier, 0, 0);
+            }
+
             shootTimer += Time.deltaTime;
 
             if (projNum > 0)
@@ -53,8 +60,7 @@ public class DragonBossTailAttack : MonoBehaviour
         projNum = bulletNum;
         shootSpeedMultiplier = speed;
         shootTimer = shootTime / shootSpeedMultiplier;
-        
-        animator.AnimationChange(DragonState.TAIL, animator.dragonDirection, shootSpeedMultiplier, 0, 0);
+        started = false;        
     }
 
     public void StopAttack()
