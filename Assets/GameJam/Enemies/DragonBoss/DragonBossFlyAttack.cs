@@ -43,6 +43,7 @@ public class DragonBossFlyAttack : MonoBehaviour
     private float diveTimer = 0;
     public DragonBossShadow shadow;
     private Vector3 divePoint;
+    public Vector3 diveOffset;
     //Player position and rigidbody
     public Transform playerTransform;
     public Rigidbody2D playerRb;
@@ -108,8 +109,12 @@ public class DragonBossFlyAttack : MonoBehaviour
         else if (diving)
         {
             diveTimer += Time.deltaTime;
-            //Adjust shadow
+            
+            
+            //Play landing animation
+            animator.AnimationChange(DragonState.STOMP, DragonDirection.LEFT);
 
+            //Adjust shadow
 
             if (diveTimer >= diveTime)
             {
@@ -117,23 +122,24 @@ public class DragonBossFlyAttack : MonoBehaviour
                 diving = false;
                 diveTimer = 0;
                 shadow.fixedShadow = false;
-                transform.position = divePoint;
-
-                //Play landing animation
-                animator.AnimationChange(DragonState.STOMP, DragonDirection.LEFT);
 
                 landTimer = 0;
                 landing = true;
+
+                //start landing, show effect and deal damage
+                landingAttack.StartAttack();
             }
         }
         else if (landing)
         {
             landTimer += Time.deltaTime;
 
+            //Play landing animation
+            animator.AnimationChange(DragonState.STOMP, DragonDirection.LEFT);
+
             if (landTimer >= landTime)
             {
-                //finish landing, show effect and deal damage
-                landingAttack.StartAttack();
+                //finish landing   
                 
                 GetComponent<DragonBossManager>().attacking = false;
 
@@ -206,7 +212,9 @@ public class DragonBossFlyAttack : MonoBehaviour
 
         //Find player's position to dive
         Vector3 playerVelocity = playerRb.velocity;
-        divePoint = playerTransform.position;
+        divePoint = playerTransform.position + diveOffset;
+        
+        transform.position = divePoint;
 
         //Shadow stuff
         shadow.fixedShadow = true;

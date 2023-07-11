@@ -714,9 +714,10 @@ MonoBehaviour:
   totalSweepTime: 1.5
   diveTime: 0.5
   shadow: {fileID: 696029502}
+  diveOffset: {x: 0, y: 4.5, z: 0}
   playerTransform: {fileID: 0}
   playerRb: {fileID: 0}
-  landTime: 0.25
+  landTime: 0.5
   landingAttack: {fileID: 932123942}
 --- !u!114 &1194234143
 MonoBehaviour:
