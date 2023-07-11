@@ -53,6 +53,8 @@ public class DragonBossFlyAttack : MonoBehaviour
     private float landTimer = 0;
     public DragonBossLandingAttack landingAttack;
 
+    public GameObject flyHitboxObj;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -167,8 +169,6 @@ public class DragonBossFlyAttack : MonoBehaviour
                     rb.velocity = flightPoints[currPointIndex].GetFlyDirection() * speed;
                     changingPhases = false;
                 }
-
-                Attack();
             }
         }
     }
@@ -203,6 +203,7 @@ public class DragonBossFlyAttack : MonoBehaviour
         flying = true;
 
         shadow.ShowShadow(false);
+        flyHitboxObj.SetActive(true);
     }
 
     private void Dive() 
@@ -227,6 +228,7 @@ public class DragonBossFlyAttack : MonoBehaviour
         landTimer = 0;
 
         manager.TriggerInvincibility();
+        flyHitboxObj.SetActive(false);
     }
 
     public void StopFlying() 
@@ -240,16 +242,6 @@ public class DragonBossFlyAttack : MonoBehaviour
         currPointIndex = 0;
         rb.velocity = Vector2.zero;
         rb.isKinematic = false;
-    }
-
-    private void Attack() 
-    {
-        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position + (Vector3)localPositionOffset, attackRadius, playerLayer);
-
-        if (playerCollider != null) 
-        {
-            playerCollider.gameObject.GetComponent<HealthManager>().damage(damage, stunTime);
-        }
     }
 
     public bool IsFlying() 
@@ -281,11 +273,5 @@ public class DragonBossFlyAttack : MonoBehaviour
         float angle = Mathf.Atan2(flightPoints[currPointIndex].GetFlyDirection().y, flightPoints[currPointIndex].GetFlyDirection().x) * Mathf.Rad2Deg;
         angle += 180; //since sprite is facing left, turn 180 to make face right
         animator.AnimationChange(DragonState.FLY, DragonDirection.ANY, 1, angle);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + (Vector3)localPositionOffset, attackRadius);
     }
 }
