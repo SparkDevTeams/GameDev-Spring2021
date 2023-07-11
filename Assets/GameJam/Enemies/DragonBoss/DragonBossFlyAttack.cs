@@ -134,6 +134,7 @@ public class DragonBossFlyAttack : MonoBehaviour
         {
             landTimer += Time.deltaTime;
 
+            shadow.ShowShadow(true);
             //Play landing animation
             animator.AnimationChange(DragonState.STOMP, DragonDirection.LEFT);
 
@@ -202,6 +203,8 @@ public class DragonBossFlyAttack : MonoBehaviour
         startingUp = true;
         changingPhases = true;
         flying = true;
+
+        shadow.ShowShadow(false);
     }
 
     private void Dive() 

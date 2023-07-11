@@ -190,7 +190,7 @@ public class DragonBossManager : MonoBehaviour
                 //Laser attack
                 targetPos = laserAttack.StartAttack();
                 lockedTarget = true;
-                walkSpeedMultiplier = 1 + 1.5f * phaseNum;
+                walkSpeedMultiplier = 1 + 2.5f * phaseNum;
                 laserMoveStartPos = transform.position;
                 break;
             case 2:
