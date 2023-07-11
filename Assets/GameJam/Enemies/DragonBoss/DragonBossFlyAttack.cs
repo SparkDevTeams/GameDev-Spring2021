@@ -6,7 +6,7 @@ public class DragonBossFlyAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
     private EnemyManager manager;
-    private BatBossAnimator animator;
+    private DragonBossAnimator animator;
     [SerializeField]
     private List<BatBossFlyPoint> flightPoints;
     [SerializeField]
@@ -43,6 +43,7 @@ public class DragonBossFlyAttack : MonoBehaviour
     private float diveTimer = 0;
     public DragonBossShadow shadow;
     private Vector3 divePoint;
+    public Vector3 diveOffset;
     //Player position and rigidbody
     public Transform playerTransform;
     public Rigidbody2D playerRb;
@@ -52,11 +53,13 @@ public class DragonBossFlyAttack : MonoBehaviour
     private float landTimer = 0;
     public DragonBossLandingAttack landingAttack;
 
+    public GameObject flyHitboxObj;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         manager = GetComponent<EnemyManager>();
-        animator = GetComponent<BatBossAnimator>();
+        animator = GetComponent<DragonBossAnimator>();
         flying = false;
         startingUp = false;
         changingPhases = false;
@@ -108,8 +111,10 @@ public class DragonBossFlyAttack : MonoBehaviour
         else if (diving)
         {
             diveTimer += Time.deltaTime;
-            //Adjust shadow
-
+            
+            
+            //Play landing animation
+            animator.AnimationChange(DragonState.STOMP, DragonDirection.LEFT);
 
             if (diveTimer >= diveTime)
             {
@@ -117,25 +122,27 @@ public class DragonBossFlyAttack : MonoBehaviour
                 diving = false;
                 diveTimer = 0;
                 shadow.fixedShadow = false;
-                transform.position = divePoint;
-
-                //Play landing animation
-                //
 
                 landTimer = 0;
                 landing = true;
+
+                //start landing, show effect and deal damage
+                landingAttack.StartAttack();
             }
         }
         else if (landing)
         {
             landTimer += Time.deltaTime;
 
+            //Play landing animation
+            animator.AnimationChange(DragonState.STOMP, DragonDirection.LEFT);
+
             if (landTimer >= landTime)
             {
-                //finish landing, show effect and deal damage
-                landingAttack.StartAttack();
+                //finish landing   
                 
                 GetComponent<DragonBossManager>().attacking = false;
+                manager.StopInvincibility();
 
                 landing = false;
             }
@@ -162,8 +169,6 @@ public class DragonBossFlyAttack : MonoBehaviour
                     rb.velocity = flightPoints[currPointIndex].GetFlyDirection() * speed;
                     changingPhases = false;
                 }
-
-                Attack();
             }
         }
     }
@@ -196,6 +201,9 @@ public class DragonBossFlyAttack : MonoBehaviour
         startingUp = true;
         changingPhases = true;
         flying = true;
+
+        shadow.ShowShadow(false);
+        flyHitboxObj.SetActive(true);
     }
 
     private void Dive() 
@@ -206,15 +214,21 @@ public class DragonBossFlyAttack : MonoBehaviour
 
         //Find player's position to dive
         Vector3 playerVelocity = playerRb.velocity;
-        divePoint = playerTransform.position;
+        divePoint = playerTransform.position + diveOffset;
+        
+        transform.position = divePoint;
 
         //Shadow stuff
         shadow.fixedShadow = true;
         shadow.transform.position = divePoint + shadow.shadowOffset;
         shadow.shadowSizeTarget = 1;
         shadow.shadowSizeChangeDuration = diveTime / 2;
+        shadow.ShowShadow(true);
 
         landTimer = 0;
+
+        manager.TriggerInvincibility();
+        flyHitboxObj.SetActive(false);
     }
 
     public void StopFlying() 
@@ -228,16 +242,6 @@ public class DragonBossFlyAttack : MonoBehaviour
         currPointIndex = 0;
         rb.velocity = Vector2.zero;
         rb.isKinematic = false;
-    }
-
-    private void Attack() 
-    {
-        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position + (Vector3)localPositionOffset, attackRadius, playerLayer);
-
-        if (playerCollider != null) 
-        {
-            playerCollider.gameObject.GetComponent<HealthManager>().damage(damage, stunTime);
-        }
     }
 
     public bool IsFlying() 
@@ -266,36 +270,8 @@ public class DragonBossFlyAttack : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        const float FULL_CIRCLE = 360.0f;
-
         float angle = Mathf.Atan2(flightPoints[currPointIndex].GetFlyDirection().y, flightPoints[currPointIndex].GetFlyDirection().x) * Mathf.Rad2Deg;
-
-        if (angle < 0.0f)
-        {
-            angle += FULL_CIRCLE;
-        }
-
-        if (angle <= 45.0f || angle > 315.0f)
-        {
-            animator.AnimationChange(BatState.FLY, BatDirection.RIGHT);
-        }
-        else if (angle > 45.0f && angle <= 135.0f)
-        {
-            animator.AnimationChange(BatState.FLY, BatDirection.BACK);
-        }
-        else if (angle > 135.0f && angle <= 225.0f)
-        {
-            animator.AnimationChange(BatState.FLY, BatDirection.LEFT);
-        }
-        else 
-        {
-            animator.AnimationChange(BatState.FLY, BatDirection.FRONT);
-        }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + (Vector3)localPositionOffset, attackRadius);
+        angle += 180; //since sprite is facing left, turn 180 to make face right
+        animator.AnimationChange(DragonState.FLY, DragonDirection.ANY, 1, angle);
     }
 }

@@ -13,6 +13,7 @@ public class DragonBossShadow : MonoBehaviour
     public float shadowSizeTarget = 1;
     public float shadowSizeChangeDuration = 1;
     public bool fixedShadow = false;
+    public SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +34,10 @@ public class DragonBossShadow : MonoBehaviour
         }
 
         transform.localScale = shadowMaxSize * shadowSizeMultiplier;
+    }
+
+    public void ShowShadow(bool show)
+    {
+        sr.enabled = show;
     }
 }

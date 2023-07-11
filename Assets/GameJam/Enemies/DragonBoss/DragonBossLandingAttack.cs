@@ -5,16 +5,19 @@ using UnityEngine;
 public class DragonBossLandingAttack : MonoBehaviour
 {
     public int landingDamage;
+    public float dmgTime = 0.25f;
     public float attackTime;
     public float attackTimer = 0;
     bool attacking = false;
     bool hitPlayer = false;
     public SpriteRenderer sprite;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         attackTimer = 0;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,7 +38,7 @@ public class DragonBossLandingAttack : MonoBehaviour
     {
         if(hitInfo.tag == "Player")
         {
-            if (attacking && !hitPlayer)
+            if (attacking && !hitPlayer && attackTimer < dmgTime)
             {
                 hitInfo.GetComponent<HealthManager>().damage(landingDamage,0.25f);
                 hitPlayer = true;
@@ -49,6 +52,7 @@ public class DragonBossLandingAttack : MonoBehaviour
         hitPlayer = false;
         attackTimer = 0;
         sprite.enabled = true;
+        animator.Play("DragonLandingSmoke", sprite.sortingOrder, 0);
     }
 
     private void EndAttack()
