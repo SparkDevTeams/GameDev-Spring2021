@@ -754,7 +754,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7939737325512497724}
   homingProjPrefab: {fileID: 2650592146098922914, guid: 2453e1d964dc0a44687e36df924d1550, type: 3}
+  firingDelay: 0.5
   shootTime: 1
+  shootSpeedMultiplier: 1
 --- !u!114 &7193072344258902497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,6 +830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7458504712262120851}
+  sr: {fileID: 6736910990566696010}
   dragonDirection: 2
 --- !u!50 &1015797831
 Rigidbody2D:
@@ -10748,7 +10751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7062071139918088554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.25, y: 2.7, z: 0}
+  m_LocalPosition: {x: 4.1, y: 1.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4196721147831833583}

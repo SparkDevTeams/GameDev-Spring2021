@@ -195,7 +195,7 @@ public class DragonBossManager : MonoBehaviour
                 break;
             case 2:
                 //Tail attack
-                tailAttack.StartAttack(4 * phaseNum);
+                tailAttack.StartAttack(4 * phaseNum, 0.75f + 0.25f * phaseNum);
                 break;
             case 3:
                 //Fireball attack

@@ -26,6 +26,7 @@ public class DragonBossAnimator : MonoBehaviour
 {
     [SerializeField]
     private Animator animator;
+    [SerializeField] SpriteRenderer sr;
 
     //STATE
     const string bossName= "BossDragon";
@@ -43,7 +44,7 @@ public class DragonBossAnimator : MonoBehaviour
     {
     }
 
-    public void AnimationChange( DragonState state, DragonDirection direction, float playbackSpeed = 1, float angle = 0) {
+    public void AnimationChange( DragonState state, DragonDirection direction, float playbackSpeed = 1, float angle = 0, float startTime = float.NegativeInfinity) {
         animator.speed = playbackSpeed;
 
         dragonDirection = direction;
@@ -102,6 +103,6 @@ public class DragonBossAnimator : MonoBehaviour
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         
-        animator.Play(animationString);
+        animator.Play(animationString, sr.sortingOrder, startTime);
     }
 }
