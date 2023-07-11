@@ -5711,6 +5711,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1194234135, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
+      propertyPath: firingDelay
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1194234141, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: winScreen
       value: 
