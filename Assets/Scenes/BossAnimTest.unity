@@ -440,35 +440,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &340304725 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 696029499, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-  m_PrefabInstance: {fileID: 3921454215924318561}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &340304728 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 696029501, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-  m_PrefabInstance: {fileID: 3921454215924318561}
-  m_PrefabAsset: {fileID: 0}
---- !u!1818360609 &340304729
-RotationConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340304725}
-  m_Enabled: 1
-  m_Weight: 1
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_RotationOffset: {x: 0, y: 0, z: 0}
-  m_AffectRotationX: 1
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 1
-  m_IsContraintActive: 1
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 1319577216}
-    weight: 1
 --- !u!1 &357377854
 GameObject:
   m_ObjectHideFlags: 0
@@ -4598,11 +4569,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1319577216 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4196721147831833583, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-  m_PrefabInstance: {fileID: 3921454215924318561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1466867815 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1466867815, guid: 854c868ef70b307459e74f3b96119994, type: 3}
@@ -5745,66 +5711,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 696029500, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029500, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029500, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029500, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029500, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029500, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029500, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029500, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029500, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029500, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029502, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: sr
-      value: 
-      objectReference: {fileID: 340304728}
-    - target: {fileID: 696029502, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: shadowOffset.y
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029502, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: shadowMaxSize.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029502, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: shadowMaxSize.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 696029502, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
-      propertyPath: shadowMaxSize.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1194234141, guid: 648ff0f231e25f745a0d0fa63392da17, type: 3}
       propertyPath: winScreen
       value: 
