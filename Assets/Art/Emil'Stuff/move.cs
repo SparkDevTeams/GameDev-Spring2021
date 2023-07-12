@@ -250,7 +250,7 @@ public class move : MonoBehaviour
         //}
 
         //ROLL SET
-        if (gameIsPaused == false && Input.GetButton("Fire3")&& !rollStart && (mode == "Idle" || mode == "Walk"))
+/*        if (gameIsPaused == false && Input.GetButton("Fire3")&& !rollStart && (mode == "Idle" || mode == "Walk"))
         {
             mode = "Roll";
             setTime = 0.222f;
@@ -295,7 +295,7 @@ public class move : MonoBehaviour
             rb.velocity = rollVector;
             animator.Play("Mlafi_" + mode + "_" + direction);
             return;
-        }
+        }*/
 
         //WALK
         if (gameIsPaused == false && mode == "Idle" || mode == "Walk")
