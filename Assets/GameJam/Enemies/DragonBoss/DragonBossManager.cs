@@ -63,13 +63,13 @@ public class DragonBossManager : MonoBehaviour
         healthBar.value = manager.hp;
 
         //check phase
-        if ((float)manager.hp / (float)manager.startHp <= 0.1f && phaseNum < 4) //10% hp left
+        if ((float)manager.hp / (float)manager.startHp <= 0.05f && phaseNum < 4) //5% hp left
         {
             phaseNum = 4;
             newPhase = true;
             waitAtkSpeed = 1.75f;
         }
-        else if ((float)manager.hp / (float)manager.startHp <= 0.25f && phaseNum < 3) //25% hp left
+        else if ((float)manager.hp / (float)manager.startHp <= 0.25f && phaseNum < 3) //20% hp left
         {
             phaseNum = 3;
             newPhase = true;

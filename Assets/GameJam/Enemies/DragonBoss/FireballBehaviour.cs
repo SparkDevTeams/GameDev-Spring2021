@@ -8,7 +8,7 @@ public class FireballBehaviour : MonoBehaviour
     public float targetPosY;
     public float speed;
     public float time;
-    public GameObject fireCircle;
+    public GameObject[] fireCircle;
     public GameObject shadowObj;
     private DragonBossShadow shadow;
     public bool haveShadow;
@@ -50,7 +50,8 @@ public class FireballBehaviour : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, targetPosY, transform.position.z);
 
                 //Create fire on ground
-                Instantiate(fireCircle, transform.position, Quaternion.identity);
+                int rand = Random.Range(0, fireCircle.Length);
+                Instantiate(fireCircle[rand], transform.position, Quaternion.identity);
 
                 //Destroy fireball
                 Destroy(this.gameObject);                

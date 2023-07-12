@@ -21,7 +21,6 @@ public class FireBehaviour : MonoBehaviour
     void OnEnable()
     {
         float rand = Random.value;
-        Debug.Log("SUS : " + rand);
         animator.Play(stateName, sr.sortingLayerID, rand);
     }
 
