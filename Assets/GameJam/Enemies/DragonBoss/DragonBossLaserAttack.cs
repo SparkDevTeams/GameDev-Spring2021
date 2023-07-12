@@ -34,6 +34,7 @@ public class DragonBossLaserAttack : MonoBehaviour
     public Transform playerTransform;
     public Vector3 leftOffset;
     bool lasered = false;
+    public float atkSpeedMultiplier = 1;
     
     // Start is called before the first frame update
     void Start()
@@ -60,27 +61,28 @@ public class DragonBossLaserAttack : MonoBehaviour
                     
                     if (atkLeft)
                     {
-                        animator.AnimationChange(DragonState.LASER, DragonDirection.RIGHT, 2);
+                        animator.AnimationChange(DragonState.LASER, DragonDirection.RIGHT, 2 * atkSpeedMultiplier);
                     }
                     else
                     {
-                        animator.AnimationChange(DragonState.LASER, DragonDirection.LEFT, 2);
+                        animator.AnimationChange(DragonState.LASER, DragonDirection.LEFT, 2 * atkSpeedMultiplier);
                     }
                 }
-                else if (chargeTimer >= laserAppearTime && !lasered)
+                else if (chargeTimer >= laserAppearTime / atkSpeedMultiplier && !lasered)
                 {                    
                     lasered = true;
                     laserSpriteObj.SetActive(true);
+                    laserHitboxObj.SetActive(true);
                     laserTransform.localScale = new Vector3(laserTransform.localScale.x, 0.01f, laserTransform.localScale.z);
                 }
 
-                if (chargeTimer < totalChargeTime)
+                if (chargeTimer < totalChargeTime / atkSpeedMultiplier)
                 {
                     chargeTimer += Time.deltaTime;
                     if (lasered)
                     {
                         //Scale up based on charge time
-                        float scaleY = maxScaleY * (chargeTimer / totalChargeTime);
+                        float scaleY = maxScaleY * (chargeTimer / (totalChargeTime / atkSpeedMultiplier));
                         if (scaleY > maxScaleY)
                         {
                             scaleY = maxScaleY;
@@ -94,26 +96,24 @@ public class DragonBossLaserAttack : MonoBehaviour
                     //start attack
                     isAttacking = true;
                     isCharging = false;
-
-                    laserHitboxObj.SetActive(true);
                 }
             }        
         }
         else if (isAttacking)
         {
-            if (attackTimer < totalAttackTime)
+            if (attackTimer < totalAttackTime / atkSpeedMultiplier)
             {
                 attackTimer += Time.deltaTime;
 
-                if (attackTimer > totalMaxSizeLaserTime)
+                if (attackTimer > totalMaxSizeLaserTime / atkSpeedMultiplier)
                 {
-                    laserHitboxObj.SetActive(false);
                     //Scale up based on charge time
-                    float scaleY = maxScaleY - (maxScaleY - 0.01f) * ((attackTimer - totalMaxSizeLaserTime) / (totalMaxLaserTime - totalMaxSizeLaserTime));
+                    float scaleY = maxScaleY - (maxScaleY - 0.01f) * ((attackTimer - totalMaxSizeLaserTime / atkSpeedMultiplier) / ((totalMaxLaserTime - totalMaxSizeLaserTime) / atkSpeedMultiplier));
                     if (scaleY <= 0.01f)
                     {
                         scaleY = 0.01f;
                         laserSpriteObj.SetActive(false);
+                        laserHitboxObj.SetActive(false);
                     }
                     laserTransform.localScale = new Vector3(laserTransform.localScale.x, scaleY, laserTransform.localScale.z);
                 }
@@ -127,12 +127,13 @@ public class DragonBossLaserAttack : MonoBehaviour
         }        
     }
 
-    public Vector3 StartAttack() //charge
+    public Vector3 StartAttack(float speed = 1) //charge
     {
         attackTimer = 0;
         chargeTimer = 0;
         isCharging = true;
         lasered = false;
+        atkSpeedMultiplier = speed;
 
         //Check player closer to left or right side
         if (playerTransform.position.x < centerLine.position.x)

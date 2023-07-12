@@ -60,7 +60,7 @@ public class DragonBossFireballAttack : MonoBehaviour
                 Vector3 targetPos = playerTarget.position;
 
                 //Shoot fireball
-                Shoot(true, targetPos, 2.5f);
+                Shoot(true, targetPos, 4);
 
                 fireballTimer = 0;
             }
@@ -106,7 +106,8 @@ public class DragonBossFireballAttack : MonoBehaviour
         }
         else
         {
-            fireball = Instantiate(fireballPrefab, fireballOrigin.position, Quaternion.identity);
+            fireball = Instantiate(fireballPrefab, fireballOrigin.position, Quaternion.Euler(0, 0, 180));
+            fireball.transform.localScale *= 2;
             behaviour = fireball.GetComponent<FireballBehaviour>();
             
             behaviour.falling = false;

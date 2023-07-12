@@ -6,6 +6,15 @@ public class FireCircleBehaviour : MonoBehaviour
 {
     public float totalDuration;
     public float currentDuration = 0;
+    public float fadeDuration;
+    float deleteFireTimer = 0;
+    float deleteFireDuration;
+    public List<GameObject> fires = new List<GameObject>();
+
+    void Start()
+    {
+        deleteFireDuration = (totalDuration - fadeDuration) / fires.Count;
+    }
 
     // Update is called once per frame
     void Update()
@@ -15,6 +24,21 @@ public class FireCircleBehaviour : MonoBehaviour
         //Animation
 
         currentDuration += Time.deltaTime;
+        if (currentDuration >= fadeDuration)
+        {
+            deleteFireTimer += Time.deltaTime;
+
+            if (deleteFireTimer > deleteFireDuration)
+            {
+                deleteFireTimer = 0;
+
+                //Delete a random fire
+                int rand = Random.Range(0, fires.Count);
+                Destroy(fires[rand]);
+                fires.RemoveAt(rand);
+            }
+        }
+
         if (currentDuration >= totalDuration)
         {
             Destroy(this.gameObject);

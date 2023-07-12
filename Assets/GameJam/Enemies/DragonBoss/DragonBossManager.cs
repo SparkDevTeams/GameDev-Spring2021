@@ -32,6 +32,9 @@ public class DragonBossManager : MonoBehaviour
     private Vector2 laserMoveStartPos;
     public bool lockedTarget = false;
     public Vector2 targetPos;
+
+    private float waitAtkSpeed = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,8 @@ public class DragonBossManager : MonoBehaviour
         manager = GetComponent<EnemyManager>();
         animator = GetComponent<DragonBossAnimator>();
         active = false;
+        
+        waitAtkSpeed = 1;
     }
 
     // Update is called once per frame
@@ -58,26 +63,29 @@ public class DragonBossManager : MonoBehaviour
         healthBar.value = manager.hp;
 
         //check phase
-        if ((float)manager.hp / (float)manager.startHp <= 0.1f && phaseNum < 4) //10% hp left
+        if ((float)manager.hp / (float)manager.startHp <= 0.05f && phaseNum < 4) //5% hp left
         {
             phaseNum = 4;
             newPhase = true;
+            waitAtkSpeed = 1.75f;
         }
-        else if ((float)manager.hp / (float)manager.startHp <= 0.25f && phaseNum < 3) //25% hp left
+        else if ((float)manager.hp / (float)manager.startHp <= 0.25f && phaseNum < 3) //20% hp left
         {
             phaseNum = 3;
             newPhase = true;
+            waitAtkSpeed = 1.5f;
         }
         else if ((float)manager.hp / (float)manager.startHp <= 0.5f && phaseNum < 2) //50% hp left
         {
             phaseNum = 2;
             newPhase = true;
+            waitAtkSpeed = 1.25f;
         }
         
         waitTimer += Time.deltaTime;
 
         //Walk
-        if ((Vector2.Distance(playerTarget.position, transform.position) < 10 && waitTimer < waitTime) || attacking)
+        if ((Vector2.Distance(playerTarget.position, transform.position) < 10 && waitTimer < waitTime / waitAtkSpeed) || attacking)
         {
             if (attacking && !lockedTarget) //lockedTarget for laser attack 
             { 
@@ -136,10 +144,10 @@ public class DragonBossManager : MonoBehaviour
             
             rb.velocity = Vector2.zero;
             attackTimer += Time.deltaTime;
-            if (attackTimer >= attackTime)
+            if (attackTimer >= attackTime / waitAtkSpeed)
             {
                 attackTimer = 0;
-                waitTime = 0;
+                //waitTimer = 0;
                 chooseAttack();
             }
             else {                
@@ -170,7 +178,7 @@ public class DragonBossManager : MonoBehaviour
             newPhase = false;
 
             if (phaseNum > 1)
-                attackTimer = attackTime; //immediately use attack after fly in between phases
+                attackTimer = attackTime / waitAtkSpeed; //immediately use attack after fly in between phases
         }
         else if (!fireballed && phaseNum >= 2)
         {
@@ -188,14 +196,14 @@ public class DragonBossManager : MonoBehaviour
             case 0:
             case 1:
                 //Laser attack
-                targetPos = laserAttack.StartAttack();
+                targetPos = laserAttack.StartAttack(1.25f + 0.25f * phaseNum);
                 lockedTarget = true;
-                walkSpeedMultiplier = 1 + 2.5f * phaseNum;
+                walkSpeedMultiplier = 1 + 3.5f * phaseNum;
                 laserMoveStartPos = transform.position;
                 break;
             case 2:
                 //Tail attack
-                tailAttack.StartAttack(2 + 2 * phaseNum, 0.75f + 0.25f * phaseNum);
+                tailAttack.StartAttack(2 + 1 * phaseNum, 0.75f + 0.25f * phaseNum);
                 break;
             case 3:
                 //Fireball attack
