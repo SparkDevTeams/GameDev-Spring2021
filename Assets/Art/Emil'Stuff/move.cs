@@ -35,12 +35,15 @@ public class move : MonoBehaviour
     Text statsToggleButtonText;
     private bool statsOpen = true; //if false then cooking open
     public GameObject pausedUI;
-    public static bool gameIsPaused = false;
+    public bool gameIsPaused;
 
     public Text boarTrotterText;
     public int boarTrotterCount;
     public Text shroomText;
     public int shroomCount;
+    public bool isMelee;
+    public GameObject fryingPan;
+    public GameObject kitchenGun;
 
     public string Direction {
         get { return direction; }
@@ -53,6 +56,8 @@ public class move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameIsPaused = false;
+        isMelee = true;
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -144,7 +149,7 @@ public class move : MonoBehaviour
 
         if (gameIsPaused == false && mode != "Idle" && mode != "Walking") 
         {
-            if (Input.GetMouseButtonDown(0) && (setTime <= (0.267f / 8.0f * 4.0f)) && mode != "Hurt")
+            if (isMelee == true && Input.GetMouseButtonDown(0) && (setTime <= (0.267f / 8.0f * 4.0f)) && mode != "Hurt")
             {
                 mode = "Attack";
                 setTime = 0.267f;
@@ -176,7 +181,7 @@ public class move : MonoBehaviour
                 return;
             }//Cancel into attack
 
-            if (Input.GetButtonDown("Fire2") && (setTime >= (0.333f * 0.6f)) && mode != "Hurt")
+            if (isMelee != true && Input.GetMouseButtonDown(0) && (setTime >= (0.333f * 0.6f)) && mode != "Hurt")
             {
                 Debug.Log("Can shoot: " + GetComponent<PlayerTest>().canShoot);
                 mode = "Magic";
@@ -203,7 +208,7 @@ public class move : MonoBehaviour
             TogglePause();
         }
 
-        if (Input.GetMouseButtonDown(0) && (setTime <= (0.267f / 8.0f * 4.0f)) && mode != "Hurt")
+        if (isMelee == true && Input.GetMouseButtonDown(0) && (setTime <= (0.267f / 8.0f * 4.0f)) && mode != "Hurt")
         {
             mode = "Attack";
             setTime = 0.267f;
@@ -245,7 +250,7 @@ public class move : MonoBehaviour
         //}
 
         //ROLL SET
-        if (gameIsPaused == false && Input.GetButton("Fire3")&& !rollStart && (mode == "Idle" || mode == "Walk"))
+/*        if (gameIsPaused == false && Input.GetButton("Fire3")&& !rollStart && (mode == "Idle" || mode == "Walk"))
         {
             mode = "Roll";
             setTime = 0.222f;
@@ -290,7 +295,7 @@ public class move : MonoBehaviour
             rb.velocity = rollVector;
             animator.Play("Mlafi_" + mode + "_" + direction);
             return;
-        }
+        }*/
 
         //WALK
         if (gameIsPaused == false && mode == "Idle" || mode == "Walk")
@@ -316,6 +321,27 @@ public class move : MonoBehaviour
         }
 
         animator.Play("Mlafi_" + mode + "_" + direction);
+
+        if (gameIsPaused == false && Input.GetMouseButtonDown(1))
+        {
+            ToggleWeapon();
+        }
+    }
+
+    public void ToggleWeapon()
+    {
+        if (isMelee == true)
+        {
+            fryingPan.SetActive(false);
+            kitchenGun.SetActive(true);
+            isMelee = false;
+        }
+        else
+        {
+            fryingPan.SetActive(true);
+            kitchenGun.SetActive(false);
+            isMelee = true;
+        }
     }
 
     public void ToggleBag()
