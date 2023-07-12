@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6926865398650574194}
   - component: {fileID: 28392296746180215}
   - component: {fileID: 823353557267654122}
-  - component: {fileID: 5406258154694747605}
+  - component: {fileID: 1753630944350497563}
+  - component: {fileID: 1236543273256352299}
   m_Layer: 7
   m_Name: Homing Projectile
   m_TagString: Projectile
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b9b917b1acc4a0941b1f5f0e0f6d13e4, type: 3}
-  m_Color: {r: 1, g: 0.9063225, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e00b9b893817e4d41a591bc7324d7c99, type: 3}
+  m_Color: {r: 0.54509807, g: 1, b: 0.92941177, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -118,14 +119,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49b5db44c120d446b89957f3d3ada34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
   damage: 1
   rb: {fileID: 28392296746180215}
   target: {fileID: 0}
-  maxSpeed: 15
-  homingForce: 40
---- !u!60 &5406258154694747605
-PolygonCollider2D:
+  maxSpeed: 20
+  homingForce: 20
+--- !u!95 &1753630944350497563
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650592146098922914}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 11d635fa6adbd5c43ad95903966a76ae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &1236543273256352299
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,31 +157,6 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.08102429, y: 0.29620484}
-      - {x: 0.049999997, y: 0.29999998}
-      - {x: 0.025180561, y: 0.30277082}
-      - {x: 0.02, y: 0.12}
-      - {x: -0.41, y: 0.12}
-      - {x: -0.44, y: 0.12036111}
-      - {x: -0.44, y: -0.13}
-      - {x: 0.010111675, y: -0.1285075}
-      - {x: 0.020059086, y: -0.22789231}
-      - {x: 0.027892321, y: -0.30759025}
-      - {x: 0.049277745, y: -0.30518058}
-      - {x: 0.09769124, y: -0.28682357}
-      - {x: 0.32304385, y: -0.114208676}
-      - {x: 0.37168744, y: -0.07518055}
-      - {x: 0.44379514, y: -0.00036113337}
-      - {x: 0.38240966, y: 0.06066318}
+  m_Offset: {x: 0.4, y: 0.02}
+  m_Size: {x: 0.6, y: 0.2}
+  m_Direction: 1

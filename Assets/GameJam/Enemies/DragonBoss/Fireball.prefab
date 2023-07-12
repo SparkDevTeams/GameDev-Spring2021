@@ -140,7 +140,12 @@ MonoBehaviour:
   targetPosY: 0
   speed: 0
   time: 0
-  fireCircle: {fileID: 2650592146098922914, guid: 3a08645af58472845b9b733a0d04b1a1, type: 3}
+  fireCircle:
+  - {fileID: 2650592146098922914, guid: 3a08645af58472845b9b733a0d04b1a1, type: 3}
+  - {fileID: 2650592146098922914, guid: ae2719073b8a808409516ecae0a52db3, type: 3}
+  - {fileID: 2650592146098922914, guid: 87e7fcbc869f21c449abdb665ab673db, type: 3}
+  - {fileID: 2650592146098922914, guid: 1284b9922b8bd794caf97cf56244cb98, type: 3}
+  - {fileID: 2650592146098922914, guid: 83c29d03a25271b43b35c0c36a8096ab, type: 3}
   shadowObj: {fileID: 4380168218139750052}
   haveShadow: 0
 --- !u!95 &7753510290335154630
