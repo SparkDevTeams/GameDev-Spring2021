@@ -35,13 +35,13 @@ public class move : MonoBehaviour
     Text statsToggleButtonText;
     private bool statsOpen = true; //if false then cooking open
     public GameObject pausedUI;
-    public static bool gameIsPaused = false;
+    public bool gameIsPaused;
 
     public Text boarTrotterText;
     public int boarTrotterCount;
     public Text shroomText;
     public int shroomCount;
-    bool isMelee;
+    public bool isMelee;
     public GameObject fryingPan;
     public GameObject kitchenGun;
 
@@ -56,6 +56,7 @@ public class move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameIsPaused = false;
         isMelee = true;
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -180,7 +181,7 @@ public class move : MonoBehaviour
                 return;
             }//Cancel into attack
 
-            if (isMelee == false && Input.GetMouseButtonDown(0) && (setTime >= (0.333f * 0.6f)) && mode != "Hurt")
+            if (isMelee != true && Input.GetMouseButtonDown(0) && (setTime >= (0.333f * 0.6f)) && mode != "Hurt")
             {
                 Debug.Log("Can shoot: " + GetComponent<PlayerTest>().canShoot);
                 mode = "Magic";

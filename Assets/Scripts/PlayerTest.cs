@@ -8,13 +8,12 @@ public class PlayerTest : MonoBehaviour
     public Transform firePoint;
     public GameObject projectile;
     public bool canShoot;
-
-    [SerializeField]private float arrowCooldown;
+    [SerializeField]
+    private float arrowCooldown;
     public float arrowCooldownMultiplier;
     private float currentTimer;
-
     private PlayerManager player;
-
+    move playerMove;
    void Start()
    {
         player = GetComponent<PlayerManager>();
@@ -26,15 +25,15 @@ public class PlayerTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (GetComponent<move>().Mode == "Dead") { return; }
-
-        if (move.gameIsPaused == false && Input.GetMouseButtonDown(0) && canShoot)
+        if (GetComponent<move>().Mode == "Dead")
+        { 
+            return; 
+        }
+        if (playerMove.gameIsPaused == false && playerMove.isMelee == false && Input.GetMouseButtonDown(0) && canShoot)
         {
             Shoot();
             GetComponent<move>().SetAnimation("Magic", 0.25f, true);
         }
-
         if (!canShoot)
         {
             currentTimer += Time.deltaTime;
@@ -47,7 +46,6 @@ public class PlayerTest : MonoBehaviour
         }
 
     }
-
     void Shoot()
     {
         Instantiate(projectile, firePoint.position, Quaternion.Euler(new Vector3(0,0, player.angle)));

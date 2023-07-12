@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneNavigation : MonoBehaviour
 {
     public GameObject startingScreen;
+    move playerMove;
 
     
     // Start is called before the first frame update
@@ -21,14 +22,14 @@ public class SceneNavigation : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        move.gameIsPaused = false;
+        playerMove.gameIsPaused = false;
         Time.timeScale = 1f;
     }
 
     public void Exit()
     {
         Application.Quit();
-        move.gameIsPaused = false;
+        playerMove.gameIsPaused = false;
         Time.timeScale = 1f;
     }
 } 
