@@ -8,8 +8,13 @@ public class FireCircleBehaviour : MonoBehaviour
     public float currentDuration = 0;
     public float fadeDuration;
     float deleteFireTimer = 0;
-    public float deleteFireDuration;
+    float deleteFireDuration;
     public List<GameObject> fires = new List<GameObject>();
+
+    void Start()
+    {
+        deleteFireDuration = (totalDuration - fadeDuration) / fires.Count;
+    }
 
     // Update is called once per frame
     void Update()
