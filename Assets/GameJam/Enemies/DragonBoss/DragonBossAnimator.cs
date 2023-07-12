@@ -103,6 +103,6 @@ public class DragonBossAnimator : MonoBehaviour
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         
-        animator.Play(animationString, sr.sortingOrder, startTime);
+        animator.Play(animationString, sr.sortingLayerID, startTime);
     }
 }

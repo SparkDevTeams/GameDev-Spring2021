@@ -52,7 +52,7 @@ public class DragonBossLandingAttack : MonoBehaviour
         hitPlayer = false;
         attackTimer = 0;
         sprite.enabled = true;
-        animator.Play("DragonLandingSmoke", sprite.sortingOrder, 0);
+        animator.Play("DragonLandingSmoke", sprite.sortingLayerID, 0);
     }
 
     private void EndAttack()
