@@ -17,6 +17,7 @@ public class PlayerTest : MonoBehaviour
    void Start()
    {
         player = GetComponent<PlayerManager>();
+        playerMove = GetComponent<move>();
         canShoot = true;
         currentTimer = 0;
         arrowCooldownMultiplier = 1;
