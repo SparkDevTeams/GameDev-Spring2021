@@ -49,6 +49,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        playerMove = GetComponent<move>();
         playerBuff = GetComponent<Buffs>();
         buffList = new List<GameObject> { meleeAtkBuff, rangedAtkBuff, healBuff, speedBuff };
         playerBuff.InitializeBuffIcons(buffList);
