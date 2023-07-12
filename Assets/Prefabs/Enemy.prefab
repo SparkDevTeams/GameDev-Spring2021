@@ -207,7 +207,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 10.8}
+    oldSize: {x: 3.6, y: 3.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
   hp: 0
   startHp: 12
   target: {fileID: 0}
-  lootItem: {fileID: 172013033003219771, guid: 64a0f88e9529a45288a2d9f53cc824c1, type: 3}
+  lootItem: {fileID: 172013033003219771, guid: 20591aa41e26f491c8a332b905fa7a43, type: 3}
   endGame: 0
   experienceToGive: 3
   winScreen: {fileID: 0}
