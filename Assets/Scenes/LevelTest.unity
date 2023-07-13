@@ -220,6 +220,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2080022336, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1019964730}
     - target: {fileID: 1930627374204079261, guid: 3a27ff80ff3282b46915cda870b524ff, type: 3}
       propertyPath: healBuff
       value: 
@@ -4616,6 +4620,11 @@ CanvasRenderer:
 --- !u!1 &993446881 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1281704835, guid: 854c868ef70b307459e74f3b96119994, type: 3}
+  m_PrefabInstance: {fileID: 2034200289}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1019964730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1018531914, guid: 854c868ef70b307459e74f3b96119994, type: 3}
   m_PrefabInstance: {fileID: 2034200289}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1064249761
