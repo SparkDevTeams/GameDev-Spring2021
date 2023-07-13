@@ -119,12 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49b5db44c120d446b89957f3d3ada34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 7.5
   damage: 1
   rb: {fileID: 28392296746180215}
   target: {fileID: 0}
-  maxSpeed: 15
-  homingForce: 20
+  maxSpeed: 7.5
+  homingForce: 40
 --- !u!95 &1753630944350497563
 Animator:
   serializedVersion: 3
