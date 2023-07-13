@@ -123,7 +123,7 @@ MonoBehaviour:
   damage: 1
   rb: {fileID: 28392296746180215}
   target: {fileID: 0}
-  maxSpeed: 20
+  maxSpeed: 15
   homingForce: 20
 --- !u!95 &1753630944350497563
 Animator:
