@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Shroom SO
   m_EditorClassIdentifier: 
   ingredientName: Shroom
-  ingredientSprite: {fileID: 21300000, guid: 55ec321e6e6324a9ebe0a3a856de7acf, type: 3}
+  ingredientSprite: {fileID: 21300000, guid: d33554bb555b84e34814516ec3009116, type: 3}
