@@ -120,6 +120,7 @@ public class DragonBossManager : MonoBehaviour
                 //Check if exceed target position
                 if (Vector2.Distance(transform.position, laserMoveStartPos) > Vector2.Distance(targetPos, laserMoveStartPos) && lockedTarget)      
                 {
+                    rb.velocity = Vector2.zero;
                     rb.isKinematic = true;
                     transform.position = targetPos;
                     rb.isKinematic = false;
