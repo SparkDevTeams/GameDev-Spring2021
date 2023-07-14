@@ -45,6 +45,15 @@ public class move : MonoBehaviour
     public GameObject fryingPan;
     public GameObject kitchenGun;
 
+    private GameObject weaponArea;
+    public Sprite gunSprite;
+    public Sprite gunBuffSprite;
+    public Sprite panSprite;
+    public Sprite panBuffSprite;
+    public Image weapon;
+    public Image weaponBuff;
+    private Text weaponName;
+
     public string Direction {
         get { return direction; }
     }
@@ -61,6 +70,15 @@ public class move : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        weaponArea = GameObject.Find("WeaponArea");
+        weaponName = weaponArea.transform.Find("WeaponName").GetComponent<Text>();
+        weapon = weaponArea.transform.Find("Weapon").GetComponent<Image>();
+        weaponBuff = weaponArea.transform.Find("WeaponBuff").GetComponent<Image>();
+
+        weaponName.text = "Frying Pan";
+        weapon.sprite = panSprite;
+        weaponBuff.sprite = panBuffSprite;
+
         boarTrotterCount = 0;
         shroomCount = 0;
     }
@@ -332,12 +350,18 @@ public class move : MonoBehaviour
     {
         if (isMelee == true)
         {
+            weaponName.text = "Kitchen Gun";
+            weapon.sprite = gunSprite;
+            weaponBuff.sprite = gunBuffSprite;
             fryingPan.SetActive(false);
             kitchenGun.SetActive(true);
             isMelee = false;
         }
         else
         {
+            weaponName.text = "Frying Pan";
+            weapon.sprite = panSprite;
+            weaponBuff.sprite = panBuffSprite;
             fryingPan.SetActive(true);
             kitchenGun.SetActive(false);
             isMelee = true;
