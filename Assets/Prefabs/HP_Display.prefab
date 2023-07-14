@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 615023859997206797, guid: 092946364f1bc1b408889c5cc068048e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fee07dbde51ac4632b82119bec470111, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,12 +89,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeartSprites:
-  - {fileID: 615023859997206797, guid: 092946364f1bc1b408889c5cc068048e, type: 3}
-  - {fileID: 516283494600122218, guid: 092946364f1bc1b408889c5cc068048e, type: 3}
-  - {fileID: -4195582761621981391, guid: 092946364f1bc1b408889c5cc068048e, type: 3}
-  - {fileID: 7630354458230478893, guid: 092946364f1bc1b408889c5cc068048e, type: 3}
-  - {fileID: 4606908045521496030, guid: 092946364f1bc1b408889c5cc068048e, type: 3}
-  HeartPrefab: {fileID: 3618328431673687563, guid: e2f9e5bc73fdf4a4eb8075ec271da5ea,
-    type: 3}
+  - {fileID: 21300000, guid: fee07dbde51ac4632b82119bec470111, type: 3}
+  - {fileID: 21300000, guid: fee07dbde51ac4632b82119bec470111, type: 3}
+  - {fileID: 21300000, guid: fee07dbde51ac4632b82119bec470111, type: 3}
+  - {fileID: 21300000, guid: fee07dbde51ac4632b82119bec470111, type: 3}
+  - {fileID: 21300000, guid: fee07dbde51ac4632b82119bec470111, type: 3}
+  HeartPrefab: {fileID: 3618328431673687563, guid: e2f9e5bc73fdf4a4eb8075ec271da5ea, type: 3}
   maxHP: 80
   targetHp: 25
