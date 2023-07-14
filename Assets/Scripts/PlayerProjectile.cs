@@ -18,6 +18,7 @@ public class PlayerProjectile : MonoBehaviour //Player ranged projectile
 
     public float cosineTest, sineTest;
     private PlayerStats stats;
+    bool hit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,19 +46,22 @@ public class PlayerProjectile : MonoBehaviour //Player ranged projectile
     {
         if(hitInfo.tag == "Enemy" || hitInfo.name == "Walls" || hitInfo.tag == "Door" || hitInfo.name == "Layout Walls" || hitInfo.name == "Chest") // test wall collider 
         {
-            Destroy(gameObject);
-
-            if(hitInfo.tag == "Enemy")
+            if (!hit)
             {
-                hitInfo.GetComponent<EnemyManager>().Damage(power);
-            }
+                hit = true;
 
-            if (hitInfo.tag == "Chest") {
-                hitInfo.GetComponent<ChestManager>().Damage();
+                Destroy(gameObject);
+
+                if(hitInfo.tag == "Enemy")
+                {
+                    hitInfo.GetComponent<EnemyManager>().Damage(power);
+                }
+
+                if (hitInfo.tag == "Chest") {
+                    hitInfo.GetComponent<ChestManager>().Damage();
+                }
             }
         }
-
-        // implement health manager interactions
     }
     
 }
