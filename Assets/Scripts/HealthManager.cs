@@ -12,10 +12,14 @@ public class HealthManager : MonoBehaviour
     private HP_Display health_display;
     private float invincibiltyTime;
     public GameObject loseScreen;
+    private GameObject HP_EXP_Header;
 
     void Start()
     {
-        health_display = FindObjectOfType<HP_Display>();
+        HP_EXP_Header = GameObject.Find("HP_EXP_Header");
+        health_display = HP_EXP_Header.GetComponentInChildren<HP_Display>();
+
+        //health_display = FindObjectOfType<HP_Display>();
         health = health_display.getTargetHealth();
         maxHealth = health_display.getMaxHealth();
     }

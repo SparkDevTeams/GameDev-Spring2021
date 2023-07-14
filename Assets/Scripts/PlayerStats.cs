@@ -78,6 +78,7 @@ public class PlayerStats : MonoBehaviour
         if (currentExperiencePoints >= levelUpCost)
         {
             currentLevel++;
+            Debug.Log(currentLevel);
             currentExperiencePoints -= levelUpCost;
             healthManager.heal(1);
             unusedStatPoints++;
