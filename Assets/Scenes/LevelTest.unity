@@ -5026,11 +5026,11 @@ PrefabInstance:
       objectReference: {fileID: 1906405591}
     - target: {fileID: 226845069763014383, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: maxHP
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 226845069763014383, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: targetHp
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 226845069763014383, guid: 854c868ef70b307459e74f3b96119994, type: 3}
       propertyPath: HeartSprites.Array.size
