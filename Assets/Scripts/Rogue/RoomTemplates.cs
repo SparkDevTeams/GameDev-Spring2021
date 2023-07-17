@@ -31,6 +31,7 @@ public class RoomTemplates : MonoBehaviour
     public GameObject activeRoom;
 
     //New room gen stuff
+    List<GameObject> rooms = new List<GameObject>();
     int maxWidth; //max size is square
     RoomNode[] roomNodeArray;
     int roomNum;
@@ -253,7 +254,7 @@ public class RoomTemplates : MonoBehaviour
                 //spawn room
                 if (roomToSpawn != null) 
                 {
-                    Instantiate(roomToSpawn, spawnPos, Quaternion.identity);
+                    rooms.Add(Instantiate(roomToSpawn, spawnPos, Quaternion.identity));
                     Debug.Log("Room spawn success : " + roomName);
                 }
                 else
