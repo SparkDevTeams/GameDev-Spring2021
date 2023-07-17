@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class RoomTemplates : MonoBehaviour
 {
-    public GameObject[] bottomRooms;
-    public GameObject[] topRooms;
-    public GameObject[] leftRooms;
-    public GameObject[] rightRooms;
-    public GameObject[] deadends;
-    public GameObject[] itemRooms;
-    public GameObject[] bossRooms;
-    public GameObject[] closers;
-    public GameObject[] openers;
     public GameObject[] B;
     public GameObject[] BL;
     public GameObject[] BR;
@@ -27,16 +18,10 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] T;
     public GameObject[] TL;
     public GameObject[] TR;
-    public GameObject closedWall;
-    public List<GameObject> rooms;
-    private List<GameObject> tempRooms;
 
-    //max/min room num exclude starting room
+    //max room num exclude starting room
     public int MAX_ROOMS = 20; //const
-    public int MIN_ROOMS = 10; //const
-    public int tblr_limit;
     public bool stopGenerating;
-    public bool minReached;
     public bool itemRoomCreated;
     public bool bossRoomCreated;
     public bool shopRoomCreated;
@@ -55,17 +40,9 @@ public class RoomTemplates : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Test
-        stopGenerating = false;
-        minReached = false;
-        itemRoomCreated = false;
-        bossRoomCreated = false;
-
-
-        setClosers(false);
-        setOpeners(true);
-        
         //new room gen stuff
+        stopGenerating = false;
+
         maxWidth = Mathf.CeilToInt(Mathf.Sqrt(MAX_ROOMS + 1));
         if (maxWidth % 2 == 0) ++maxWidth; //make sure is odd square
         else maxWidth += 2; //make more space
@@ -275,48 +252,16 @@ public class RoomTemplates : MonoBehaviour
                 //Instantiate(roomToSpawn, spawnPos, Quaternion.identity);
             }
         }
+
+        //finished room gen
+        stopGenerating = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if(tblr_limit <= 0)
-        //{
-        //    openers[0].GetComponent<AddRoom>().setAllowed(false);
-        //}
 
-        if (rooms.Count >= MIN_ROOMS)
-        {
-            minReached = true;
-            setClosers(true);
-            setOpeners(false);
-        }
-
-        if (rooms.Count >= MAX_ROOMS)
-        {
-            minReached = false;
-            stopGenerating = true;
-        }
-
-        //if (stopGenerating)
-        //{
-        //    Debug.Log("should be doing special room function");
-        //    setRoomTypes();
-        //    spawnRoomLayouts();
-
-        //}
-
-        //if (GameObject.FindGameObjectsWithTag("SpawnPoint").Length <= 0)
-        //{
-        //    // Do something
-        //    Debug.Log(GameObject.FindGameObjectsWithTag("SpawnPoint").Length);
-        //    setRoomTypes();
-        //    spawnRoomLayouts();
-        //}
     }
-
-    
-    
 
     public bool generationStopped()
     {
@@ -331,39 +276,6 @@ public class RoomTemplates : MonoBehaviour
     public GameObject getActiveRoom()
     {
         return activeRoom;
-    }
-
-    void setClosers(bool allow)
-    {
-        for(int i = 0; i < closers.Length; i++)
-        {
-            closers[i].GetComponent<AddRoom>().setAllowed(allow);
-            
-        }
-    }
-
-    void setOpeners(bool allow)
-    {
-        for (int i = 0; i < openers.Length; i++)
-        {
-            openers[i].GetComponent<AddRoom>().setAllowed(allow);
-
-        }
-    }
-
-    public int getLimit()
-    {
-        return tblr_limit;
-    }
-
-    public bool getMin()
-    {
-        return minReached;
-    }
-
-    public void decrementLimit()
-    {
-        tblr_limit--;
     }
 
     public bool getItemSpawned()

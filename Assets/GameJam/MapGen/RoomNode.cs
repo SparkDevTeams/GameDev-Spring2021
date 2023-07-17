@@ -5,7 +5,6 @@ using UnityEngine;
 public class RoomNode
 {
     public RoomNode upNode, downNode, leftNode, rightNode = null;
-    public NewRoomSpawner roomSpawner;
     public bool spawned;
     public bool filled;
 
@@ -13,6 +12,5 @@ public class RoomNode
     {
         spawned = false;
         filled = false;
-        roomSpawner = null;
     }
 }
