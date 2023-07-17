@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class RoomTemplates : MonoBehaviour
 {
-    public GameObject[] B;
-    public GameObject[] BL;
-    public GameObject[] BR;
-    public GameObject[] TB;
-    public GameObject[] LRB;
-    public GameObject[] LTB;
-    public GameObject[] RTB;
-    public GameObject[] L;
-    public GameObject[] LR;
-    public GameObject[] LRT;
-    public GameObject[] R;
-    public GameObject[] T;
-    public GameObject[] TL;
-    public GameObject[] TR;
+    public GameObject B;
+    public GameObject BL;
+    public GameObject BLR;
+    public GameObject BLRT;
+    public GameObject BLT;
+    public GameObject BR;
+    public GameObject BRT;
+    public GameObject BT;
+    public GameObject L;
+    public GameObject LR;
+    public GameObject LRT;
+    public GameObject LT;
+    public GameObject R;
+    public GameObject RT;
+    public GameObject T;
 
     //max room num exclude starting room
     public int MAX_ROOMS = 20; //const
