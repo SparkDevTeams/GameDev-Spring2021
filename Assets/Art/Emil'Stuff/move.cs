@@ -41,6 +41,19 @@ public class move : MonoBehaviour
     public int boarTrotterCount;
     public Text shroomText;
     public int shroomCount;
+    public Text broccoliText;
+    public int broccoliCount;
+    public Text chickenFeetText;
+    public int chickenFeetCount;
+    public Text rabbitLegText;
+    public int rabbitLegCount;
+    public Text shellText;
+    public int shellCount;
+    public Text wingText;
+    public int wingCount;
+    public Text yolkText;
+    public int yolkCount;
+
     public bool isMelee;
     public GameObject fryingPan;
     public GameObject kitchenGun;
@@ -79,8 +92,14 @@ public class move : MonoBehaviour
         weapon.sprite = panSprite;
         weaponBuff.sprite = panBuffSprite;
 
-        boarTrotterCount = 0;
-        shroomCount = 0;
+        boarTrotterCount = 1;
+        shroomCount = 1;
+        broccoliCount = 1;
+        chickenFeetCount = 1;
+        rabbitLegCount = 1;
+        shellCount = 1;
+        wingCount = 1;
+        yolkCount = 1;
     }
 
     public void SetAnimation( string mode, float cooldown, bool stop = true) {
@@ -575,6 +594,42 @@ public class move : MonoBehaviour
         {
             shroomCount += 1;
             shroomText.text = "Shroom: " + shroomCount;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.name == "Broccoli")
+        {
+            broccoliCount += 1;
+            broccoliText.text = "Broccoli: " + broccoliCount;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.name == "ChickenFeet")
+        {
+            chickenFeetCount += 1;
+            chickenFeetText.text = "ChickenFeet: " + chickenFeetCount;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.name == "Rabbit Leg")
+        {
+            rabbitLegCount += 1;
+            rabbitLegText.text = "Rabbit Leg: " + rabbitLegCount;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.name == "Shell")
+        {
+            shellCount += 1;
+            shellText.text = "Shell: " + shellCount;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.name == "Wing")
+        {
+            wingCount += 1;
+            wingText.text = "Wing: " + wingCount;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.name == "Yolk")
+        {
+            yolkCount += 1;
+            yolkText.text = "Yolk: " + yolkCount;
             Destroy(collision.gameObject);
         }
     }

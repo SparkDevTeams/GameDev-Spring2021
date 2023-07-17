@@ -32,11 +32,23 @@ public class CookingManager : MonoBehaviour
 
     public Text bakKutTehText;
     public int bakKutTehCount;
+    public Text feetWingBucketText;
+    public int feetWingBucketCount;
+    public Text oyakodonText;
+    public int oyakodonCount;
+    public Text rabbitOmeletText;
+    public int rabbitOmeletCount;
+    public Text shellBroccoliText;
+    public int shellBroccoliCount;
 
     void Start()
     {
         cookTime = totalCookTimer;
         bakKutTehCount = 0;
+        feetWingBucketCount = 0;
+        oyakodonCount = 0;
+        rabbitOmeletCount = 0;
+        shellBroccoliCount = 0;
     }
 
     void Update()
@@ -88,6 +100,54 @@ public class CookingManager : MonoBehaviour
                                 haveItem = true;
                             }
                             break;
+                        case "Broccoli":
+                            if (playerMove.broccoliCount > 0)
+                            {
+                                playerMove.broccoliCount -= 1;
+                                playerMove.broccoliText.text = "Broccoli: " + playerMove.broccoliCount;
+                                haveItem = true;
+                            }
+                            break;
+                        case "ChickenFeet":
+                            if (playerMove.chickenFeetCount > 0)
+                            {
+                                playerMove.chickenFeetCount -= 1;
+                                playerMove.chickenFeetText.text = "ChickenFeet: " + playerMove.chickenFeetCount;
+                                haveItem = true;
+                            }
+                            break;
+                        case "RabbitLeg":
+                            if (playerMove.rabbitLegCount > 0)
+                            {
+                                playerMove.rabbitLegCount -= 1;
+                                playerMove.rabbitLegText.text = "RabbitLeg: " + playerMove.rabbitLegCount;
+                                haveItem = true;
+                            }
+                            break;
+                        case "Shell":
+                            if (playerMove.shellCount > 0)
+                            {
+                                playerMove.shellCount -= 1;
+                                playerMove.shellText.text = "Shell: " + playerMove.shellCount;
+                                haveItem = true;
+                            }
+                            break;
+                        case "Wing":
+                            if (playerMove.wingCount > 0)
+                            {
+                                playerMove.wingCount -= 1;
+                                playerMove.wingText.text = "Wing: " + playerMove.wingCount;
+                                haveItem = true;
+                            }
+                            break;
+                        case "Yolk":
+                            if (playerMove.yolkCount > 0)
+                            {
+                                playerMove.yolkCount -= 1;
+                                playerMove.yolkText.text = "Yolk: " + playerMove.yolkCount;
+                                haveItem = true;
+                            }
+                            break;
                         default:
                             Debug.Log("Add ingredient with wrong name");
                             break;
@@ -132,6 +192,30 @@ public class CookingManager : MonoBehaviour
             case "Shroom":
                 playerMove.shroomCount += 1;
                 playerMove.shroomText.text = "Shroom: " + playerMove.shroomCount;
+                break;
+            case "Broccoli":
+                playerMove.broccoliCount += 1;
+                playerMove.broccoliText.text = "Broccoli: " + playerMove.broccoliCount;
+                break;
+            case "ChickenFeet":
+                playerMove.chickenFeetCount += 1;
+                playerMove.chickenFeetText.text = "ChickenFeet: " + playerMove.chickenFeetCount;
+                break;
+            case "RabbitLeg":
+                playerMove.rabbitLegCount += 1;
+                playerMove.rabbitLegText.text = "RabbitLeg: " + playerMove.rabbitLegCount;
+                break;
+            case "Shell":
+                playerMove.shellCount += 1;
+                playerMove.shellText.text = "Shell: " + playerMove.shellCount;
+                break;
+            case "Wing":
+                playerMove.wingCount += 1;
+                playerMove.wingText.text = "Wing: " + playerMove.wingCount;
+                break;
+            case "Yolk":
+                playerMove.yolkCount += 1;
+                playerMove.yolkText.text = "Yolk: " + playerMove.yolkCount;
                 break;
             default:
                 Debug.Log("Remove ingredient with wrong name");
@@ -223,6 +307,30 @@ public class CookingManager : MonoBehaviour
                 bakKutTehCount += 1;
                 bakKutTehText.text = "Bak Kut Teh: " + bakKutTehCount;
                 Debug.Log("Added BKT");
+                break;
+            case "FeetWingBucket":
+                //Add FeetWingBucket here
+                feetWingBucketCount += 1;
+                feetWingBucketText.text = "Feet Wing Bucket: " + feetWingBucketCount;
+                Debug.Log("Added FWB");
+                break;
+            case "Oyakodon":
+                //Add Oyakodon here
+                oyakodonCount += 1;
+                oyakodonText.text = "Oyakodon: " + oyakodonCount;
+                Debug.Log("Added Oyakodon");
+                break;
+            case "RabbitOmelet":
+                //Add RabbitOmelet here
+                rabbitOmeletCount += 1;
+                rabbitOmeletText.text = "Rabbit Omelet: " + rabbitOmeletCount;
+                Debug.Log("Added RO");
+                break;
+            case "ShellBroccoli":
+                //Add ShellBroccoli here
+                shellBroccoliCount += 1;
+                shellBroccoliText.text = "Shell Broccoli: " + shellBroccoliCount;
+                Debug.Log("Added SB");
                 break;
         }
     }

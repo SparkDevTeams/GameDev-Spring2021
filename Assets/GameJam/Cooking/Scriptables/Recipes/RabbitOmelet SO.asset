@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 900943b38351e7b458d6c5f53db7e8e4, type: 3}
-  m_Name: BakKutTeh SO
+  m_Name: RabbitOmelet SO
   m_EditorClassIdentifier: 
   ingredientsList:
-  - {fileID: 11400000, guid: c5df119fae6764139b3b2a9eb2fcaaf6, type: 2}
-  - {fileID: 11400000, guid: 470ce05c29dbe2643a64446006abd13a, type: 2}
-  outputDishName: BakKutTeh
-  outputDishSprite: {fileID: 21300000, guid: 13a2788283e15438b981e933b3dac17b, type: 3}
+  - {fileID: 11400000, guid: 76268477624ab4dc0ab3e206f41ac288, type: 2}
+  - {fileID: 11400000, guid: 054ae5ffd39c91b44b0aed0e0cb50d38, type: 2}
+  outputDishName: RabbitOmelet
+  outputDishSprite: {fileID: 21300000, guid: e32c15b13834a4c8baa1fa2275c2829e, type: 3}

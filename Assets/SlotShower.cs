@@ -11,7 +11,10 @@ public class SlotShower : MonoBehaviour
     public Sprite shadowImg;
     public Sprite potionImg;
     public Sprite bakKutTehImg;
-    public Sprite dragonDishImg;
+    public Sprite feetWingBucketImg;
+    public Sprite oyakodonImg;
+    public Sprite rabbitOmeletImg;
+    public Sprite shellBroccoliImg;
 
     private Inventory inventory;
 
@@ -103,6 +106,22 @@ public class SlotShower : MonoBehaviour
                 break;
             case ITEM.bakKutTeh:
                 img.sprite = bakKutTehImg;
+                img.color = Color.white;
+                break;
+            case ITEM.feetWingBucket:
+                img.sprite = feetWingBucketImg;
+                img.color = Color.white;
+                break;
+            case ITEM.oyakodon:
+                img.sprite = oyakodonImg;
+                img.color = Color.white;
+                break;
+            case ITEM.rabbitOmelet:
+                img.sprite = rabbitOmeletImg;
+                img.color = Color.white;
+                break;
+            case ITEM.shellBroccoli:
+                img.sprite = shellBroccoliImg;
                 img.color = Color.white;
                 break;
             default:
