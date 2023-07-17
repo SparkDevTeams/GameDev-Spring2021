@@ -264,6 +264,9 @@ public class RoomTemplates : MonoBehaviour
             }
         }
 
+        //find room dists
+
+
         //finished room gen
         stopGenerating = true;
     }
@@ -373,5 +376,10 @@ public class RoomTemplates : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void findDistancesFromSource(RoomNode[] roomNodes)
+    {
+        RoomNode[] tempNodeArray;
     }
 }

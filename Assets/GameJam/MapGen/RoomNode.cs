@@ -8,9 +8,16 @@ public class RoomNode
     public bool spawned;
     public bool filled;
 
+    //For distance
+    public float distFromSource;
+    public RoomNode prevNode;
+
     public RoomNode()
     {
         spawned = false;
         filled = false;
+
+        distFromSource = float.PositiveInfinity;
+        prevNode = null;
     }
 }
