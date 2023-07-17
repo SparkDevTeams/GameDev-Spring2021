@@ -219,13 +219,13 @@ public class RoomTemplates : MonoBehaviour
         //Distances in positive direction
         Vector3 vertDist = downSpawnPoint.localPosition;
         Vector3 horizontalDist = rightSpawnPoint.localPosition;
-        Vector3 startPos = startRoomTransform.position - vertDist * (maxWidth - 1 / 2) - horizontalDist * (maxWidth - 1 / 2);
+        Vector3 startPos = startRoomTransform.position - vertDist * (maxWidth - 1 ) / 2 - horizontalDist * (maxWidth - 1) / 2;
 
         for (int i = 0; i < roomNodeArray.Length; ++i)
         {
             RoomNode currNode = roomNodeArray[i];
 
-            if (currNode.filled)
+            if (currNode.filled && i != middleIndex)
             {
                 //find spawn pos
                 Vector3 spawnPos = startPos + vertDist * (i / maxWidth) + horizontalDist * (i % maxWidth);
@@ -253,9 +253,13 @@ public class RoomTemplates : MonoBehaviour
                 //spawn room
                 if (roomToSpawn != null) 
                 {
-                    //Instantiate(roomToSpawn, spawnPos, Quaternion.identity);
+                    Instantiate(roomToSpawn, spawnPos, Quaternion.identity);
+                    Debug.Log("Room spawn success : " + roomName);
                 }
-                
+                else
+                {
+                    Debug.Log("Room spawn fail : " + roomName);
+                }
             }
         }
 
