@@ -33,7 +33,7 @@ public class RoomTemplates : MonoBehaviour
     //New room gen stuff
     List<GameObject> rooms = new List<GameObject>();
     int maxWidth; //max size is square
-    RoomNode[] roomNodeArray;
+    List<RoomNode> roomNodeList = new List<RoomNode>();
     int roomNum;
     int currentDir = -1;
     public Transform startRoomTransform;
@@ -49,15 +49,14 @@ public class RoomTemplates : MonoBehaviour
         if (maxWidth % 2 == 0) ++maxWidth; //make sure is odd square
         else maxWidth += 2; //make more space
 
-        roomNodeArray = new RoomNode[maxWidth * maxWidth];
-        for (int i = 0; i < roomNodeArray.Length; ++i)
+        for (int i = 0; i < maxWidth * maxWidth; ++i)
         {
-            roomNodeArray[i] = new RoomNode();
+            roomNodeList.Add(new RoomNode());
         }
 
         int middleIndex = (maxWidth * maxWidth - 1) / 2;
 
-        RoomNode startMiddleNode = roomNodeArray[middleIndex];
+        RoomNode startMiddleNode = roomNodeList[middleIndex];
         startMiddleNode.spawned = true;
         startMiddleNode.filled = true;     
 
@@ -121,7 +120,7 @@ public class RoomTemplates : MonoBehaviour
                     if (startIndex >= maxWidth)
                     {
                         nextIndex = startIndex - maxWidth;
-                        nextNode = roomNodeArray[nextIndex];
+                        nextNode = roomNodeList[nextIndex];
 
                         startNode.upNode = nextNode;   
                         nextNode.downNode = startNode;
@@ -141,7 +140,7 @@ public class RoomTemplates : MonoBehaviour
                     if (startIndex < maxWidth * (maxWidth - 1))
                     {
                         nextIndex = startIndex + maxWidth;
-                        nextNode = roomNodeArray[nextIndex];
+                        nextNode = roomNodeList[nextIndex];
 
                         startNode.downNode = nextNode;   
                         nextNode.upNode = startNode;
@@ -161,7 +160,7 @@ public class RoomTemplates : MonoBehaviour
                     if (startIndex % maxWidth > 0)
                     {
                         nextIndex = startIndex - 1;
-                        nextNode = roomNodeArray[nextIndex];
+                        nextNode = roomNodeList[nextIndex];
                             
                         startNode.leftNode = nextNode;   
                         nextNode.rightNode = startNode;
@@ -181,7 +180,7 @@ public class RoomTemplates : MonoBehaviour
                     if (startIndex % maxWidth < maxWidth - 1)
                     {
                         nextIndex = startIndex + 1;
-                        nextNode = roomNodeArray[nextIndex];
+                        nextNode = roomNodeList[nextIndex];
                             
                         startNode.rightNode = nextNode;   
                         nextNode.leftNode = startNode;
@@ -202,9 +201,9 @@ public class RoomTemplates : MonoBehaviour
 
         //show map in debug
         string mapStr = "";
-        for (int i = 0; i < roomNodeArray.Length; ++i)
+        for (int i = 0; i < roomNodeList.Count; ++i)
         {
-            RoomNode currNode = roomNodeArray[i];
+            RoomNode currNode = roomNodeList[i];
 
             if (i % maxWidth == 0) mapStr += '\n';
 
@@ -222,9 +221,9 @@ public class RoomTemplates : MonoBehaviour
         Vector3 horizontalDist = rightSpawnPoint.localPosition;
         Vector3 startPos = startRoomTransform.position - vertDist * (maxWidth - 1 ) / 2 - horizontalDist * (maxWidth - 1) / 2;
 
-        for (int i = 0; i < roomNodeArray.Length; ++i)
+        for (int i = 0; i < roomNodeList.Count; ++i)
         {
-            RoomNode currNode = roomNodeArray[i];
+            RoomNode currNode = roomNodeList[i];
 
             if (currNode.filled && i != middleIndex)
             {
@@ -380,6 +379,7 @@ public class RoomTemplates : MonoBehaviour
 
     public void findDistancesFromSource(RoomNode[] roomNodes)
     {
-        RoomNode[] tempNodeArray;
+        RoomNode[] tempNodeArray = roomNodes;
+
     }
 }
