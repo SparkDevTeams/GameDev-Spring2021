@@ -43,25 +43,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1bd314b0caba54c8980407e3a4169a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bottomRooms:
-  - {fileID: 789365333848653177, guid: d4b5ce9ba7b506a43b3876c09de5dd67, type: 3}
-  - {fileID: 7282757722936003506, guid: 565602ecdccd72147bc6143ab120b4d9, type: 3}
-  - {fileID: 3513659228133715051, guid: 979638064072ad24b8bf260ff4c1b9f4, type: 3}
-  - {fileID: 4793631999705678634, guid: f4dc618fdc4262f44ac3f597526b40d2, type: 3}
-  topRooms:
-  - {fileID: 1706553951155656834, guid: e6b38897855514049b0c43fbdbec1d70, type: 3}
-  - {fileID: 4793631999705678634, guid: f4dc618fdc4262f44ac3f597526b40d2, type: 3}
-  - {fileID: 7633116082242750614, guid: 4dfaca75828d5a94287ecbaf48fe5dcf, type: 3}
-  - {fileID: 4837275121314813632, guid: 08db3e761637ab242bada3096937035d, type: 3}
-  leftRooms:
-  - {fileID: 7282757722936003506, guid: 565602ecdccd72147bc6143ab120b4d9, type: 3}
-  - {fileID: 3724728564873064047, guid: f12f4231918655f4985ed6546bc9cd0e, type: 3}
-  - {fileID: 2685683248564335321, guid: 73db54fb6696df2429aee2aa1d4f89cf, type: 3}
-  - {fileID: 7633116082242750614, guid: 4dfaca75828d5a94287ecbaf48fe5dcf, type: 3}
-  rightRooms:
-  - {fileID: 3513659228133715051, guid: 979638064072ad24b8bf260ff4c1b9f4, type: 3}
-  - {fileID: 2685683248564335321, guid: 73db54fb6696df2429aee2aa1d4f89cf, type: 3}
-  - {fileID: 7669524842478539590, guid: 21900fdb2bb46a24e97c8ad26ac61b26, type: 3}
-  - {fileID: 4837275121314813632, guid: 08db3e761637ab242bada3096937035d, type: 3}
-  closedWall: {fileID: 6883485353792568272, guid: 781a6d9b88af5f24c89dbbe82f902888, type: 3}
-  rooms: []
+  B: {fileID: 789365333848653177, guid: d4b5ce9ba7b506a43b3876c09de5dd67, type: 3}
+  BL: {fileID: 7282757722936003506, guid: 565602ecdccd72147bc6143ab120b4d9, type: 3}
+  BLR: {fileID: 3880594236346097014, guid: 867240bcde457b349b4c614b893dab7c, type: 3}
+  BLRT: {fileID: 8395686389002481795, guid: 8d8d712a39046844581a3f79174f684d, type: 3}
+  BLT: {fileID: 4135859624724249240, guid: e2a36098b3ec2c84da0934571e0b58da, type: 3}
+  BR: {fileID: 3513659228133715051, guid: 979638064072ad24b8bf260ff4c1b9f4, type: 3}
+  BRT: {fileID: 3907570769665409076, guid: d1427606b4562a14c8ba70c519cac7b4, type: 3}
+  BT: {fileID: 4793631999705678634, guid: f4dc618fdc4262f44ac3f597526b40d2, type: 3}
+  L: {fileID: 3724728564873064047, guid: f12f4231918655f4985ed6546bc9cd0e, type: 3}
+  LR: {fileID: 2685683248564335321, guid: 73db54fb6696df2429aee2aa1d4f89cf, type: 3}
+  LRT: {fileID: 6698723257290240564, guid: d4e6561c2c5954e408dfb8c33d77f4ab, type: 3}
+  LT: {fileID: 7633116082242750614, guid: 4dfaca75828d5a94287ecbaf48fe5dcf, type: 3}
+  R: {fileID: 7669524842478539590, guid: 21900fdb2bb46a24e97c8ad26ac61b26, type: 3}
+  RT: {fileID: 4837275121314813632, guid: 08db3e761637ab242bada3096937035d, type: 3}
+  T: {fileID: 1706553951155656834, guid: e6b38897855514049b0c43fbdbec1d70, type: 3}
+  MAX_ROOMS: 20
+  stopGenerating: 0
+  itemRoomCreated: 0
+  bossRoomCreated: 0
+  shopRoomCreated: 0
+  activeRoom: {fileID: 0}
+  startRoomTransform: {fileID: 0}
+  downSpawnPoint: {fileID: 0}
+  rightSpawnPoint: {fileID: 0}

@@ -250,7 +250,12 @@ public class RoomTemplates : MonoBehaviour
 
                 GameObject roomToSpawn = pickRoom(roomName);
 
-                //Instantiate(roomToSpawn, spawnPos, Quaternion.identity);
+                //spawn room
+                if (roomToSpawn != null) 
+                {
+                    //Instantiate(roomToSpawn, spawnPos, Quaternion.identity);
+                }
+                
             }
         }
 
@@ -312,98 +317,55 @@ public class RoomTemplates : MonoBehaviour
     //New room gen stuff
     public GameObject pickRoom(string roomName) //give in BLRT, alphabetical order 
     {
-        // //template name are in BLRT
-        // switch (roomName)
-        // {
-        //     case "B":
-        //         num = Random.Range(0, templates.B.Length);
-        //         //room = templates.B[num];
-        //         return templates.B[num];
+        //template name are in BLRT
+        switch (roomName)
+        {
+            case "B":
+                return B;                
+
+            case "BL":
+                return BL;
+
+            case "BLR":
+                return BLR;                
+
+            case "BLRT":
+                return BLRT;
                 
+            case "BLT":
+                return BLT;                
 
-        //     case "BL":
-        //         num = Random.Range(0, templates.BL.Length);
-        //         //room = templates.BL[num];
-        //         return templates.BL[num];
+            case "BR":
+                return BR;
                 
+            case "BRT":
+                return BRT;                
 
-        //     case "BR":
-        //         num = Random.Range(0, templates.BR.Length);
-        //         //room = templates.BR[num];
-        //         return templates.BR[num];
+            case "BT":
+                return BT;
                 
+            case "L":
+                return L;                
 
-        //     case "TB":
-        //         num = Random.Range(0, templates.TB.Length);
-        //         //room = templates.TB[num];
-        //         return templates.TB[num];
+            case "LR":
+                return LR;
                 
+            case "LRT":
+                return LRT;                
 
-        //     case "LRB":
-        //         num = Random.Range(0, templates.LRB.Length);
-        //         //room = templates.LRB[num];
-        //         return templates.LRB[num];
+            case "LT":
+                return LT;
                 
+            case "R":
+                return R;                
 
-        //     case "LTB":
-        //         num = Random.Range(0, templates.LTB.Length);
-        //         //room = templates.LTB[num];
-        //         return templates.LTB[num];
-                
+            case "RT":
+                return RT;            
 
-        //     case "RTB":
-        //         num = Random.Range(0, templates.RTB.Length);
-        //         //room = templates.RTB[num];
-        //         return templates.RTB[num];
-                
+            case "T":
+                return T;
 
-        //     case "L":
-        //         num = Random.Range(0, templates.L.Length);
-        //         //room = templates.L[num];
-        //         return templates.L[num];
-                
-
-        //     case "LR":
-        //         num = Random.Range(0, templates.LR.Length);
-        //         //room = templates.LR[num];
-        //         return templates.LR[num];
-                
-
-        //     case "LRT":
-        //         num = Random.Range(0, templates.LRT.Length);
-        //         //room = templates.LRT[num];
-        //         return templates.LRT[num];
-                
-
-        //     case "R":
-        //         num = Random.Range(0, templates.R.Length);
-        //         //room = templates.R[num];
-        //         return templates.R[num];
-                
-
-        //     case "T":
-        //         num = Random.Range(0, templates.T.Length);
-        //         //room = templates.T[num];
-        //         return templates.T[num];
-                
-
-        //     case "TL":
-        //         num = Random.Range(0, templates.TL.Length);
-        //         //room = templates.TL[num];
-        //         return templates.TL[num];
-                
-
-        //     case "TR":
-        //         num = Random.Range(0, templates.TR.Length);
-        //         //room = templates.TR[num];
-        //         return templates.TR[num];
-                
-
-        //     default:
-        //         break;
-
-
-        // }
+        }
 
         return null;
     }
