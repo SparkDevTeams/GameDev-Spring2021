@@ -9,7 +9,11 @@ public enum ITEM {
     EARTH,
     SHADOW,
     POTION,
-    bakKutTeh
+    bakKutTeh,
+    feetWingBucket,
+    oyakodon,
+    rabbitOmelet,
+    shellBroccoli
 }
 
 public class Inventory : MonoBehaviour
@@ -197,6 +201,18 @@ public class Inventory : MonoBehaviour
                 Debug.Log("after remove, melee atk" + meleeAtk);
                 Debug.Log("after remove, ranged atk" + rangedAtk);
 
+                break;
+            case ITEM.feetWingBucket:
+                Debug.Log("Used  fwb");
+                break;
+            case ITEM.oyakodon:
+                Debug.Log("Used  oyakodon");
+                break;
+            case ITEM.rabbitOmelet:
+                Debug.Log("Used  ro");
+                break;
+            case ITEM.shellBroccoli:
+                Debug.Log("Used  sb");
                 break;
         }
     }
