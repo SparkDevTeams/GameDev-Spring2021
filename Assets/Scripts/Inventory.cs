@@ -36,13 +36,15 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private GameObject sandBall;
     [SerializeField]
-    private GameObject meleeAtkBuff;
+    private GameObject atkBuff;
     [SerializeField]
-    private GameObject rangedAtkBuff;
-    [SerializeField]
-    private GameObject healBuff;
+    private GameObject evasionBuff;
     [SerializeField]
     private GameObject speedBuff;
+    [SerializeField]
+    private GameObject poisonousBuff;
+    [SerializeField]
+    private GameObject noBlockBuff;
     [SerializeField]
     private float buffDuration = 10f;
 
@@ -55,7 +57,7 @@ public class Inventory : MonoBehaviour
     {
         playerMove = GetComponent<move>();
         playerBuff = GetComponent<Buffs>();
-        buffList = new List<GameObject> { meleeAtkBuff, rangedAtkBuff, healBuff, speedBuff };
+        buffList = new List<GameObject> { atkBuff, evasionBuff, speedBuff, poisonousBuff, noBlockBuff };
         playerBuff.InitializeBuffIcons(buffList);
     }
 
@@ -185,9 +187,7 @@ public class Inventory : MonoBehaviour
                 Debug.Log("add buff, ranged atk" + rangedAtk);
 
                 // Add the buff icon to the container list
-                playerBuff.AddBuffIcon(meleeAtkBuff, buffDuration);
-                // Add the buff icon to the container list
-                playerBuff.AddBuffIcon(rangedAtkBuff, buffDuration);
+                playerBuff.AddBuffIcon(atkBuff, buffDuration);
 
                 yield return new WaitForSeconds(buffDuration);
 
@@ -200,21 +200,38 @@ public class Inventory : MonoBehaviour
                 Debug.Log("Remove buff");
                 Debug.Log("after remove, melee atk" + meleeAtk);
                 Debug.Log("after remove, ranged atk" + rangedAtk);
-
-                break;
-            case ITEM.feetWingBucket:
-                Debug.Log("Used  fwb");
                 break;
             case ITEM.oyakodon:
+                // Increase Speed
                 Debug.Log("Used  oyakodon");
+                GetComponent<PlayerStats>().AddBuffs(1);
+                // Add the buff icon to the container list
+                playerBuff.AddBuffIcon(speedBuff, buffDuration);
+
+                yield return new WaitForSeconds(buffDuration);
+
+                GetComponent<PlayerStats>().RemoveBuffs(1);
+                Debug.Log("Remove buff");
                 break;
             case ITEM.rabbitOmelet:
+                // 100% Evasion for 10S
                 Debug.Log("Used  ro");
+                GetComponent<PlayerStats>().AddBuffs(2);
+                // Add the buff icon to the container list
+                playerBuff.AddBuffIcon(evasionBuff, buffDuration);
                 break;
             case ITEM.shellBroccoli:
+                // Poisonous Vomit
                 Debug.Log("Used  sb");
+                GetComponent<PlayerStats>().AddBuffs(3);
+                playerBuff.AddBuffIcon(poisonousBuff, buffDuration);
+                break;
+            case ITEM.feetWingBucket:
+                // Walk over walls
+                Debug.Log("Used  fwb");
+                GetComponent<PlayerStats>().AddBuffs(4);
+                playerBuff.AddBuffIcon(noBlockBuff, buffDuration);
                 break;
         }
     }
-    
 }

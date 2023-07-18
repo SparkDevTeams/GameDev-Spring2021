@@ -92,14 +92,14 @@ public class move : MonoBehaviour
         weapon.sprite = panSprite;
         weaponBuff.sprite = panBuffSprite;
 
-        boarTrotterCount = 1;
-        shroomCount = 1;
-        broccoliCount = 1;
-        chickenFeetCount = 1;
-        rabbitLegCount = 1;
-        shellCount = 1;
-        wingCount = 1;
-        yolkCount = 1;
+        boarTrotterCount = 2;
+        shroomCount = 2;
+        broccoliCount = 2;
+        chickenFeetCount = 2;
+        rabbitLegCount = 2;
+        shellCount = 2;
+        wingCount = 2;
+        yolkCount = 2;
     }
 
     public void SetAnimation( string mode, float cooldown, bool stop = true) {

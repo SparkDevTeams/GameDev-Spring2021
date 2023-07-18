@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int atkDamage; //melee
     [SerializeField] private int dexDamage; //ranged
     [SerializeField] private int soulCount;
+    private float playerSpeed;
     public int currentLevel;
     public int currentExperiencePoints;
     public int levelUpCost;
@@ -16,9 +17,11 @@ public class PlayerStats : MonoBehaviour
     public int unusedStatPoints = 0;
 
     private HealthManager healthManager;
+    private move move;
 
     // For buffs
     public int atkBuff = 10;
+    public float speedBuff = 10f;
     //Upgrades
 
     public List<(string, string)> upgradeDescriptions; // Item1 is the name of upgrade, Item2 is the effect of upgrade
@@ -27,6 +30,7 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         healthManager = GetComponent<HealthManager>();
+        move = GetComponent<move>();
         levelUpCost = 10 * currentLevel + 10;
         upgradeDescriptions = new List<(string, string)>();
     }
@@ -148,8 +152,17 @@ public class PlayerStats : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("Speed up buff");
+                move.addSpeed(speedBuff);
                 break;
             case 2:
+                Debug.Log("Evasion buff");
+                healthManager.setInvis(10);
+                break;
+            case 3:
+                Debug.Log("Poisonous buff");
+                break;
+            case 4:
+                Debug.Log("No block buff");
                 break;
             default:
                 break;
@@ -160,15 +173,23 @@ public class PlayerStats : MonoBehaviour
     {
         switch (buffType)
         {
-            case 0:
+            case 0: 
                 Debug.Log("Remove attack buff");
                 addMeleeDamage(atkBuff * -1);
                 addRangedDamage(atkBuff * -1);
                 break;
             case 1:
-                Debug.Log("Speed up buff");
+                Debug.Log("Remove Speed up buff");
+                move.addSpeed(speedBuff * -1);
                 break;
             case 2:
+                Debug.Log("Remove Evasion buff");
+                break;
+            case 3:
+                Debug.Log("Remove Poisonous buff");
+                break;
+            case 4:
+                Debug.Log("Remove No block buff");
                 break;
             default:
                 break;
