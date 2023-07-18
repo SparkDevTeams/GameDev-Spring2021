@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class RoomTemplates : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class RoomTemplates : MonoBehaviour
     public GameObject activeRoom;
 
     //New room gen stuff
-    int maxWidth; //max size is square
+    public int maxWidth; //max size is square
     List<RoomNode> roomNodeList = new List<RoomNode>();
     int roomNum;
     int currentDir = -1;
@@ -265,7 +266,41 @@ public class RoomTemplates : MonoBehaviour
         }
 
         //find room dists
+        int bossRoomIndex = findDistancesFromSource(middleIndex);
+        int chestRoomIndex = findDistancesFromSource(bossRoomIndex);
+        Debug.Log("BOSS : " + bossRoomIndex + " CHEST: " + chestRoomIndex);
+        //call layout manager functions
+        for (int i = 0; i < roomNodeList.Count; ++i)
+        {
+            RoomNode currNode = roomNodeList[i];
 
+            if (currNode.filled && currNode.index != middleIndex)
+            {
+                if (!bossRoomCreated && currNode.index == bossRoomIndex)
+                {
+                    //boss room (furthest)
+                    Debug.Log("Furthest room index is : " + currNode.index);
+
+                    bossRoomCreated = true;
+                    currNode.layoutManager.spawnBossRegularRoom();
+                }
+                else if (!itemRoomCreated && currNode.index == chestRoomIndex)
+                {
+                    //chest room (2nd furthest)
+                    Debug.Log("2nd Furthest room index is : " + currNode.index);
+
+                    itemRoomCreated = true;
+                    currNode.layoutManager.spawnItemRoom();
+                }
+                else
+                {
+                    //normal room
+                    Debug.Log("Room index is : " + currNode.index);
+
+                    currNode.layoutManager.spawnRegularRoom();
+                }
+            }
+        }
 
         //finished room gen
         stopGenerating = true;
@@ -378,7 +413,7 @@ public class RoomTemplates : MonoBehaviour
         return null;
     }
 
-    public void findDistancesFromSource(int source)
+    public int findDistancesFromSource(int source)
     {
         List<RoomNode> tempNodeList = new List<RoomNode>();
 
@@ -389,15 +424,72 @@ public class RoomTemplates : MonoBehaviour
 
             tempNodeList.Add(node);
         }
+        
+        //sort list by index (ascending)
+        tempNodeList = tempNodeList.OrderBy(x => x.index).ToList();
 
         tempNodeList[source].distFromSource = 0;
 
-        // RoomNode currNode;
+        RoomNode currNode;
 
-        // while (roomNodeList.Count > 0)
-        // {
-        //     currNode = 
-        // }
+        while (tempNodeList.Count > 0)
+        {
+            //Order list by distFromSource (ascending)
+            tempNodeList = tempNodeList.OrderBy(x => x.distFromSource).ToList();
 
+            //Set currNode to node with least dist
+            currNode = tempNodeList[0];
+
+            //Remove currNode from list
+            tempNodeList.RemoveAt(0);
+
+            //Find neighbours of currNode
+            const float neighbourDist = 1; //dist between neighbour and currNode is always 1
+            float newDist = float.PositiveInfinity;
+            RoomNode neighbourNode = null;
+
+            for (int i = 0; i < 4; ++i)
+            {
+                switch (i)
+                {
+                    case 0:
+                        neighbourNode = currNode.upNode;
+                        break;
+                    case 1:
+                        neighbourNode = currNode.downNode;
+                        break;
+                    case 2:
+                        neighbourNode = currNode.leftNode;
+                        break;
+                    case 3:
+                        neighbourNode = currNode.rightNode;
+                        break;
+                }
+
+                if (neighbourNode != null && tempNodeList.Contains(neighbourNode))
+                {                    
+                    newDist = currNode.distFromSource + neighbourDist;
+                    if (newDist < neighbourNode.distFromSource)
+                    {
+                        neighbourNode.distFromSource = newDist;
+                        neighbourNode.prevNode = currNode;
+                    }
+                }
+            }
+        }
+        
+        //sort list by distFromSource (descending)
+        roomNodeList = roomNodeList.OrderByDescending(x => x.distFromSource).ToList();
+        for (int i = 0; i < roomNodeList.Count; ++i)
+        {
+            RoomNode node = roomNodeList[i];
+            if (!float.IsInfinity(node.distFromSource))
+            {
+                return node.index;
+            }
+        }
+
+        Debug.Log("Room gen bug: No index found for furthest room");
+        return -1;        
     }
 }

@@ -6,8 +6,6 @@ public class LayoutManager : MonoBehaviour
 {
     private GameObject chosenLayout;
 
-    private RoomTemplates templates;
-
     public GameObject [] layoutList;
 
     private DoorManager door;
@@ -17,48 +15,6 @@ public class LayoutManager : MonoBehaviour
     void Start()
     {
         hasSpawned = false;
-        templates = FindObjectOfType<RoomTemplates>();
-
-        // if (GetComponentInParent<AddRoom>().getIsDeadend())
-        // {            
-        //     if (!templates.getBossSpawned())
-        //     {
-        //         layoutList = generateBossLayoutList();
-        //         templates.setBossSpawned(true);
-        //         specialSpawned = true;
-        //         Debug.Log("Boss room should spawn");
-        //     }
-        //     else if (!templates.getItemSpawned())
-        //     {
-        //         layoutList = generateItemLayoutList();
-        //         templates.setItemSpawned(true);
-        //         specialSpawned = true;
-        //         Debug.Log("Item room should spawn");
-        //     }
-        //     // else if (!templates.getShopSpawned())
-        //     // {
-        //     //     layoutList = generateShopLayoutList();
-        //     //     templates.setShopSpawned(true);
-        //     //     specialSpawned = true;
-        //     //     Debug.Log("Shop room should spawn");
-        //     // }
-        //     else
-        //     {
-        //         layoutList = generateLayoutList();
-        //     }
-        // }
-        // else
-        // {
-        //     layoutList = generateLayoutList();
-
-        // }
-        // //parent = this.transform.parent.gameObject;
-        // //layoutList = generateLayoutList();
-        // chosenLayout = selectLayout();
-
-
-        // var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
-        // newLayout.transform.SetParent(this.transform);
 
     }
 
@@ -74,7 +30,7 @@ public class LayoutManager : MonoBehaviour
         return layoutList[num];
     }
 
-    void spawnRegularRoom()
+    public void spawnRegularRoom()
     {
         layoutList = generateLayoutList();
         chosenLayout = selectLayout();
@@ -82,9 +38,11 @@ public class LayoutManager : MonoBehaviour
 
         var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
         newLayout.transform.SetParent(this.transform);
+
+        hasSpawned = true;
     }
 
-    void spawnItemRoom()
+    public void spawnItemRoom()
     {
         layoutList = generateItemLayoutList();
         chosenLayout = selectLayout();
@@ -92,9 +50,11 @@ public class LayoutManager : MonoBehaviour
 
         var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
         newLayout.transform.SetParent(this.transform);
+
+        hasSpawned = true;
     }
 
-    void spawnBossRegularRoom()
+    public void spawnBossRegularRoom()
     {
         layoutList = generateBossLayoutList();
         chosenLayout = selectLayout();
@@ -102,9 +62,11 @@ public class LayoutManager : MonoBehaviour
 
         var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
         newLayout.transform.SetParent(this.transform);
+
+        hasSpawned = true;
     }
 
-    void spawnShopRegularRoom()
+    public void spawnShopRegularRoom()
     {
         layoutList = generateShopLayoutList();
         chosenLayout = selectLayout();
@@ -112,6 +74,8 @@ public class LayoutManager : MonoBehaviour
 
         var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
         newLayout.transform.SetParent(this.transform);
+
+        hasSpawned = true;
     }
 
     GameObject [] generateLayoutList()

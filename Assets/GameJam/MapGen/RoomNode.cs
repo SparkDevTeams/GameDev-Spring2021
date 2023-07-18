@@ -5,9 +5,9 @@ using UnityEngine;
 public class RoomNode
 {
     public RoomNode upNode, downNode, leftNode, rightNode = null;
-    public bool spawned;
-    public bool filled;
-    public int index;
+    public bool spawned; //for when spawning everything in room is done
+    public bool filled; //for when room is in grid
+    public int index; //eachroom should have different index
     public LayoutManager layoutManager;
 
     //For distance
