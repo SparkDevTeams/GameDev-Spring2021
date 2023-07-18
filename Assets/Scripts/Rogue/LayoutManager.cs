@@ -32,50 +32,74 @@ public class LayoutManager : MonoBehaviour
 
     public void spawnRegularRoom()
     {
-        layoutList = generateLayoutList();
-        chosenLayout = selectLayout();
+        if (!hasSpawned)
+        {
+            layoutList = generateLayoutList();
+            chosenLayout = selectLayout();
 
+            var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
+            newLayout.transform.SetParent(this.transform);
 
-        var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
-        newLayout.transform.SetParent(this.transform);
-
-        hasSpawned = true;
+            hasSpawned = true;
+        }
+        else
+        {
+            Debug.Log("Can't spawn more than 1 room layout in a single room!");
+        }
     }
 
     public void spawnItemRoom()
     {
-        layoutList = generateItemLayoutList();
-        chosenLayout = selectLayout();
+        if (!hasSpawned)
+        {
+            layoutList = generateItemLayoutList();
+            chosenLayout = selectLayout();
 
+            var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
+            newLayout.transform.SetParent(this.transform);
 
-        var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
-        newLayout.transform.SetParent(this.transform);
-
-        hasSpawned = true;
+            hasSpawned = true;
+        }
+        else
+        {
+            Debug.Log("Can't spawn more than 1 room layout in a single room!");
+        }
     }
 
     public void spawnBossRegularRoom()
     {
-        layoutList = generateBossLayoutList();
-        chosenLayout = selectLayout();
+        if (!hasSpawned)
+        {            
+            layoutList = generateBossLayoutList();
+            chosenLayout = selectLayout();
 
+            var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
+            newLayout.transform.SetParent(this.transform);
 
-        var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
-        newLayout.transform.SetParent(this.transform);
-
-        hasSpawned = true;
+            hasSpawned = true;
+        }
+        else
+        {
+            Debug.Log("Can't spawn more than 1 room layout in a single room!");
+        }
     }
 
     public void spawnShopRegularRoom()
     {
-        layoutList = generateShopLayoutList();
-        chosenLayout = selectLayout();
+        if (!hasSpawned)
+        {            
+            layoutList = generateShopLayoutList();
+            chosenLayout = selectLayout();
 
+            var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
+            newLayout.transform.SetParent(this.transform);
 
-        var newLayout = Instantiate(chosenLayout, this.transform.position, this.transform.rotation);
-        newLayout.transform.SetParent(this.transform);
-
-        hasSpawned = true;
+            hasSpawned = true;
+        }
+        else
+        {
+            Debug.Log("Can't spawn more than 1 room layout in a single room!");
+        }
     }
 
     GameObject [] generateLayoutList()
@@ -97,6 +121,4 @@ public class LayoutManager : MonoBehaviour
     {
         return Resources.LoadAll<GameObject>("Shop Rooms");
     }
-
-    
 }
