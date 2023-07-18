@@ -31,7 +31,6 @@ public class RoomTemplates : MonoBehaviour
     public GameObject activeRoom;
 
     //New room gen stuff
-    List<GameObject> rooms = new List<GameObject>();
     int maxWidth; //max size is square
     List<RoomNode> roomNodeList = new List<RoomNode>();
     int roomNum;
@@ -52,6 +51,7 @@ public class RoomTemplates : MonoBehaviour
         for (int i = 0; i < maxWidth * maxWidth; ++i)
         {
             roomNodeList.Add(new RoomNode());
+            roomNodeList[i].index = i;
         }
 
         int middleIndex = (maxWidth * maxWidth - 1) / 2;
@@ -253,7 +253,8 @@ public class RoomTemplates : MonoBehaviour
                 //spawn room
                 if (roomToSpawn != null) 
                 {
-                    rooms.Add(Instantiate(roomToSpawn, spawnPos, Quaternion.identity));
+                    GameObject roomSpawned = Instantiate(roomToSpawn, spawnPos, Quaternion.identity);
+                    currNode.layoutManager = roomSpawned.GetComponent<LayoutManager>();
                     Debug.Log("Room spawn success : " + roomName);
                 }
                 else
@@ -377,9 +378,26 @@ public class RoomTemplates : MonoBehaviour
         return null;
     }
 
-    public void findDistancesFromSource(RoomNode[] roomNodes)
+    public void findDistancesFromSource(int source)
     {
-        RoomNode[] tempNodeArray = roomNodes;
+        List<RoomNode> tempNodeList = new List<RoomNode>();
+
+        foreach (RoomNode node in roomNodeList)
+        {
+            node.distFromSource = float.PositiveInfinity;
+            node.prevNode = null;
+
+            tempNodeList.Add(node);
+        }
+
+        tempNodeList[source].distFromSource = 0;
+
+        // RoomNode currNode;
+
+        // while (roomNodeList.Count > 0)
+        // {
+        //     currNode = 
+        // }
 
     }
 }
